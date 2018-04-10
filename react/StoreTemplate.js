@@ -11,7 +11,7 @@ export default class StoreTemplate extends Component {
   render() {
     return (
       <div className="w-100">
-        <Header />
+        <Header logged />
         <div className="z-1">{this.props.children}</div>
         <Footer />
       </div>
