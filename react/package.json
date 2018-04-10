@@ -1,0 +1,14 @@
+{
+  "name": "vtex.extensions",
+  "version": "0.0.0",
+  "dependencies": {
+    "@vtex/styleguide": "2.0.0-rc.35",
+    "prop-types": "^15.5.10"
+  },
+  "devDependencies": {
+    "react": "^16.2.0",
+    "react-apollo": "^2.0.4",
+    "react-dom": "^16.2.0",
+    "react-intl": "^2.4.0"
+  }
+}

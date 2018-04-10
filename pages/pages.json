@@ -1,12 +1,13 @@
 {
   "pages": {
-    "hello-react": {
-      "path": "/hello-react"
+    "store": {
+      "path": "/",
+      "theme": "theme"
     }
   },
   "extensions": {
-    "hello-react": {
-      "component": "index"
+    "store": {
+      "component": "StoreTemplate"
     }
   }
 }
