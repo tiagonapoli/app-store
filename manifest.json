@@ -1,0 +1,18 @@
+{
+  "name": "extensions",
+  "vendor": "vtex",
+  "version": "0.1.0",
+  "title": "Extensions",
+  "description": "Extension store app",
+  "mustUpdateAt": "2019-04-10",
+  "categories": [],
+  "registries": [
+    "smartcheckout"
+  ],
+  "settingsSchema": {},
+  "dependencies": {},
+  "builders": {
+    "pages": "0.x",
+    "react": "2.x"
+  }
+}
