@@ -8,9 +8,9 @@ import productQuery from './queries/productQuery.gql'
 
 class ProductPage extends Component {
   static propTypes = {
-    params: PropTypes.object,
+    params: PropTypes.object.isRequired,
     data: PropTypes.object,
-    prefetch: PropTypes.func,
+    prefetch: PropTypes.func.isRequired,
   }
 
   state = {
