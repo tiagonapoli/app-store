@@ -3,11 +3,17 @@
     "store": {
       "path": "/",
       "theme": "theme"
+    },
+    "store/product": {
+      "path": "/:id/p"
     }
   },
   "extensions": {
     "store": {
       "component": "StoreTemplate"
+    },
+    "store/product": {
+      "component": "ProductPage"
     }
   }
 }

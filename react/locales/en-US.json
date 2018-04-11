@@ -1,3 +1,5 @@
 {
-  "extensions.login": "Login"
+  "extensions.login": "Login",
+  "extensions.developedBy": "Developed by",
+  "extensions.get": "get"
 }
