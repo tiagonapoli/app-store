@@ -13,11 +13,8 @@ class ProductPage extends Component {
     prefetch: PropTypes.func,
   }
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      isModalOpen: false,
-    }
+  state = {
+    isModalOpen: false,
   }
 
   componentDidMount() {
@@ -25,9 +22,7 @@ class ProductPage extends Component {
   }
 
   handleChange = () => {
-    this.setState(state => {
-      return { isModalOpen: !state.isModalOpen }
-    })
+    this.setState({ isModalOpen: !this.state.isModalOpen })
   }
 
   render() {
@@ -35,9 +30,7 @@ class ProductPage extends Component {
     const { product, loading } = data
     return (
       <div className="flex justify-center">
-        {loading ? (
-          <div />
-        ) : (
+        {!loading && (
           <div className="w-100 w-70-ns">
             <ProductHeader
               imageUrl={product.items[0].images[0].imageUrl}
