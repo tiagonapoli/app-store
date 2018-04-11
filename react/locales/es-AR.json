@@ -1,3 +1,5 @@
 {
-  "extensions.login": "Entrar"
+  "extensions.login": "Entrar",
+  "extensions.developedBy": "Desarrollado por",
+  "extensions.get": "obtener"
 }

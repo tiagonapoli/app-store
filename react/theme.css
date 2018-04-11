@@ -5,3 +5,21 @@
 .fill-white {
   fill: var(--white);
 }
+
+.f9 {
+  font-size: 0.25rem;
+}
+
+@media screen and (min-width: 20rem) {
+  .image-size {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+@media screen and (max-width: 20rem) {
+  .image-size {
+    width: 4rem;
+    height: 4rem;
+  }
+}

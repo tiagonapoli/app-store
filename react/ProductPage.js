@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
 
 import withPrefetch from './withPrefetch'
+import ProductHeader from './components/ProductHeader'
 import productQuery from './queries/productQuery.gql'
 
 class ProductPage extends Component {
@@ -32,8 +33,22 @@ class ProductPage extends Component {
   render() {
     const { data } = this.props
     const { product, loading } = data
-
-    return <div />
+    return (
+      <div className="flex justify-center">
+        {loading ? (
+          <div />
+        ) : (
+          <div className="w-100 w-70-ns">
+            <ProductHeader
+              imageURL={product.items[0].images[0].imageUrl}
+              name={product.items[0].nameComplete}
+              seller={product.items[0].sellers[0].sellerName}
+              price={product.items[0].sellers[0].commertialOffer.ListPrice}
+            />
+          </div>
+        )}
+      </div>
+    )
   }
 }
 
