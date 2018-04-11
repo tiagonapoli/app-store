@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
 
-import withPrefetch from './withPrefetch'
-import ProductHeader from './components/ProductHeader'
 import productQuery from './queries/productQuery.gql'
+
+import ProductDescription from './components/ProductDescription'
+import ProductHeader from './components/ProductHeader'
+import withPrefetch from './withPrefetch'
 
 class ProductPage extends Component {
   static propTypes = {
@@ -38,6 +40,11 @@ class ProductPage extends Component {
               seller={product.items[0].sellers[0].sellerName}
               price={product.items[0].sellers[0].commertialOffer.ListPrice}
             />
+            <div className="flex justify-center">
+              <div className="w-100 w-80-ns">
+                <ProductDescription description={product.description} />
+              </div>
+            </div>
           </div>
         )}
       </div>

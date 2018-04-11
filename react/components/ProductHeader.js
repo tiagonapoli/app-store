@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape, FormattedNumber } from 'react-intl'
-import Button from '@vtex/styleguide/lib/Button'
 import withCulture from '../withCulture'
+
+import GetButton from './GetButton'
 
 class ProductHeader extends Component {
   static propTypes = {
@@ -29,8 +30,8 @@ class ProductHeader extends Component {
       culture: { currency },
     } = this.props
     return (
-      <div className="flex flex-row mt5-s mt8-ns pb3-s pb6-ns mb6 b--light-gray bb">
-        <div className="tl-s tc-m tl-l mh3-s mh0-m ml4-l mr6-l w-25-m w-10-l">
+      <div className="flex flex-row mt5-s mt8-ns pb3-s pb6-ns mb6 mh4-s mh0-ns b--light-gray bb">
+        <div className="tl-s tc-m tl-l mr4-s mr0-m mh0-m ml4-l mr6-l w-25-m w-10-l">
           <img className="image-size br2" src={imageUrl} alt={name} />
         </div>
         <div className="w-75 flex flex-column justify-center lh-copy">
@@ -51,11 +52,7 @@ class ProductHeader extends Component {
               maximumFractionDigits={2}
             />
           </div>
-          <div className="bg-rebel-pink tc br2 w-80">
-            <Button>
-              <span className="white">{this.translate('get')}</span>
-            </Button>
-          </div>
+          <GetButton />
         </div>
       </div>
     )
