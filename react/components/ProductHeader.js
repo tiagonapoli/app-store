@@ -6,10 +6,10 @@ import Button from '@vtex/styleguide/lib/Button'
 class ProductHeader extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
-    imageURL: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     seller: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
     category: PropTypes.string,
   }
 
@@ -20,11 +20,11 @@ class ProductHeader extends Component {
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
-    const { imageURL, name, category, seller, price } = this.props
+    const { imageUrl, name, category, seller, price } = this.props
     return (
       <div className="flex flex-row mt5-s mt8-ns pb3-s pb6-ns mb6 b--light-gray bb">
         <div className="tl-s tc-m tl-l mh3-s mh0-m ml4-l mr6-l w-25-m w-10-l">
-          <img className="image-size br2" src={imageURL} alt={name} />
+          <img className="image-size br2" src={imageUrl} alt={name} />
         </div>
         <div className="w-75 flex flex-column justify-center lh-copy">
           <div className="f3-s f2-ns b near-black">{name}</div>

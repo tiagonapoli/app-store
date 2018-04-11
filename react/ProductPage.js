@@ -40,7 +40,7 @@ class ProductPage extends Component {
         ) : (
           <div className="w-100 w-70-ns">
             <ProductHeader
-              imageURL={product.items[0].images[0].imageUrl}
+              imageUrl={product.items[0].images[0].imageUrl}
               name={product.items[0].nameComplete}
               seller={product.items[0].sellers[0].sellerName}
               price={product.items[0].sellers[0].commertialOffer.ListPrice}
