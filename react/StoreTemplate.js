@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 
 export default class StoreTemplate extends Component {
   static propTypes = {
-    children: PropTypes.element,
+    children: PropTypes.element.isRequired,
   }
 
   render() {
