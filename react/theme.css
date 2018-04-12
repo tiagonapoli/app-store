@@ -1,9 +1,5 @@
-:root {
-  --white: #fff;
-}
-
 .fill-white {
-  fill: var(--white);
+  fill: #fff;
 }
 
 .f9 {

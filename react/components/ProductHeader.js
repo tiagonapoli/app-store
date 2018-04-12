@@ -7,6 +7,7 @@ import GetButton from './GetButton'
 
 class ProductHeader extends Component {
   static propTypes = {
+    id: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
     imageUrl: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -16,17 +17,20 @@ class ProductHeader extends Component {
     culture: PropTypes.shape({
       currency: PropTypes.string.isRequired,
     }).isRequired,
+    registry: PropTypes.string.isRequired,
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
     const {
+      id,
       imageUrl,
       name,
       category,
       seller,
       price,
+      registry,
       culture: { currency },
     } = this.props
     return (
@@ -36,11 +40,13 @@ class ProductHeader extends Component {
         </div>
         <div className="w-75 flex flex-column justify-center lh-copy">
           <div className="f3-s f2-ns b near-black">{name}</div>
-          <div className="f6-s f5-ns dark-gray ttc">
-            {category || 'Sales'}{' '}
-            <span className="f9 light-gray mb2">&#9679;</span>{' '}
-            {this.translate('developedBy')}{' '}
-            <span className="ttu">{seller}</span>
+          <div className="flex flex-wrap f6-s f5-ns dark-gray ttc">
+            {category || 'Sales'}
+            <div className="flex items-center f9 light-gray mh2">&#9679;</div>
+            <div>
+              {this.translate('developedBy')}{' '}
+              <span className="ttu">{seller}</span>
+            </div>
           </div>
         </div>
         <div className="dn flex-ns flex-column-ns justify-center items-end w-20 lh-copy">
@@ -53,7 +59,7 @@ class ProductHeader extends Component {
               maximumFractionDigits={2}
             />
           </div>
-          <GetButton />
+          <GetButton appId={`${registry}:${id}`} />
         </div>
       </div>
     )

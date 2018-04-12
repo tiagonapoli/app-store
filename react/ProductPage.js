@@ -43,10 +43,6 @@ class ProductPage extends Component {
     })
   }
 
-  handleChange = () => {
-    this.setState({ isModalOpen: !this.state.isModalOpen })
-  }
-
   render() {
     const { productQuery, appQuery } = this.props
     const { product } = productQuery
@@ -56,6 +52,8 @@ class ProductPage extends Component {
         {availableApp && (
           <div className="w-100 w-70-ns">
             <ProductHeader
+              id={product.items[0].referenceId[0].Value}
+              registry={availableApp.registry}
               imageUrl={product.items[0].images[0].imageUrl}
               name={availableApp.name}
               seller={availableApp.vendor}
@@ -65,7 +63,9 @@ class ProductPage extends Component {
             <div className="flex justify-center">
               <div className="w-100 w-80-ns">
                 <ProductDescription
+                  id={product.items[0].referenceId[0].Value}
                   description={availableApp.fullDescription}
+                  registry={availableApp.registry}
                 />
               </div>
             </div>

@@ -16,6 +16,7 @@ const compile = marksy({
         {children}
       </li>
     ),
+    strong: ({ children }) => <span className="fw5">{children}</span>,
   },
 })
 /* eslint-disable react/display-name, react/prop-types */
@@ -26,7 +27,9 @@ class ProductDescription extends Component {
   }
 
   static propTypes = {
+    id: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    registry: PropTypes.string.isRequired,
   }
 
   componentDidMount() {
@@ -55,7 +58,7 @@ class ProductDescription extends Component {
   }
 
   render() {
-    const { description } = this.props
+    const { description, id, registry } = this.props
     return (
       <div className="mh6-s mh0-ns near-black f5">
         <div className="pb3-s pb10-ns">{compile(description).tree}</div>
@@ -65,7 +68,7 @@ class ProductDescription extends Component {
               this.state.fixed ? 'fixed pb4 ph6' : ''
             }`}
           >
-            <GetButton />
+            <GetButton appId={`${registry}:${id}`} />
           </div>
         </div>
       </div>
