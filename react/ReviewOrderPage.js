@@ -10,6 +10,11 @@ class ReviewOrderPage extends Component {
     data: PropTypes.object,
   }
 
+  imagePath = () => {
+    const { registry, slug, version, icon } = this.props.data.availableApp
+    return `/_v/render/v5/assets/published/${registry}/${slug}@${version}/${icon}`
+  }
+
   render() {
     console.log(this.props.data)
     const { imageUrl, name, price } = this.props
@@ -22,7 +27,11 @@ class ReviewOrderPage extends Component {
           <div className="w-90-s w-60-ns bg-white br2 shadow-2">
             <div className="flex flex-row">
               <div className="tl-s tc-m tl-l mr4-s mr0-m mh0-m ml4-l mr6-l w-25-m w-10-l">
-                <img className="image-size br2" src={imageUrl} alt={name} />
+                <img
+                  className="image-size br2"
+                  src={this.imagePath()}
+                  alt={name}
+                />
               </div>
               <div className="w-75 flex flex-column justify-center lh-copy">
                 <div className="f3-s f2-ns b near-black">{name}</div>
