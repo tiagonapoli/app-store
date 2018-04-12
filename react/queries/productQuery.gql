@@ -8,9 +8,10 @@ query Product($slug: String) {
       name
       nameComplete
       complementName
-      ean
-      measurementUnit
-      unitMultiplier
+      referenceId {
+        Key
+        Value
+      }
       images {
         imageId
         imageLabel
@@ -21,17 +22,12 @@ query Product($slug: String) {
       sellers {
         sellerId
         sellerName
-        addToCartLink
         sellerDefault
         commertialOffer {
           Price
           ListPrice
           PriceWithoutDiscount
           RewardValue
-          PriceValidUntil
-          AvailableQuantity
-          Tax
-          CacheVersionUsedToCallCheckout
         }
       }
     }

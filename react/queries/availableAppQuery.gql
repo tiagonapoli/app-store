@@ -1,0 +1,25 @@
+query AvailableApp($id: String!, $skip: Boolean!) {
+  availableApp(id: $id) @skip(if: $skip) {
+    id
+    name
+    slug
+    vendor
+    version
+    icon
+    title
+    installed
+    linked
+    installedVersion
+    featured
+    categories
+    fullDescription
+    installationSteps
+    screenshots
+    registry
+    terms
+    permissions {
+      name
+      description
+    }
+  }
+}

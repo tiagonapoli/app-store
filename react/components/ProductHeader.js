@@ -36,10 +36,11 @@ class ProductHeader extends Component {
         </div>
         <div className="w-75 flex flex-column justify-center lh-copy">
           <div className="f3-s f2-ns b near-black">{name}</div>
-          <div className="f6-s f5-ns dark-gray">
+          <div className="f6-s f5-ns dark-gray ttc">
             {category || 'Sales'}{' '}
             <span className="f9 light-gray mb2">&#9679;</span>{' '}
-            {this.translate('developedBy')} {seller}
+            {this.translate('developedBy')}{' '}
+            <span className="ttu">{seller}</span>
           </div>
         </div>
         <div className="dn flex-ns flex-column-ns justify-center items-end w-20 lh-copy">
