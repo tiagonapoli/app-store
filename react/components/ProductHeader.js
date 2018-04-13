@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { injectIntl, intlShape, FormattedNumber } from 'react-intl'
 import withCulture from '../withCulture'
 
+import AppIcon from './AppIcon'
 import GetButton from './GetButton'
 
 class ProductHeader extends Component {
@@ -36,7 +37,7 @@ class ProductHeader extends Component {
     return (
       <div className="flex flex-row mt5-s mt8-ns pb3-s pb6-ns mb6 mh4-s mh0-ns b--light-gray bb">
         <div className="tl-s tc-m tl-l mr4-s mr0-m mh0-m ml4-l mr6-l w-25-m w-10-l">
-          <img className="image-size br2" src={imageUrl} alt={name} />
+          <AppIcon imageUrl={imageUrl} name={name} />
         </div>
         <div className="w-75 flex flex-column justify-center lh-copy">
           <div className="f3-s f2-ns b near-black">{name}</div>
