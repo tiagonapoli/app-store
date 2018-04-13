@@ -2,5 +2,14 @@
   "extensions.login": "Login",
   "extensions.developedBy": "Developed by",
   "extensions.get": "get",
-  "extensions.back": "Back"
+  "extensions.back": "Back",
+  "extensions.reviewOrder": "Review your order",
+  "extensions.confirmText":
+    "by clicking in '{confirmButton}' you are agreeing to the {termsOfService} and app {privacyPolice}",
+  "extensions.termsOfService": "extension store terms of service",
+  "extensions.privacyPolice": "privacy policy",
+  "extensions.confirmButton": "confirm order and begin installation",
+  "extensions.confirmButtonMobile": "confirm order",
+  "extensions.installAndConfigure": "{nextStep} Install and configure app",
+  "extensions.nextStep": "Next Step"
 }
