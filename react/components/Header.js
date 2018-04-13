@@ -25,29 +25,44 @@ class Header extends Component {
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
+  handleBack = () => {
+    window.history.back()
+  }
+
+  handleHome = () => {
+    window.location.assign('/')
+  }
+
   render() {
     const { logged } = this.props
     const { notHome } = this.state
     const titleClasses = notHome ? 'dn db-ns' : 'db'
     return (
-      <div className="z-2 flex justify-between items-center w-100 top-0 ph4 ph7-ns pv4 pv5-ns bg-serious-black bb bw1 tc tl-ns white">
+      <div className="z-2 flex justify-between items-center w-100 top-0 ph4 ph7-ns pv4 pv5-ns bg-serious-black tc tl-ns white">
         <div className="flex items-center">
           <VTEXIcon colorFill="white" className={titleClasses} />
           <BackIcon
             colorFill="white"
             className={`${notHome ? 'db dn-ns rotate-180' : 'dn'}`}
           />
-          <a
-            className={`link b f4 white tc tl-ns lh-solid ml3 ph3 b--white bl ${
+          <div
+            className={`pointer b f4 white tc tl-ns lh-solid ml3 ph3 b--white bl ${
               notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
             }`}
-            href="/"
+            onClick={this.handleHome}
           >
             <span className={titleClasses}>Extension Store</span>
+          </div>
+          <div
+            className={`pointer b f4 white tc tl-ns lh-solid ml3 ph3 b--white bl ${
+              notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
+            }`}
+            onClick={this.handleBack}
+          >
             <span className={`${notHome ? 'db dn-ns' : 'dn'}`}>
               {this.translate('back')}
             </span>
-          </a>
+          </div>
         </div>
         <div className="tr-ns flex items-center">
           {logged ? (
