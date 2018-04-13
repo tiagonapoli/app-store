@@ -36,7 +36,7 @@ class ProductHeader extends Component {
     } = this.props
     return (
       <div className="flex flex-row mt5-s mt8-ns pb3-s pb6-ns mb6 mh4-s mh0-ns b--light-gray bb">
-        <div className="tl-s tc-m tl-l mr4-s mr0-m mh0-m ml4-l mr6-l w-25-m w-10-l">
+        <div className="mr4-s mh5-ns">
           <AppIcon imageUrl={imageUrl} name={name} />
         </div>
         <div className="w-75 flex flex-column justify-center lh-copy">

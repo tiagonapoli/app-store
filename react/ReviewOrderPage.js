@@ -44,13 +44,11 @@ class ReviewOrderPage extends Component {
               <Card>
                 <div className="pa0-s pa4-ns near-black">
                   <div className="flex flex-row mb5-s mb7-ns">
-                    <div className="w-25-s w-20-ns">
-                      <AppIcon
-                        imageUrl={imagePath(availableApp)}
-                        name={availableApp.name}
-                      />
-                    </div>
-                    <div className="w-75 flex flex-column justify-center pl3-s pl2-ns lh-copy">
+                    <AppIcon
+                      imageUrl={imagePath(availableApp)}
+                      name={availableApp.name}
+                    />
+                    <div className="w-75 flex flex-column justify-center pl3-s pl5-ns lh-copy">
                       <div className="f3-s f2-ns b">{availableApp.name}</div>
                     </div>
                   </div>
