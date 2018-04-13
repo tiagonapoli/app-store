@@ -29,8 +29,8 @@ class ProductPage extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { productQuery: { product } } = nextProps
+  componentDidUpdate() {
+    const { productQuery: { product } } = this.props
     if (product) {
       this.fetchApp(product.items[0].referenceId[0].Value)
     }
