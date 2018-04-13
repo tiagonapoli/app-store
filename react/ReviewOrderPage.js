@@ -31,7 +31,6 @@ class ReviewOrderPage extends Component {
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
-    console.log(this.props.data)
     const { culture: { currency }, data } = this.props
     const { availableApp, loading } = data
     return (
