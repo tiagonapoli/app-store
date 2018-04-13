@@ -1,46 +1,82 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
+import { injectIntl, intlShape, FormattedNumber } from 'react-intl'
+
+import Card from '@vtex/styleguide/lib/Card'
+import Input from '@vtex/styleguide/lib/Input'
 
 import availableAppQuery from './queries/availableAppQuery.gql'
+
+import imagePath from './utils/imagePath'
+import AppIcon from './components/AppIcon'
+import BillingInfo from './components/BillingInfo'
+import withCulture from './withCulture'
 
 class ReviewOrderPage extends Component {
   static propTypes = {
     params: PropTypes.object.isRequired,
     data: PropTypes.object,
-  }
-
-  imagePath = () => {
-    const { registry, slug, version, icon } = this.props.data.availableApp
-    return `/_v/render/v5/assets/published/${registry}/${slug}@${version}/${icon}`
+    culture: PropTypes.shape({
+      currency: PropTypes.string.isRequired,
+    }).isRequired,
   }
 
   render() {
     console.log(this.props.data)
-    const { imageUrl, name, price } = this.props
+    const { culture: { currency }, data } = this.props
+    const { availableApp, loading } = data
     return (
-      <div className="absolute-ns w-100 vh-100-s h-100-ns bg-light-silver tc">
-        <div className="pv6-s mt9-ns mb6-ns near-black f4-s f2-ns fw3">
+      <div className="w-100 vh-100-s h-100-ns bg-light-silver tc pb10-ns">
+        <div className="pv6-s pt9-ns mb6-ns near-black f4-s f2-ns fw3">
           Review your order
         </div>
         <div className="flex justify-center tl">
-          <div className="w-90-s w-60-ns bg-white br2 shadow-2">
-            <div className="flex flex-row">
-              <div className="tl-s tc-m tl-l mr4-s mr0-m mh0-m ml4-l mr6-l w-25-m w-10-l">
-                <img
-                  className="image-size br2"
-                  src={this.imagePath()}
-                  alt={name}
-                />
-              </div>
-              <div className="w-75 flex flex-column justify-center lh-copy">
-                <div className="f3-s f2-ns b near-black">{name}</div>
-              </div>
+          {!loading && (
+            <div className="w-90-s w-60-m w-40-l">
+              <Card>
+                <div className="pa0-s pa4-ns near-black">
+                  <div className="flex flex-row mb5-s mb7-ns">
+                    <div className="w-25-s w-20-ns">
+                      <AppIcon
+                        imageUrl={imagePath(availableApp)}
+                        name={availableApp.name}
+                      />
+                    </div>
+                    <div className="w-75 flex flex-column justify-center pl2 lh-copy">
+                      <div className="f3-s f2-ns b">{availableApp.name}</div>
+                    </div>
+                  </div>
+                  <div className="f5">Total</div>
+                  <div className="f3 b mt3 mb6-s mb7-ns">
+                    <FormattedNumber
+                      value={0}
+                      style="currency"
+                      currency={currency}
+                      minimumFractionDigits={2}
+                      maximumFractionDigits={2}
+                    />
+                  </div>
+                  <div className="mb7-s mb9-ns">
+                    <div className="f5">Billing info</div>
+                    <div className="mv3 mb3-s mb5-ns">
+                      <BillingInfo
+                        name="Bill Zoo"
+                        email="bill@redley.com"
+                        pictureUrl="https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2014/08/Giraffe-Tongue-Orchestra.jpg?fit=700%2C525"
+                      />
+                    </div>
+                    <Input placeholder="Store" />
+                  </div>
+                  <div className="f6">
+                    by clicking “confirm order and begin installation you are
+                    agreeing to the marketplace terms of service and app privacy
+                    policy
+                  </div>
+                </div>
+              </Card>
             </div>
-            <div>Total</div>
-            <div>{price}</div>
-            <div>Billing info</div>
-          </div>
+          )}
         </div>
       </div>
     )
@@ -56,4 +92,6 @@ const options = {
   }),
 }
 
-export default graphql(availableAppQuery, options)(ReviewOrderPage)
+export default compose(graphql(availableAppQuery, options), withCulture())(
+  ReviewOrderPage
+)
