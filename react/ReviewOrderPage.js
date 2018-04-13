@@ -64,7 +64,7 @@ class ReviewOrderPage extends Component {
                       maximumFractionDigits={2}
                     />
                   </div>
-                  <div className="mb7-s mb9-ns">
+                  <div className="mb7-s mb8-ns">
                     <div className="f5">Billing info</div>
                     <div className="mv3 mb3-s mb5-ns">
                       <BillingInfo
