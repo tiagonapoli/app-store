@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import Button from '@vtex/styleguide/lib/Button'
+import Modal from '@vtex/styleguide/lib/Modal'
 
 import Profile from './Profile'
 import VTEXIcon from './icons/VTEXIcon'
 import BackIcon from './icons/BackIcon'
+import NoPermissionModal from './NoPermissionModal'
 
 class Header extends Component {
   static propTypes = {
@@ -15,6 +17,7 @@ class Header extends Component {
 
   state = {
     notHome: true,
+    isModalOpen: false,
   }
 
   componentDidMount() {
@@ -31,6 +34,10 @@ class Header extends Component {
 
   handleHome = () => {
     window.location.assign('/')
+  }
+
+  handleModal = () => {
+    this.setState({ isModalOpen: !this.state.isModalOpen })
   }
 
   render() {
@@ -65,7 +72,7 @@ class Header extends Component {
           </div>
         </div>
         <div className="tr-ns flex items-center">
-          {logged ? (
+          {!logged ? (
             <Profile
               name="Bill Zoo"
               store="Redley"
@@ -73,12 +80,19 @@ class Header extends Component {
             />
           ) : (
             <div className="b--white bw1 ba br2">
-              <Button>
+              <Button onClick={this.handleModal}>
                 <span className="white">{this.translate('login')}</span>
               </Button>
             </div>
           )}
         </div>
+        <Modal
+          centered
+          isOpen={this.state.isModalOpen}
+          onClose={this.handleModal}
+        >
+          <NoPermissionModal onClose={this.handleModal} />
+        </Modal>
       </div>
     )
   }
