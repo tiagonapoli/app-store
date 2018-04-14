@@ -27,7 +27,7 @@ class GetButton extends Component {
   render() {
     return (
       <div className="bg-rebel-pink tc br2 w-100 w-80-ns">
-        <Button onClick={this.handleClick}>
+        <Button onClick={this.handleClick} block>
           <span className="white">{this.translate('get')}</span>
         </Button>
       </div>
