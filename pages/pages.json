@@ -6,6 +6,9 @@
     },
     "store/product": {
       "path": "/:id/p"
+    },
+    "store/review": {
+      "path": "/:id/r"
     }
   },
   "extensions": {
@@ -14,6 +17,9 @@
     },
     "store/product": {
       "component": "ProductPage"
+    },
+    "store/review": {
+      "component": "ReviewOrderPage"
     }
   }
 }

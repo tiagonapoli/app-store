@@ -1,5 +1,15 @@
 {
   "extensions.login": "Entrar",
   "extensions.developedBy": "Desenvolvido por",
-  "extensions.get": "obter"
+  "extensions.get": "obter",
+  "extensions.back": "Voltar",
+  "extensions.reviewOrder": "Confira seu pedido",
+  "extensions.confirmText":
+    "clicando em '{confirmButton}' você está concordando com os {termsOfService} e com a {privacyPolice} da app",
+  "extensions.termsOfService": "termos de serviço da extension store",
+  "extensions.privacyPolice": "política de privacidade",
+  "extensions.confirmButton": "confirmar pedido e iniciar instalação",
+  "extensions.confirmButtonMobile": "confirmar pedido",
+  "extensions.installAndConfigure": "{nextStep} Instalar e configurar a app",
+  "extensions.nextStep": "Próximo Passo"
 }

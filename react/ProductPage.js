@@ -2,14 +2,18 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
 
-import withPrefetch from './withPrefetch'
-import ProductHeader from './components/ProductHeader'
+import availableAppQuery from './queries/availableAppQuery.gql'
 import productQuery from './queries/productQuery.gql'
+
+import ProductDescription from './components/ProductDescription'
+import ProductHeader from './components/ProductHeader'
+import withPrefetch from './withPrefetch'
 
 class ProductPage extends Component {
   static propTypes = {
     params: PropTypes.object.isRequired,
-    data: PropTypes.object,
+    productQuery: PropTypes.object,
+    appQuery: PropTypes.object,
     prefetch: PropTypes.func.isRequired,
   }
 
@@ -19,25 +23,52 @@ class ProductPage extends Component {
 
   componentDidMount() {
     this.props.prefetch('store/home')
+    const { productQuery: { product } } = this.props
+    if (product) {
+      this.fetchApp(product.items[0].referenceId[0].Value)
+    }
   }
 
-  handleChange = () => {
-    this.setState({ isModalOpen: !this.state.isModalOpen })
+  componentDidUpdate() {
+    const { productQuery: { product } } = this.props
+    if (product) {
+      this.fetchApp(product.items[0].referenceId[0].Value)
+    }
+  }
+
+  fetchApp = id => {
+    this.props.appQuery.refetch({
+      id: `smartcheckout:${id}`,
+      skip: false,
+    })
   }
 
   render() {
-    const { data } = this.props
-    const { product, loading } = data
+    const { productQuery, appQuery } = this.props
+    const { product } = productQuery
+    const { availableApp } = appQuery
     return (
       <div className="flex justify-center">
-        {!loading && (
+        {availableApp && (
           <div className="w-100 w-70-ns">
             <ProductHeader
+              id={product.items[0].referenceId[0].Value}
+              registry={availableApp.registry}
               imageUrl={product.items[0].images[0].imageUrl}
-              name={product.items[0].nameComplete}
-              seller={product.items[0].sellers[0].sellerName}
+              name={availableApp.name}
+              seller={availableApp.vendor}
               price={product.items[0].sellers[0].commertialOffer.ListPrice}
+              category={availableApp.categories[0]}
             />
+            <div className="flex justify-center">
+              <div className="w-100 w-80-ns">
+                <ProductDescription
+                  id={product.items[0].referenceId[0].Value}
+                  description={availableApp.fullDescription}
+                  registry={availableApp.registry}
+                />
+              </div>
+            </div>
           </div>
         )}
       </div>
@@ -45,7 +76,8 @@ class ProductPage extends Component {
   }
 }
 
-const options = {
+const optionsProduct = {
+  name: 'productQuery',
   options: props => ({
     variables: {
       slug: props.params.id,
@@ -53,6 +85,18 @@ const options = {
   }),
 }
 
-export default compose(graphql(productQuery, options), withPrefetch())(
-  ProductPage
-)
+const optionsApp = {
+  name: 'appQuery',
+  options: {
+    variables: {
+      id: '',
+      skip: true,
+    },
+  },
+}
+
+export default compose(
+  graphql(productQuery, optionsProduct),
+  graphql(availableAppQuery, optionsApp),
+  withPrefetch()
+)(ProductPage)

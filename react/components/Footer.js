@@ -4,11 +4,12 @@ class Footer extends Component {
   render() {
     const year = new Date().getFullYear()
     return (
-      <footer className="w-100 bottom-0 pa7 bg-near-black flex items-center white">
-        <div className="tc mh2">&copy; {year}</div>
-        <div className="cf tc flex items-center justify-center">
-          VTEX Extension Store
-        </div>
+      <footer
+        id="extension-store-footer"
+        className="static-s z-3 w-100 bottom-0 pa7 flex items-center justify-center-s justify-start-ns bg-light-silver gray"
+      >
+        <span className="mh2">&copy; {year}</span>
+        <span>VTEX Extension Store</span>
       </footer>
     )
   }

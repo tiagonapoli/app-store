@@ -4,12 +4,14 @@ import PropTypes from 'prop-types'
 class VTEXIcon extends Component {
   static propTypes = {
     colorFill: PropTypes.string.isRequired,
+    className: PropTypes.string.isRequired,
   }
 
   render() {
-    const { colorFill } = this.props
+    const { colorFill, className } = this.props
     return (
       <svg
+        className={className}
         xmlns="http://www.w3.org/2000/svg"
         width="28"
         height="28"
