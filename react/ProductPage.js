@@ -5,6 +5,7 @@ import { compose, graphql } from 'react-apollo'
 import availableAppQuery from './queries/availableAppQuery.gql'
 import productQuery from './queries/productQuery.gql'
 
+import Loading from './components/Loading'
 import ProductDescription from './components/ProductDescription'
 import ProductHeader from './components/ProductHeader'
 import withPrefetch from './withPrefetch'
@@ -24,7 +25,7 @@ class ProductPage extends Component {
   componentDidMount() {
     this.props.prefetch('store/review')
     const {
-      productQuery: { product },
+      productQuery: { product2: product },
     } = this.props
     if (product) {
       this.fetchApp(product.items[0].referenceId[0].Value)
@@ -48,12 +49,13 @@ class ProductPage extends Component {
   }
 
   render() {
+    console.log(this.props)
     const { productQuery, appQuery } = this.props
-    const { product } = productQuery
+    const { product2: product } = productQuery
     const { availableApp } = appQuery
     return (
       <div className="flex justify-center">
-        {availableApp && (
+        {availableApp ? (
           <div className="w-100 w-70-ns">
             <ProductHeader
               id={product.items[0].referenceId[0].Value}
@@ -74,6 +76,8 @@ class ProductPage extends Component {
               </div>
             </div>
           </div>
+        ) : (
+          <Loading />
         )}
       </div>
     )

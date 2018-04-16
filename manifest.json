@@ -6,16 +6,62 @@
   "description": "Extension store app",
   "mustUpdateAt": "2019-04-10",
   "categories": [],
-  "registries": [
-    "smartcheckout"
-  ],
+  "registries": ["smartcheckout"],
   "settingsSchema": {},
   "dependencies": {
     "vtex.apps-graphql": "2.x",
     "vtex.store-graphql": "2.x"
   },
   "builders": {
+    "graphql": "1.x",
+    "node": "3.x",
     "pages": "0.x",
     "react": "2.x"
-  }
+  },
+  "policies": [
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercestable.com.br",
+        "path": "/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "{{account}}.vtexcommercebeta.com.br",
+        "path": "/*"
+      }
+    },
+    {
+      "name": "read-private-registry-assets"
+    },
+    {
+      "name": "read-public-registry-assets"
+    },
+    {
+      "name": "read-workspace-apps"
+    },
+    {
+      "name": "read-write-workspace"
+    },
+    {
+      "name": "promote-workspace"
+    },
+    {
+      "name": "create-delete-workspace"
+    },
+    {
+      "name": "read-workspace-info"
+    },
+    {
+      "name": "link-apps"
+    },
+    {
+      "name": "install-apps"
+    },
+    {
+      "name": "update-app-settings"
+    }
+  ]
 }

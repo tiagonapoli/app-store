@@ -1,34 +1,13 @@
 query Product($slug: String) {
-  product(slug: $slug) {
+  product2(slug: $slug) {
     productName
     productId
-    description
     items {
       itemId
       name
-      nameComplete
-      complementName
       referenceId {
         Key
         Value
-      }
-      images {
-        imageId
-        imageLabel
-        imageTag
-        imageUrl
-        imageText
-      }
-      sellers {
-        sellerId
-        sellerName
-        sellerDefault
-        commertialOffer {
-          Price
-          ListPrice
-          PriceWithoutDiscount
-          RewardValue
-        }
       }
     }
   }
