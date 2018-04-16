@@ -22,7 +22,7 @@ class NoPermissionModal extends Component {
             values={{
               purchasePermission: (
                 <a className="link b rebel-pink">
-                  {this.translate('purchasePermission')}
+                  <FormattedMessage id="extensions.purchasePermission" />
                 </a>
               ),
             }}
