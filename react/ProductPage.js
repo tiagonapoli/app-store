@@ -22,7 +22,7 @@ class ProductPage extends Component {
   }
 
   componentDidMount() {
-    this.props.prefetch('store/home')
+    this.props.prefetch('store/review')
     const { productQuery: { product } } = this.props
     if (product) {
       this.fetchApp(product.items[0].referenceId[0].Value)

@@ -13,7 +13,7 @@ class ConfirmButton extends Component {
     const { value } = this.props
     return (
       <div className="bg-rebel-pink tc br2 w-100">
-        <Button onClick={this.handleClick}>
+        <Button onClick={this.handleClick} block>
           <span className="white">{value}</span>
         </Button>
       </div>

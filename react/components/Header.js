@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import Button from '@vtex/styleguide/lib/Button'
-
 import Profile from './Profile'
 import VTEXIcon from './icons/VTEXIcon'
 import BackIcon from './icons/BackIcon'
+import NoPermissionModal from './NoPermissionModal'
 
 class Header extends Component {
   static propTypes = {
@@ -15,6 +15,7 @@ class Header extends Component {
 
   state = {
     notHome: true,
+    isModalOpen: false,
   }
 
   componentDidMount() {
@@ -33,12 +34,16 @@ class Header extends Component {
     window.location.assign('/')
   }
 
+  handleModal = () => {
+    this.setState({ isModalOpen: !this.state.isModalOpen })
+  }
+
   render() {
     const { logged } = this.props
     const { notHome } = this.state
     const titleClasses = notHome ? 'dn db-ns' : 'db'
     return (
-      <div className="z-2 flex justify-between items-center w-100 top-0 ph4 ph7-ns pv4 pv5-ns bg-serious-black tc tl-ns white">
+      <div className="fixed-ns z-2 flex justify-between items-center w-100 top-0 ph4 ph7-ns pv4 pv5-ns bg-serious-black tc tl-ns white">
         <div className="flex items-center">
           <VTEXIcon colorFill="white" className={titleClasses} />
           <BackIcon
@@ -65,7 +70,7 @@ class Header extends Component {
           </div>
         </div>
         <div className="tr-ns flex items-center">
-          {logged ? (
+          {!logged ? (
             <Profile
               name="Bill Zoo"
               store="Redley"
@@ -73,12 +78,16 @@ class Header extends Component {
             />
           ) : (
             <div className="b--white bw1 ba br2">
-              <Button>
+              <Button onClick={this.handleModal}>
                 <span className="white">{this.translate('login')}</span>
               </Button>
             </div>
           )}
         </div>
+        <NoPermissionModal
+          onChange={this.handleModal}
+          isOpen={this.state.isModalOpen}
+        />
       </div>
     )
   }

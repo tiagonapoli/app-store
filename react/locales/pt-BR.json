@@ -11,5 +11,10 @@
   "extensions.confirmButton": "confirmar pedido e iniciar instalação",
   "extensions.confirmButtonMobile": "confirmar pedido",
   "extensions.installAndConfigure": "{nextStep} Instalar e configurar a app",
-  "extensions.nextStep": "Próximo Passo"
+  "extensions.nextStep": "Próximo Passo",
+  "extensions.oops": "Ops",
+  "extensions.noPermission":
+    "Não conseguimos identificar sua {purchasePermission} de extensões. Por favor contate o administrador da sua plataforma VTEX.",
+  "extensions.purchasePermission": "permissão para compras",
+  "extensions.homeText": "O maior makertplace de extensões do ecossistema VTEX."
 }

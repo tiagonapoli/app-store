@@ -31,7 +31,10 @@ class ReviewOrderPage extends Component {
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
-    const { culture: { currency }, data } = this.props
+    const {
+      culture: { currency },
+      data,
+    } = this.props
     const { availableApp, loading } = data
     return (
       <div className="w-100 vh-100-s h-100-ns bg-light-silver tc pb10-ns">
@@ -89,12 +92,12 @@ class ReviewOrderPage extends Component {
                         ),
                         termsOfService: (
                           <a className="link rebel-pink">
-                            {this.translate('termsOfService')}
+                            <FormattedMessage id="extensions.termsOfService" />
                           </a>
                         ),
                         privacyPolice: (
                           <a className="link rebel-pink">
-                            {this.translate('privacyPolice')}
+                            <FormattedMessage id="extensions.privacyPolice" />
                           </a>
                         ),
                       }}
