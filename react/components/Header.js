@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import Button from '@vtex/styleguide/lib/Button'
-import Modal from '@vtex/styleguide/lib/Modal'
-
 import Profile from './Profile'
 import VTEXIcon from './icons/VTEXIcon'
 import BackIcon from './icons/BackIcon'
@@ -86,13 +84,10 @@ class Header extends Component {
             </div>
           )}
         </div>
-        <Modal
-          centered
+        <NoPermissionModal
+          onChange={this.handleModal}
           isOpen={this.state.isModalOpen}
-          onClose={this.handleModal}
-        >
-          <NoPermissionModal onClose={this.handleModal} />
-        </Modal>
+        />
       </div>
     )
   }
