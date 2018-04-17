@@ -1,11 +1,12 @@
-query AvailableApp($id: String!, $skip: Boolean!) {
-  availableApp(id: $id) @skip(if: $skip) {
+query AppProduct($slug: String!) {
+  appProduct(slug: $slug) {
     id
     name
     slug
     vendor
     version
     icon
+    linkText
     title
     categories
     fullDescription

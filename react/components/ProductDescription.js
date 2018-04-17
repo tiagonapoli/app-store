@@ -58,7 +58,7 @@ class ProductDescription extends Component {
   }
 
   render() {
-    const { description, id, registry } = this.props
+    const { description, id } = this.props
     return (
       <div className="mh6-s mh0-ns near-black f5">
         <div className="pb3-s pb10-ns">{compile(description).tree}</div>
@@ -68,7 +68,7 @@ class ProductDescription extends Component {
               this.state.fixed ? 'fixed pb4 ph6' : ''
             }`}
           >
-            <GetButton appId={`${registry}:${id}`} />
+            <GetButton appId={id} />
           </div>
         </div>
       </div>

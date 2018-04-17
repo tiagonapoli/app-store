@@ -26,13 +26,14 @@ export default {
       headers: withAuthToken()(ioContext),
     })
     const resolvedProduct = await resolveProductFields(ioContext, head(product))
-    console.log(resolvedProduct.items[0].referenceId)
+
+    const linkText = resolvedProduct.linkText
     const id = resolvedProduct.items[0].referenceId[0].Value
 
     const match = id.match(/^(.+):([^@]+)(@([^\+\s]+?)([\+\s]build\d+)?)?$/)
     if (!match) {
       throw new Error(
-        'Invalid app id. Ids should be of the form: <registry>:<vendor>.<name>@<version>'
+        'Invalid app id. Ids should be of the form: <registry>:<vendor>.<name>'
       )
     }
 
@@ -61,9 +62,10 @@ export default {
     )
     return {
       categories,
+      fields,      
       icon: 'public/metadata/icon.png',
       id,
-      fields,
+      linkText,
       name: title,
       vendor,
       version,

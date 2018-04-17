@@ -3,6 +3,7 @@ type AppProduct {
   vendor: String
   version: String
   name: String
+  linkText: String
   slug: String
   icon: String
   title: String
@@ -10,7 +11,6 @@ type AppProduct {
   fullDescription: String
   shortDescription: String
   installationSteps: String
-  screenshots: [String]
   registry: String
   terms: String
   permissions: [Policy]

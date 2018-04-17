@@ -31,7 +31,6 @@ class ProductHeader extends Component {
       category,
       seller,
       price,
-      registry,
       culture: { currency },
     } = this.props
     return (
