@@ -60,7 +60,7 @@ class ProductHeader extends Component {
               maximumFractionDigits={2}
             />
           </div>
-          <GetButton appId={`${registry}:${id}`} />
+          <GetButton appId={id} />
         </div>
       </div>
     )

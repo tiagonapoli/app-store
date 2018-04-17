@@ -23,14 +23,18 @@ class ProductPage extends Component {
 
   componentDidMount() {
     this.props.prefetch('store/review')
-    const { productQuery: { product } } = this.props
+    const {
+      productQuery: { product },
+    } = this.props
     if (product) {
       this.fetchApp(product.items[0].referenceId[0].Value)
     }
   }
 
   componentDidUpdate() {
-    const { productQuery: { product } } = this.props
+    const {
+      productQuery: { product },
+    } = this.props
     if (product) {
       this.fetchApp(product.items[0].referenceId[0].Value)
     }
@@ -38,7 +42,7 @@ class ProductPage extends Component {
 
   fetchApp = id => {
     this.props.appQuery.refetch({
-      id: `smartcheckout:${id}`,
+      id,
       skip: false,
     })
   }
