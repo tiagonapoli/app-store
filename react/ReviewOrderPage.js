@@ -134,7 +134,7 @@ class ReviewOrderPage extends Component {
 const options = {
   options: props => ({
     variables: {
-      slug: props.params.id,
+      slug: props.params.slug,
     },
   }),
 }

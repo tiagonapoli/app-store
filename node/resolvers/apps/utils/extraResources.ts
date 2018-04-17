@@ -22,24 +22,6 @@ const FIELD_TO_FILE = {
   terms: 'terms.md',
 }
 
-const getDescription = (name, description, policies) => {
-  const policy = find(({ name: pname }) => name === pname, policies)
-  return description
-    ? description.replace(
-        /{{(.*?)}}/g,
-        (_, $1) =>
-          $1.trim() in policy.attrs
-            ? policy.attrs[$1.trim()]
-            : `{{ $1.trim() }}`
-      )
-    : null
-}
-
-const POLICY_URL = (account, policies) =>
-  `http://${account}.vtexcommercestable.com.br/api/license-manager/resources/policy?resourceKeys=${policies
-    .map(pol => pol.name)
-    .join(',')}`
-
 const FILE_TO_FIELD = invertObj(FIELD_TO_FILE)
 
 const getFilesToFetch = compose(

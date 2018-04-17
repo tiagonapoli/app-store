@@ -2,17 +2,6 @@ import axios from 'axios'
 import { IOContext } from 'colossus'
 import { juxt, map, toPairs } from 'ramda'
 
-const knownNotPG = [
-  'allSpecifications',
-  'description',
-  'items',
-  'productId',
-  'productName',
-  'link',
-  'linkText',
-  'productReference',
-]
-
 const objToNameValue = (
   keyName: string,
   valueName: string,

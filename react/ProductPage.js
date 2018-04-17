@@ -65,7 +65,7 @@ const optionsProduct = {
   name: 'appProductQuery',
   options: props => ({
     variables: {
-      slug: props.params.id,
+      slug: props.params.slug,
     },
   }),
 }

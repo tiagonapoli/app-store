@@ -1,5 +1,5 @@
 type AppProduct {
-  id: String
+  id: ID
   vendor: String
   version: String
   name: String
