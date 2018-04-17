@@ -49,8 +49,6 @@ export default {
       policies,
     } = await registry.getAppManifest(slug, version)
 
-    console.log('***********', graphqlFields(info))
-
     const fields = graphqlFields(info)
     const resources = await getExtraResources(
       registry,
@@ -65,6 +63,7 @@ export default {
       categories,
       icon: 'public/metadata/icon.png',
       id,
+      fields,
       name: title,
       vendor,
       version,

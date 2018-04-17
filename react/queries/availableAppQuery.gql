@@ -7,14 +7,9 @@ query AvailableApp($id: String!, $skip: Boolean!) {
     version
     icon
     title
-    installed
-    linked
-    installedVersion
-    featured
     categories
     fullDescription
     installationSteps
-    screenshots
     registry
     terms
     permissions {

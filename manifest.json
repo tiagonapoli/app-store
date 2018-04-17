@@ -38,30 +38,6 @@
     },
     {
       "name": "read-public-registry-assets"
-    },
-    {
-      "name": "read-workspace-apps"
-    },
-    {
-      "name": "read-write-workspace"
-    },
-    {
-      "name": "promote-workspace"
-    },
-    {
-      "name": "create-delete-workspace"
-    },
-    {
-      "name": "read-workspace-info"
-    },
-    {
-      "name": "link-apps"
-    },
-    {
-      "name": "install-apps"
-    },
-    {
-      "name": "update-app-settings"
     }
   ]
 }
