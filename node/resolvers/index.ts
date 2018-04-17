@@ -4,7 +4,7 @@ import graphqlFields from 'graphql-fields'
 import { compose, equals, find, head, map, prop } from 'ramda'
 import appRegistry from './apps/appRegistry'
 import { getExtraResources } from './apps/utils/extraResources'
-import { removeBuild } from './apps/utils/locator'
+import { matchAppId, removeBuild } from './apps/utils/locator'
 import { resolveProductFields } from './catalog/fieldsResolver'
 import { withAuthToken } from './catalog/header'
 import { paths } from './catalog/paths'
@@ -26,11 +26,10 @@ export default {
       headers: withAuthToken()(ioContext),
     })
     const resolvedProduct = await resolveProductFields(ioContext, head(product))
-
     const linkText = resolvedProduct.linkText
     const id = resolvedProduct.items[0].referenceId[0].Value
 
-    const match = id.match(/^(.+):([^@]+)(@([^\+\s]+?)([\+\s]build\d+)?)?$/)
+    const match = matchAppId(id)
     if (!match) {
       throw new Error(
         'Invalid app id. Ids should be of the form: <registry>:<vendor>.<name>'
@@ -62,7 +61,7 @@ export default {
     )
     return {
       categories,
-      fields,      
+      fields,
       icon: 'public/metadata/icon.png',
       id,
       linkText,

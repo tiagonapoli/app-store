@@ -9,4 +9,7 @@ const removeBuild = fullVersion => {
   return version
 }
 
-export { removeBuild, locator }
+const matchAppId = id =>
+  id.match(/^(.+):([^@]+)(@([^\+\s]+?)([\+\s]build\d+)?)?$/)
+
+export { removeBuild, locator, matchAppId }
