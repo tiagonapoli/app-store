@@ -1,0 +1,22 @@
+type AppProduct {
+  id: ID
+  vendor: String
+  version: String
+  name: String
+  linkText: String
+  slug: String
+  icon: String
+  title: String
+  categories: [String]
+  fullDescription: String
+  shortDescription: String
+  installationSteps: String
+  registry: String
+  terms: String
+  permissions: [Policy]
+}
+
+type Policy {
+  name: String
+  description: String
+}

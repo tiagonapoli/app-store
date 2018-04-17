@@ -5,10 +5,10 @@
       "theme": "theme"
     },
     "store/product": {
-      "path": "/:id/p"
+      "path": "/:slug/p"
     },
     "store/review": {
-      "path": "/:id/r"
+      "path": "/:slug/r"
     }
   },
   "extensions": {

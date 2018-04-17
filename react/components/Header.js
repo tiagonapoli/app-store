@@ -51,7 +51,7 @@ class Header extends Component {
             className={`${notHome ? 'db dn-ns rotate-180' : 'dn'}`}
           />
           <div
-            className={`pointer b f4 white tc tl-ns lh-solid ml3 ph3 b--white bl ${
+            className={`pointer b f5-s f4-ns white tc tl-ns lh-solid ml3 ph3 b--white bl ${
               notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
             }`}
             onClick={this.handleHome}

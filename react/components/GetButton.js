@@ -17,7 +17,7 @@ class GetButton extends Component {
   handleClick = () => {
     const { navigate, appId } = this.props
     const options = {
-      params: { id: appId },
+      params: { slug: appId },
       page: 'store/review',
       fallbackToWindowLocation: false,
     }

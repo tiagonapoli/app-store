@@ -10,7 +10,7 @@ import {
 
 import Card from '@vtex/styleguide/lib/Card'
 
-import availableAppQuery from './queries/availableAppQuery.gql'
+import appProductQuery from './queries/appProductQuery.gql'
 
 import imagePath from './utils/imagePath'
 import AppIcon from './components/AppIcon'
@@ -35,7 +35,7 @@ class ReviewOrderPage extends Component {
       culture: { currency },
       data,
     } = this.props
-    const { availableApp, loading } = data
+    const { appProduct, loading } = data
     return (
       <div className="w-100 vh-100-s h-100-ns bg-light-silver tc pb10-ns">
         <div className="pv6-s pt9-ns mb6-ns near-black f4-s f2-ns fw3">
@@ -48,11 +48,11 @@ class ReviewOrderPage extends Component {
                 <div className="pa0-s pa4-ns near-black">
                   <div className="flex flex-row mb5-s mb7-ns">
                     <AppIcon
-                      imageUrl={imagePath(availableApp)}
-                      name={availableApp.name}
+                      imageUrl={imagePath(appProduct)}
+                      name={appProduct.name}
                     />
                     <div className="w-75 flex flex-column justify-center pl3-s pl5-ns lh-copy">
-                      <div className="f3-s f2-ns b">{availableApp.name}</div>
+                      <div className="f3-s f2-ns b">{appProduct.name}</div>
                     </div>
                   </div>
                   <div className="f5">Total</div>
@@ -134,14 +134,13 @@ class ReviewOrderPage extends Component {
 const options = {
   options: props => ({
     variables: {
-      id: props.params.id,
-      skip: false,
+      slug: props.params.slug,
     },
   }),
 }
 
 export default compose(
-  graphql(availableAppQuery, options),
+  graphql(appProductQuery, options),
   withCulture(),
   injectIntl
 )(ReviewOrderPage)
