@@ -11,11 +11,13 @@ class AppCategory extends Component {
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
+  removeSlashes = category => category.replace(/\//g, '')
+
   render() {
     const { category, seller } = this.props
     return (
       <div className="flex flex-wrap f6-s f5-ns dark-gray ttc">
-        {category || 'Sales'}
+        {this.removeSlashes(category) || 'Sales'}
         <div className="flex items-center f9 light-gray mh2">&#9679;</div>
         <div>
           {this.translate('developedBy')} <span className="ttu">{seller}</span>

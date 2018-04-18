@@ -4,6 +4,7 @@ import Card from '@vtex/styleguide/lib/Card'
 
 import AppCategory from './AppCategory'
 import AppIcon from './AppIcon'
+import GetButton from './GetButton'
 import withNavigate from '../withNavigate'
 
 class AppItem extends Component {
@@ -28,15 +29,15 @@ class AppItem extends Component {
   }
 
   render() {
-    const { name, imageUrl, shortDescription, category, seller } = this.props
+    const { name, imageUrl, shortDescription, category, seller, appId } = this.props
     return (
       <div className="w-90-s w-30-l mh5 h5 pointer" onClick={this.handleClick}>
         <Card>
           <div className="flex flex-row">
             <AppIcon imageUrl={imageUrl} name={name} />
-            <div>{name}</div>
+            <div className="w-100 ml4"><div>{name}</div><div className="w-70"><GetButton appId={appId} homePage /></div></div>
           </div>
-          <div>{shortDescription}</div>
+          <div className="h3 overflow-hidden">{shortDescription}</div>
           <AppCategory category={category} seller={seller} />
         </Card>
       </div>

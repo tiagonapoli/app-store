@@ -17,7 +17,7 @@ class AppShelf extends Component {
     console.log(data)
     const { loading, products } = data
     return (
-      <div>
+      <div className="bg-light-silver pv5">
         {loading ? (
           <Loading />
         ) : (
