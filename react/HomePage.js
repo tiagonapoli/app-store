@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { injectIntl, intlShape } from 'react-intl'
 
+import AppShelf from './AppShelf'
+
 class HomePage extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
@@ -15,6 +17,7 @@ class HomePage extends Component {
           <div className="b f2 mt6">Extension Store</div>
           <div className="mt5 f4 fw3">{this.translate('homeText')}</div>
         </div>
+        <AppShelf />
       </div>
     )
   }

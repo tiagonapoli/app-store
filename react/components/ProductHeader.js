@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { injectIntl, intlShape, FormattedNumber } from 'react-intl'
 import withCulture from '../withCulture'
 
+import AppCategory from './AppCategory'
 import AppIcon from './AppIcon'
 import GetButton from './GetButton'
 
@@ -40,14 +41,7 @@ class ProductHeader extends Component {
         </div>
         <div className="w-75 flex flex-column justify-center lh-copy">
           <div className="f3-s f2-ns b near-black">{name}</div>
-          <div className="flex flex-wrap f6-s f5-ns dark-gray ttc">
-            {category || 'Sales'}
-            <div className="flex items-center f9 light-gray mh2">&#9679;</div>
-            <div>
-              {this.translate('developedBy')}{' '}
-              <span className="ttu">{seller}</span>
-            </div>
-          </div>
+          <AppCategory category={category} seller={seller} />
         </div>
         <div className="dn flex-ns flex-column-ns justify-center items-end w-20 lh-copy">
           <div className="w-80 f4 normal near-black tc mv2">

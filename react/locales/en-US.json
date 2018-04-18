@@ -16,5 +16,5 @@
   "extensions.noPermission":
     "We can't identify your extensions {purchasePermission}. Please contact your VTEX account administrator.",
   "extensions.purchasePermission": "purchase permission",
-  "extensions.homeText": "The biggest marketplace of VTEX extensions ecosystem."
+  "extensions.homeText": "The largest marketplace of VTEX extensions ecosystem."
 }
