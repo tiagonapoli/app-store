@@ -47,7 +47,7 @@ class AppItem extends Component {
             <AppIcon imageUrl={imageUrl} name={name} />
             <div className="w-100 ml5 flex flex-column justify-center lh-copy">
               <div className="f4 fw5">{name}</div>
-              <div className="w-70">
+              <div className="w-50">
                 <GetButton appId={appId} homePage />
               </div>
             </div>
