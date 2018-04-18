@@ -14,12 +14,13 @@ class AppShelf extends Component {
 
   render() {
     const { data } = this.props
-    console.log(data)
     const { loading, products } = data
     return (
       <div className="bg-light-silver pv5">
         {loading ? (
-          <Loading />
+          <div className="flex justify-center pv9">
+            <Loading />
+          </div>
         ) : (
           <div className="flex flex-column-s flex-row-l items-center">
             {products.map(product => (

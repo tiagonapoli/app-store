@@ -16,6 +16,7 @@ import imagePath from './utils/imagePath'
 import AppIcon from './components/AppIcon'
 import BillingInfo from './components/BillingInfo'
 import ConfirmButton from './components/ConfirmButton'
+import Loading from './components/Loading'
 import withCulture from './withCulture'
 
 class ReviewOrderPage extends Component {
@@ -42,7 +43,9 @@ class ReviewOrderPage extends Component {
           {this.translate('reviewOrder')}
         </div>
         <div className="flex justify-center tl">
-          {!loading && (
+          {loading ? (
+            <Loading />
+          ) : (
             <div className="w-90-s w-60-m w-40-l">
               <Card>
                 <div className="pa0-s pa4-ns near-black">
