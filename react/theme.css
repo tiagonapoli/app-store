@@ -2,6 +2,10 @@
   fill: #fff;
 }
 
+.fill-gray {
+  fill: #979899;
+}
+
 .f9 {
   font-size: 0.25rem;
 }
