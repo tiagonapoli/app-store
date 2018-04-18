@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 class SearchIcon extends Component {
   static propTypes = {
     colorFill: PropTypes.string.isRequired,
-    className: PropTypes.string.isRequired,
+    className: PropTypes.string,
   }
 
   render() {

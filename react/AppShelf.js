@@ -10,19 +10,24 @@ import AppItem from './components/AppItem'
 class AppShelf extends Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
+    homePage: PropTypes.bool,
   }
 
   render() {
-    const { data } = this.props
+    const { data, homePage } = this.props
     const { loading, products } = data
     return (
-      <div className="bg-light-silver pv5">
+      <div className="w-100">
         {loading ? (
           <div className="flex justify-center pv9">
             <Loading />
           </div>
         ) : (
-          <div className="flex flex-column-s flex-row-l items-center">
+          <div
+            className={`flex flex-column-s flex-row-l items-center ${
+              homePage ? 'relative card-top' : 'mv4'
+            }`}
+          >
             {products.map(product => (
               <AppItem
                 key={product.productId}
@@ -42,13 +47,14 @@ class AppShelf extends Component {
 }
 
 const defaultOptions = {
-  options: {
+  options: props => ({
     variables: {
+      query: props.query,
       from: 0,
       quantity: 8,
       orderBy: 'OrderByTopSaleDESC',
     },
-  },
+  }),
 }
 
 export default graphql(productsQuery, defaultOptions)(AppShelf)

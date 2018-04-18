@@ -6,7 +6,7 @@ class Footer extends Component {
     return (
       <footer
         id="extension-store-footer"
-        className="static-s z-3 w-100 bottom-0 pa7 flex items-center justify-center-s justify-start-ns bg-light-silver gray"
+        className="static-s relative-ns z-3 w-100 bottom-0 pa7 flex items-center justify-center-s justify-start-ns bg-light-silver gray"
       >
         <span className="mh2">&copy; {year}</span>
         <span>VTEX Extension Store</span>

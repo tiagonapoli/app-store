@@ -52,7 +52,7 @@ class AppItem extends Component {
               </div>
             </div>
           </div>
-          <div className="card-height mv5 overflow-hidden f5 fw3 lh-copy">
+          <div className="description-height mv5 overflow-hidden f5 fw3 lh-copy">
             {shortDescription}
           </div>
           <AppCategory category={category} seller={seller} homePage />
