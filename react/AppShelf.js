@@ -51,7 +51,7 @@ const defaultOptions = {
     variables: {
       query: props.query,
       from: 0,
-      quantity: 8,
+      quantity: 3,
       orderBy: 'OrderByTopSaleDESC',
     },
   }),
