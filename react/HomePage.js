@@ -26,11 +26,15 @@ class HomePage extends Component {
             <JumbotronIcon />
           </div>
         </div>
-        <div className="bg-light-silver">
-          <AppShelf homePage />
+        <div className="bg-light-silver flex justify-center">
+          <div className="w-100 w-80-ns">
+            <AppShelf homePage />
+          </div>
         </div>
-        <div className="dn-s db-ns">
-          <SearchBox />
+        <div className="dn-s flex-ns justify-center">
+          <div className="w-80">
+            <SearchBox />
+          </div>
         </div>
       </div>
     )
