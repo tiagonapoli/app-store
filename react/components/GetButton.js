@@ -16,7 +16,7 @@ class GetButton extends Component {
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   handleClick = e => {
-    e.preventDefault()
+    e.stopPropagation()
     const { navigate, appId } = this.props
     const options = {
       params: { slug: appId },
@@ -29,9 +29,17 @@ class GetButton extends Component {
   render() {
     const { homePage } = this.props
     return (
-      <div className={`tc br2 w-100 w-80-ns ${homePage ? 'bg-light-silver' : 'bg-rebel-pink'}`}>
+      <div
+        className={`tc br2 w-100 w-80-ns ${
+          homePage
+            ? 'bg-light-silver hover-bg-light-gray'
+            : 'bg-rebel-pink hover-bg-heavy-rebel-pink'
+        }`}
+      >
         <Button onClick={this.handleClick} block>
-          <span className={`${homePage ? 'rebel-pink' : 'white'}`}>{this.translate('get')}</span>
+          <span className={`${homePage ? 'rebel-pink' : 'white'}`}>
+            {this.translate('get')}
+          </span>
         </Button>
       </div>
     )

@@ -43,7 +43,7 @@ class Header extends Component {
     const { notHome } = this.state
     const titleClasses = notHome ? 'dn db-ns' : 'db'
     return (
-      <div className="fixed-ns z-2 flex justify-between items-center w-100 top-0 ph4 ph7-ns pv4 pv5-ns bg-serious-black tc tl-ns white">
+      <div className="fixed z-2 flex justify-between items-center w-100 top-0 ph4 ph7-ns pv4 pv5-ns bg-serious-black tc tl-ns white">
         <div className="flex items-center">
           <VTEXIcon colorFill="white" className={titleClasses} />
           <BackIcon

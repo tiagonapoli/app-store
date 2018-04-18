@@ -29,16 +29,33 @@ class AppItem extends Component {
   }
 
   render() {
-    const { name, imageUrl, shortDescription, category, seller, appId } = this.props
+    const {
+      name,
+      imageUrl,
+      shortDescription,
+      category,
+      seller,
+      appId,
+    } = this.props
     return (
-      <div className="w-90-s w-30-l mh5 h5 pointer" onClick={this.handleClick}>
+      <div
+        className="w-90-s w-50-m w-30-l mh5 h5 pointer"
+        onClick={this.handleClick}
+      >
         <Card>
-          <div className="flex flex-row">
+          <div className="flex flex-row near-black">
             <AppIcon imageUrl={imageUrl} name={name} />
-            <div className="w-100 ml4"><div>{name}</div><div className="w-70"><GetButton appId={appId} homePage /></div></div>
+            <div className="w-100 ml5 flex flex-column justify-center lh-copy">
+              <div className="f4 fw5">{name}</div>
+              <div className="w-70">
+                <GetButton appId={appId} homePage />
+              </div>
+            </div>
           </div>
-          <div className="h3 overflow-hidden">{shortDescription}</div>
-          <AppCategory category={category} seller={seller} />
+          <div className="card-height mv5 overflow-hidden f5 fw3 lh-copy">
+            {shortDescription}
+          </div>
+          <AppCategory category={category} seller={seller} homePage />
         </Card>
       </div>
     )

@@ -6,6 +6,7 @@ class AppCategory extends Component {
   static propTypes = {
     category: PropTypes.string.isRequired,
     seller: PropTypes.string.isRequired,
+    homePage: PropTypes.bool,
     intl: intlShape.isRequired,
   }
 
@@ -14,9 +15,13 @@ class AppCategory extends Component {
   removeSlashes = category => category.replace(/\//g, '')
 
   render() {
-    const { category, seller } = this.props
+    const { category, seller, homePage } = this.props
     return (
-      <div className="flex flex-wrap f6-s f5-ns dark-gray ttc">
+      <div
+        className={`flex flex-wrap f6-s f5-ns ttc ${
+          homePage ? 'gray' : 'dark-gray'
+        }`}
+      >
         {this.removeSlashes(category) || 'Sales'}
         <div className="flex items-center f9 light-gray mh2">&#9679;</div>
         <div>
