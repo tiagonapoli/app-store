@@ -27,7 +27,7 @@ class ReviewOrderPage extends Component {
     const { data } = this.props
     const { appProduct, loading } = data
     return (
-      <div className="w-100 vh-100-ns bg-light-silver tc pb10-ns">
+      <div className="w-100 bg-light-silver tc pb10-ns">
         <div className="pv6-s pt9-ns mb6-ns near-black f4-s f2-ns fw3">
           {this.translate('reviewOrder')}
         </div>
@@ -97,7 +97,10 @@ class ReviewOrderPage extends Component {
                     />
                   </div>
                   <div className="dn-s db-ns w-100 mt5">
-                    <ConfirmButton value={this.translate('confirmButton')} />
+                    <ConfirmButton
+                      appName={appProduct.slug}
+                      value={this.translate('confirmButton')}
+                    />
                   </div>
                   <div className="dn-s db-ns w-100 mt6 mb2 tc">
                     <FormattedMessage
@@ -114,7 +117,10 @@ class ReviewOrderPage extends Component {
                 </div>
               </Card>
               <div className="db-s dn-ns w-100 mt7">
-                <ConfirmButton value={this.translate('confirmButtonMobile')} />
+                <ConfirmButton
+                  appName={appProduct.slug}
+                  value={this.translate('confirmButtonMobile')}
+                />
               </div>
             </div>
           )}
