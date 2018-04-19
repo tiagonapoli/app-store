@@ -45,7 +45,7 @@ class ProductPage extends Component {
               <div className="w-100 w-80-ns">
                 <ProductDescription
                   id={appProduct.linkText}
-                  description={appProduct.fullDescription}
+                  description={appProduct.fullDescription || ''}
                   registry={appProduct.registry}
                 />
               </div>

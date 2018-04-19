@@ -6,14 +6,13 @@
   "description": "Extension store app",
   "mustUpdateAt": "2019-04-10",
   "categories": [],
-  "registries": [
-    "smartcheckout"
-  ],
+  "registries": ["smartcheckout"],
   "settingsSchema": {},
   "dependencies": {
     "vtex.apps-graphql": "2.x",
     "vtex.store-graphql": "2.x",
-    "vtex.shelf": "0.x"
+    "vtex.shelf": "0.x",
+    "vtex.billing": "0.x"
   },
   "builders": {
     "graphql": "1.x",

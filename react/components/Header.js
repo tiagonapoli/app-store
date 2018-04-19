@@ -29,8 +29,9 @@ class Header extends Component {
     this.setState({
       headerSize: window.document.getElementById('extension-store-header')
         .offsetHeight,
-      jumbontronSize: window.document.getElementById('jumbotron-home') && window.document.getElementById('jumbotron-home')
-        .offsetHeight,
+      jumbontronSize:
+        window.document.getElementById('jumbotron-home') &&
+        window.document.getElementById('jumbotron-home').offsetHeight,
     })
   }
 

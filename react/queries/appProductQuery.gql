@@ -17,5 +17,31 @@ query AppProduct($slug: String!) {
       name
       description
     }
+    billing {
+      deactivationRoute
+      termsURL
+      free
+      policies {
+        currency
+        billing {
+          taxClassification
+          items {
+            itemCurrency
+            fixed
+            calculatedByMetricUnit {
+              metricId
+              metricName
+              minChargeValue
+              route
+              ranges {
+                exclusiveFrom
+                inclusiveTo
+                multiplier
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

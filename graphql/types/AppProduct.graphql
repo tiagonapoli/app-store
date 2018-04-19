@@ -14,9 +14,49 @@ type AppProduct {
   registry: String
   terms: String
   permissions: [Policy]
+  billing: BillingOptions
 }
 
 type Policy {
   name: String
   description: String
+}
+
+type BillingOptions {
+  version: String
+  free: Boolean
+  policies: [BillingPolicy]
+  deactivationRoute: String
+  termsURL: String
+}
+
+type BillingPolicy {
+  plan: String
+  currency: String
+  billing: Billing
+}
+
+type Billing {
+  taxClassification: String
+  items: [CalculationItem]
+}
+
+type CalculationItem {
+  itemCurrency: String
+  fixed: Float
+  calculatedByMetricUnit: CalculatedByMetricUnit
+}
+
+type CalculatedByMetricUnit {
+  metricId: String
+  metricName: String
+  minChargeValue: Float
+  ranges: [Range]
+  route: String
+}
+
+type Range {
+  exclusiveFrom: Float
+  inclusiveTo: Float
+  multiplier: Float
 }
