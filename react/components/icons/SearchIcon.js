@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-class SearchIcon extends Component {
+class SearchIcon extends PureComponent {
   static propTypes = {
     colorFill: PropTypes.string.isRequired,
     className: PropTypes.string,

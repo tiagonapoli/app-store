@@ -51,17 +51,7 @@
   height: 4.5rem;
 }
 
-::-webkit-input-placeholder {
-  color: #979899;
-}
-:-ms-input-placeholder {
-  color: #979899;
-}
-::-moz-placeholder {
-  color: #979899;
-  opacity: 1;
-}
-:-moz-placeholder {
+::placeholder {
   color: #979899;
   opacity: 1;
 }
