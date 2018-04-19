@@ -47,12 +47,12 @@ class AppItem extends Component {
             <AppIcon imageUrl={imageUrl} name={name} />
             <div className="w-100 ml5 flex flex-column justify-center lh-copy">
               <div className="f4 fw5">{name}</div>
-              <div className="w-70">
+              <div className="w-50-s w-60-ns">
                 <GetButton appId={appId} homePage />
               </div>
             </div>
           </div>
-          <div className="card-height mv5 overflow-hidden f5 fw3 lh-copy">
+          <div className="description-height mv5 overflow-hidden f5 fw3 lh-copy">
             {shortDescription}
           </div>
           <AppCategory category={category} seller={seller} homePage />

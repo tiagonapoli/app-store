@@ -16,5 +16,7 @@
   "extensions.noPermission":
     "Não conseguimos identificar sua {purchasePermission} de extensões. Por favor contate o administrador da sua plataforma VTEX.",
   "extensions.purchasePermission": "permissão para compras",
-  "extensions.homeText": "O maior makertplace de extensões do ecossistema VTEX."
+  "extensions.homeText":
+    "O maior makertplace de extensões do ecossistema VTEX.",
+  "extensions.search": "Buscar"
 }

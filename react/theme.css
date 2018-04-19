@@ -2,8 +2,19 @@
   fill: #fff;
 }
 
+.fill-gray {
+  fill: #979899;
+}
+
 .f9 {
   font-size: 0.25rem;
+}
+
+@media screen and (max-width: 20rem) {
+  .image-size {
+    width: 4rem;
+    height: 4rem;
+  }
 }
 
 @media screen and (min-width: 20rem) {
@@ -13,10 +24,15 @@
   }
 }
 
-@media screen and (max-width: 20rem) {
-  .image-size {
-    width: 4rem;
-    height: 4rem;
+@media screen and (max-width: 30rem) {
+  .card-top {
+    top: -11rem;
+  }
+}
+
+@media screen and (min-width: 30rem) {
+  .card-top {
+    top: -3rem;
   }
 }
 
@@ -31,6 +47,21 @@
   height: 3rem;
 }
 
-.card-height {
+.description-height {
   height: 4.5rem;
+}
+
+::placeholder {
+  color: #979899;
+  opacity: 1;
+}
+
+.slideDown {
+  transition: 0.5s;
+  top: 0;
+}
+
+.slideUp {
+  transition: 0.5s;
+  top: -10rem;
 }
