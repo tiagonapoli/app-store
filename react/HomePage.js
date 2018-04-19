@@ -17,8 +17,8 @@ class HomePage extends Component {
       <div className="w-100 h-100">
         <div className="flex-ns items-center-ns vh-100-s h-50-ns w-100 bg-serious-black pt9 pl5-s pl7-ns white">
           <div>
-            <div className="b f2 mt9-s mt0-ns">Extension Store</div>
-            <div className="mt5 mb9-ns f4 fw3">
+            <div className="b f2-s f1-ns mt9-s mt0-ns">Extension Store</div>
+            <div className="mt5 mb9-ns f4-s f3-ns fw3">
               {this.translate('homeText')}
             </div>
           </div>
@@ -27,12 +27,12 @@ class HomePage extends Component {
           </div>
         </div>
         <div className="bg-light-silver flex justify-center">
-          <div className="w-100 w-80-ns">
+          <div className="w-90-ns">
             <AppShelf homePage />
           </div>
         </div>
         <div className="dn-s flex-ns justify-center">
-          <div className="w-80">
+          <div className="w-90">
             <SearchBox />
           </div>
         </div>
