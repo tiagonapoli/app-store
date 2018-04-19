@@ -19,7 +19,7 @@ class AppShelf extends Component {
     return (
       <div className="w-100">
         {loading ? (
-          <div className="flex justify-center pv9">
+          <div className="flex justify-center pt9 pb10">
             <Loading />
           </div>
         ) : (

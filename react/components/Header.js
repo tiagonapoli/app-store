@@ -85,9 +85,11 @@ class Header extends Component {
             isOpen={this.state.isModalOpen}
           />
         </div>
-        <div className="db dn-ns">
-          <SearchBox />
-        </div>
+        {!notHome && (
+          <div className="db dn-ns">
+            <SearchBox />
+          </div>
+        )}
       </div>
     )
   }

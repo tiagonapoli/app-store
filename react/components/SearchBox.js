@@ -24,8 +24,8 @@ class SearchBox extends Component {
   render() {
     const { searchValue } = this.state
     return (
-      <div className="w-100">
-        <div className="flex flex-row w-100 bg-white gray">
+      <div className="w-100 pv8-ns">
+        <div className="flex flex-row w-100 mb7-ns bg-white gray">
           <div className="flex items-center bb bw1 b--rebel-pink pa4">
             <SearchIcon colorFill="gray" />
           </div>
@@ -38,8 +38,8 @@ class SearchBox extends Component {
           />
         </div>
         <div
-          className={`w-100 h-100 ${
-            searchValue ? 'vh-100-s h-100-ns db' : 'dn-s db-ns'
+          className={`w-100 h-100 h5-l ${
+            searchValue ? 'vh-100-s h-100-ns db' : 'dn'
           }`}
         >
           <AppShelf query={searchValue} />
