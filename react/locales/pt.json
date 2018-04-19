@@ -18,5 +18,6 @@
   "extensions.purchasePermission": "permissão para compras",
   "extensions.homeText":
     "O maior makertplace de extensões do ecossistema VTEX.",
-  "extensions.search": "Buscar"
+  "extensions.search": "Buscar",
+  "extensions.free": "Grátis"
 }

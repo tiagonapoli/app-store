@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
-import {
-  injectIntl,
-  intlShape,
-  FormattedNumber,
-  FormattedMessage,
-} from 'react-intl'
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 
 import Card from '@vtex/styleguide/lib/Card'
 
@@ -14,28 +9,22 @@ import appProductQuery from './queries/appProductQuery.gql'
 
 import { imagePath } from './utils/utils'
 import AppIcon from './components/AppIcon'
+import Billing from './components/Billing'
 import BillingInfo from './components/BillingInfo'
 import ConfirmButton from './components/ConfirmButton'
 import Loading from './components/Loading'
-import withCulture from './withCulture'
 
 class ReviewOrderPage extends Component {
   static propTypes = {
     params: PropTypes.object.isRequired,
     data: PropTypes.object,
-    culture: PropTypes.shape({
-      currency: PropTypes.string.isRequired,
-    }).isRequired,
     intl: intlShape.isRequired,
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
-    const {
-      culture: { currency },
-      data,
-    } = this.props
+    const { data } = this.props
     const { appProduct, loading } = data
     return (
       <div className="w-100 vh-100-ns bg-light-silver tc pb10-ns">
@@ -60,13 +49,7 @@ class ReviewOrderPage extends Component {
                   </div>
                   <div className="f5">Total</div>
                   <div className="f3 b mt3 mb6-s mb7-ns">
-                    <FormattedNumber
-                      value={0}
-                      style="currency"
-                      currency={currency}
-                      minimumFractionDigits={2}
-                      maximumFractionDigits={2}
-                    />
+                    <Billing billing={appProduct.billing || { free: true }} />
                   </div>
                   <div className="mb7-s mb8-ns">
                     <div className="f5">Billing info</div>
@@ -94,12 +77,19 @@ class ReviewOrderPage extends Component {
                           </span>
                         ),
                         termsOfService: (
-                          <a className="link rebel-pink">
+                          <a className="pointer link rebel-pink">
                             <FormattedMessage id="extensions.termsOfService" />
                           </a>
                         ),
                         privacyPolice: (
-                          <a className="link rebel-pink">
+                          <a
+                            href={
+                              appProduct.billing
+                                ? appProduct.billing.termsURL
+                                : ''
+                            }
+                            className="pointer link rebel-pink"
+                          >
                             <FormattedMessage id="extensions.privacyPolice" />
                           </a>
                         ),
@@ -142,8 +132,6 @@ const options = {
   }),
 }
 
-export default compose(
-  graphql(appProductQuery, options),
-  withCulture(),
-  injectIntl
-)(ReviewOrderPage)
+export default compose(graphql(appProductQuery, options), injectIntl)(
+  ReviewOrderPage
+)
