@@ -38,7 +38,7 @@ class ReviewOrderPage extends Component {
     } = this.props
     const { appProduct, loading } = data
     return (
-      <div className="w-100 vh-100 bg-light-silver tc pb10-ns">
+      <div className="w-100 vh-100-ns bg-light-silver tc pb10-ns">
         <div className="pv6-s pt9-ns mb6-ns near-black f4-s f2-ns fw3">
           {this.translate('reviewOrder')}
         </div>

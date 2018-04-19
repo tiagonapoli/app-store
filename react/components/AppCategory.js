@@ -12,7 +12,7 @@ class AppCategory extends Component {
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
-  removeSlashes = category => category.replace(/\//g, '')
+  removeSlashes = category => category && category.replace(/\//g, '')
 
   render() {
     const { category, seller, homePage } = this.props

@@ -37,7 +37,7 @@ export default {
     }
 
     const [, account, slug, , idVersion] = match
-    const registry = appRegistry({ ...ioContext, account })
+    const registry = appRegistry({ ...ioContext, account: 'extensions' })
     const version = removeBuild(
       idVersion || (await registry.getLatestVersion(slug))
     )
