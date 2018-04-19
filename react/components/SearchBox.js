@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 
 import SearchIcon from './icons/SearchIcon'
@@ -8,7 +7,6 @@ import AppShelf from '../AppShelf'
 class SearchBox extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
-    navigate: PropTypes.func.isRequired,
   }
 
   state = {
