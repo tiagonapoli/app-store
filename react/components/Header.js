@@ -17,6 +17,27 @@ class Header extends Component {
 
   state = {
     isModalOpen: false,
+    scroll: 0,
+    shouldShowSearch: true,
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.watchScrollUp)
+    this.watchScrollUp()
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.watchScrollUp)
+  }
+
+  watchScrollUp = () => {
+    const currentScroll = window.scrollY
+    const { scroll } = this.state
+    if (currentScroll < scroll) {
+      this.setState({ shouldShowSearch: true, scroll: currentScroll })
+    } else {
+      this.setState({ shouldShowSearch: false, scroll: currentScroll })
+    }
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
@@ -35,11 +56,20 @@ class Header extends Component {
 
   render() {
     const { logged } = this.props
+    const { shouldShowSearch, scroll } = this.state
     const notHome = window.location && window.location.pathname.length > 1
+    const headerSize =
+      window &&
+      window.document &&
+      window.document.getElementById('extension-store-header') &&
+      window.document.getElementById('extension-store-header').offsetHeight
     const titleClasses = notHome ? 'dn db-ns' : 'db'
     return (
       <div className="fixed-ns w-100 z-2">
-        <div className="flex justify-between items-center w-100 top-0 ph4 ph7-ns pv4 pv5-ns bg-serious-black tc tl-ns white">
+        <div
+          id="extension-store-header"
+          className="flex justify-between items-center w-100 top-0 ph4 ph7-ns pv4 pv5-ns bg-serious-black tc tl-ns white"
+        >
           <div className="flex items-center">
             <VTEXIcon colorFill="white" className={titleClasses} />
             <BackIcon
@@ -86,7 +116,15 @@ class Header extends Component {
           />
         </div>
         {!notHome && (
-          <div className="db dn-ns">
+          <div
+            className={`db dn-ns ${
+              scroll > headerSize
+                ? `z-3 fixed w-100 ma0 bg-white ${
+                  shouldShowSearch ? 'slideDown' : 'slideUp'
+                }`
+                : ''
+            }`}
+          >
             <SearchBox />
           </div>
         )}

@@ -38,7 +38,7 @@ class SearchBox extends Component {
           />
         </div>
         <div
-          className={`w-100 h-100 h5-l ${
+          className={`w-100 h-100 h5-l bg-white ${
             searchValue ? 'vh-100-s h-100-ns db' : 'dn'
           }`}
         >

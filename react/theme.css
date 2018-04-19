@@ -65,3 +65,13 @@
   color: #979899;
   opacity: 1;
 }
+
+.slideDown {
+  transition: 0.5s;
+  top: 0;
+}
+
+.slideUp {
+  transition: 0.5s;
+  top: -10rem;
+}
