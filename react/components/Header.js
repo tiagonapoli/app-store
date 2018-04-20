@@ -125,9 +125,7 @@ class Header extends Component {
                 : ''
             }`}
           >
-            <SearchBox
-              shouldHaveBorder={scroll > headerSize && shouldShowSearch}
-            />
+            <SearchBox />
           </div>
         )}
       </div>
