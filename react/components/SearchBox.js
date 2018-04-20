@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 
 import SearchIcon from './icons/SearchIcon'
@@ -28,7 +27,7 @@ class SearchBox extends Component {
   render() {
     const { searchValue, shouldHaveBorder } = this.state
     return (
-      <div className="w-100 pv8-ns">
+      <div className="w-100 mv8-ns">
         <div className="flex flex-row w-100 mb7-ns bg-white gray">
           <div className="flex items-center bb bw1 b--rebel-pink pa4">
             <SearchIcon colorFill="gray" />

@@ -27,38 +27,47 @@ class HomePage extends Component {
 
   watchScrollUpDesktop = () => {
     const currentScroll = window.scrollY
-    const { scroll } = this.state
-    if (currentScroll < scroll) {
-      this.setState({ shouldShowSearch: true, scroll: currentScroll })
-    } else {
-      this.setState({ shouldShowSearch: false, scroll: currentScroll })
-    }
+    this.setState({ scroll: currentScroll })
   }
 
   render() {
+    const { scroll } = this.state
+    const jumbontronSize =
+      window &&
+      window.document &&
+      window.document.getElementById('jumbotron-home') &&
+      window.document.getElementById('jumbotron-home').offsetHeight
     return (
       <div className="w-100">
-        <div className="flex-ns items-center-ns h-100-s h-50-ns w-100 bg-serious-black pt9 pl5-s pl7-ns white">
-          <div>
-            <div className="b f2-s f1-ns mt9-s mt0-ns">Extension Store</div>
-            <div className="mt5 mb9-ns f4-s f3-ns fw3">
-              {this.translate('homeText')}
+        <div id="jumbotron-home" className="w-100">
+          <div className="flex-ns items-center-ns h-100-s h-50-ns w-100 bg-serious-black pt9 pl5-s pl7-ns white">
+            <div>
+              <div className="b f2-s f1-ns mt9-s mt0-ns">Extension Store</div>
+              <div className="mt5 mb9-ns f4-s f3-ns fw3">
+                {this.translate('homeText')}
+              </div>
+            </div>
+            <div className="w-100-ns tr-ns overflow-hidden">
+              <JumbotronIcon />
             </div>
           </div>
-          <div className="w-100-ns tr-ns overflow-hidden">
-            <JumbotronIcon />
+          <div id="home-shelf" className="bg-light-silver flex justify-center">
+            <div className="w-90-ns">
+              <AppShelf homePage />
+            </div>
           </div>
         </div>
-        <div className="bg-light-silver flex justify-center">
-          <div className="w-90-ns">
-            <AppShelf homePage />
-          </div>
-        </div>
-        <div className="dn-s flex-ns justify-center">
-          <div className="w-90">
+        <div className="w-100 dn-s flex-ns justify-center">
+          <div
+            className={`${
+              jumbontronSize < scroll ? 'w-90 fixed z-4 top-2 bg-white' : 'w-90'
+            }`}
+          >
             <SearchBox />
           </div>
         </div>
+        <AppShelf homePage />
+        <AppShelf homePage />
       </div>
     )
   }
