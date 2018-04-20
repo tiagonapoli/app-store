@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 
 import SearchIcon from './icons/SearchIcon'
@@ -7,6 +8,7 @@ import AppShelf from '../AppShelf'
 class SearchBox extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
+    shouldHaveBorder: PropTypes.bool,
   }
 
   state = {
@@ -20,6 +22,7 @@ class SearchBox extends Component {
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
+    const { shouldHaveBorder } = this.props
     const { searchValue } = this.state
     return (
       <div className="w-100 pv8-ns">
@@ -28,7 +31,9 @@ class SearchBox extends Component {
             <SearchIcon colorFill="gray" />
           </div>
           <input
-            className="pv4 pl2 w-100 f5 gray bw0 extensions-search outline-0"
+            className={`pv4 pl2 w-100 f5 gray br-0 bl-0 bt-0 extensions-search b--transparent outline-0 ${
+              shouldHaveBorder ? 'borderTransition' : ''
+            }`}
             type="text"
             placeholder={this.translate('search')}
             value={searchValue}

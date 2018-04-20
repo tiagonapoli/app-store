@@ -15,7 +15,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className="w-100">
-        <div className="flex-ns items-center-ns vh-100-s h-50-ns w-100 bg-serious-black pt9 pl5-s pl7-ns white">
+        <div className="flex-ns items-center-ns h-100-s h-50-ns w-100 bg-serious-black pt9 pl5-s pl7-ns white">
           <div>
             <div className="b f2-s f1-ns mt9-s mt0-ns">Extension Store</div>
             <div className="mt5 mb9-ns f4-s f3-ns fw3">

@@ -18,7 +18,7 @@ class AppCategory extends Component {
     const { category, seller, homePage } = this.props
     return (
       <div
-        className={`flex flex-wrap f6-s f5-ns ttc ${
+        className={`flex flex-wrap items-center h1 f6-s f5-ns ttc ${
           homePage ? 'gray' : 'dark-gray'
         }`}
       >
