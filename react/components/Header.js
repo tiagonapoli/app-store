@@ -22,15 +22,15 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.watchScrollUp)
-    this.watchScrollUp()
+    window.addEventListener('scroll', this.watchScrollUpMobile)
+    this.watchScrollUpMobile()
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.watchScrollUp)
+    window.removeEventListener('scroll', this.watchScrollUpMobile)
   }
 
-  watchScrollUp = () => {
+  watchScrollUpMobile = () => {
     const currentScroll = window.scrollY
     const { scroll } = this.state
     if (currentScroll < scroll) {

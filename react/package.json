@@ -2,7 +2,7 @@
   "name": "vtex.extensions",
   "version": "0.0.0",
   "dependencies": {
-    "@vtex/styleguide": "2.0.0-rc.35",
+    "@vtex/styleguide": "^2.0.0-rc.35",
     "marksy": "^6.0.3",
     "prop-types": "^15.5.10"
   },

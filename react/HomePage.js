@@ -10,7 +10,30 @@ class HomePage extends Component {
     intl: intlShape.isRequired,
   }
 
+  state = {
+    scroll: 0,
+  }
+
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.watchScrollUpDesktop)
+    this.watchScrollUpDesktop()
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.watchScrollUpDesktop)
+  }
+
+  watchScrollUpDesktop = () => {
+    const currentScroll = window.scrollY
+    const { scroll } = this.state
+    if (currentScroll < scroll) {
+      this.setState({ shouldShowSearch: true, scroll: currentScroll })
+    } else {
+      this.setState({ shouldShowSearch: false, scroll: currentScroll })
+    }
+  }
 
   render() {
     return (
