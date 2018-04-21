@@ -58,10 +58,20 @@
 
 .slideDown {
   transition: 0.5s;
-  top: 0;
+  top: 4.5rem;
 }
 
 .slideUp {
+  transition: 0.5s;
+  top: -10rem;
+}
+
+.slideDownMobile {
+  transition: 0.5s;
+  top: 0;
+}
+
+.slideUpMobile {
   transition: 0.5s;
   top: -10rem;
 }

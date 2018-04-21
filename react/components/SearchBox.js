@@ -27,8 +27,8 @@ class SearchBox extends Component {
   render() {
     const { searchValue, shouldHaveBorder } = this.state
     return (
-      <div className="w-100 mv8-ns">
-        <div className="flex flex-row w-100 mb7-ns bg-white gray">
+      <div className="w-100 h-100">
+        <div className="flex flex-row w-100 bg-white gray">
           <div className="flex items-center bb bw1 b--rebel-pink pa4">
             <SearchIcon colorFill="gray" />
           </div>
@@ -45,7 +45,7 @@ class SearchBox extends Component {
           />
         </div>
         <div
-          className={`w-100 h-100 h5-l bg-white ${
+          className={`w-100 h-100 bg-white mt7-ns ${
             searchValue ? 'vh-100-s h-100-ns db' : 'dn'
           }`}
         >
