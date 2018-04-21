@@ -46,7 +46,7 @@ class SearchBox extends Component {
         </div>
         <div
           className={`w-100 h-100 bg-white mt7-ns ${
-            searchValue ? 'vh-100-s h-100-ns db' : 'dn'
+            searchValue ? 'h5-s h-100-ns overflow-auto db' : 'dn'
           }`}
         >
           <AppShelf query={searchValue} />
