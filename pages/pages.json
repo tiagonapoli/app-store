@@ -20,6 +20,9 @@
     },
     "store/review": {
       "component": "ReviewOrderPage"
+    },
+    "store/home/appItem": {
+      "component": "AppItem"
     }
   }
 }

@@ -5,7 +5,7 @@ import { graphql } from 'react-apollo'
 import productsQuery from './queries/productsQuery.gql'
 
 import Loading from './components/Loading'
-import AppItem from './components/AppItem'
+import AppItem from './AppItem'
 
 class AppShelf extends Component {
   static propTypes = {

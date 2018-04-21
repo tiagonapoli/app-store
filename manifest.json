@@ -12,7 +12,8 @@
   "settingsSchema": {},
   "dependencies": {
     "vtex.apps-graphql": "2.x",
-    "vtex.store-graphql": "2.x"
+    "vtex.store-graphql": "2.x",
+    "vtex.shelf": "0.x"
   },
   "builders": {
     "graphql": "1.x",

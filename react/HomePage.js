@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { injectIntl, intlShape } from 'react-intl'
+import { ExtensionPoint } from 'render'
 
 import AppShelf from './AppShelf'
 import JumbotronIcon from './components/icons/JumbotronIcon'
@@ -60,14 +61,13 @@ class HomePage extends Component {
         <div className="w-100 dn-s flex-ns justify-center">
           <div
             className={`${
-              jumbontronSize < scroll ? 'w-90 fixed z-4 top-2 bg-white' : 'w-90'
+              jumbontronSize < scroll ? 'dn' : 'w-90 mv8-ns'
             }`}
           >
             <SearchBox />
           </div>
         </div>
-        <AppShelf homePage />
-        <AppShelf homePage />
+        <ExtensionPoint id="shelf" />
       </div>
     )
   }
