@@ -12,7 +12,7 @@ import Card from '@vtex/styleguide/lib/Card'
 
 import appProductQuery from './queries/appProductQuery.gql'
 
-import imagePath from './utils/imagePath'
+import { imagePath } from './utils/utils'
 import AppIcon from './components/AppIcon'
 import BillingInfo from './components/BillingInfo'
 import ConfirmButton from './components/ConfirmButton'
