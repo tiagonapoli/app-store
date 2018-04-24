@@ -35,7 +35,7 @@ class ReviewOrderPage extends Component {
           {loading ? (
             <Loading />
           ) : (
-            <div className="w-90-s w-70-m w-50-l">
+            <div className="w-90-s w-70-m w-50-l w-40-xl">
               <Card>
                 <div className="pa0-s pa4-ns near-black">
                   <div className="flex flex-row mb5-s mb7-ns">
