@@ -35,9 +35,9 @@ export default {
         'Invalid app id. Ids should be of the form: <registry>:<vendor>.<name>'
       )
     }
-
-    const [, account, slug, , idVersion] = match
-    const registry = appRegistry({ ...ioContext, account: 'extensions' })
+    const { account } = ioContext
+    const [, , slug, , idVersion] = match
+    const registry = appRegistry({ ...ioContext, account })
     const version = removeBuild(
       idVersion || (await registry.getLatestVersion(slug))
     )
