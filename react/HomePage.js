@@ -13,6 +13,7 @@ class HomePage extends Component {
 
   state = {
     scroll: 0,
+    jumbontronSize: 0,
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
@@ -20,6 +21,10 @@ class HomePage extends Component {
   componentDidMount() {
     window.addEventListener('scroll', this.watchScrollUpDesktop)
     this.watchScrollUpDesktop()
+    this.setState({
+      jumbontronSize: window.document.getElementById('jumbotron-home')
+        .offsetHeight,
+    })
   }
 
   componentWillUnmount() {
@@ -32,17 +37,12 @@ class HomePage extends Component {
   }
 
   render() {
-    const { scroll } = this.state
-    const jumbontronSize =
-      window &&
-      window.document &&
-      window.document.getElementById('jumbotron-home') &&
-      window.document.getElementById('jumbotron-home').offsetHeight
+    const { scroll, jumbontronSize } = this.state
     return (
       <div className="w-100">
         <div id="jumbotron-home" className="w-100">
           <div className="flex-ns items-center-ns h-100-s h-50-ns w-100 bg-serious-black pt9 pl5-s pl7-ns white">
-            <div>
+            <div className="w-100">
               <div className="b f2-s f1-ns mt9-s mt0-ns">Extension Store</div>
               <div className="mt5 mb9-ns f4-s f3-ns fw3">
                 {this.translate('homeText')}
@@ -59,11 +59,7 @@ class HomePage extends Component {
           </div>
         </div>
         <div className="w-100 dn-s flex-ns justify-center">
-          <div
-            className={`${
-              jumbontronSize < scroll ? 'dn' : 'w-90 mv8-ns'
-            }`}
-          >
+          <div className={`${jumbontronSize < scroll ? 'dn' : 'w-90 mv8-ns'}`}>
             <SearchBox />
           </div>
         </div>

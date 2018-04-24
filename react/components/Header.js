@@ -19,11 +19,19 @@ class Header extends Component {
     isModalOpen: false,
     scroll: 0,
     shouldShowSearch: true,
+    headerSize: 0,
+    jumbontronSize: 0,
   }
 
   componentDidMount() {
     window.addEventListener('scroll', this.watchScrollUpMobile)
     this.watchScrollUpMobile()
+    this.setState({
+      headerSize: window.document.getElementById('extension-store-header')
+        .offsetHeight,
+      jumbontronSize: window.document.getElementById('jumbotron-home')
+        .offsetHeight,
+    })
   }
 
   componentWillUnmount() {
@@ -56,18 +64,8 @@ class Header extends Component {
 
   render() {
     const { logged } = this.props
-    const { shouldShowSearch, scroll } = this.state
+    const { shouldShowSearch, scroll, headerSize, jumbontronSize } = this.state
     const notHome = window.location && window.location.pathname.length > 1
-    const headerSize =
-      window &&
-      window.document &&
-      window.document.getElementById('extension-store-header') &&
-      window.document.getElementById('extension-store-header').offsetHeight
-    const jumbontronSize =
-      window &&
-      window.document &&
-      window.document.getElementById('jumbotron-home') &&
-      window.document.getElementById('jumbotron-home').offsetHeight
     const titleClasses = notHome ? 'dn db-ns' : 'db'
     return (
       <div className="fixed-ns w-100 z-2">
@@ -135,7 +133,11 @@ class Header extends Component {
         )}
         {!notHome && (
           <div
-            className={`dn ${scroll > jumbontronSize ? 'db-ns z-3 ma0 w-100 ph9 fixed bg-white slideDown' : 'slideUp'}`}
+            className={`dn ${
+              scroll > jumbontronSize
+                ? 'db-ns z-3 ma0 w-100 ph9 fixed bg-white slideDown'
+                : 'slideUp'
+            }`}
           >
             <SearchBox />
           </div>
