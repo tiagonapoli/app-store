@@ -58,7 +58,7 @@ class ReviewOrderPage extends Component {
                         name="Bill Zoo"
                         email="bill@redley.com"
                         store="Redley"
-                        pictureUrl="https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2014/08/Giraffe-Tongue-Orchestra.jpg?fit=700%2C525"
+                        pictureUrl="https://hindizenblog.files.wordpress.com/2009/03/harshil-gudka-379676.jpg"
                       />
                     </div>
                   </div>

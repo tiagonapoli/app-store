@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'react-apollo'
 import Button from '@vtex/styleguide/lib/Button'
 
+import NoPermissionModal from './NoPermissionModal'
 import buyAppMutation from '../mutations/buyAppMutation.gql'
 
 class ConfirmButton extends Component {
@@ -12,9 +13,24 @@ class ConfirmButton extends Component {
     buyApp: PropTypes.func.isRequired,
   }
 
+  state = {
+    isModalOpen: false,
+  }
+
   handleClick = () => {
     const { buyApp, appName } = this.props
-    buyApp({ variables: { appName, termsOfUseAccepted: true } }).then(() => {})
+    buyApp({ variables: { appName, termsOfUseAccepted: true } })
+      .then(res => {
+        console.log('%%%%%%%%%%%%%', res)
+      })
+      .catch(e => {
+        console.log('ERROR', e)
+        this.handleModal()
+      })
+  }
+
+  handleModal = () => {
+    this.setState({ isModalOpen: !this.state.isModalOpen })
   }
 
   render() {
@@ -24,6 +40,10 @@ class ConfirmButton extends Component {
         <Button onClick={this.handleClick} block>
           <span className="white">{value}</span>
         </Button>
+        <NoPermissionModal
+          onChange={this.handleModal}
+          isOpen={this.state.isModalOpen}
+        />
       </div>
     )
   }

@@ -6,7 +6,6 @@ import Button from '@vtex/styleguide/lib/Button'
 import Profile from './Profile'
 import VTEXIcon from './icons/VTEXIcon'
 import BackIcon from './icons/BackIcon'
-import NoPermissionModal from './NoPermissionModal'
 import SearchBox from './SearchBox'
 
 class Header extends Component {
@@ -16,7 +15,6 @@ class Header extends Component {
   }
 
   state = {
-    isModalOpen: false,
     scroll: 0,
     shouldShowSearch: true,
     headerSize: 0,
@@ -57,10 +55,6 @@ class Header extends Component {
 
   handleHome = () => {
     window.location.assign('/')
-  }
-
-  handleModal = () => {
-    this.setState({ isModalOpen: !this.state.isModalOpen })
   }
 
   render() {
@@ -104,7 +98,7 @@ class Header extends Component {
               <Profile
                 name="Bill Zoo"
                 store="Redley"
-                pictureUrl="https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2014/08/Giraffe-Tongue-Orchestra.jpg?fit=700%2C525"
+                pictureUrl="https://hindizenblog.files.wordpress.com/2009/03/harshil-gudka-379676.jpg"
               />
             ) : (
               <div className="b--white bw1 ba br2">
@@ -114,10 +108,6 @@ class Header extends Component {
               </div>
             )}
           </div>
-          <NoPermissionModal
-            onChange={this.handleModal}
-            isOpen={this.state.isModalOpen}
-          />
         </div>
         {!notHome && (
           <div
