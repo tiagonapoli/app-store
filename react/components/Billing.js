@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { injectIntl, intlShape, FormattedNumber } from 'react-intl'
+import { injectIntl, intlShape } from 'react-intl'
 
 class Billing extends Component {
   static propTypes = {
@@ -9,6 +9,14 @@ class Billing extends Component {
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
+
+  formatPrice = (value, currency, fractionDigits) =>
+    this.props.intl.formatNumber(value, {
+      currency,
+      style: 'currency',
+      minimumFractionDigits: fractionDigits,
+      maximumFractionDigits: fractionDigits,
+    })
 
   metricInitials = metricName =>
     metricName
@@ -21,6 +29,14 @@ class Billing extends Component {
     const isFixedOnly =
       isFixed && billing.policies[0].billing.items.length === 1
     const metricsIndex = isFixed ? 1 : 0
+    const ranges =
+      billing.policies[0].billing.items[metricsIndex].calculatedByMetricUnit &&
+      billing.policies[0].billing.items[metricsIndex].calculatedByMetricUnit
+        .ranges
+    const metricName =
+      billing.policies[0].billing.items[metricsIndex].calculatedByMetricUnit &&
+      billing.policies[0].billing.items[metricsIndex].calculatedByMetricUnit
+        .metricName
     return (
       <div className="ph5 br3 bg-light-silver normal near-black">
         {billing.free || isFixedOnly ? (
@@ -31,15 +47,11 @@ class Billing extends Component {
                 ? this.translate('free')
                 : isFixedOnly && (
                   <div className="w-100 flex flex-row justify-end">
-                    <FormattedNumber
-                      value={billing.policies[0].billing.items[0].fixed}
-                      style="currency"
-                      currency={
-                        billing.policies[0].billing.items[0].itemCurrency
-                      }
-                      minimumFractionDigits={2}
-                      maximumFractionDigits={2}
-                    />
+                    {this.formatPrice(
+                      billing.policies[0].billing.items[0].fixed,
+                      billing.policies[0].billing.items[0].itemCurrency,
+                      2
+                    )}
                     <span className="normal ml2 ttl">
                       {this.translate('monthly')}
                     </span>
@@ -50,9 +62,7 @@ class Billing extends Component {
         ) : (
           <div className="w-100">
             <div className="w-100 db dn-ns pt4">{this.translate('price')}</div>
-            {billing.policies[0].billing.items[
-              metricsIndex
-            ].calculatedByMetricUnit.ranges.map((range, index) => (
+            {ranges.map((range, index) => (
               <div
                 key={range.exclusiveFrom}
                 className="w-100 lh-copy flex flex-row justify-end"
@@ -66,50 +76,32 @@ class Billing extends Component {
                 </div>
                 <div
                   className={`w-100 w-90-ns flex flex-column-s flex-row-ns pv4 ${
-                    index !==
-                    billing.policies[0].billing.items[metricsIndex]
-                      .calculatedByMetricUnit.ranges.length -
-                      1
-                      ? 'bb b--white'
-                      : ''
+                    index !== ranges.length - 1 ? 'bb b--white' : ''
                   }`}
                 >
                   <div className="w-100 w-90-ns flex flex-row flex-wrap">
                     {isFixed && (
                       <div className="b mr2">
-                        <FormattedNumber
-                          value={billing.policies[0].billing.items[0].fixed}
-                          style="currency"
-                          currency={
-                            billing.policies[0].billing.items[0].itemCurrency
-                          }
-                          minimumFractionDigits={0}
-                          maximumFractionDigits={0}
-                        />
+                        {this.formatPrice(
+                          billing.policies[0].billing.items[0].fixed,
+                          billing.policies[0].billing.items[0].itemCurrency,
+                          0
+                        )}
                         <span className="ml2 normal">+</span>
                       </div>
                     )}
                     <div className="b">
-                      <FormattedNumber
-                        value={range.multiplier}
-                        style="currency"
-                        currency={
-                          billing.policies[0].billing.items[metricsIndex]
-                            .itemCurrency
-                        }
-                        minimumFractionDigits={2}
-                        maximumFractionDigits={2}
-                      />
+                      {this.formatPrice(
+                        range.multiplier,
+                        billing.policies[0].billing.items[metricsIndex]
+                          .itemCurrency,
+                        2
+                      )}
                       <span className="mh2 normal">
                         {this.translate('per')}
                       </span>
                     </div>
-                    <span className="i mr2">
-                      {
-                        billing.policies[0].billing.items[metricsIndex]
-                          .calculatedByMetricUnit.metricName
-                      }
-                    </span>
+                    <span className="i mr2">{metricName}</span>
                     <span className="b ttl">
                       ({range.inclusiveTo ? (
                         <span>
@@ -121,10 +113,7 @@ class Billing extends Component {
                           {this.translate('moreThan')} {range.exclusiveFrom}{' '}
                         </span>
                       )}
-                      {this.metricInitials(
-                        billing.policies[0].billing.items[metricsIndex]
-                          .calculatedByMetricUnit.metricName
-                      )})
+                      {this.metricInitials(metricName)})
                     </span>
                   </div>
                   <div className="flex justify-end-ns w-100 w-10-ns normal ml2-ns ttl">
