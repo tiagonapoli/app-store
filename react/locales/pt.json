@@ -19,5 +19,9 @@
   "extensions.homeText":
     "O maior makertplace de extensões do ecossistema VTEX.",
   "extensions.search": "Buscar",
-  "extensions.free": "Grátis"
+  "extensions.free": "Grátis",
+  "extensions.monthly": "Por Mês",
+  "extensions.per": "por",
+  "extensions.to": "a",
+  "extensions.moreThan": "mais de"
 }

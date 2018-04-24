@@ -4,7 +4,6 @@ import { injectIntl, intlShape } from 'react-intl'
 
 import AppCategory from './AppCategory'
 import AppIcon from './AppIcon'
-import Billing from './Billing'
 import GetButton from './GetButton'
 
 class ProductHeader extends Component {
@@ -12,7 +11,6 @@ class ProductHeader extends Component {
     id: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
     imageUrl: PropTypes.string.isRequired,
-    billing: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     seller: PropTypes.string.isRequired,
     category: PropTypes.string,
@@ -22,7 +20,7 @@ class ProductHeader extends Component {
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
-    const { id, imageUrl, billing, name, category, seller } = this.props
+    const { id, imageUrl, name, category, seller } = this.props
     return (
       <div className="flex flex-row mt5-s mt8-ns pb3-s pb6-ns mb6 mh4-s mh0-ns b--light-gray bb">
         <div className="mr5">
@@ -33,9 +31,6 @@ class ProductHeader extends Component {
           <AppCategory category={category} seller={seller} />
         </div>
         <div className="dn flex-ns flex-column-ns justify-center items-end w-20 lh-copy">
-          <div className="w-80 f4 normal near-black tc mv2">
-            <Billing billing={billing} />
-          </div>
           <GetButton appId={id} />
         </div>
       </div>

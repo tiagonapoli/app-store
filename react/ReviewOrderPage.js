@@ -35,7 +35,7 @@ class ReviewOrderPage extends Component {
           {loading ? (
             <Loading />
           ) : (
-            <div className="w-90-s w-60-m w-40-l">
+            <div className="w-90-s w-70-m w-50-l">
               <Card>
                 <div className="pa0-s pa4-ns near-black">
                   <div className="flex flex-row mb5-s mb7-ns">
@@ -48,8 +48,8 @@ class ReviewOrderPage extends Component {
                     </div>
                   </div>
                   <div className="f5">Total</div>
-                  <div className="f3 b mt3 mb6-s mb7-ns">
-                    <Billing billing={appProduct.billing || { free: true }} />
+                  <div className="mt3 mb6-s mb7-ns">
+                    <Billing billing={appProduct.billing} />
                   </div>
                   <div className="mb7-s mb8-ns">
                     <div className="f5">Billing info</div>

@@ -2,6 +2,7 @@ import React, { Component, createElement } from 'react'
 import PropTypes from 'prop-types'
 import marksy from 'marksy'
 
+import Billing from './Billing'
 import GetButton from './GetButton'
 
 /* eslint-disable react/display-name, react/prop-types */
@@ -28,6 +29,7 @@ class ProductDescription extends Component {
 
   static propTypes = {
     id: PropTypes.string.isRequired,
+    billing: PropTypes.object.isRequired,
     description: PropTypes.string.isRequired,
     registry: PropTypes.string.isRequired,
   }
@@ -58,10 +60,11 @@ class ProductDescription extends Component {
   }
 
   render() {
-    const { description, id } = this.props
+    const { billing, description, id } = this.props
     return (
       <div className="mh6-s mh0-ns near-black f5">
-        <div className="pb3-s">{compile(description).tree}</div>
+        <Billing billing={billing} />
+        <div className="pt5 pb3-s pb10-ns">{compile(description).tree}</div>
         <div className="h3">
           <div
             className={`bottom-0 left-0 w-100 z-2 db-s dn-ns b--white bb bw2 get-button-shadow bg-white ${

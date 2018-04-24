@@ -40,7 +40,6 @@ class ProductPage extends Component {
               seller={appProduct.vendor}
               price={0}
               category={appProduct.categories[0]}
-              billing={appProduct.billing || { free: true }}
             />
             <div className="flex justify-center">
               <div className="w-100 w-80-ns">
@@ -48,6 +47,7 @@ class ProductPage extends Component {
                   id={appProduct.linkText}
                   description={appProduct.fullDescription || ''}
                   registry={appProduct.registry}
+                  billing={appProduct.billing}
                 />
               </div>
             </div>
