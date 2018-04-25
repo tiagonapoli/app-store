@@ -40,6 +40,9 @@
     },
     {
       "name": "read-public-registry-assets"
+    },
+    {
+      "name": "create-delete-workspace"
     }
   ]
 }

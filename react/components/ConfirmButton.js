@@ -1,20 +1,55 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'react-apollo'
+import { compose, graphql } from 'react-apollo'
 import Button from '@vtex/styleguide/lib/Button'
 
 import NoPermissionModal from './NoPermissionModal'
 import buyAppMutation from '../mutations/buyAppMutation.gql'
+import workspaces from '../queries/workspaces.gql'
+import createWorkspace from '../mutations/createWorkspace.gql'
+
+// GET ACCOUNT FROM USER
+const account = 'extensions'
 
 class ConfirmButton extends Component {
   static propTypes = {
     appName: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     buyApp: PropTypes.func.isRequired,
+    createWorkspace: PropTypes.func,
+    workspaces: PropTypes.object,
   }
 
   state = {
     isModalOpen: false,
+  }
+
+  createDraftWorkspace = () => {
+    const {
+      createWorkspace,
+      workspaces: { workspaces },
+    } = this.props
+    const DRAFT = 'draft'
+    console.log('%%%%%%%%%%%%%%', workspaces)
+    if (workspaces.find(({ name }) => DRAFT === name)) {
+      window.location.href = `${DRAFT}--${account}.myvtex.com/admin/extensions`
+    } else {
+      createWorkspace({
+        variables: {
+          account,
+          workspace: DRAFT,
+        },
+      })
+        .then(() => {
+          window.location.href = `${DRAFT}--${account}.myvtex.com/admin/extensions`
+        })
+        .catch(e => {
+          console.error(`Failed to create workspace: ${e}`)
+          window.alert(
+            `There was an error creating workspace '${DRAFT}'. Please reload this page and try again shortly.`
+          )
+        })
+    }
   }
 
   handleClick = () => {
@@ -25,6 +60,7 @@ class ConfirmButton extends Component {
       })
       .catch(e => {
         console.log('ERROR', e)
+        this.createDraftWorkspace()
         this.handleModal()
       })
   }
@@ -48,4 +84,16 @@ class ConfirmButton extends Component {
     )
   }
 }
-export default graphql(buyAppMutation, { name: 'buyApp' })(ConfirmButton)
+export default compose(
+  graphql(buyAppMutation, { name: 'buyApp' }),
+  graphql(createWorkspace, { name: 'createWorkspace' }),
+  graphql(workspaces, {
+    name: 'workspaces',
+    options: {
+      ssr: false,
+      variables: {
+        account: account,
+      },
+    },
+  })
+)(ConfirmButton)
