@@ -12,7 +12,7 @@ import Card from '@vtex/styleguide/lib/Card'
 
 import appProductQuery from './queries/appProductQuery.gql'
 
-import imagePath from './utils/imagePath'
+import { imagePath } from './utils/utils'
 import AppIcon from './components/AppIcon'
 import BillingInfo from './components/BillingInfo'
 import ConfirmButton from './components/ConfirmButton'
@@ -38,7 +38,7 @@ class ReviewOrderPage extends Component {
     } = this.props
     const { appProduct, loading } = data
     return (
-      <div className="w-100 vh-100 bg-light-silver tc pb10-ns">
+      <div className="w-100 vh-100-ns bg-light-silver tc pb10-ns">
         <div className="pv6-s pt9-ns mb6-ns near-black f4-s f2-ns fw3">
           {this.translate('reviewOrder')}
         </div>

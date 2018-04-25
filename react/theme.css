@@ -58,10 +58,34 @@
 
 .slideDown {
   transition: 0.5s;
-  top: 0;
+  top: 4.5rem;
 }
 
 .slideUp {
   transition: 0.5s;
   top: -10rem;
+}
+
+.slideDownMobile {
+  transition: 0.5s;
+  top: 0;
+}
+
+.slideUpMobile {
+  transition: 0.5s;
+  top: -10rem;
+}
+
+.borderTransitionIn {
+  border-bottom-style: solid;
+  border-bottom-width: 0.125rem;
+  border-bottom-color: #f71963;
+  transition: border-bottom-color 0.5s ease-out 0.5s, width 0.5s ease-out 0.05s;
+}
+
+.borderTransitionOut {
+  border-bottom-style: solid;
+  border-bottom-width: 0.125rem;
+  border-bottom-color: transparent;
+  transition: border-bottom-color 0.5s ease-out 0.5s, width 0.5s ease-out 0.05s;
 }

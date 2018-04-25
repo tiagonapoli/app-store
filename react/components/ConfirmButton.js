@@ -12,7 +12,7 @@ class ConfirmButton extends Component {
   render() {
     const { value } = this.props
     return (
-      <div className="bg-rebel-pink tc br2 w-100">
+      <div className="bg-rebel-pink hover-bg-heavy-rebel-pink tc br2 w-100">
         <Button onClick={this.handleClick} block>
           <span className="white">{value}</span>
         </Button>

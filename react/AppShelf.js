@@ -5,7 +5,7 @@ import { graphql } from 'react-apollo'
 import productsQuery from './queries/productsQuery.gql'
 
 import Loading from './components/Loading'
-import AppItem from './components/AppItem'
+import AppItem from './AppItem'
 
 class AppShelf extends Component {
   static propTypes = {
@@ -51,8 +51,7 @@ const defaultOptions = {
     variables: {
       query: props.query,
       from: 0,
-      quantity: 3,
-      orderBy: 'OrderByTopSaleDESC',
+      to: 2,
     },
   }),
 }

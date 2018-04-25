@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Card from '@vtex/styleguide/lib/Card'
 
-import AppCategory from './AppCategory'
-import AppIcon from './AppIcon'
-import GetButton from './GetButton'
-import withNavigate from '../withNavigate'
+import AppCategory from './components/AppCategory'
+import AppIcon from './components/AppIcon'
+import GetButton from './components/GetButton'
+import withNavigate from './withNavigate'
 
 class AppItem extends Component {
   static propTypes = {

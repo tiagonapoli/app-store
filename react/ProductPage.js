@@ -4,7 +4,7 @@ import { compose, graphql } from 'react-apollo'
 
 import appProductQuery from './queries/appProductQuery.gql'
 
-import imagePath from './utils/imagePath'
+import { imagePath } from './utils/utils'
 import Loading from './components/Loading'
 import ProductDescription from './components/ProductDescription'
 import ProductHeader from './components/ProductHeader'
@@ -29,7 +29,7 @@ class ProductPage extends Component {
     const { appProductQuery } = this.props
     const { appProduct } = appProductQuery
     return (
-      <div className="flex justify-center">
+      <div className="w-100 vh-100-ns flex justify-center">
         {appProduct ? (
           <div className="w-100 w-70-ns">
             <ProductHeader

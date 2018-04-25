@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 
+import { removeSlashes } from '../utils/utils'
+
 class AppCategory extends Component {
   static propTypes = {
     category: PropTypes.string.isRequired,
@@ -12,17 +14,15 @@ class AppCategory extends Component {
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
-  removeSlashes = category => category.replace(/\//g, '')
-
   render() {
     const { category, seller, homePage } = this.props
     return (
       <div
-        className={`flex flex-wrap f6-s f5-ns ttc ${
+        className={`flex flex-wrap items-center h1 f6-s f5-ns ttc ${
           homePage ? 'gray' : 'dark-gray'
         }`}
       >
-        {this.removeSlashes(category) || 'Sales'}
+        {removeSlashes(category) || 'Sales'}
         <div className="flex items-center f9 light-gray mh2">&#9679;</div>
         <div>
           {this.translate('developedBy')} <span className="ttu">{seller}</span>
