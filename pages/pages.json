@@ -21,6 +21,9 @@
     "store/review": {
       "component": "ReviewOrderPage"
     },
+    "store/home/shelf": {
+      "component": "vtex.shelf/Shelf"
+    },
     "store/home/appItem": {
       "component": "AppItem"
     }
