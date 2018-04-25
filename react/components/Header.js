@@ -41,9 +41,15 @@ class Header extends Component {
     const currentScroll = window.scrollY
     const { scroll } = this.state
     if (currentScroll < scroll) {
-      this.setState({ shouldShowSearch: true, scroll: currentScroll })
+      this.setState({
+        shouldShowSearch: true,
+        scroll: currentScroll,
+      })
     } else {
-      this.setState({ shouldShowSearch: false, scroll: currentScroll })
+      this.setState({
+        shouldShowSearch: false,
+        scroll: currentScroll,
+      })
     }
   }
 
