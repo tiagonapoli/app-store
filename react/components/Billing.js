@@ -30,10 +30,14 @@ class Billing extends Component {
       isFixed && billing.policies[0].billing.items.length === 1
     const metricsIndex = isFixed ? 1 : 0
     const ranges =
+      !billing.free &&
+      !isFixedOnly &&
       billing.policies[0].billing.items[metricsIndex].calculatedByMetricUnit &&
       billing.policies[0].billing.items[metricsIndex].calculatedByMetricUnit
         .ranges
     const metricName =
+      !billing.free &&
+      !isFixedOnly &&
       billing.policies[0].billing.items[metricsIndex].calculatedByMetricUnit &&
       billing.policies[0].billing.items[metricsIndex].calculatedByMetricUnit
         .metricName
