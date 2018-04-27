@@ -30,7 +30,6 @@ class ConfirmButton extends Component {
       workspaces: { workspaces },
     } = this.props
     const DRAFT = 'draft'
-    console.log('%%%%%%%%%%%%%%', workspaces)
     if (workspaces.find(({ name }) => DRAFT === name)) {
       window.location.href = `${DRAFT}--${account}.myvtex.com/admin/extensions`
     } else {
