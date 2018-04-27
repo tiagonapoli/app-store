@@ -22,7 +22,7 @@ class AppCategory extends Component {
           homePage ? 'gray' : 'dark-gray'
         }`}
       >
-        {removeSlashes(category) || 'Sales'}
+        {removeSlashes(category) || 'Smartcheckout'}
         <div className="flex items-center f9 light-gray mh2">&#9679;</div>
         <div>
           {this.translate('developedBy')} <span className="ttu">{seller}</span>

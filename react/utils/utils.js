@@ -1,5 +1,5 @@
 export function removeSlashes(text) {
-  return text && text.replace(/\//g, '')
+  return !!text && text.replace(/\//g, '')
 }
 
 export function imagePath(availableApp) {

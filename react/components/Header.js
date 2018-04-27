@@ -63,6 +63,10 @@ class Header extends Component {
     window.location.assign('/')
   }
 
+  handleLogin = () => {
+    window.location.assign('/_v/sso')
+  }
+
   render() {
     const { logged } = this.props
     const { shouldShowSearch, scroll, headerSize, jumbontronSize } = this.state
@@ -108,7 +112,7 @@ class Header extends Component {
               />
             ) : (
               <div className="b--white bw1 ba br2">
-                <Button onClick={this.handleModal}>
+                <Button onClick={this.handleLogin}>
                   <span className="white">{this.translate('login')}</span>
                 </Button>
               </div>

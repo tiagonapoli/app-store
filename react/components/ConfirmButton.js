@@ -55,12 +55,11 @@ class ConfirmButton extends Component {
   handleClick = () => {
     const { buyApp, appName } = this.props
     buyApp({ variables: { appName, termsOfUseAccepted: true } })
-      .then(res => {
-        console.log('%%%%%%%%%%%%%', res)
+      .then(() => {
+        this.createDraftWorkspace()
       })
       .catch(e => {
         console.log('ERROR', e)
-        this.createDraftWorkspace()
         this.handleModal()
       })
   }
