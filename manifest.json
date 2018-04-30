@@ -1,12 +1,14 @@
 {
   "name": "extensions",
   "vendor": "vtex",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "title": "Extensions",
   "description": "Extension store app",
   "mustUpdateAt": "2019-04-10",
   "categories": [],
-  "registries": ["smartcheckout"],
+  "registries": [
+    "smartcheckout"
+  ],
   "settingsSchema": {},
   "dependencies": {
     "vtex.apps-graphql": "2.x",
