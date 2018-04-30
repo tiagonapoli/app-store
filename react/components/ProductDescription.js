@@ -63,7 +63,7 @@ class ProductDescription extends Component {
     const { billing, description, id } = this.props
     return (
       <div className="mh6-s mh0-ns near-black f5">
-        <Billing billing={billing} />
+        <Billing billingOptions={billing} />
         <div className="pt5 pb3-s pb10-ns">{compile(description).tree}</div>
         <div className="h3">
           <div

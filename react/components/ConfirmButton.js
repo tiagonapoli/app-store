@@ -33,7 +33,6 @@ class ConfirmButton extends Component {
       workspaces: { workspaces },
     } = this.props
     const DRAFT = 'draft'
-    window.location.href = installApp
     const installApp = `https://${DRAFT}--${account}.myvtex.com/admin/extensions/${appName}/i`
     if (workspaces.find(({ name }) => DRAFT === name)) {
       window.location.href = installApp
@@ -54,15 +53,10 @@ class ConfirmButton extends Component {
   }
 
   handleClick = () => {
-    this.createDraftWorkspace()
     const { buyApp, appName } = this.props
     buyApp({ variables: { appName, termsOfUseAccepted: true } })
-      .then(() => {
-        this.createDraftWorkspace()
-      })
-      .catch(e => {
-        this.handleModal()
-      })
+      .then(this.createDraftWorkspace())
+      .catch(this.handleModal())
   }
 
   handleModal = () => {

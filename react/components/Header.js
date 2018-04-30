@@ -40,17 +40,10 @@ class Header extends Component {
   watchScrollUpMobile = () => {
     const currentScroll = window.scrollY
     const { scroll } = this.state
-    if (currentScroll < scroll) {
-      this.setState({
-        shouldShowSearch: true,
-        scroll: currentScroll,
-      })
-    } else {
-      this.setState({
-        shouldShowSearch: false,
-        scroll: currentScroll,
-      })
-    }
+    this.setState({
+      shouldShowSearch: currentScroll < scroll,
+      scroll: currentScroll,
+    })
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })

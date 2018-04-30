@@ -49,7 +49,7 @@ class ReviewOrderPage extends Component {
                   </div>
                   <div className="f5">Total</div>
                   <div className="mt3 mb6-s mb7-ns">
-                    <Billing billing={appProduct.billing} />
+                    <Billing billingOptions={appProduct.billing} />
                   </div>
                   <div className="mb7-s mb8-ns">
                     <div className="f5">Billing info</div>

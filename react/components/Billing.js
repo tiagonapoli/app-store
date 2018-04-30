@@ -4,7 +4,7 @@ import { injectIntl, intlShape } from 'react-intl'
 
 class Billing extends Component {
   static propTypes = {
-    billing: PropTypes.object.isRequired,
+    billingOptions: PropTypes.object.isRequired,
     intl: intlShape.isRequired,
   }
 
@@ -24,36 +24,36 @@ class Billing extends Component {
       .reduce((acc, value) => acc + value.substring(0, 1), '')
 
   render() {
-    const { billing } = this.props
-    const isFixed = !billing.free && billing.policies[0].billing.items[0].fixed
+    const { billingOptions } = this.props
+    const isFixed = !billingOptions.free && billingOptions.policies[0].billing.items[0].fixed
     const isFixedOnly =
-      isFixed && billing.policies[0].billing.items.length === 1
+      isFixed && billingOptions.policies[0].billing.items.length === 1
     const metricsIndex = isFixed ? 1 : 0
     const ranges =
-      !billing.free &&
+      !billingOptions.free &&
       !isFixedOnly &&
-      billing.policies[0].billing.items[metricsIndex].calculatedByMetricUnit &&
-      billing.policies[0].billing.items[metricsIndex].calculatedByMetricUnit
+      billingOptions.policies[0].billing.items[metricsIndex].calculatedByMetricUnit &&
+      billingOptions.policies[0].billing.items[metricsIndex].calculatedByMetricUnit
         .ranges
     const metricName =
-      !billing.free &&
+      !billingOptions.free &&
       !isFixedOnly &&
-      billing.policies[0].billing.items[metricsIndex].calculatedByMetricUnit &&
-      billing.policies[0].billing.items[metricsIndex].calculatedByMetricUnit
+      billingOptions.policies[0].billing.items[metricsIndex].calculatedByMetricUnit &&
+      billingOptions.policies[0].billing.items[metricsIndex].calculatedByMetricUnit
         .metricName
     return (
       <div className="ph5 br3 bg-light-silver normal near-black">
-        {billing.free || isFixedOnly ? (
+        {billingOptions.free || isFixedOnly ? (
           <div className="w-100 flex flex-row pv5">
             <div className="w-10 f5 normal ">{this.translate('price')}</div>
             <div className="w-90 tr f5 b">
-              {billing.free
+              {billingOptions.free
                 ? this.translate('free')
                 : isFixedOnly && (
                   <div className="w-100 flex flex-row justify-end">
                     {this.formatPrice(
-                      billing.policies[0].billing.items[0].fixed,
-                      billing.policies[0].billing.items[0].itemCurrency,
+                      billingOptions.policies[0].billing.items[0].fixed,
+                      billingOptions.policies[0].billing.items[0].itemCurrency,
                       2
                     )}
                     <span className="normal ml2 ttl">
@@ -87,8 +87,8 @@ class Billing extends Component {
                     {isFixed && (
                       <div className="b mr2">
                         {this.formatPrice(
-                          billing.policies[0].billing.items[0].fixed,
-                          billing.policies[0].billing.items[0].itemCurrency,
+                          billingOptions.policies[0].billing.items[0].fixed,
+                          billingOptions.policies[0].billing.items[0].itemCurrency,
                           0
                         )}
                         <span className="ml2 normal">+</span>
@@ -97,7 +97,7 @@ class Billing extends Component {
                     <div className="b">
                       {this.formatPrice(
                         range.multiplier,
-                        billing.policies[0].billing.items[metricsIndex]
+                        billingOptions.policies[0].billing.items[metricsIndex]
                           .itemCurrency,
                         2
                       )}
@@ -110,7 +110,7 @@ class Billing extends Component {
                       ({range.inclusiveTo ? (
                         <span>
                           {range.exclusiveFrom} {this.translate('to')}{' '}
-                          {range.inclusiveTo}{' '}
+                          {range.inclusiveTo}
                         </span>
                       ) : (
                         <span>
