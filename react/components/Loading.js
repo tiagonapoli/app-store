@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-class Loading extends Component {
+class Loading extends PureComponent {
   render() {
     return (
       <svg

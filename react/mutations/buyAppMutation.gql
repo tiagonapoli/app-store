@@ -1,0 +1,7 @@
+mutation purchaseApp($appName: String!, $termsOfUseAccepted: Boolean!)
+  @context(scope: "private") {
+  purchase(appName: $appName, termsOfUseAccepted: $termsOfUseAccepted) {
+    purchased
+    billingOptions
+  }
+}

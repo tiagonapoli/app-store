@@ -39,7 +39,7 @@ class AppItem extends Component {
     } = this.props
     return (
       <div
-        className="w-90-s w-50-m w-30-l mh5 h5 pointer"
+        className="w-90-s w-50-m w-30-l mt5-s mt0-ns mh5 h5 pointer"
         onClick={this.handleClick}
       >
         <Card>

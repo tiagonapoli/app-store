@@ -29,7 +29,7 @@ class ProductPage extends Component {
     const { appProductQuery } = this.props
     const { appProduct } = appProductQuery
     return (
-      <div className="w-100 vh-100-ns flex justify-center">
+      <div className="w-100 flex justify-center">
         {appProduct ? (
           <div className="w-100 w-70-ns">
             <ProductHeader
@@ -39,14 +39,15 @@ class ProductPage extends Component {
               name={appProduct.name}
               seller={appProduct.vendor}
               price={0}
-              category={appProduct.categories[0]}
+              category={appProduct.categories ? appProduct.categories[0] : ''}
             />
             <div className="flex justify-center">
               <div className="w-100 w-80-ns">
                 <ProductDescription
                   id={appProduct.linkText}
-                  description={appProduct.fullDescription}
+                  description={appProduct.fullDescription || ''}
                   registry={appProduct.registry}
+                  billing={appProduct.billing}
                 />
               </div>
             </div>

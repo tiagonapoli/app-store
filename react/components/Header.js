@@ -6,7 +6,6 @@ import Button from '@vtex/styleguide/lib/Button'
 import Profile from './Profile'
 import VTEXIcon from './icons/VTEXIcon'
 import BackIcon from './icons/BackIcon'
-import NoPermissionModal from './NoPermissionModal'
 import SearchBox from './SearchBox'
 
 class Header extends Component {
@@ -16,7 +15,6 @@ class Header extends Component {
   }
 
   state = {
-    isModalOpen: false,
     scroll: 0,
     shouldShowSearch: true,
     headerSize: 0,
@@ -29,8 +27,9 @@ class Header extends Component {
     this.setState({
       headerSize: window.document.getElementById('extension-store-header')
         .offsetHeight,
-      jumbontronSize: window.document.getElementById('jumbotron-home') && window.document.getElementById('jumbotron-home')
-        .offsetHeight,
+      jumbontronSize:
+        window.document.getElementById('jumbotron-home') &&
+        window.document.getElementById('jumbotron-home').offsetHeight,
     })
   }
 
@@ -41,11 +40,10 @@ class Header extends Component {
   watchScrollUpMobile = () => {
     const currentScroll = window.scrollY
     const { scroll } = this.state
-    if (currentScroll < scroll) {
-      this.setState({ shouldShowSearch: true, scroll: currentScroll })
-    } else {
-      this.setState({ shouldShowSearch: false, scroll: currentScroll })
-    }
+    this.setState({
+      shouldShowSearch: currentScroll < scroll,
+      scroll: currentScroll,
+    })
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
@@ -58,8 +56,8 @@ class Header extends Component {
     window.location.assign('/')
   }
 
-  handleModal = () => {
-    this.setState({ isModalOpen: !this.state.isModalOpen })
+  handleLogin = () => {
+    window.location.assign('/_v/sso')
   }
 
   render() {
@@ -103,20 +101,16 @@ class Header extends Component {
               <Profile
                 name="Bill Zoo"
                 store="Redley"
-                pictureUrl="https://i1.wp.com/www.metalinjection.net/wp-content/uploads/2014/08/Giraffe-Tongue-Orchestra.jpg?fit=700%2C525"
+                pictureUrl="https://hindizenblog.files.wordpress.com/2009/03/harshil-gudka-379676.jpg"
               />
             ) : (
               <div className="b--white bw1 ba br2">
-                <Button onClick={this.handleModal}>
+                <Button onClick={this.handleLogin}>
                   <span className="white">{this.translate('login')}</span>
                 </Button>
               </div>
             )}
           </div>
-          <NoPermissionModal
-            onChange={this.handleModal}
-            isOpen={this.state.isModalOpen}
-          />
         </div>
         {!notHome && (
           <div

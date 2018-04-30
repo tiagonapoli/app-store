@@ -18,5 +18,12 @@
   "extensions.purchasePermission": "purchase permission",
   "extensions.homeText":
     "The largest marketplace of VTEX extensions ecosystem.",
-  "extensions.search": "Search"
+  "extensions.search": "Search",
+  "extensions.free": "Free",
+  "extensions.price": "Price",
+  "extensions.monthly": "Monthly",
+  "extensions.per": "per",
+  "extensions.to": "to",
+  "extensions.moreThan": "more than",
+  "extensions.buyError": "There was an error buying the extension. Please reload this page and try again shortly."
 }

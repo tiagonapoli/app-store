@@ -1,0 +1,5 @@
+query Workspaces($account: String!) {
+  workspaces(account: $account) {
+    name
+  }
+}

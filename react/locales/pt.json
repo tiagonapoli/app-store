@@ -18,5 +18,11 @@
   "extensions.purchasePermission": "permissão para compras",
   "extensions.homeText":
     "O maior makertplace de extensões do ecossistema VTEX.",
-  "extensions.search": "Buscar"
+  "extensions.search": "Buscar",
+  "extensions.free": "Grátis",
+  "extensions.monthly": "Por Mês",
+  "extensions.per": "por",
+  "extensions.to": "a",
+  "extensions.moreThan": "mais de",
+  "extensions.buyError": "Ocorreu um erro durante a compra da extensão. Por favor, atualize a págine e tente novamente."
 }

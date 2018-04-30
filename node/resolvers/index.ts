@@ -47,6 +47,7 @@ export default {
       categories,
       title,
       policies,
+      billingOptions,
     } = await registry.getAppManifest(slug, version)
 
     const fields = graphqlFields(info)
@@ -60,6 +61,7 @@ export default {
       policies
     )
     return {
+      billing: billingOptions,
       categories,
       fields,
       icon: 'public/metadata/icon.png',
