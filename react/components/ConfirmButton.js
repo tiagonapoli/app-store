@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { injectIntl, intlShape } from 'react-intl'
 import { compose, graphql } from 'react-apollo'
 import Button from '@vtex/styleguide/lib/Button'
 
@@ -18,6 +19,7 @@ class ConfirmButton extends Component {
     buyApp: PropTypes.func.isRequired,
     createWorkspace: PropTypes.func,
     workspaces: PropTypes.object,
+    intl: intlShape.isRequired,
   }
 
   state = {
@@ -26,12 +28,15 @@ class ConfirmButton extends Component {
 
   createDraftWorkspace = () => {
     const {
+      appName,
       createWorkspace,
       workspaces: { workspaces },
     } = this.props
     const DRAFT = 'draft'
+    window.location.href = installApp
+    const installApp = `https://${DRAFT}--${account}.myvtex.com/admin/extensions/${appName}/i`
     if (workspaces.find(({ name }) => DRAFT === name)) {
-      window.location.href = `${DRAFT}--${account}.myvtex.com/admin/extensions`
+      window.location.href = installApp
     } else {
       createWorkspace({
         variables: {
@@ -40,25 +45,22 @@ class ConfirmButton extends Component {
         },
       })
         .then(() => {
-          window.location.href = `${DRAFT}--${account}.myvtex.com/admin/extensions`
+          window.location.href = installApp
         })
         .catch(e => {
-          console.error(`Failed to create workspace: ${e}`)
-          window.alert(
-            `There was an error creating workspace '${DRAFT}'. Please reload this page and try again shortly.`
-          )
+          window.alert(this.translate('buyError'))
         })
     }
   }
 
   handleClick = () => {
+    this.createDraftWorkspace()
     const { buyApp, appName } = this.props
     buyApp({ variables: { appName, termsOfUseAccepted: true } })
       .then(() => {
         this.createDraftWorkspace()
       })
       .catch(e => {
-        console.log('ERROR', e)
         this.handleModal()
       })
   }
@@ -66,6 +68,8 @@ class ConfirmButton extends Component {
   handleModal = () => {
     this.setState({ isModalOpen: !this.state.isModalOpen })
   }
+
+  translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
     const { value } = this.props
@@ -93,5 +97,6 @@ export default compose(
         account: account,
       },
     },
-  })
+  }),
+  injectIntl
 )(ConfirmButton)

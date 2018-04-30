@@ -24,5 +24,6 @@
   "extensions.monthly": "Por Mes",
   "extensions.per": "por",
   "extensions.to": "a",
-  "extensions.moreThan": "más de"
+  "extensions.moreThan": "más de",
+  "extensions.buyError": "Se produjo un error durante la compra de la extensión. Por favor, actualice la página e inténtelo de nuevo."
 }

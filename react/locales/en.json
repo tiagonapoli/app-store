@@ -24,5 +24,6 @@
   "extensions.monthly": "Monthly",
   "extensions.per": "per",
   "extensions.to": "to",
-  "extensions.moreThan": "more than"
+  "extensions.moreThan": "more than",
+  "extensions.buyError": "There was an error buying the extension. Please reload this page and try again shortly."
 }
