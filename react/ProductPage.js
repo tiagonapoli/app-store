@@ -29,7 +29,7 @@ class ProductPage extends Component {
     const { appProductQuery } = this.props
     const { appProduct } = appProductQuery
     return (
-      <div className="w-100 flex justify-center">
+      <div className="w-100 h-100 flex justify-center">
         {appProduct ? (
           <div className="w-100 w-70-ns">
             <ProductHeader
@@ -53,7 +53,7 @@ class ProductPage extends Component {
             </div>
           </div>
         ) : (
-          <div className="mv9">
+          <div className="h-100 flex items-center">
             <Loading />
           </div>
         )}

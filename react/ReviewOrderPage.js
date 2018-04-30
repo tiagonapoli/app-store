@@ -27,13 +27,15 @@ class ReviewOrderPage extends Component {
     const { data } = this.props
     const { appProduct, loading } = data
     return (
-      <div className="w-100 bg-light-silver tc pb10-ns">
-        <div className="pv6-s pt9-ns mb6-ns near-black f4-s f2-ns fw3">
+      <div className="w-100 h-100 bg-light-silver tc pv6-s pt9-ns">
+        <div className="near-black f4-s f2-ns fw3 mt6 mb7">
           {this.translate('reviewOrder')}
         </div>
         <div className="flex justify-center tl">
           {loading ? (
-            <Loading />
+            <div className="h-100 flex items-center">
+              <Loading />
+            </div>
           ) : (
             <div className="w-90-s w-70-m w-50-l w-40-xl">
               <Card>
