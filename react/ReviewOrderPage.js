@@ -159,7 +159,7 @@ const options = {
   options: props => ({
     variables: {
       slug: props.params.slug,
-    }
+    },
   }),
 }
 
