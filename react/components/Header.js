@@ -19,6 +19,7 @@ class Header extends Component {
     shouldShowSearch: true,
     headerSize: 0,
     jumbontronSize: 0,
+    store: '',
   }
 
   componentDidMount() {
@@ -30,6 +31,7 @@ class Header extends Component {
       jumbontronSize:
         window.document.getElementById('jumbotron-home') &&
         window.document.getElementById('jumbotron-home').offsetHeight,
+      store: window.localStorage.getItem('account') || '',
     })
   }
 
@@ -62,7 +64,7 @@ class Header extends Component {
 
   render() {
     const { logged } = this.props
-    const { shouldShowSearch, scroll, headerSize, jumbontronSize } = this.state
+    const { shouldShowSearch, scroll, headerSize, jumbontronSize, store } = this.state
     const notHome = window.location && window.location.pathname.length > 1
     const titleClasses = notHome ? 'dn db-ns' : 'db'
     return (
@@ -97,10 +99,10 @@ class Header extends Component {
             </div>
           </div>
           <div className="tr-ns flex items-center">
-            {!logged ? (
+            {logged ? (
               <Profile
                 name="Bill Zoo"
-                store="Redley"
+                store={store}
                 pictureUrl="https://hindizenblog.files.wordpress.com/2009/03/harshil-gudka-379676.jpg"
               />
             ) : (

@@ -21,6 +21,10 @@ class ReviewOrderPage extends Component {
     intl: intlShape.isRequired,
   }
 
+  state = {
+    store: '',
+  }
+  
   componentDidUpdate(prevProps) {
     const { data: { appProduct } } = this.props
     if (appProduct !== prevProps.data.appProduct &&
@@ -29,9 +33,14 @@ class ReviewOrderPage extends Component {
     }
   }
 
+  componentDidMount() {
+    this.setState({ store: window.localStorage.getItem('account') || '' })
+  }
+
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
+    const { store } = this.state
     const { data } = this.props
     const { appProduct, loading } = data
     return (
@@ -67,7 +76,7 @@ class ReviewOrderPage extends Component {
                       <BillingInfo
                         name="Bill Zoo"
                         email="bill@redley.com"
-                        store="Redley"
+                        store={store}
                         pictureUrl="https://hindizenblog.files.wordpress.com/2009/03/harshil-gudka-379676.jpg"
                       />
                     </div>

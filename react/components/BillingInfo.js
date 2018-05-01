@@ -32,7 +32,7 @@ class BillingInfo extends Component {
           )}
         </div>
         <div className="flex flex-column ml4">
-          <div className="fw5 f5">{store}</div>
+          <div className="fw5 f5 ttc">{store}</div>
           <div className="flex items-center f6">
             <span className="db mid-gray">{name.split(' ')[0]}</span>
             <div className="flex items-center f9 light-gray mh2">&#9679;</div>

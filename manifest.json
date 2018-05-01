@@ -38,6 +38,13 @@
       }
     },
     {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "vtexid.vtex.com.br",
+        "path": "/api/vtexid/pub/authenticated/user"
+      }
+    },
+    {
       "name": "read-private-registry-assets"
     },
     {

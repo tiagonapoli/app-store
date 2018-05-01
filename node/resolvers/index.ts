@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 import { ColossusContext } from 'colossus'
+import * as cookies from 'cookie'
 import graphqlFields from 'graphql-fields'
 import { compose, equals, find, head, map, prop } from 'ramda'
 import appRegistry from './apps/appRegistry'
@@ -8,6 +9,7 @@ import { matchAppId, removeBuild } from './apps/utils/locator'
 import { resolveProductFields } from './catalog/fieldsResolver'
 import { withAuthToken } from './catalog/header'
 import { paths } from './catalog/paths'
+import { vtexIdPaths } from './vtexid/paths'
 
 export default {
   appProduct: async (
@@ -75,4 +77,13 @@ export default {
       slug,
     }
   },
+  userData: async (_, __, ctx: ColossusContext) => {
+    const { vtex: { authToken }, request: { headers: { cookie } } } = ctx
+    return axios(vtexIdPaths.user(), {
+      headers: {
+        'Proxy-Authorization': authToken,
+        cookie,
+      }
+    }).then(prop('data'))
+  }
 }
