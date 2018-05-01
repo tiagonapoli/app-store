@@ -11,6 +11,10 @@ class HomePage extends Component {
     intl: intlShape.isRequired,
   }
 
+  static contextTypes = {
+    prefetchPage: PropTypes.func,
+  }
+
   state = {
     scroll: 0,
     jumbontronSize: 0,
@@ -20,6 +24,8 @@ class HomePage extends Component {
 
   componentDidMount() {
     window.document.title = 'Extension Store'
+    this.context.prefetchPage('store/product')
+    this.context.prefetchPage('store/review')
     window.addEventListener('scroll', this.watchScrollUpDesktop)
     this.watchScrollUpDesktop()
     this.setState({
