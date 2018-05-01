@@ -17,9 +17,10 @@
     "Não conseguimos identificar sua {purchasePermission} de extensões. Por favor contate o administrador da sua plataforma VTEX.",
   "extensions.purchasePermission": "permissão para compras",
   "extensions.homeText":
-    "O maior makertplace de extensões do ecossistema VTEX.",
+    "O maior marketplace de extensões do ecossistema VTEX.",
   "extensions.search": "Buscar",
   "extensions.free": "Grátis",
+  "extensions.price": "Preço",
   "extensions.monthly": "Por Mês",
   "extensions.per": "por",
   "extensions.to": "a",

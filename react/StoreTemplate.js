@@ -11,9 +11,9 @@ export default class StoreTemplate extends Component {
 
   render() {
     return (
-      <div className="w-100 h-100 overflow-x-hidden">
+      <div className="w-100 h-100 overflow-x-hidden content">
         <Header logged />
-        <div className="h-100 pt9-ns">
+        <div className="h-100 pt9-ns content">
           {this.props.children ? this.props.children : <HomePage />}
         </div>
         <Footer />
