@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from 'axios'
 import { ColossusContext } from 'colossus'
-import * as cookies from 'cookie'
 import graphqlFields from 'graphql-fields'
 import { compose, equals, find, head, map, prop } from 'ramda'
 import appRegistry from './apps/appRegistry'
