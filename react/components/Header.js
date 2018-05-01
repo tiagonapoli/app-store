@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import Button from '@vtex/styleguide/lib/Button'
+import {Link} from 'render'
 
 import Profile from './Profile'
 import VTEXIcon from './icons/VTEXIcon'
@@ -54,10 +55,6 @@ class Header extends Component {
     window.history.back()
   }
 
-  handleHome = () => {
-    window.location.assign('/')
-  }
-
   handleLogin = () => {
     window.location.assign('/_v/sso')
   }
@@ -79,14 +76,15 @@ class Header extends Component {
               colorFill="white"
               className={`${notHome ? 'db dn-ns rotate-180' : 'dn'}`}
             />
-            <div
-              className={`pointer b f5-s f4-ns white tc tl-ns lh-solid ml3 ph3 b--white bl ${
-                notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
-              }`}
-              onClick={this.handleHome}
-            >
-              <span className={titleClasses}>Extension Store</span>
-            </div>
+            <Link page="store">
+              <div
+                className={`pointer b f5-s f4-ns white tc tl-ns lh-solid ml3 ph3 b--white bl ${
+                  notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
+                }`}
+              >
+                <span className={titleClasses}>Extension Store</span>
+              </div>
+            </Link>
             <div
               className={`pointer b f4 white tc tl-ns lh-solid ml3 ph3 b--white bl ${
                 notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
