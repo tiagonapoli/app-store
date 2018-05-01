@@ -21,9 +21,10 @@ class ReviewOrderPage extends Component {
     intl: intlShape.isRequired,
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { data: { appProduct } } = this.props
-    if (appProduct) {
+    if (appProduct !== prevProps.appProduct &&
+      appProduct) {
       window.document.title = appProduct.name
     }
   }

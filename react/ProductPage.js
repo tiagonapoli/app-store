@@ -25,9 +25,10 @@ class ProductPage extends Component {
     this.props.prefetch('store/review')
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const { appProduct } = this.props.appProductQuery
-    if (appProduct) {
+    if (this.props.appProductQuery !== prevProps.appProductQuery &&
+      appProduct) {
       window.document.title = appProduct.name
     }
   }
