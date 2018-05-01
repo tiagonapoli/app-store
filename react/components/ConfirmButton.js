@@ -15,6 +15,7 @@ const account = 'extensions'
 class ConfirmButton extends Component {
   static propTypes = {
     appName: PropTypes.string.isRequired,
+    billingPolicy:  PropTypes.object.isRequired,
     value: PropTypes.string.isRequired,
     buyApp: PropTypes.func.isRequired,
     createWorkspace: PropTypes.func,
@@ -53,8 +54,12 @@ class ConfirmButton extends Component {
   }
 
   handleClick = () => {
-    const { buyApp, appName } = this.props
-    buyApp({ variables: { appName, termsOfUseAccepted: true } })
+    const { buyApp, appName, billingPolicy } = this.props
+    if (billingPolicy && billingPolicy.free) {
+      return this.createDraftWorkspace()
+    }
+
+    return buyApp({ variables: { appName, termsOfUseAccepted: true } })
       .then(this.createDraftWorkspace)
       .catch(this.handleModal)
   }

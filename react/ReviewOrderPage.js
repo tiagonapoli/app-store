@@ -122,6 +122,7 @@ class ReviewOrderPage extends Component {
                   <div className="dn-s db-ns w-100 mt5">
                     <ConfirmButton
                       appName={appProduct.slug}
+                      billingPolicy={appProduct.billing}
                       value={this.translate('confirmButton')}
                     />
                   </div>
@@ -142,6 +143,7 @@ class ReviewOrderPage extends Component {
               <div className="db-s dn-ns w-100 mt7">
                 <ConfirmButton
                   appName={appProduct.slug}
+                  billingPolicy={appProduct.billing}
                   value={this.translate('confirmButtonMobile')}
                 />
               </div>
