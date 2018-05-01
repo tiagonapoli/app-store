@@ -9,17 +9,15 @@ import buyAppMutation from '../mutations/buyAppMutation.gql'
 import workspaces from '../queries/workspaces.gql'
 import createWorkspace from '../mutations/createWorkspace.gql'
 
-// GET ACCOUNT FROM USER
-const account = 'extensions'
-
 class ConfirmButton extends Component {
   static propTypes = {
     appName: PropTypes.string.isRequired,
-    billingPolicy:  PropTypes.object.isRequired,
+    billingPolicy: PropTypes.object.isRequired,
     value: PropTypes.string.isRequired,
     buyApp: PropTypes.func.isRequired,
     createWorkspace: PropTypes.func,
     workspaces: PropTypes.object,
+    store: PropTypes.string.object,
     intl: intlShape.isRequired,
   }
 
@@ -29,25 +27,26 @@ class ConfirmButton extends Component {
 
   createDraftWorkspace = () => {
     const {
+      store,
       appName,
       createWorkspace,
       workspaces: { workspaces },
     } = this.props
     const DRAFT = 'draft'
-    const installApp = `https://${DRAFT}--${account}.myvtex.com/admin/extensions/${appName}/i`
+    const installApp = `https://${DRAFT}--${store}.myvtex.com/admin/extensions/${appName}/i`
     if (workspaces.find(({ name }) => DRAFT === name)) {
       window.location.href = installApp
     } else {
       createWorkspace({
         variables: {
-          account,
+          account: store,
           workspace: DRAFT,
         },
       })
         .then(() => {
           window.location.href = installApp
         })
-        .catch(e => {
+        .catch(() => {
           window.alert(this.translate('buyError'))
         })
     }
@@ -58,7 +57,6 @@ class ConfirmButton extends Component {
     if (billingPolicy && billingPolicy.free) {
       return this.createDraftWorkspace()
     }
-
     return buyApp({ variables: { appName, termsOfUseAccepted: true } })
       .then(this.createDraftWorkspace)
       .catch(this.handleModal)
@@ -85,17 +83,22 @@ class ConfirmButton extends Component {
     )
   }
 }
-export default compose(
-  graphql(buyAppMutation, { name: 'buyApp' }),
-  graphql(createWorkspace, { name: 'createWorkspace' }),
-  graphql(workspaces, {
-    name: 'workspaces',
-    options: {
+
+const options = {
+  name: 'workspaces',
+  options: props => ({
+    variables: {
       ssr: false,
       variables: {
-        account: account,
+        account: props.store,
       },
     },
   }),
+}
+
+export default compose(
+  graphql(buyAppMutation, { name: 'buyApp' }),
+  graphql(createWorkspace, { name: 'createWorkspace' }),
+  graphql(workspaces, options),
   injectIntl
 )(ConfirmButton)

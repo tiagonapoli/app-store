@@ -121,6 +121,7 @@ class ReviewOrderPage extends Component {
                   </div>
                   <div className="dn-s db-ns w-100 mt5">
                     <ConfirmButton
+                      store={store}
                       appName={appProduct.slug}
                       billingPolicy={appProduct.billing}
                       value={this.translate('confirmButton')}
@@ -142,6 +143,7 @@ class ReviewOrderPage extends Component {
               </Card>
               <div className="db-s dn-ns w-100 mt7">
                 <ConfirmButton
+                  store={store}
                   appName={appProduct.slug}
                   billingPolicy={appProduct.billing}
                   value={this.translate('confirmButtonMobile')}
