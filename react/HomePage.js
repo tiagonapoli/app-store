@@ -19,6 +19,7 @@ class HomePage extends Component {
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   componentDidMount() {
+    window.document.title = 'Extension Store'
     window.addEventListener('scroll', this.watchScrollUpDesktop)
     this.watchScrollUpDesktop()
     this.setState({

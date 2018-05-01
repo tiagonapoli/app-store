@@ -21,6 +21,13 @@ class ReviewOrderPage extends Component {
     intl: intlShape.isRequired,
   }
 
+  componentDidUpdate() {
+    const { data: { appProduct } } = this.props
+    if (appProduct) {
+      window.document.title = appProduct.name
+    }
+  }
+
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
