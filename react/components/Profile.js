@@ -29,7 +29,7 @@ class Profile extends Component {
           {pictureUrl ? (
             <img src={pictureUrl} alt={name} />
           ) : (
-            <span className="ttu f5 fw5 near-black">{this.initials()}</span>
+            <span className="ttu f5 fw5 seriour-black">{this.initials()}</span>
           )}
         </button>
       </div>

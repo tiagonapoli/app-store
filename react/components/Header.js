@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose, graphql } from 'react-apollo'
 import { injectIntl, intlShape } from 'react-intl'
-import Button from '@vtex/styleguide/lib/Button'
-import {Link} from 'render'
+import { Link } from 'render'
 
+import profileQuery from '../queries/profileQuery.gql'
 import Profile from './Profile'
 import VTEXIcon from './icons/VTEXIcon'
 import BackIcon from './icons/BackIcon'
 import SearchBox from './SearchBox'
+import Loading from './Loading'
 
 class Header extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
-    logged: PropTypes.bool,
+    data: PropTypes.object,
   }
 
   state = {
@@ -60,7 +62,7 @@ class Header extends Component {
   }
 
   render() {
-    const { logged } = this.props
+    const { data: { loading, topbarData } } = this.props
     const { shouldShowSearch, scroll, headerSize, jumbontronSize, store } = this.state
     const notHome = window.location && window.location.pathname.length > 1
     const titleClasses = notHome ? 'dn db-ns' : 'db'
@@ -97,18 +99,14 @@ class Header extends Component {
             </div>
           </div>
           <div className="tr-ns flex items-center">
-            {logged ? (
+            {!loading ? (
               <Profile
-                name="Bill Zoo"
+                name={topbarData.profile.name}
                 store={store}
-                pictureUrl="https://hindizenblog.files.wordpress.com/2009/03/harshil-gudka-379676.jpg"
+                pictureUrl={topbarData.profile.picture}
               />
             ) : (
-              <div className="b--white bw1 ba br2">
-                <Button onClick={this.handleLogin}>
-                  <span className="white">{this.translate('login')}</span>
-                </Button>
-              </div>
+              <Loading />
             )}
           </div>
         </div>
@@ -141,4 +139,6 @@ class Header extends Component {
   }
 }
 
-export default injectIntl(Header)
+export default compose(
+  graphql(profileQuery, { options: { ssr: false } }),
+  injectIntl)(Header)

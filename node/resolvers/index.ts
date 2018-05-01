@@ -9,7 +9,6 @@ import { matchAppId, removeBuild } from './apps/utils/locator'
 import { resolveProductFields } from './catalog/fieldsResolver'
 import { withAuthToken } from './catalog/header'
 import { paths } from './catalog/paths'
-import { vtexIdPaths } from './vtexid/paths'
 
 export default {
   appProduct: async (
@@ -76,14 +75,5 @@ export default {
       registry: account,
       slug,
     }
-  },
-  userData: async (_, __, ctx: ColossusContext) => {
-    const { vtex: { authToken }, request: { headers: { cookie } } } = ctx
-    return axios(vtexIdPaths.user(), {
-      headers: {
-        'Proxy-Authorization': authToken,
-        cookie,
-      }
-    }).then(prop('data'))
   }
 }

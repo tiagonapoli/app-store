@@ -11,6 +11,7 @@
   ],
   "settingsSchema": {},
   "dependencies": {
+    "vtex.admin-graphql": "1.x",
     "vtex.apps-graphql": "2.x",
     "vtex.store-graphql": "2.x",
     "vtex.shelf": "0.x",
@@ -35,13 +36,6 @@
       "attrs": {
         "host": "{{account}}.vtexcommercebeta.com.br",
         "path": "/*"
-      }
-    },
-    {
-      "name": "outbound-access",
-      "attrs": {
-        "host": "vtexid.vtex.com.br",
-        "path": "/api/vtexid/pub/authenticated/user"
       }
     },
     {
