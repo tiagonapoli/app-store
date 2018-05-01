@@ -1,0 +1,10 @@
+query @context(scope: "private") {
+  topbarData {
+    profile {
+      id
+      name
+      email
+      picture
+    }
+  }
+}
