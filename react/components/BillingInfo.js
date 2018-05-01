@@ -28,12 +28,12 @@ class BillingInfo extends Component {
           {pictureUrl ? (
             <img src={pictureUrl} alt={name} />
           ) : (
-            <span className="ttu f5 fw5 near-black">{this.initials()}</span>
+            <span className="ttu f5 fw5 serious-black">{this.initials()}</span>
           )}
         </div>
         <div className="flex flex-column ml4">
           <div className="fw5 f5 ttc">{store}</div>
-          <div className="flex items-center f6">
+          <div className="flex items-center flex-wrap f6">
             <span className="db mid-gray">{name.split(' ')[0]}</span>
             <div className="flex items-center f9 light-gray mh2">&#9679;</div>
             <span className="db b--white bl mid-gray">{email}</span>

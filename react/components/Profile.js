@@ -24,7 +24,7 @@ class Profile extends Component {
         <span className="dn-s db-ns pl3 mr5 b--white bl">{store}</span>
         <button
           title={name}
-          className="link flex-shrink-none flex items-center justify-center h2 w2 pointer br-100 pa0 ba bw1 b--white overflow-x-hidden"
+          className="link flex-shrink-none flex items-center justify-center h2 w2 pointer br-100 pa0 ba bw1 b--white bg-white overflow-x-hidden"
         >
           {pictureUrl ? (
             <img src={pictureUrl} alt={name} />

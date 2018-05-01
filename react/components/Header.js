@@ -78,7 +78,7 @@ class Header extends Component {
               colorFill="white"
               className={`${notHome ? 'db dn-ns rotate-180' : 'dn'}`}
             />
-            <Link page="store">
+            <Link page="store" className="link">
               <div
                 className={`pointer b f5-s f4-ns white tc tl-ns lh-solid ml3 ph3 b--white bl ${
                   notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
@@ -86,17 +86,17 @@ class Header extends Component {
               >
                 <span className={titleClasses}>Extension Store</span>
               </div>
+              <div
+                className={`pointer b f4 white tc tl-ns lh-solid ml3 ph3 b--white bl ${
+                  notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
+                }`}
+                onClick={this.handleBack}
+              >
+                <span className={`${notHome ? 'db dn-ns' : 'dn'}`}>
+                  {this.translate('back')}
+                </span>
+              </div>
             </Link>
-            <div
-              className={`pointer b f4 white tc tl-ns lh-solid ml3 ph3 b--white bl ${
-                notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
-              }`}
-              onClick={this.handleBack}
-            >
-              <span className={`${notHome ? 'db dn-ns' : 'dn'}`}>
-                {this.translate('back')}
-              </span>
-            </div>
           </div>
           <div className="tr-ns flex items-center">
             {!loading ? (
