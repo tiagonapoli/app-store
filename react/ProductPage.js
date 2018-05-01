@@ -38,7 +38,6 @@ class ProductPage extends Component {
               imageUrl={imagePath(appProduct)}
               name={appProduct.name}
               seller={appProduct.vendor}
-              price={0}
               category={appProduct.categories ? appProduct.categories[0] : ''}
             />
             <div className="flex justify-center">
