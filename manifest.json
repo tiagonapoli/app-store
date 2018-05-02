@@ -1,7 +1,7 @@
 {
   "name": "extensions",
   "vendor": "vtex",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "title": "Extensions",
   "description": "Extension store app",
   "mustUpdateAt": "2019-04-10",
