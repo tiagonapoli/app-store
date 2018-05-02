@@ -95,7 +95,7 @@ export default compose(
       return {
         variables: {
           ssr: false,
-          skip: !!ownProps.store,
+          skip: !ownProps.store,
           account: ownProps.store,
         },
       }
