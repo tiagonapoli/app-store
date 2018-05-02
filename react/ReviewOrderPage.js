@@ -45,7 +45,7 @@ class ReviewOrderPage extends Component {
     const { store } = this.state
     const { appProductQuery, profileQuery } = this.props
     const { appProduct, loading } = appProductQuery
-    const { topbarData, loading: profileLoading } = profileQuery
+    const { topbarData, loading: profileLoading, error } = profileQuery
     return (
       <div className="w-100 h-100 bg-light-silver tc pv6-s pt9-ns content">
         <div className="near-black f4-s f2-ns fw3 mt6 mb7">
@@ -76,7 +76,7 @@ class ReviewOrderPage extends Component {
                   <div className="mb7-s mb8-ns">
                     <div className="f5">Billing info</div>
                     <div className="mv3 mb3-s mb5-ns">
-                      {profileLoading
+                      {(profileLoading || error)
                         ? <Loading />
                         : <BillingInfo name={topbarData.profile.name}
                           email={topbarData.profile.email}

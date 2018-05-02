@@ -62,7 +62,7 @@ class Header extends Component {
   }
 
   render() {
-    const { data: { loading, topbarData } } = this.props
+    const { data: { loading, topbarData, error } } = this.props
     const { shouldShowSearch, scroll, headerSize, jumbontronSize, store } = this.state
     const notHome = window.location && window.location.pathname.length > 1
     const titleClasses = notHome ? 'dn db-ns' : 'db'
@@ -99,14 +99,19 @@ class Header extends Component {
             </Link>
           </div>
           <div className="tr-ns flex items-center">
-            {!loading ? (
+            {!loading && !error ? (
               <Profile
                 name={topbarData.profile.name}
                 store={store}
                 pictureUrl={topbarData.profile.picture}
               />
             ) : (
-              <Loading />
+              <div className="white f5 fw5">
+                { error
+                  ? <div>{this.translate('loginError')}</div>
+                  : <Loading />
+                }
+              </div>
             )}
           </div>
         </div>

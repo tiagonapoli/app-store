@@ -25,5 +25,6 @@
   "extensions.per": "por",
   "extensions.to": "a",
   "extensions.moreThan": "más de",
-  "extensions.buyError": "Se produjo un error durante la compra de la extensión. Por favor, actualice la página e inténtelo de nuevo."
+  "extensions.buyError": "Se produjo un error durante la compra de la extensión. Por favor, actualice la página e inténtelo de nuevo.",
+  "extensions.loginError": "Por favor, logue en el admin de su tienda."
 }

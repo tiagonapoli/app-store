@@ -25,5 +25,6 @@
   "extensions.per": "per",
   "extensions.to": "to",
   "extensions.moreThan": "more than",
-  "extensions.buyError": "There was an error buying the extension. Please reload this page and try again shortly."
+  "extensions.buyError": "There was an error buying the extension. Please reload this page and try again shortly.",
+  "extensions.loginError": "Please, log in your store's admin"
 }
