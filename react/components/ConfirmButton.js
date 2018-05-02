@@ -16,7 +16,7 @@ class ConfirmButton extends Component {
     value: PropTypes.string.isRequired,
     buyApp: PropTypes.func.isRequired,
     createWorkspace: PropTypes.func,
-    workspaces: PropTypes.object,
+    data: PropTypes.object,
     store: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
   }
@@ -30,7 +30,7 @@ class ConfirmButton extends Component {
       store,
       appName,
       createWorkspace,
-      workspaces: { workspaces },
+      data: { workspaces },
     } = this.props
     const DRAFT = 'draft'
     const installApp = `https://${DRAFT}--${store}.myvtex.com/admin/extensions/${appName}/i`
@@ -84,20 +84,22 @@ class ConfirmButton extends Component {
   }
 }
 
-const options = {
-  name: 'workspaces',
-  options: props => ({
-    ssr: false,
-    variables: {
-      account: props.store,
-      skip: !props.store,
-    },
-  }),
-}
-
 export default compose(
   graphql(buyAppMutation, { name: 'buyApp' }),
   graphql(createWorkspace, { name: 'createWorkspace' }),
-  graphql(workspaces, options),
+  graphql(workspaces, {
+    skip: (ownProps) => {
+      return ownProps.store === ''
+    },
+    options: (ownProps) => {
+      return {
+        variables: {
+          ssr: false,
+          skip: !!ownProps.store,
+          account: ownProps.store,
+        },
+      }
+    },
+  }),
   injectIntl
 )(ConfirmButton)
