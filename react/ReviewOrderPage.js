@@ -23,7 +23,7 @@ class ReviewOrderPage extends Component {
 
   componentDidUpdate(prevProps) {
     const { data: { appProduct } } = this.props
-    if (appProduct !== prevProps.appProduct &&
+    if (appProduct !== prevProps.data.appProduct &&
       appProduct) {
       window.document.title = appProduct.name
     }
