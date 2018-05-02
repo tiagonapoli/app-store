@@ -28,8 +28,8 @@ class ReviewOrderPage extends Component {
   }
   
   componentDidUpdate(prevProps) {
-    const { data: { appProduct } } = this.props
-    if (appProduct !== prevProps.data.appProduct &&
+    const { appProductQuery: { appProduct } } = this.props
+    if (this.props.appProductQuery !== prevProps.appProductQuery &&
       appProduct) {
       window.document.title = appProduct.name
     }

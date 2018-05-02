@@ -17,7 +17,7 @@ class ConfirmButton extends Component {
     buyApp: PropTypes.func.isRequired,
     createWorkspace: PropTypes.func,
     workspaces: PropTypes.object,
-    store: PropTypes.string.object,
+    store: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
   }
 
@@ -87,11 +87,9 @@ class ConfirmButton extends Component {
 const options = {
   name: 'workspaces',
   options: props => ({
+    ssr: false,
     variables: {
-      ssr: false,
-      variables: {
-        account: props.store,
-      },
+      account: props.store,
     },
   }),
 }
