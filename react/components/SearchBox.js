@@ -33,7 +33,7 @@ class SearchBox extends Component {
             <SearchIcon colorFill="gray" />
           </div>
           <input
-            className={`pv4 pl2 w-100 f5 gray br-0 bl-0 bt-0 extensions-search b--transparent outline-0 ${
+            className={`pv4 pl2 w-100 f5 gray br0 br-0 bl-0 bt-0 extensions-search b--transparent outline-0 ${
               shouldHaveBorder ? 'borderTransitionIn' : 'borderTransitionOut'
             }`}
             type="text"

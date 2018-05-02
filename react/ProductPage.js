@@ -25,11 +25,19 @@ class ProductPage extends Component {
     this.props.prefetch('store/review')
   }
 
+  componentDidUpdate(prevProps) {
+    const { appProduct } = this.props.appProductQuery
+    if (this.props.appProductQuery !== prevProps.appProductQuery &&
+      appProduct) {
+      window.document.title = appProduct.name
+    }
+  }
+
   render() {
     const { appProductQuery } = this.props
     const { appProduct } = appProductQuery
     return (
-      <div className="w-100 flex justify-center">
+      <div className="w-100 h-100 flex justify-center content">
         {appProduct ? (
           <div className="w-100 w-70-ns">
             <ProductHeader
@@ -38,7 +46,6 @@ class ProductPage extends Component {
               imageUrl={imagePath(appProduct)}
               name={appProduct.name}
               seller={appProduct.vendor}
-              price={0}
               category={appProduct.categories ? appProduct.categories[0] : ''}
             />
             <div className="flex justify-center">
@@ -53,7 +60,7 @@ class ProductPage extends Component {
             </div>
           </div>
         ) : (
-          <div className="mv9">
+          <div className="h-100 flex items-center content">
             <Loading />
           </div>
         )}

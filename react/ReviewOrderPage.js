@@ -21,19 +21,29 @@ class ReviewOrderPage extends Component {
     intl: intlShape.isRequired,
   }
 
+  componentDidUpdate(prevProps) {
+    const { data: { appProduct } } = this.props
+    if (appProduct !== prevProps.data.appProduct &&
+      appProduct) {
+      window.document.title = appProduct.name
+    }
+  }
+
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
     const { data } = this.props
     const { appProduct, loading } = data
     return (
-      <div className="w-100 bg-light-silver tc pb10-ns">
-        <div className="pv6-s pt9-ns mb6-ns near-black f4-s f2-ns fw3">
+      <div className="w-100 h-100 bg-light-silver tc pv6-s pt9-ns content">
+        <div className="near-black f4-s f2-ns fw3 mt6 mb7">
           {this.translate('reviewOrder')}
         </div>
         <div className="flex justify-center tl">
           {loading ? (
-            <Loading />
+            <div className="h-100 flex items-center content">
+              <Loading />
+            </div>
           ) : (
             <div className="w-90-s w-70-m w-50-l w-40-xl">
               <Card>
