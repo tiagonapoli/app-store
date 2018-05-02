@@ -1,5 +1,5 @@
-query Workspaces($account: String!) {
-  workspaces(account: $account) {
+query Workspaces($account: String!, $skip: Boolean!) {
+  workspaces(account: $account) @skip(if: $skip) {
     name
   }
 }

@@ -26,7 +26,7 @@ class ReviewOrderPage extends Component {
   state = {
     store: '',
   }
-  
+
   componentDidUpdate(prevProps) {
     const { appProductQuery: { appProduct } } = this.props
     if (this.props.appProductQuery !== prevProps.appProductQuery &&

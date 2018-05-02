@@ -90,6 +90,7 @@ const options = {
     ssr: false,
     variables: {
       account: props.store,
+      skip: !props.store,
     },
   }),
 }
