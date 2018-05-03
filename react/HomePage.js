@@ -73,12 +73,12 @@ class HomePage extends Component {
         </div>
         <div className="flex justify-center">
           <div className="w-90-ns">
-            <AppShelf specificationFilters={[ 'Published' ]} to={8} title="VTEX APPS"/>
+            <AppShelf specificationFilters={[ 'Published' ]} to={8} title="VTEX Apps" />
           </div>
         </div>
         <div className="flex justify-center">
           <div className="w-90-ns">
-            <AppShelf specificationFilters={[ 'Coming Soon' ]} to={8} title="Coming Soon" />
+            <AppShelf specificationFilters={[ 'Coming Soon' ]} to={8} title={this.translate('comingSoon')} />
           </div>
         </div>
       </div>

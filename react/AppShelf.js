@@ -22,7 +22,7 @@ class AppShelf extends Component {
     const { loading, products } = data
     return (
       <div className="w-100">
-        <div className="w-100 mt7-s mv7-ns f3 near-black fw3 ttu tc">{title}</div>
+        <div className="w-100 mt7-s mv7-ns f4 dark-gray normal ttu tc">{title}</div>
         {loading ? (
           <div className="flex justify-center pt9 pb10">
             <Loading />
