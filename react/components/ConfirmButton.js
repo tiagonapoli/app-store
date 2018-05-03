@@ -4,10 +4,9 @@ import { injectIntl, intlShape } from 'react-intl'
 import { compose, graphql } from 'react-apollo'
 import Button from '@vtex/styleguide/lib/Button'
 
+import Loading from './Loading'
 import NoPermissionModal from './NoPermissionModal'
 import buyAppMutation from '../mutations/buyAppMutation.gql'
-import workspaces from '../queries/workspaces.gql'
-import createWorkspace from '../mutations/createWorkspace.gql'
 
 class ConfirmButton extends Component {
   static propTypes = {
@@ -15,51 +14,31 @@ class ConfirmButton extends Component {
     billingPolicy: PropTypes.object.isRequired,
     value: PropTypes.string.isRequired,
     buyApp: PropTypes.func.isRequired,
-    createWorkspace: PropTypes.func,
-    data: PropTypes.object,
     store: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
   }
 
   state = {
     isModalOpen: false,
+    loading: false,
   }
 
-  createDraftWorkspace = () => {
-    const {
-      store,
-      appName,
-      createWorkspace,
-      data: { workspaces },
-    } = this.props
-    const DRAFT = 'draft'
-    const installApp = `https://${DRAFT}--${store}.myvtex.com/admin/extensions/${appName}/i`
-    if (workspaces.find(({ name }) => DRAFT === name)) {
-      window.location.href = installApp
-    } else {
-      createWorkspace({
-        variables: {
-          account: store,
-          workspace: DRAFT,
-        },
-      })
-        .then(() => {
-          window.location.href = installApp
-        })
-        .catch(() => {
-          window.alert(this.translate('buyError'))
-        })
-    }
+  goToAdmin = () => {
+    const { store, appName } = this.props
+    const installApp = `https://${store}.myvtex.com/admin/extensions/${appName}/install`
+    window.location.href = installApp
   }
 
   handleClick = () => {
+    this.setState({ loading: true })
     const { buyApp, appName, billingPolicy } = this.props
     if (billingPolicy && billingPolicy.free) {
-      return this.createDraftWorkspace()
+      return this.goToAdmin()
     }
     return buyApp({ variables: { appName, termsOfUseAccepted: true } })
       .then(this.createDraftWorkspace)
       .catch(this.handleModal)
+      .finally(this.setState({ loading: false }))
   }
 
   handleModal = () => {
@@ -69,12 +48,19 @@ class ConfirmButton extends Component {
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
+    const { loading } = this.state
     const { value } = this.props
     return (
-      <div className="bg-rebel-pink hover-bg-heavy-rebel-pink tc br2 w-100">
-        <Button onClick={this.handleClick} block>
-          <span className="white">{value}</span>
-        </Button>
+      <div className="w-100 tc">
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="bg-rebel-pink hover-bg-heavy-rebel-pink tc br2 w-100">
+            <Button onClick={this.handleClick} block>
+              <span className="white">{value}</span>
+            </Button>
+          </div>
+        )}
         <NoPermissionModal
           onChange={this.handleModal}
           isOpen={this.state.isModalOpen}
@@ -84,22 +70,6 @@ class ConfirmButton extends Component {
   }
 }
 
-export default compose(
-  graphql(buyAppMutation, { name: 'buyApp' }),
-  graphql(createWorkspace, { name: 'createWorkspace' }),
-  graphql(workspaces, {
-    skip: (ownProps) => {
-      return ownProps.store === ''
-    },
-    options: (ownProps) => {
-      return {
-        variables: {
-          ssr: false,
-          skip: !ownProps.store,
-          account: ownProps.store,
-        },
-      }
-    },
-  }),
-  injectIntl
-)(ConfirmButton)
+export default compose(graphql(buyAppMutation, { name: 'buyApp' }), injectIntl)(
+  ConfirmButton
+)
