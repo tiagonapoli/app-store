@@ -36,7 +36,7 @@ export default {
       )
     }
     const { account } = ioContext
-    const [, , slug, , idVersion] = match
+    const [, , , slug, , idVersion] = match
     const registry = appRegistry({ ...ioContext, account })
     const version = removeBuild(
       idVersion || (await registry.getLatestVersion(slug))

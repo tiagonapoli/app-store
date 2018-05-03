@@ -11,6 +11,10 @@ class AppShelf extends Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
     homePage: PropTypes.bool,
+    collection: PropTypes.string,
+    specificationFilters: PropTypes.arrayOf(PropTypes.string),
+    from: PropTypes.number,
+    to: PropTypes.number,
   }
 
   render() {
@@ -24,7 +28,7 @@ class AppShelf extends Component {
           </div>
         ) : (
           <div
-            className={`flex flex-column-s flex-row-l items-center ${
+            className={`flex flex-column-s flex-row-l flex-wrap items-center ${
               homePage ? 'relative card-top' : 'mv4'
             }`}
           >
@@ -34,7 +38,7 @@ class AppShelf extends Component {
                 name={product.productName}
                 imageUrl={product.items[0].images[0].imageUrl}
                 shortDescription={product.description}
-                category={product.categories[0]}
+                category={product.categories[product.categories.length - 1]}
                 seller={product.brand}
                 appId={product.linkText}
               />
@@ -50,8 +54,10 @@ const defaultOptions = {
   options: props => ({
     variables: {
       query: props.query,
-      from: 0,
-      to: 2,
+      collection: props.collection,
+      specificationFilters: props.specificationFilters ? props.specificationFilters : null,
+      from: props.from || 0,
+      to: props.to || 2,
     },
   }),
 }
