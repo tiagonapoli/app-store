@@ -25,8 +25,7 @@ class ConfirmButton extends Component {
 
   goToAdmin = () => {
     const { store, appName } = this.props
-    const installApp = `https://${store}.myvtex.com/admin/extensions/${appName}/install`
-    window.location.href = installApp
+    window.location.href = `https://${store}.myvtex.com/admin/extensions/${appName}/install`
   }
 
   handleClick = () => {
