@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
 import { injectIntl, intlShape } from 'react-intl'
 import { Link } from 'render'
+import Button from '@vtex/styleguide/lib/Button'
 
 import profileQuery from '../queries/profileQuery.gql'
 import Profile from './Profile'
@@ -10,6 +11,7 @@ import VTEXIcon from './icons/VTEXIcon'
 import BackIcon from './icons/BackIcon'
 import SearchBox from './SearchBox'
 import Loading from './Loading'
+import LoginModal from './LoginModal'
 
 class Header extends Component {
   static propTypes = {
@@ -23,6 +25,7 @@ class Header extends Component {
     headerSize: 0,
     jumbontronSize: 0,
     store: '',
+    shouldShowLoginModal: false,
   }
 
   componentDidMount() {
@@ -58,12 +61,21 @@ class Header extends Component {
   }
 
   handleLogin = () => {
-    window.location.assign('/_v/sso')
+    this.setState({ shouldShowLoginModal: !this.state.shouldShowLoginModal })
   }
 
   render() {
-    const { data: { loading, topbarData, error } } = this.props
-    const { shouldShowSearch, scroll, headerSize, jumbontronSize, store } = this.state
+    const {
+      data: { loading, topbarData, error },
+    } = this.props
+    const {
+      shouldShowLoginModal,
+      shouldShowSearch,
+      scroll,
+      headerSize,
+      jumbontronSize,
+      store,
+    } = this.state
     const notHome = window.location && window.location.pathname.length > 1
     const titleClasses = notHome ? 'dn db-ns' : 'db'
     return (
@@ -107,10 +119,15 @@ class Header extends Component {
               />
             ) : (
               <div className="white f5 fw5">
-                { error
-                  ? <div>{this.translate('loginError')}</div>
-                  : <Loading />
-                }
+                {error ? (
+                  <div className="b--white bw1 ba br2">
+                    <Button onClick={this.handleLogin}>
+                      <span className="white">{this.translate('login')}</span>
+                    </Button>
+                  </div>
+                ) : (
+                  <Loading />
+                )}
               </div>
             )}
           </div>
@@ -139,6 +156,7 @@ class Header extends Component {
             <SearchBox />
           </div>
         )}
+        <LoginModal isOpen={shouldShowLoginModal} onClose={this.handleLogin} />
       </div>
     )
   }
@@ -146,4 +164,5 @@ class Header extends Component {
 
 export default compose(
   graphql(profileQuery, { options: { ssr: false } }),
-  injectIntl)(Header)
+  injectIntl
+)(Header)
