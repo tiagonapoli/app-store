@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 
 import AppShelf from './AppShelf'
+import AppGallery from './AppGallery'
 import JumbotronIcon from './components/icons/JumbotronIcon'
 import SearchBox from './components/SearchBox'
 
@@ -61,7 +62,7 @@ class HomePage extends Component {
           </div>
           <div id="home-shelf" className="bg-light-silver flex justify-center">
             <div className="w-90-ns">
-              <AppShelf homePage collection="137" />
+              <AppGallery homePage collection="137" />
             </div>
           </div>
         </div>
@@ -72,14 +73,12 @@ class HomePage extends Component {
         </div>
         <div className="flex justify-center">
           <div className="w-90-ns">
-            <div className="w-100 mb7 f3 near-black fw3 ttu tc">VTEX Apps</div>
-            <AppShelf specificationFilters={[ 'Published' ]} to={8} />
+            <AppShelf specificationFilters={[ 'Published' ]} to={8} title="VTEX APPS"/>
           </div>
         </div>
         <div className="flex justify-center">
           <div className="w-90-ns">
-            <div className="w-100 mb7 f3 near-black fw3 ttu tc">Coming Soon</div>
-            <AppShelf specificationFilters={[ 'Coming Soon' ]} to={8} />
+            <AppShelf specificationFilters={[ 'Coming Soon' ]} to={8} title="Coming Soon" />
           </div>
         </div>
       </div>
