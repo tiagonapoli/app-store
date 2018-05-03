@@ -1,6 +1,0 @@
-mutation CreateWorkspace($account: String, $workspace: String)
-  @context(scope: "private") {
-  createWorkspace(account: $account, workspace: $workspace) {
-    message
-  }
-}
