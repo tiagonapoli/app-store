@@ -28,7 +28,7 @@ class AppShelf extends Component {
           </div>
         ) : (
           <div
-            className={`flex flex-column-s flex-row-l flex-wrap items-center ${
+            className={`flex flex-column-s flex-row-l flex-wrap-ns items-center ${
               homePage ? 'relative card-top' : 'mv4'
             }`}
           >
