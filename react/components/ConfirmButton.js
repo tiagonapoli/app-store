@@ -38,8 +38,10 @@ class ConfirmButton extends Component {
       variables: { account: store, appName, termsOfUseAccepted: true },
     })
       .then(this.goToAdmin)
-      .catch(this.handleModal)
-      .finally(this.setState({ loading: false }))
+      .catch(() => {
+        this.setState({ loading: false })
+        this.handleModal()
+      })
   }
 
   handleModal = () => {
