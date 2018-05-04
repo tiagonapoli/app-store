@@ -1,4 +1,8 @@
 :global :root {
+  --font-default: 'Fabriga', -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  --font-brand: 'Fabriga', -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;;
+  --font-code: Consolas, monaco, monospace;
+
   --c-brand: #F71963;
   --c-brand--light: #F71963;
   --c-brand--dark: #142032;
@@ -186,6 +190,16 @@
   --hover-b--info--dark: #EDF4FA;
 }
 
+:global .font-default,
+:global body,
+:global button,
+:global input,
+:global optgroup,
+:global select,
+:global textarea { font-family: var(--font-default); }
+:global .font-brand { font-family: var(--font-brand); }
+:global .font-code { font-family: var(--font-code); }
+
 :global .c-brand { color: var(--c-brand); }
 :global .c-brand--light { color: var(--c-brand--light); }
 :global .c-brand--dark { color: var(--c-brand--dark); }
@@ -371,3 +385,11 @@
 :global .hover-b--info:hover { border-color: var(--hover-b--info); }
 :global .hover-b--info--light:hover { border-color: var(--hover-b--info--light); }
 :global .hover-b--info--dark:hover { border-color: var(--hover-b--info--dark); }
+
+
+@font-face { font-family: 'Fabriga'; src: url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Light.eot' ); src: url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Light.eot?#iefix' ) format( 'embedded-opentype' ), url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Light.woff2' ) format( 'woff2' ), url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Light.woff' ) format( 'woff' ); font-weight: 300; font-style: normal; }
+@font-face { font-family: 'Fabriga'; src: url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Regular.eot' ); src: url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Regular?#iefix' ) format( 'embedded-opentype' ), url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Regular.woff2' ) format( 'woff2' ), url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Regular.woff' ) format( 'woff' ); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'Fabriga'; src: url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Italic.eot' ); src: url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Italic?#iefix' ) format( 'embedded-opentype' ), url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Italic.woff2' ) format( 'woff2' ), url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Italic.woff' ) format( 'woff' ); font-weight: normal; font-style: italic; }
+@font-face { font-family: 'Fabriga'; src: url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Medium.eot' ); src: url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Medium?#iefix' ) format( 'embedded-opentype' ), url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Medium.woff2' ) format( 'woff2' ), url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Medium.woff' ) format( 'woff' ); font-weight: 500; font-style: normal; }
+@font-face { font-family: 'Fabriga'; src: url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Bold.eot' ); src: url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Bold?#iefix' ) format( 'embedded-opentype' ), url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Bold.woff2' ) format( 'woff2' ), url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Bold.woff' ) format( 'woff' ); font-weight: bold; font-style: normal; }
+@font-face { font-family: 'Fabriga'; src: url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Black.eot' ); src: url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Black?#iefix' ) format( 'embedded-opentype' ), url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Black.woff2' ) format( 'woff2' ), url( '//io.vtex.com.br/fonts/fabriga/Fabriga-Black.woff' ) format( 'woff' ); font-weight: 900; font-style: normal; }
