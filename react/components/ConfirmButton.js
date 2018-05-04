@@ -34,8 +34,10 @@ class ConfirmButton extends Component {
     if (billingPolicy && billingPolicy.free) {
       return this.goToAdmin()
     }
-    return buyApp({ variables: { account: store, appName, termsOfUseAccepted: true } })
-      .then(this.createDraftWorkspace)
+    return buyApp({
+      variables: { account: store, appName, termsOfUseAccepted: true },
+    })
+      .then(this.goToAdmin)
       .catch(this.handleModal)
       .finally(this.setState({ loading: false }))
   }
