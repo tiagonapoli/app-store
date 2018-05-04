@@ -6,6 +6,7 @@ import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 import Card from '@vtex/styleguide/lib/Card'
 
 import appProductQuery from './queries/appProductQuery.gql'
+import profileQuery from './queries/profileQuery.gql'
 
 import { imagePath } from './utils/utils'
 import AppIcon from './components/AppIcon'
@@ -17,23 +18,34 @@ import Loading from './components/Loading'
 class ReviewOrderPage extends Component {
   static propTypes = {
     params: PropTypes.object.isRequired,
-    data: PropTypes.object,
+    appProductQuery: PropTypes.object,
+    profileQuery: PropTypes.object,
     intl: intlShape.isRequired,
   }
 
+  state = {
+    store: '',
+  }
+
   componentDidUpdate(prevProps) {
-    const { data: { appProduct } } = this.props
-    if (appProduct !== prevProps.data.appProduct &&
+    const { appProductQuery: { appProduct } } = this.props
+    if (this.props.appProductQuery !== prevProps.appProductQuery &&
       appProduct) {
       window.document.title = appProduct.name
     }
   }
 
+  componentDidMount() {
+    this.setState({ store: window.localStorage.getItem('account') || '' })
+  }
+
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
-    const { data } = this.props
-    const { appProduct, loading } = data
+    const { store } = this.state
+    const { appProductQuery, profileQuery } = this.props
+    const { appProduct, loading } = appProductQuery
+    const { topbarData, loading: profileLoading, error } = profileQuery
     return (
       <div className="w-100 h-100 bg-light-silver tc pv6-s pt9-ns content">
         <div className="near-black f4-s f2-ns fw3 mt6 mb7">
@@ -64,12 +76,13 @@ class ReviewOrderPage extends Component {
                   <div className="mb7-s mb8-ns">
                     <div className="f5">Billing info</div>
                     <div className="mv3 mb3-s mb5-ns">
-                      <BillingInfo
-                        name="Bill Zoo"
-                        email="bill@redley.com"
-                        store="Redley"
-                        pictureUrl="https://hindizenblog.files.wordpress.com/2009/03/harshil-gudka-379676.jpg"
-                      />
+                      {(profileLoading || error)
+                        ? <Loading />
+                        : <BillingInfo name={topbarData.profile.name}
+                          email={topbarData.profile.email}
+                          store={store}
+                          pictureUrl={topbarData.profile.picture} />
+                      }
                     </div>
                   </div>
                   <div className="f6">
@@ -108,7 +121,9 @@ class ReviewOrderPage extends Component {
                   </div>
                   <div className="dn-s db-ns w-100 mt5">
                     <ConfirmButton
+                      store={store}
                       appName={appProduct.slug}
+                      billingPolicy={appProduct.billing}
                       value={this.translate('confirmButton')}
                     />
                   </div>
@@ -128,7 +143,9 @@ class ReviewOrderPage extends Component {
               </Card>
               <div className="db-s dn-ns w-100 mt7">
                 <ConfirmButton
+                  store={store}
                   appName={appProduct.slug}
+                  billingPolicy={appProduct.billing}
                   value={this.translate('confirmButtonMobile')}
                 />
               </div>
@@ -148,6 +165,9 @@ const options = {
   }),
 }
 
-export default compose(graphql(appProductQuery, options), injectIntl)(
+export default compose(
+  graphql(appProductQuery, { ...options, name: 'appProductQuery' }),
+  graphql(profileQuery, { options: { ssr: false }, name: 'profileQuery' }),
+  injectIntl)(
   ReviewOrderPage
 )

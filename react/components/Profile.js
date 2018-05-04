@@ -21,15 +21,15 @@ class Profile extends Component {
     return (
       <div className="flex items-center white">
         <span className="dn-s db-ns mr3">{name}</span>
-        <span className="dn-s db-ns pl3 mr5 b--white bl">{store}</span>
+        <span className="dn-s db-ns pl3 mr5 b--white bl ttc">{store}</span>
         <button
           title={name}
-          className="link flex-shrink-none flex items-center justify-center h2 w2 pointer br-100 pa0 ba bw1 b--white overflow-x-hidden"
+          className="link flex-shrink-none flex items-center justify-center h2 w2 pointer br-100 pa0 ba bw1 b--white bg-white overflow-x-hidden"
         >
           {pictureUrl ? (
             <img src={pictureUrl} alt={name} />
           ) : (
-            <span className="ttu f5 fw5 near-black">{this.initials()}</span>
+            <span className="ttu f5 fw5 serious-black">{this.initials()}</span>
           )}
         </button>
       </div>

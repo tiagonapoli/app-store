@@ -1,17 +1,22 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose, graphql } from 'react-apollo'
 import { injectIntl, intlShape } from 'react-intl'
+import { Link } from 'render'
 import Button from '@vtex/styleguide/lib/Button'
 
+import profileQuery from '../queries/profileQuery.gql'
 import Profile from './Profile'
 import VTEXIcon from './icons/VTEXIcon'
 import BackIcon from './icons/BackIcon'
 import SearchBox from './SearchBox'
+import Loading from './Loading'
+import LoginModal from './LoginModal'
 
 class Header extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
-    logged: PropTypes.bool,
+    data: PropTypes.object,
   }
 
   state = {
@@ -19,6 +24,8 @@ class Header extends Component {
     shouldShowSearch: true,
     headerSize: 0,
     jumbontronSize: 0,
+    store: '',
+    shouldShowLoginModal: false,
   }
 
   componentDidMount() {
@@ -30,6 +37,7 @@ class Header extends Component {
       jumbontronSize:
         window.document.getElementById('jumbotron-home') &&
         window.document.getElementById('jumbotron-home').offsetHeight,
+      store: window.localStorage.getItem('account') || '',
     })
   }
 
@@ -52,17 +60,22 @@ class Header extends Component {
     window.history.back()
   }
 
-  handleHome = () => {
-    window.location.assign('/')
-  }
-
   handleLogin = () => {
-    window.location.assign('/_v/sso')
+    this.setState({ shouldShowLoginModal: !this.state.shouldShowLoginModal })
   }
 
   render() {
-    const { logged } = this.props
-    const { shouldShowSearch, scroll, headerSize, jumbontronSize } = this.state
+    const {
+      data: { loading, topbarData, error },
+    } = this.props
+    const {
+      shouldShowLoginModal,
+      shouldShowSearch,
+      scroll,
+      headerSize,
+      jumbontronSize,
+      store,
+    } = this.state
     const notHome = window.location && window.location.pathname.length > 1
     const titleClasses = notHome ? 'dn db-ns' : 'db'
     return (
@@ -77,37 +90,44 @@ class Header extends Component {
               colorFill="white"
               className={`${notHome ? 'db dn-ns rotate-180' : 'dn'}`}
             />
-            <div
-              className={`pointer b f5-s f4-ns white tc tl-ns lh-solid ml3 ph3 b--white bl ${
-                notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
-              }`}
-              onClick={this.handleHome}
-            >
-              <span className={titleClasses}>Extension Store</span>
-            </div>
-            <div
-              className={`pointer b f4 white tc tl-ns lh-solid ml3 ph3 b--white bl ${
-                notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
-              }`}
-              onClick={this.handleBack}
-            >
-              <span className={`${notHome ? 'db dn-ns' : 'dn'}`}>
-                {this.translate('back')}
-              </span>
-            </div>
+            <Link page="store" className="link">
+              <div
+                className={`pointer b f5-s f4-ns white tc tl-ns lh-solid ml3 ph3 b--white bl ${
+                  notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
+                }`}
+              >
+                <span className={titleClasses}>Extension Store</span>
+              </div>
+              <div
+                className={`pointer b f4 white tc tl-ns lh-solid ml3 ph3 b--white bl ${
+                  notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
+                }`}
+                onClick={this.handleBack}
+              >
+                <span className={`${notHome ? 'db dn-ns' : 'dn'}`}>
+                  {this.translate('back')}
+                </span>
+              </div>
+            </Link>
           </div>
           <div className="tr-ns flex items-center">
-            {!logged ? (
+            {!loading && !error ? (
               <Profile
-                name="Bill Zoo"
-                store="Redley"
-                pictureUrl="https://hindizenblog.files.wordpress.com/2009/03/harshil-gudka-379676.jpg"
+                name={topbarData.profile.name}
+                store={store}
+                pictureUrl={topbarData.profile.picture}
               />
             ) : (
-              <div className="b--white bw1 ba br2">
-                <Button onClick={this.handleLogin}>
-                  <span className="white">{this.translate('login')}</span>
-                </Button>
+              <div className="white f5 fw5">
+                {error ? (
+                  <div className="b--white bw1 ba br2">
+                    <Button onClick={this.handleLogin}>
+                      <span className="white">{this.translate('login')}</span>
+                    </Button>
+                  </div>
+                ) : (
+                  <Loading />
+                )}
               </div>
             )}
           </div>
@@ -136,9 +156,13 @@ class Header extends Component {
             <SearchBox />
           </div>
         )}
+        <LoginModal isOpen={shouldShowLoginModal} onClose={this.handleLogin} />
       </div>
     )
   }
 }
 
-export default injectIntl(Header)
+export default compose(
+  graphql(profileQuery, { options: { ssr: false } }),
+  injectIntl
+)(Header)

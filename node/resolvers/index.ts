@@ -74,5 +74,5 @@ export default {
       registry: account,
       slug,
     }
-  },
+  }
 }

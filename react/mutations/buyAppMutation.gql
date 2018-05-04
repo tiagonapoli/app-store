@@ -1,6 +1,6 @@
-mutation purchaseApp($appName: String!, $termsOfUseAccepted: Boolean!)
+mutation purchaseApp($account: String!, $appName: String!, $termsOfUseAccepted: Boolean!)
   @context(scope: "private") {
-  purchase(appName: $appName, termsOfUseAccepted: $termsOfUseAccepted) {
+  purchase(account: $account, appName: $appName, termsOfUseAccepted: $termsOfUseAccepted) {
     purchased
     billingOptions
   }

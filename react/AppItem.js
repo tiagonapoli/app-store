@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Card from '@vtex/styleguide/lib/Card'
+import { Link } from 'render'
 
 import AppCategory from './components/AppCategory'
 import AppIcon from './components/AppIcon'
@@ -18,16 +19,6 @@ class AppItem extends Component {
     navigate: PropTypes.func.isRequired,
   }
 
-  handleClick = () => {
-    const { navigate, appId } = this.props
-    const options = {
-      params: { slug: appId },
-      page: 'store/product',
-      fallbackToWindowLocation: false,
-    }
-    navigate(options)
-  }
-
   render() {
     const {
       name,
@@ -38,10 +29,7 @@ class AppItem extends Component {
       appId,
     } = this.props
     return (
-      <div
-        className="w-90-s w-50-m w-30-l mt5-s mt0-ns mh5 h5 pointer"
-        onClick={this.handleClick}
-      >
+      <Link page="store/product" className="link no-underline db w-90-s w-50-m w-30-l mt5-s mt0-ns mh5 h5 pointer" params={{ slug: appId }}>
         <Card>
           <div className="flex flex-row near-black">
             <AppIcon imageUrl={imageUrl} name={name} />
@@ -52,12 +40,12 @@ class AppItem extends Component {
               </div>
             </div>
           </div>
-          <div className="description-height mv5 overflow-hidden f5 fw3 lh-copy">
+          <div className="description-height mv5 overflow-hidden f5 fw3 lh-copy near-black">
             {shortDescription}
           </div>
           <AppCategory category={category} seller={seller} homePage />
         </Card>
-      </div>
+      </Link>
     )
   }
 }

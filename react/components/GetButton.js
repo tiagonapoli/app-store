@@ -17,6 +17,7 @@ class GetButton extends Component {
 
   handleClick = e => {
     e.stopPropagation()
+    e.preventDefault()
     const { navigate, appId } = this.props
     const options = {
       params: { slug: appId },

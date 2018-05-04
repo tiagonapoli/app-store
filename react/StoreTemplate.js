@@ -9,10 +9,17 @@ export default class StoreTemplate extends Component {
     children: PropTypes.element,
   }
 
+  componentDidMount() {
+    const query = window.location.search
+    if (query) {
+      window.localStorage.setItem('account', query.replace('?an=', ''))
+    }
+  }
+
   render() {
     return (
       <div className="w-100 h-100 overflow-x-hidden content">
-        <Header logged />
+        <Header />
         <div className="h-100 pt9-ns content">
           {this.props.children ? this.props.children : <HomePage />}
         </div>
