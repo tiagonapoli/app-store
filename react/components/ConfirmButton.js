@@ -30,11 +30,11 @@ class ConfirmButton extends Component {
 
   handleClick = () => {
     this.setState({ loading: true })
-    const { buyApp, appName, billingPolicy } = this.props
+    const { store, buyApp, appName, billingPolicy } = this.props
     if (billingPolicy && billingPolicy.free) {
       return this.goToAdmin()
     }
-    return buyApp({ variables: { appName, termsOfUseAccepted: true } })
+    return buyApp({ variables: { account: store, appName, termsOfUseAccepted: true } })
       .then(this.createDraftWorkspace)
       .catch(this.handleModal)
       .finally(this.setState({ loading: false }))
