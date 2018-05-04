@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Card from '@vtex/styleguide/lib/Card'
-import { Link } from 'render'
 
 import AppCategory from './components/AppCategory'
 import AppIcon from './components/AppIcon'
 import GetButton from './components/GetButton'
+import withNavigate from './withNavigate'
 
 class AppItem extends Component {
   static propTypes = {
@@ -16,6 +16,18 @@ class AppItem extends Component {
     category: PropTypes.string.isRequired,
     seller: PropTypes.string.isRequired,
     specificationFilters: PropTypes.oneOf(['Published', 'Coming Soon']),
+    navigate: PropTypes.func.isRequired,
+  }
+
+  handleClick = e => {
+    e.stopPropagation()
+    const { navigate, appId } = this.props
+    const options = {
+      params: { slug: appId },
+      page: 'store/product',
+      fallbackToWindowLocation: false,
+    }
+    navigate(options)
   }
 
   render() {
@@ -30,10 +42,9 @@ class AppItem extends Component {
     } = this.props
     const isComing = specificationFilters === 'Coming Soon'
     return (
-      <Link
-        page={`${isComing ? 'store/home' : 'store/product'}`}
+      <div
+        onClick={!isComing ? this.handleClick : () => {}}
         className={`link no-underline db w-90-s w-50-m w-30-l mt5-s mt0-ns mh5 h5 ${isComing ? '' : 'pointer'}`}
-        params={{ slug: appId }}
       >
         <Card>
           <div className="flex flex-row near-black">
@@ -52,9 +63,9 @@ class AppItem extends Component {
           </div>
           <AppCategory category={category} seller={seller} homePage />
         </Card>
-      </Link>
+      </div>
     )
   }
 }
 
-export default AppItem
+export default withNavigate()(AppItem)
