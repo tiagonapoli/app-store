@@ -38,9 +38,9 @@ class LoginModal extends Component {
             <div className="w-100 w-70-ns pb4-s pb0-ns pr4-ns">
               <Input onChange={this.handleChange} value={store} />
             </div>
-            <div className="w-100-s w-30-ns bg-rebel-pink br2 tc">
-              <Button onClick={this.handleClick} block>
-                <span className="white">{this.translate('login')}</span>
+            <div className="w-100-s w-30-ns br2 tc">
+              <Button onClick={this.handleClick} primary block>
+                {this.translate('login')}
               </Button>
             </div>
           </div>

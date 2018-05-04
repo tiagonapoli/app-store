@@ -54,9 +54,9 @@ class ConfirmButton extends Component {
         {loading ? (
           <Loading />
         ) : (
-          <div className="bg-rebel-pink hover-bg-heavy-rebel-pink tc br2 w-100">
-            <Button onClick={this.handleClick} block>
-              <span className="white">{value}</span>
+          <div className="tc br2 w-100">
+            <Button onClick={this.handleClick} primary block>
+              <span className="base-1">{value}</span>
             </Button>
           </div>
         )}

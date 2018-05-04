@@ -82,24 +82,24 @@ class Header extends Component {
       <div className="fixed-ns w-100 z-2">
         <div
           id="extension-store-header"
-          className="flex justify-between items-center w-100 top-0 ph4 ph7-ns pv4 pv5-ns bg-serious-black tc tl-ns white"
+          className="flex justify-between items-center w-100 top-0 ph4 ph7-ns pv4 pv5-ns bg-brand--dark tc tl-ns c-base-1"
         >
           <div className="flex items-center">
-            <VTEXIcon colorFill="white" className={titleClasses} />
+            <VTEXIcon colorFill="base-1" className={titleClasses} />
             <BackIcon
-              colorFill="white"
+              colorFill="base-1"
               className={`${notHome ? 'db dn-ns rotate-180' : 'dn'}`}
             />
             <Link page="store" className="link">
               <div
-                className={`pointer b f5-s f4-ns white tc tl-ns lh-solid ml3 ph3 b--white bl ${
+                className={`pointer b f5-s f4-ns c-base-1 tc tl-ns lh-solid ml3 ph3 b--base-1 bl ${
                   notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
                 }`}
               >
                 <span className={titleClasses}>Extension Store</span>
               </div>
               <div
-                className={`pointer b f4 white tc tl-ns lh-solid ml3 ph3 b--white bl ${
+                className={`pointer b f4 c-base-1 tc tl-ns lh-solid ml3 ph3 b--base-1 bl ${
                   notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
                 }`}
                 onClick={this.handleBack}
@@ -111,18 +111,18 @@ class Header extends Component {
             </Link>
           </div>
           <div className="tr-ns flex items-center">
-            {!loading && !error ? (
+            {false ? (
               <Profile
                 name={topbarData.profile.name}
                 store={store}
                 pictureUrl={topbarData.profile.picture}
               />
             ) : (
-              <div className="white f5 fw5">
-                {error ? (
-                  <div className="b--white bw1 ba br2">
+              <div className="f5 fw5">
+                {true ? (
+                  <div className="bw1 ba br2">
                     <Button onClick={this.handleLogin}>
-                      <span className="white">{this.translate('login')}</span>
+                      {this.translate('login')}
                     </Button>
                   </div>
                 ) : (
@@ -136,7 +136,7 @@ class Header extends Component {
           <div
             className={`db dn-ns ${
               scroll > headerSize
-                ? `z-3 fixed w-100 ma0 bg-white ${
+                ? `z-3 fixed w-100 ma0 bg-base-1 ${
                   shouldShowSearch ? 'slideDownMobile' : 'slideUpMobile'
                 }`
                 : ''
@@ -149,7 +149,7 @@ class Header extends Component {
           <div
             className={`dn ${
               scroll > jumbontronSize
-                ? 'db-ns z-3 ma0 w-100 ph9 fixed bg-white slideDown'
+                ? 'db-ns z-3 ma0 w-100 ph9 fixed bg-base-1 slideDown'
                 : 'slideUp'
             }`}
           >

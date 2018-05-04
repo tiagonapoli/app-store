@@ -28,7 +28,7 @@ class SearchBox extends Component {
     const { searchValue, shouldHaveBorder } = this.state
     return (
       <div className="w-100 h-100">
-        <div className="flex flex-row w-100 bg-white gray">
+        <div className="flex flex-row w-100 bg-base-1 gray">
           <div className="flex items-center bb bw1 b--rebel-pink pa4">
             <SearchIcon colorFill="gray" />
           </div>
@@ -45,7 +45,7 @@ class SearchBox extends Component {
           />
         </div>
         <div
-          className={`w-100 h-100 bg-white mt7-ns ${
+          className={`w-100 h-100 bg-base-1 mt7-ns ${
             searchValue ? 'overflow-auto db' : 'dn'
           }`}
         >

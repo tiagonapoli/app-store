@@ -80,7 +80,7 @@ class Billing extends Component {
                 </div>
                 <div
                   className={`w-100 w-90-ns flex flex-column-s flex-row-ns pv4 ${
-                    index !== ranges.length - 1 ? 'bb b--white' : ''
+                    index !== ranges.length - 1 ? 'bb b--base-1' : ''
                   }`}
                 >
                   <div className="w-100 w-90-ns flex flex-row flex-wrap">

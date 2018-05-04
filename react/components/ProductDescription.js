@@ -67,7 +67,7 @@ class ProductDescription extends Component {
         <div className="pt5 pb3-s pb10-ns">{compile(description).tree}</div>
         <div className="h3">
           <div
-            className={`bottom-0 left-0 w-100 z-2 db-s dn-ns b--white bb bw2 get-button-shadow bg-white ${
+            className={`bottom-0 left-0 w-100 z-2 db-s dn-ns b--base-1 bb bw2 get-button-shadow bg-base-1 ${
               this.state.fixed ? 'fixed pb4 ph6' : ''
             }`}
           >

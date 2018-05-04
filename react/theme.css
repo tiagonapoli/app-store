@@ -1,6 +1,4 @@
-.fill-white {
-  fill: #fff;
-}
+@import url("./tokens.css");
 
 .fill-gray {
   fill: #979899;

@@ -32,10 +32,8 @@ class NoPermissionModal extends Component {
             />
           </div>
           <div className="flex justify-center-s justify-end-ns tr">
-            <div className="w-40-s w-20-ns bg-rebel-pink br2">
-              <Button onClick={onChange} block>
-                <span className="white">Ok</span>
-              </Button>
+            <div className="w-40-s w-20-ns br2">
+              <Button onClick={onChange} primary block>Ok</Button>
             </div>
           </div>
         </div>

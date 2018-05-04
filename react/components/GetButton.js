@@ -29,18 +29,16 @@ class GetButton extends Component {
 
   render() {
     const { homePage } = this.props
+    const buttonProps = {
+      [homePage ? 'neutral' : 'primary']: true,
+    }
+
     return (
       <div
-        className={`tc br2 w-100 w-80-ns ${
-          homePage
-            ? 'bg-light-silver hover-bg-light-gray'
-            : 'bg-rebel-pink hover-bg-heavy-rebel-pink'
-        }`}
+        className="tc br2 w-100 w-80-ns"
       >
-        <Button onClick={this.handleClick} block>
-          <span className={`${homePage ? 'rebel-pink' : 'white'}`}>
-            {this.translate('get')}
-          </span>
+        <Button onClick={this.handleClick} {...buttonProps} block>
+          {this.translate('get')}
         </Button>
       </div>
     )
