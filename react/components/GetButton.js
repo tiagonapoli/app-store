@@ -30,7 +30,7 @@ class GetButton extends Component {
   render() {
     const { homePage } = this.props
     const buttonProps = {
-      [homePage ? 'neutral' : 'primary']: true,
+      [homePage ? 'secondary' : 'primary']: true,
     }
 
     return (

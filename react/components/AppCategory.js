@@ -19,11 +19,11 @@ class AppCategory extends Component {
     return (
       <div
         className={`flex flex-wrap items-center h1 f6-s f5-ns ttc ${
-          homePage ? 'gray' : 'dark-gray'
+          homePage ? 'c-base-6' : 'c-base-8'
         }`}
       >
         {removeSlashes(category) || 'Smartcheckout'}
-        <div className="flex items-center f9 light-gray mh2">&#9679;</div>
+        <div className="flex items-center f9 c-base-4 mh2">&#9679;</div>
         <div>
           {this.translate('developedBy')} <span className="ttu">{seller}</span>
         </div>

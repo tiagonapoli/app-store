@@ -22,12 +22,12 @@ class ProductHeader extends Component {
   render() {
     const { id, imageUrl, name, category, seller } = this.props
     return (
-      <div className="flex flex-row mt5-s mt8-ns pb3-s pb6-ns mb6 mh4-s mh0-ns b--light-gray bb">
+      <div className="flex flex-row mt5-s mt8-ns pb3-s pb6-ns mb6 mh4-s mh0-ns b--base-4 bb">
         <div className="mr5">
           <AppIcon imageUrl={imageUrl} name={name} />
         </div>
         <div className="w-75 flex flex-column justify-center lh-copy">
-          <div className="f3-s f2-ns b near-black">{name}</div>
+          <div className="f3-s f2-ns b c-base-8">{name}</div>
           <AppCategory category={category} seller={seller} />
         </div>
         <div className="dn flex-ns flex-column-ns justify-center items-end w-20 lh-copy">

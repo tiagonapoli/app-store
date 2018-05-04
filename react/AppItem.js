@@ -47,7 +47,7 @@ class AppItem extends Component {
         className={`link no-underline db w-90-s w-50-m w-30-l mt5-s mt0-ns mh5 h5 ${isComing ? '' : 'pointer'}`}
       >
         <Card>
-          <div className="flex flex-row near-black">
+          <div className="flex flex-row c-base-8">
             <AppIcon imageUrl={imageUrl} name={name} />
             <div className="w-100 ml5 flex flex-column justify-center lh-copy">
               <div className="h2 overflow-y-hidden f4 fw5">{name}</div>
@@ -58,7 +58,7 @@ class AppItem extends Component {
               }
             </div>
           </div>
-          <div className="description-height mv5 overflow-hidden f5 fw3 lh-copy near-black">
+          <div className="description-height mv5 overflow-hidden f5 fw3 lh-copy c-base-8">
             {shortDescription}
           </div>
           <AppCategory category={category} seller={seller} homePage />

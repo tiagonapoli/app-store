@@ -60,7 +60,7 @@ class HomePage extends Component {
               <JumbotronIcon />
             </div>
           </div>
-          <div id="home-shelf" className="bg-light-silver flex justify-center">
+          <div id="home-shelf" className="bg-base-3 flex justify-center">
             <div className="w-90-ns">
               <AppGallery homePage collection="137" />
             </div>

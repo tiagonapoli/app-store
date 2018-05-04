@@ -17,14 +17,14 @@ class NoPermissionModal extends Component {
     const { onChange, isOpen } = this.props
     return (
       <Modal centered isOpen={isOpen} onClose={onChange}>
-        <div className="near-black">
+        <div className=" c-base-8">
           <div className="b f4 mb6-s mb5-ns">{this.translate('oops')}.</div>
           <div className="f5 mb6-s mb8-ns">
             <FormattedMessage
               id="extensions.noPermission"
               values={{
                 purchasePermission: (
-                  <a className="link b rebel-pink">
+                  <a className="link b c-primary">
                     <FormattedMessage id="extensions.purchasePermission" />
                   </a>
                 ),

@@ -13,9 +13,9 @@
   --c-emphasis: #F71963;
   --c-primary: #FFF;
   --c-primary--disabled: #979899;
-  --c-secondary: #368df7;
+  --c-secondary: #F71963;
   --c-secondary--disabled: #979899;
-  --c-tertiary: #F71963;
+  --c-tertiary: #fff;
   --c-tertiary--disabled: #979899;
   --c-success: #8BC34A;
   --c-success--light: #EAFCE3;
@@ -44,9 +44,9 @@
   --hover-c-emphasis: #444;
   --hover-c-primary: #FFF;
   --hover-c-primary--disabled: #979899;
-  --hover-c-secondary: #368df7;
+  --hover-c-secondary: #F71963;
   --hover-c-secondary--disabled: #979899;
-  --hover-c-tertiary: #F71963;
+  --hover-c-tertiary: #fff;
   --hover-c-tertiary--disabled: #979899;
   --hover-c-success: #8BC34A;
   --hover-c-success--light: #EAFCE3;
@@ -75,9 +75,9 @@
   --bg-emphasis: #444;
   --bg-primary: #F71963;
   --bg-primary--disabled: #E3E4E6;
-  --bg-secondary: #f2f4f5;
+  --bg-secondary: #F2F4F5;
   --bg-secondary--disabled: #E3E4E6;
-  --bg-tertiary: #F2F4F5;
+  --bg-tertiary: transparent;
   --bg-tertiary--disabled: #f2f4f5;
   --bg-success: #8BC34A;
   --bg-success--light: #EAFCE3;
@@ -106,9 +106,9 @@
   --hover-bg-emphasis: #444;
   --hover-bg-primary: #DD1659;
   --hover-bg-primary--disabled: #E3E4E6;
-  --hover-bg-secondary: #e3e4e6;
+  --hover-bg-secondary: #E3E4E6;
   --hover-bg-secondary--disabled: #E3E4E6;
-  --hover-bg-tertiary: #E3E4E6;
+  --hover-bg-tertiary: transparent;
   --hover-bg-tertiary--disabled: #E3E4E6;
   --hover-bg-success: #8BC34A;
   --hover-bg-success--light: #EAFCE3;

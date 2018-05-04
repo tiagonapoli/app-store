@@ -20,7 +20,7 @@ class BillingInfo extends Component {
   render() {
     const { name, email, pictureUrl, store } = this.props
     return (
-      <div className="flex items-center near-black">
+      <div className="flex items-center c-base-8">
         <div
           title={name}
           className="flex-shrink-none flex items-center justify-center billing-img br-100 pa0 ba bw1 b--base-1 overflow-x-hidden"
@@ -34,9 +34,9 @@ class BillingInfo extends Component {
         <div className="flex flex-column ml4">
           <div className="fw5 f5 ttc">{store}</div>
           <div className="flex items-center flex-wrap f6">
-            <span className="db mid-gray">{name.split(' ')[0]}</span>
-            <div className="flex items-center f9 light-gray mh2">&#9679;</div>
-            <span className="db b--base-1 bl mid-gray">{email}</span>
+            <span className="db c-base-7">{name.split(' ')[0]}</span>
+            <div className="flex items-center f9 c-base-4 mh2">&#9679;</div>
+            <span className="db b--base-1 bl c-base-7">{email}</span>
           </div>
         </div>
       </div>

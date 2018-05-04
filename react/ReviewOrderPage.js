@@ -47,8 +47,8 @@ class ReviewOrderPage extends Component {
     const { appProduct, loading } = appProductQuery
     const { topbarData, loading: profileLoading, error } = profileQuery
     return (
-      <div className="w-100 h-100 bg-light-silver tc pv6-s pt9-ns content">
-        <div className="near-black f4-s f2-ns fw3 mt6 mb7">
+      <div className="w-100 h-100 bg-base-3 tc pv6-s pt9-ns content">
+        <div className=" c-base-8 f4-s f2-ns fw3 mt6 mb7">
           {this.translate('reviewOrder')}
         </div>
         <div className="flex justify-center tl">
@@ -59,7 +59,7 @@ class ReviewOrderPage extends Component {
           ) : (
             <div className="w-90-s w-70-m w-50-l w-40-xl">
               <Card>
-                <div className="pa0-s pa4-ns near-black">
+                <div className="pa0-s pa4-ns c-base-8">
                   <div className="flex flex-row mb5-s mb7-ns">
                     <AppIcon
                       imageUrl={imagePath(appProduct)}
@@ -100,7 +100,7 @@ class ReviewOrderPage extends Component {
                           </span>
                         ),
                         termsOfService: (
-                          <a className="pointer link rebel-pink">
+                          <a className="pointer link c-primary">
                             <FormattedMessage id="extensions.termsOfService" />
                           </a>
                         ),
@@ -111,7 +111,7 @@ class ReviewOrderPage extends Component {
                                 ? appProduct.billing.termsURL
                                 : ''
                             }
-                            className="pointer link rebel-pink"
+                            className="pointer link c-primary"
                           >
                             <FormattedMessage id="extensions.privacyPolice" />
                           </a>

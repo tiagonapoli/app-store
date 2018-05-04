@@ -32,7 +32,7 @@ class LoginModal extends Component {
     const { isOpen, onClose } = this.props
     return (
       <Modal centered isOpen={isOpen} onClose={onClose}>
-        <div className="near-black">
+        <div className=" c-base-8">
           <div className="fw3 f3 mv4">{this.translate('loginModalText')}</div>
           <div className="w-100 flex flex-column flex-row-ns pv6">
             <div className="w-100 w-70-ns pb4-s pb0-ns pr4-ns">
@@ -44,12 +44,12 @@ class LoginModal extends Component {
               </Button>
             </div>
           </div>
-          <div className="w-100 f5 fw3 tc bt b--light-silver pt6">
+          <div className="w-100 f5 fw3 tc bt b--base-3 pt6">
             <FormattedMessage
               id="extensions.newToVTEX"
               values={{
                 createYourAccount: (
-                  <a className="link normal rebel-pink">
+                  <a className="link normal c-primary">
                     <FormattedMessage id="extensions.createYourAccount" />
                   </a>
                 ),
