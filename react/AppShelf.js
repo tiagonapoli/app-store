@@ -55,7 +55,7 @@ const defaultOptions = {
     variables: {
       query: props.query,
       collection: props.collection,
-      specificationFilters: props.specificationFilters ? props.specificationFilters : null,
+      specificationFilters: props.specificationFilters,
       from: props.from || 0,
       to: props.to || 2,
     },
