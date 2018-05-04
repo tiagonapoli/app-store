@@ -14,7 +14,6 @@
     "vtex.admin-graphql": "1.x",
     "vtex.apps-graphql": "2.x",
     "vtex.store-graphql": "2.x",
-    "vtex.shelf": "0.x",
     "vtex.billing": "0.x"
   },
   "builders": {
