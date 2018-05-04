@@ -30,5 +30,6 @@
   "extensions.loginError": "Por favor, logue en el admin de su tienda.",
   "extensions.loginModalText": "Por favor, escriba el nombre de su tienda.",
   "extensions.newToVTEX": "Nuevo en VTEX? {createYourAccount}",
-  "extensions.createYourAccount": "Crea tu cuenta"
+  "extensions.createYourAccount": "Crea tu cuenta",
+  "extensions.comingSoon": "Próximo"
 }

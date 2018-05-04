@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { injectIntl, intlShape } from 'react-intl'
 
 import SearchIcon from './icons/SearchIcon'
-import AppShelf from '../AppShelf'
+import AppGallery from '../AppGallery'
 
 class SearchBox extends Component {
   static propTypes = {
@@ -49,7 +49,7 @@ class SearchBox extends Component {
             searchValue ? 'overflow-auto db' : 'dn'
           }`}
         >
-          <AppShelf query={searchValue} />
+          <AppGallery query={searchValue} />
         </div>
       </div>
     )

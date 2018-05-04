@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
-import { ExtensionPoint } from 'render'
 
 import AppShelf from './AppShelf'
+import AppGallery from './AppGallery'
 import JumbotronIcon from './components/icons/JumbotronIcon'
 import SearchBox from './components/SearchBox'
 
@@ -62,7 +62,7 @@ class HomePage extends Component {
           </div>
           <div id="home-shelf" className="bg-light-silver flex justify-center">
             <div className="w-90-ns">
-              <AppShelf homePage />
+              <AppGallery homePage collection="137" />
             </div>
           </div>
         </div>
@@ -71,7 +71,16 @@ class HomePage extends Component {
             <SearchBox />
           </div>
         </div>
-        <ExtensionPoint id="shelf" />
+        <div className="flex justify-center">
+          <div className="w-90-ns">
+            <AppShelf specificationFilters={[ 'Published' ]} to={8} title="VTEX Apps" />
+          </div>
+        </div>
+        <div className="flex justify-center">
+          <div className="w-90-ns">
+            <AppShelf specificationFilters={[ 'Coming Soon' ]} to={8} title={this.translate('comingSoon')} />
+          </div>
+        </div>
       </div>
     )
   }
