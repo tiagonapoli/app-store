@@ -18,7 +18,7 @@ class HomePage extends Component {
 
   state = {
     scroll: 0,
-    jumbontronSize: 0,
+    jumbontronSize: 600,
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })

@@ -22,13 +22,19 @@ class Header extends Component {
   state = {
     scroll: 0,
     shouldShowSearch: true,
-    headerSize: 0,
-    jumbontronSize: 0,
+    headerSize: 64,
+    jumbontronSize: 600,
     store: '',
     shouldShowLoginModal: false,
   }
 
   componentDidMount() {
+    const query = window.location.search
+    let account
+    if (query) {
+      account = query.replace('?an=', '')
+      window.localStorage.setItem('account', account)
+    }
     window.addEventListener('scroll', this.watchScrollUpMobile)
     this.watchScrollUpMobile()
     this.setState({
@@ -37,7 +43,7 @@ class Header extends Component {
       jumbontronSize:
         window.document.getElementById('jumbotron-home') &&
         window.document.getElementById('jumbotron-home').offsetHeight,
-      store: window.localStorage.getItem('account') || '',
+      store: account || window.localStorage.getItem('account') || '',
     })
   }
 
