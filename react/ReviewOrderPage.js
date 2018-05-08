@@ -14,6 +14,7 @@ import Billing from './components/Billing'
 import BillingInfo from './components/BillingInfo'
 import ConfirmButton from './components/ConfirmButton'
 import Loading from './components/Loading'
+import LoginModal from './components/LoginModal'
 
 class ReviewOrderPage extends Component {
   static propTypes = {
@@ -25,6 +26,7 @@ class ReviewOrderPage extends Component {
 
   state = {
     store: '',
+    shouldShowLoginModal: false,
   }
 
   componentDidUpdate(prevProps) {
@@ -41,8 +43,12 @@ class ReviewOrderPage extends Component {
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
+  handleLogin = () => {
+    this.setState({ shouldShowLoginModal: !this.state.shouldShowLoginModal })
+  }
+
   render() {
-    const { store } = this.state
+    const { store, shouldShowLoginModal } = this.state
     const { appProductQuery, profileQuery } = this.props
     const { appProduct, loading } = appProductQuery
     const { topbarData, loading: profileLoading, error } = profileQuery
@@ -120,12 +126,16 @@ class ReviewOrderPage extends Component {
                     />
                   </div>
                   <div className="dn-s db-ns w-100 mt5">
-                    <ConfirmButton
-                      store={store}
-                      appName={appProduct.slug}
-                      billingPolicy={appProduct.billing}
-                      value={this.translate('confirmButton')}
-                    />
+                    {error
+                      ? <div className="pointer tc rebel-pink hover-heavy-rebel-pink" onClick={this.handleLogin}>
+                        {this.translate('loginError')}
+                      </div>
+                      : <ConfirmButton
+                        store={store}
+                        appName={appProduct.slug}
+                        billingPolicy={appProduct.billing}
+                        value={this.translate('confirmButton')} />
+                    }
                   </div>
                   <div className="dn-s db-ns w-100 mt6 mb2 tc">
                     <FormattedMessage
@@ -142,16 +152,21 @@ class ReviewOrderPage extends Component {
                 </div>
               </Card>
               <div className="db-s dn-ns w-100 mt7">
-                <ConfirmButton
-                  store={store}
-                  appName={appProduct.slug}
-                  billingPolicy={appProduct.billing}
-                  value={this.translate('confirmButtonMobile')}
-                />
+                {error
+                  ? <div className="pointer tc rebel-pink hover-heavy-rebel-pink" onClick={this.handleLogin}>
+                    {this.translate('loginError')}
+                  </div>
+                  : <ConfirmButton
+                    store={store}
+                    appName={appProduct.slug}
+                    billingPolicy={appProduct.billing}
+                    value={this.translate('confirmButtonMobile')} />
+                }
               </div>
             </div>
           )}
         </div>
+        <LoginModal isOpen={shouldShowLoginModal} onClose={this.handleLogin} />
       </div>
     )
   }
