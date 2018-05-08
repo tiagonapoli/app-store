@@ -18,14 +18,14 @@ class AppCategory extends Component {
     const { category, seller, homePage } = this.props
     return (
       <div
-        className={`flex flex-wrap items-center h1 f6-s f5-ns ttc ${
+        className={`flex flex-wrap items-center h1 f7-s f6-ns trach-2 ${
           homePage ? 'gray' : 'dark-gray'
         }`}
       >
         {removeSlashes(category) || 'Smartcheckout'}
-        <div className="flex items-center f9 light-gray mh2">&#9679;</div>
+        <div className="flex items-center f10 light-gray mh2">&#9679;</div>
         <div>
-          {this.translate('developedBy')} <span className="ttu">{seller}</span>
+          {this.translate('developedBy')} <span>{seller}</span>
         </div>
       </div>
     )

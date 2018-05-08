@@ -136,7 +136,7 @@ class Header extends Component {
           <div
             className={`db dn-ns ${
               scroll > headerSize
-                ? `z-3 fixed w-100 ma0 bg-white ${
+                ? `z-3 fixed w-100 ma0 bg-white light-shadow ${
                   shouldShowSearch ? 'slideDownMobile' : 'slideUpMobile'
                 }`
                 : ''
@@ -149,7 +149,7 @@ class Header extends Component {
           <div
             className={`dn ${
               scroll > jumbontronSize
-                ? 'db-ns z-3 ma0 w-100 ph9 fixed bg-white slideDown'
+                ? 'db-ns z-3 ma0 w-100 ph9 fixed bg-white slideDown light-shadow'
                 : 'slideUp'
             }`}
           >
