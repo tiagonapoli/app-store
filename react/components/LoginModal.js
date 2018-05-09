@@ -49,7 +49,7 @@ class LoginModal extends Component {
               id="extensions.newToVTEX"
               values={{
                 createYourAccount: (
-                  <a className="link normal rebel-pink">
+                  <a className="link normal rebel-pink" href="https://www.vtex.com/pt/-1cz/contato">
                     <FormattedMessage id="extensions.createYourAccount" />
                   </a>
                 ),
