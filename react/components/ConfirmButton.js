@@ -54,11 +54,11 @@ class ConfirmButton extends Component {
     const { loading } = this.state
     const { value } = this.props
     return (
-      <div className="w-100 tc">
+      <div className="w-100 flex justify-center">
         {loading ? (
           <Loading />
         ) : (
-          <div className="bg-rebel-pink hover-bg-heavy-rebel-pink tc br2 w-100">
+          <div className="bg-rebel-pink hover-bg-heavy-rebel-pink tc br2 w-100 mw6">
             <Button onClick={this.handleClick} block>
               <span className="white">{value}</span>
             </Button>

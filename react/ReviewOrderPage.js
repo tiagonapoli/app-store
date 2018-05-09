@@ -30,9 +30,13 @@ class ReviewOrderPage extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { appProductQuery: { appProduct } } = this.props
-    if (this.props.appProductQuery !== prevProps.appProductQuery &&
-      appProduct) {
+    const {
+      appProductQuery: { appProduct },
+    } = this.props
+    if (
+      this.props.appProductQuery !== prevProps.appProductQuery &&
+      appProduct
+    ) {
       window.document.title = appProduct.name
     }
   }
@@ -63,7 +67,7 @@ class ReviewOrderPage extends Component {
               <Loading />
             </div>
           ) : (
-            <div className="w-90-s w-70-m w-50-l w-40-xl">
+            <div className="mw7 w-90-s w-70-m w-50-l w-40-xl">
               <Card>
                 <div className="pa0-s pa4-ns near-black">
                   <div className="flex flex-row mb5-s mb7-ns">
@@ -82,13 +86,16 @@ class ReviewOrderPage extends Component {
                   <div className="mb7-s mb8-ns">
                     <div className="f5">Billing info</div>
                     <div className="mv3 mb3-s mb5-ns">
-                      {(profileLoading || error)
-                        ? <Loading />
-                        : <BillingInfo name={topbarData.profile.name}
+                      {profileLoading || error ? (
+                        <Loading />
+                      ) : (
+                        <BillingInfo
+                          name={topbarData.profile.name}
                           email={topbarData.profile.email}
                           store={store}
-                          pictureUrl={topbarData.profile.picture} />
-                      }
+                          pictureUrl={topbarData.profile.picture}
+                        />
+                      )}
                     </div>
                   </div>
                   <div className="f6">
@@ -126,16 +133,21 @@ class ReviewOrderPage extends Component {
                     />
                   </div>
                   <div className="dn-s db-ns w-100 mt5">
-                    {error
-                      ? <div className="pointer tc rebel-pink hover-heavy-rebel-pink" onClick={this.handleLogin}>
+                    {error ? (
+                      <div
+                        className="pointer tc rebel-pink hover-heavy-rebel-pink"
+                        onClick={this.handleLogin}
+                      >
                         {this.translate('loginError')}
                       </div>
-                      : <ConfirmButton
+                    ) : (
+                      <ConfirmButton
                         store={store}
                         appName={appProduct.slug}
                         billingPolicy={appProduct.billing}
-                        value={this.translate('confirmButton')} />
-                    }
+                        value={this.translate('confirmButton')}
+                      />
+                    )}
                   </div>
                   <div className="dn-s db-ns w-100 mt6 mb2 tc">
                     <FormattedMessage
@@ -152,16 +164,21 @@ class ReviewOrderPage extends Component {
                 </div>
               </Card>
               <div className="db-s dn-ns w-100 mt7">
-                {error
-                  ? <div className="pointer tc rebel-pink hover-heavy-rebel-pink" onClick={this.handleLogin}>
+                {error ? (
+                  <div
+                    className="pointer tc rebel-pink hover-heavy-rebel-pink"
+                    onClick={this.handleLogin}
+                  >
                     {this.translate('loginError')}
                   </div>
-                  : <ConfirmButton
+                ) : (
+                  <ConfirmButton
                     store={store}
                     appName={appProduct.slug}
                     billingPolicy={appProduct.billing}
-                    value={this.translate('confirmButtonMobile')} />
-                }
+                    value={this.translate('confirmButtonMobile')}
+                  />
+                )}
               </div>
             </div>
           )}
@@ -183,6 +200,5 @@ const options = {
 export default compose(
   graphql(appProductQuery, { ...options, name: 'appProductQuery' }),
   graphql(profileQuery, { options: { ssr: false }, name: 'profileQuery' }),
-  injectIntl)(
-  ReviewOrderPage
-)
+  injectIntl
+)(ReviewOrderPage)
