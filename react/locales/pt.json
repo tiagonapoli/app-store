@@ -1,5 +1,6 @@
 {
   "extensions.login": "Entrar",
+  "extensions.logout": "Sair",
   "extensions.developedBy": "Desenvolvido por",
   "extensions.get": "obter",
   "extensions.back": "Voltar",
