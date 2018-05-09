@@ -23,7 +23,7 @@ class Header extends Component {
     scroll: 0,
     shouldShowSearch: true,
     headerSize: 64,
-    jumbontronSize: 600,
+    jumbontronSize: 890,
     store: '',
     shouldShowLoginModal: false,
   }
