@@ -82,7 +82,7 @@ class HomePage extends Component {
             <AppShelf
               specificationFilters={['Published']}
               to={8}
-              title="VTEX Apps"
+              title="Apps"
             />
           </div>
         </div>
