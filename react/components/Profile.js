@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 
-import Icon from '../vendor/vtex.icon'
-
 class Profile extends Component {
   constructor(props) {
     super(props)
@@ -70,19 +68,16 @@ class Profile extends Component {
           )}
         </button>
         {opened && (
-          <ul className="absolute z-999 w5 top-2 right-1 list pa0 mh0 mv4 bg-white br2 shadow-02">
-            <li
-              className="pointer hover-bg-light-silver pv4"
+          <div className="absolute z-2 w4 top-2 right-1 right-2-ns list pa0 mh0 mv4-s mv6-ns bg-white br2">
+            <div
+              className="pointer tl hover-bg-light-silver pa3 br2"
               onClick={this.handleLogout}
               onMouseDown={this.handleMouseDown}>
-              <span className="v-mid pa4">
-                <Icon size={12} name="logout" colorFill="gray" />
-              </span>
               <span className="link f5 near-black">
                 {this.translate('logout')}
               </span>
-            </li>
-          </ul>
+            </div>
+          </div>
         )}
       </div>
     )
