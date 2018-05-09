@@ -18,7 +18,7 @@ class LoginModal extends Component {
 
   handleClick = () => {
     const { store } = this.state
-    window.location.href = `https://sso.vtex.com/_v/sso?scope=vtex&an=${store}&returnUrl=https://extensions.vtex.com/?an=${store}`
+    window.location.href = `https://sso.vtex.com/_v/sso?account=${store}&returnUrl=https://extensions.vtex.com/?an=${store}`
   }
 
   handleChange = ({ target: { value } }) => {
