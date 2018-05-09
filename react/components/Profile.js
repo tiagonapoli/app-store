@@ -52,7 +52,7 @@ class Profile extends Component {
     const { opened } = this.state
 
     return (
-      <div className="flex items-center white ph2">
+      <div className="flex items-center white">
         <span className="dn-s db-ns mr3">{name}</span>
         <span className="dn-s db-ns pl3 mr5 b--white bl ttc">{store}</span>
         <button
@@ -82,10 +82,6 @@ class Profile extends Component {
       </div>
     )
   }
-}
-
-Profile.propTypes = {
-  intl: intlShape.isRequired,
 }
 
 export default injectIntl(Profile)
