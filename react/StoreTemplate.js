@@ -9,13 +9,6 @@ export default class StoreTemplate extends Component {
     children: PropTypes.element,
   }
 
-  componentDidMount() {
-    const query = window.location.search
-    if (query) {
-      window.localStorage.setItem('account', query.replace('?an=', ''))
-    }
-  }
-
   render() {
     return (
       <div className="w-100 h-100 overflow-x-hidden content">

@@ -18,7 +18,7 @@ class HomePage extends Component {
 
   state = {
     scroll: 0,
-    jumbontronSize: 0,
+    jumbontronSize: 890,
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
@@ -65,10 +65,10 @@ class HomePage extends Component {
               <AppGallery homePage collection="137" />
             </div>
           </div>
-        </div>
-        <div className="w-100 dn-s flex-ns justify-center">
-          <div className={`${jumbontronSize < scroll ? 'dn' : 'w-90 mv8-ns'}`}>
-            <SearchBox />
+          <div className={`w-100 dn-s flex-ns justify-center ${jumbontronSize < scroll ? 'visibility-hidden' : ''}`}>
+            <div className="visibility-visible w-90 mv8-ns">
+              <SearchBox />
+            </div>
           </div>
         </div>
         <div className="flex justify-center">
