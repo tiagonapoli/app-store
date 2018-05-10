@@ -49,7 +49,7 @@ class HomePage extends Component {
     return (
       <div className="w-100">
         <div id="jumbotron-home" className="w-100">
-          <div className="flex-ns justify-center-ns items-center-ns h-100-s h-50-ns w-100 bg-serious-black pt9 pl5-s pl7-ns white">
+          <div className="flex-ns justify-center-ns items-center-ns h-100-s h-50-ns w-100 bg-serious-black pt10 pl5-s pl7-ns white">
             <div className="flex-ns w-100 mw9">
               <div className="w-100">
                 <div className="b f2-s f1-ns mt9-s mt0-ns">Extension Store</div>

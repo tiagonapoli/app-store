@@ -61,13 +61,7 @@ class Header extends Component {
   }
 
   render() {
-    const {
-      shouldShowLoginModal,
-      shouldShowSearch,
-      scroll,
-      headerSize,
-      jumbontronSize,
-    } = this.state
+    const { shouldShowSearch, scroll, headerSize, jumbontronSize } = this.state
     const notHome = window.location && window.location.pathname.length > 1
     const titleClasses = notHome ? 'dn db-ns' : 'db'
     return (
