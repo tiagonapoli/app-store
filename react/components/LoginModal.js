@@ -5,11 +5,14 @@ import Button from '@vtex/styleguide/lib/Button'
 import Input from '@vtex/styleguide/lib/Input'
 import Modal from '@vtex/styleguide/lib/Modal'
 
+import withCulture from '../withCulture'
+
 class LoginModal extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
     onClose: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
+    culture: PropTypes.object.isRequired,
   }
 
   state = {
@@ -29,7 +32,7 @@ class LoginModal extends Component {
 
   render() {
     const { store } = this.state
-    const { isOpen, onClose } = this.props
+    const { isOpen, onClose, culture } = this.props
     return (
       <Modal centered isOpen={isOpen} onClose={onClose}>
         <div className="near-black">
@@ -49,7 +52,10 @@ class LoginModal extends Component {
               id="extensions.newToVTEX"
               values={{
                 createYourAccount: (
-                  <a className="link normal rebel-pink" href="https://www.vtex.com/pt/-1cz/contato">
+                  <a
+                    className="link normal rebel-pink"
+                    href={`https://www.vtex.com/${culture.locale}/-1cz/contato`}
+                  >
                     <FormattedMessage id="extensions.createYourAccount" />
                   </a>
                 ),
@@ -62,4 +68,4 @@ class LoginModal extends Component {
   }
 }
 
-export default injectIntl(LoginModal)
+export default withCulture()(injectIntl(LoginModal))
