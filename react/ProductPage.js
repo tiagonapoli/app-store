@@ -26,12 +26,12 @@ class ProductPage extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { appProduct } = this.props.appProductQuery
+    const { appProductQuery } = this.props
     if (
-      this.props.appProductQuery !== prevProps.appProductQuery &&
-      appProduct
+      appProductQuery !== prevProps.appProductQuery &&
+      appProductQuery.appProduct
     ) {
-      window.document.title = appProduct.name
+      window.document.title = appProductQuery.appProduct.name
     }
   }
 

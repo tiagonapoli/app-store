@@ -30,14 +30,12 @@ class ReviewOrderPage extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {
-      appProductQuery: { appProduct },
-    } = this.props
+    const { appProductQuery } = this.props
     if (
-      this.props.appProductQuery !== prevProps.appProductQuery &&
-      appProduct
+      appProductQuery !== prevProps.appProductQuery &&
+      appProductQuery.appProduct
     ) {
-      window.document.title = appProduct.name
+      window.document.title = appProductQuery.appProduct.name
     }
   }
 
