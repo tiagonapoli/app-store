@@ -44,18 +44,20 @@ class AppItem extends Component {
     return (
       <div
         onClick={!isComing ? this.handleClick : () => {}}
-        className={`link no-underline db w-90-s w-50-m w-30-l mt5-s mt0-ns mh5 h5 ${isComing ? '' : 'pointer'}`}
+        className={`link no-underline db w-90-s w-50-m w-30-l mt5-s mt0-ns ma5-ns ${
+          isComing ? '' : 'pointer card-hover'
+        }`}
       >
         <Card>
           <div className="flex flex-row near-black">
             <AppIcon imageUrl={imageUrl} name={name} />
             <div className="w-100 ml5 flex flex-column justify-center lh-copy">
               <div className="h2 overflow-y-hidden f4 fw5 mb4-ns">{name}</div>
-              {!isComing &&
+              {!isComing && (
                 <div className="w-50-s w-60-ns">
                   <GetButton appId={appId} homePage />
                 </div>
-              }
+              )}
             </div>
           </div>
           <div className="description-height mv5 overflow-hidden f5 fw4 lh-title dark-gray track-1">
