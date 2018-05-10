@@ -6,15 +6,13 @@ import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 import Card from '@vtex/styleguide/lib/Card'
 
 import appProductQuery from './queries/appProductQuery.gql'
-import profileQuery from './queries/profileQuery.gql'
 
 import { imagePath } from './utils/utils'
 import AppIcon from './components/AppIcon'
 import Billing from './components/Billing'
-import BillingInfo from './components/BillingInfo'
 import ConfirmButton from './components/ConfirmButton'
 import Loading from './components/Loading'
-import LoginModal from './components/LoginModal'
+import StoreModal from './components/StoreModal'
 
 class ReviewOrderPage extends Component {
   static propTypes = {
@@ -26,7 +24,7 @@ class ReviewOrderPage extends Component {
 
   state = {
     store: '',
-    shouldShowLoginModal: false,
+    shouldShowStoreModal: false,
   }
 
   componentDidUpdate(prevProps) {
@@ -138,9 +136,9 @@ class ReviewOrderPage extends Component {
                     {error ? (
                       <div
                         className="pointer tc rebel-pink hover-heavy-rebel-pink"
-                        onClick={this.handleLogin}
+                        onClick={this.handleStoreModal}
                       >
-                        {this.translate('loginError')}
+                        {this.translate('storeError')}
                       </div>
                     ) : (
                       <ConfirmButton
@@ -169,9 +167,9 @@ class ReviewOrderPage extends Component {
                 {error ? (
                   <div
                     className="pointer tc rebel-pink hover-heavy-rebel-pink"
-                    onClick={this.handleLogin}
+                    onClick={this.handleStoreModal}
                   >
-                    {this.translate('loginError')}
+                    {this.translate('storeError')}
                   </div>
                 ) : (
                   <ConfirmButton
@@ -185,7 +183,10 @@ class ReviewOrderPage extends Component {
             </div>
           )}
         </div>
-        <LoginModal isOpen={shouldShowLoginModal} onClose={this.handleLogin} />
+        <StoreModal
+          isOpen={shouldShowStoreModal}
+          onClose={this.handleStoreModal}
+        />
       </div>
     )
   }
