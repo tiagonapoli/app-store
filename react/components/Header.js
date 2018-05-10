@@ -6,7 +6,6 @@ import { Link } from 'render'
 import VTEXIcon from './icons/VTEXIcon'
 import BackIcon from './icons/BackIcon'
 import SearchBox from './SearchBox'
-import LoginModal from './LoginModal'
 
 class Header extends Component {
   static propTypes = {
@@ -59,10 +58,6 @@ class Header extends Component {
 
   handleBack = () => {
     window.history.back()
-  }
-
-  handleLogin = () => {
-    this.setState({ shouldShowLoginModal: !this.state.shouldShowLoginModal })
   }
 
   render() {
@@ -132,7 +127,6 @@ class Header extends Component {
             <SearchBox />
           </div>
         )}
-        <LoginModal isOpen={shouldShowLoginModal} onClose={this.handleLogin} />
       </div>
     )
   }

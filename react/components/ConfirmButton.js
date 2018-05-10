@@ -11,7 +11,6 @@ class ConfirmButton extends Component {
     appName: PropTypes.string.isRequired,
     billingPolicy: PropTypes.object.isRequired,
     value: PropTypes.string.isRequired,
-    buyApp: PropTypes.func.isRequired,
     store: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
   }

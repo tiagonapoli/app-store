@@ -43,15 +43,15 @@ class ReviewOrderPage extends Component {
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
-  handleLogin = () => {
-    this.setState({ shouldShowLoginModal: !this.state.shouldShowLoginModal })
+  handleStoreModal = () => {
+    this.setState({ shouldShowStoreModal: !this.state.shouldShowStoreModal })
   }
 
   render() {
-    const { store, shouldShowLoginModal } = this.state
-    const { appProductQuery, profileQuery } = this.props
+    const { store, shouldShowStoreModal } = this.state
+    const { appProductQuery } = this.props
     const { appProduct, loading } = appProductQuery
-    const { topbarData, loading: profileLoading, error } = profileQuery
+    const error = !store
     return (
       <div className="w-100 h-100 bg-light-silver tc pv6-s pt9-ns content">
         <div className="near-black f4-s f2-ns fw3 mt6 mb7">
@@ -81,19 +81,10 @@ class ReviewOrderPage extends Component {
                   </div>
                   {!error && (
                     <div className="mb7-s mb8-ns">
-                      <div className="f5">Billing info</div>
+                      <div className="f5">{this.translate('accountInfo')}</div>
 
                       <div className="mv3 mb3-s mb5-ns">
-                        {profileLoading ? (
-                          <Loading />
-                        ) : (
-                          <BillingInfo
-                            name={topbarData.profile.name}
-                            email={topbarData.profile.email}
-                            store={store}
-                            pictureUrl={topbarData.profile.picture}
-                          />
-                        )}
+                        <div className="fw5 f5 ttc">{store}</div>
                       </div>
                     </div>
                   )}
@@ -202,6 +193,5 @@ const options = {
 
 export default compose(
   graphql(appProductQuery, { ...options, name: 'appProductQuery' }),
-  graphql(profileQuery, { options: { ssr: false }, name: 'profileQuery' }),
   injectIntl
 )(ReviewOrderPage)

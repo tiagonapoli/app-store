@@ -28,9 +28,10 @@
   "extensions.moreThan": "more than",
   "extensions.buyError":
     "There was an error buying the extension. Please reload this page and try again shortly.",
-  "extensions.loginError": "Please, log in your store's admin",
-  "extensions.loginModalText": "Please, type in your store's name.",
+  "extensions.storeError": "Please, inform in your store's name",
+  "extensions.storeModalText": "Please, type in your store's name.",
   "extensions.newToVTEX": "New to VTEX? {createYourAccount}",
   "extensions.createYourAccount": "Create your account",
-  "extensions.comingSoon": "Coming Soon"
+  "extensions.comingSoon": "Coming Soon",
+  "extensions.accountInfo": "Account info"
 }

@@ -28,9 +28,10 @@
   "extensions.moreThan": "mais de",
   "extensions.buyError":
     "Ocorreu um erro durante a compra da extensão. Por favor, atualize a págine e tente novamente.",
-  "extensions.loginError": "Por favor, logue no admin da sua loja",
-  "extensions.loginModalText": "Por favor, digite o nome da sua loja.",
+  "extensions.storeError": "Por favor, informe o nome sua loja",
+  "extensions.storeModalText": "Por favor, digite o nome da sua loja.",
   "extensions.newToVTEX": "Novo na VTEX? {createYourAccount}",
   "extensions.createYourAccount": "Crie já sua conta",
-  "extensions.comingSoon": "Em Breve"
+  "extensions.comingSoon": "Em Breve",
+  "extensions.accountInfo": "Informações da conta"
 }
