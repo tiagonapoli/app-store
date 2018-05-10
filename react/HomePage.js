@@ -49,36 +49,50 @@ class HomePage extends Component {
     return (
       <div className="w-100">
         <div id="jumbotron-home" className="w-100">
-          <div className="flex-ns items-center-ns h-100-s h-50-ns w-100 bg-serious-black pt9 pl5-s pl7-ns white">
-            <div className="w-100">
-              <div className="b f2-s f1-ns mt9-s mt0-ns">Extension Store</div>
-              <div className="mt5 mb9-ns f4-s f3-ns fw3">
-                {this.translate('homeText')}
+          <div className="flex-ns justify-center-ns items-center-ns h-100-s h-50-ns w-100 bg-serious-black pt9 pl5-s pl7-ns white">
+            <div className="flex-ns w-100 mw9">
+              <div className="w-100">
+                <div className="b f2-s f1-ns mt9-s mt0-ns">Extension Store</div>
+                <div className="mt5 mb9-ns f4-s f3-ns fw3">
+                  {this.translate('homeText')}
+                </div>
               </div>
-            </div>
-            <div className="w-100-ns tr-ns overflow-hidden">
-              <JumbotronIcon />
+              <div className="w-100-ns tr-ns overflow-hidden">
+                <JumbotronIcon />
+              </div>
             </div>
           </div>
           <div id="home-shelf" className="bg-light-silver flex justify-center">
-            <div className="w-90-ns">
+            <div className="w-90-ns mw9">
               <AppGallery homePage collection="137" />
             </div>
           </div>
-          <div className={`w-100 dn-s flex-ns justify-center ${jumbontronSize < scroll ? 'visibility-hidden' : ''}`}>
-            <div className="visibility-visible w-90 mv8-ns">
+          <div
+            className={`w-100 dn-s flex-ns justify-center ${
+              jumbontronSize < scroll ? 'visibility-hidden' : ''
+            }`}
+          >
+            <div className="mw9 visibility-visible w-90 mv8-ns">
               <SearchBox />
             </div>
           </div>
         </div>
         <div className="flex justify-center">
-          <div className="w-90-ns">
-            <AppShelf specificationFilters={[ 'Published' ]} to={8} title="VTEX Apps" />
+          <div className="mw9 w-90-ns">
+            <AppShelf
+              specificationFilters={['Published']}
+              to={8}
+              title="Apps"
+            />
           </div>
         </div>
         <div className="flex justify-center">
-          <div className="w-90-ns">
-            <AppShelf specificationFilters={[ 'Coming Soon' ]} to={8} title={this.translate('comingSoon')} />
+          <div className="mw9 w-90-ns">
+            <AppShelf
+              specificationFilters={['Coming Soon']}
+              to={8}
+              title={this.translate('comingSoon')}
+            />
           </div>
         </div>
       </div>

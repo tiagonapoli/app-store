@@ -26,10 +26,12 @@ class ProductPage extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { appProduct } = this.props.appProductQuery
-    if (this.props.appProductQuery !== prevProps.appProductQuery &&
-      appProduct) {
-      window.document.title = appProduct.name
+    const { appProductQuery } = this.props
+    if (
+      appProductQuery !== prevProps.appProductQuery &&
+      appProductQuery.appProduct
+    ) {
+      window.document.title = appProductQuery.appProduct.name
     }
   }
 
@@ -39,7 +41,7 @@ class ProductPage extends Component {
     return (
       <div className="w-100 h-100 flex justify-center content">
         {appProduct ? (
-          <div className="w-100 w-70-ns">
+          <div className="w-100 w-70-ns mw8">
             <ProductHeader
               id={appProduct.linkText}
               registry={appProduct.registry}
