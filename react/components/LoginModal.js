@@ -53,6 +53,7 @@ class LoginModal extends Component {
               values={{
                 createYourAccount: (
                   <a
+                    target="_blank"
                     className="link normal rebel-pink"
                     href={`https://www.vtex.com/${culture.locale}/-1cz/contato`}
                   >

@@ -120,6 +120,7 @@ class ReviewOrderPage extends Component {
                         ),
                         privacyPolice: (
                           <a
+                            target="_blank"
                             href={
                               appProduct.billing
                                 ? appProduct.billing.termsURL
