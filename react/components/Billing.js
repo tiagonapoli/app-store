@@ -25,27 +25,30 @@ class Billing extends Component {
 
   render() {
     const { billingOptions } = this.props
-    const isFixed = !billingOptions.free && billingOptions.policies[0].billing.items[0].fixed
+    const isFixed =
+      !billingOptions.free && billingOptions.policies[0].billing.items[0].fixed
     const isFixedOnly =
       isFixed && billingOptions.policies[0].billing.items.length === 1
     const metricsIndex = isFixed ? 1 : 0
     const ranges =
       !billingOptions.free &&
       !isFixedOnly &&
-      billingOptions.policies[0].billing.items[metricsIndex].calculatedByMetricUnit &&
-      billingOptions.policies[0].billing.items[metricsIndex].calculatedByMetricUnit
-        .ranges
+      billingOptions.policies[0].billing.items[metricsIndex]
+        .calculatedByMetricUnit &&
+      billingOptions.policies[0].billing.items[metricsIndex]
+        .calculatedByMetricUnit.ranges
     const metricName =
       !billingOptions.free &&
       !isFixedOnly &&
-      billingOptions.policies[0].billing.items[metricsIndex].calculatedByMetricUnit &&
-      billingOptions.policies[0].billing.items[metricsIndex].calculatedByMetricUnit
-        .metricName
+      billingOptions.policies[0].billing.items[metricsIndex]
+        .calculatedByMetricUnit &&
+      billingOptions.policies[0].billing.items[metricsIndex]
+        .calculatedByMetricUnit.metricName
     return (
       <div className="ph5 br3 bg-light-silver normal near-black">
         {billingOptions.free || isFixedOnly ? (
           <div className="w-100 flex flex-row pv5">
-            <div className="w-10 f5 normal ">{this.translate('price')}</div>
+            <div className="w-10 f5 normal">{this.translate('price')}</div>
             <div className="w-90 tr f5 b">
               {billingOptions.free
                 ? this.translate('free')
@@ -53,7 +56,8 @@ class Billing extends Component {
                   <div className="w-100 flex flex-row justify-end">
                     {this.formatPrice(
                       billingOptions.policies[0].billing.items[0].fixed,
-                      billingOptions.policies[0].billing.items[0].itemCurrency,
+                      billingOptions.policies[0].billing.items[0]
+                        .itemCurrency,
                       2
                     )}
                     <span className="normal ml2 ttl">
@@ -72,7 +76,7 @@ class Billing extends Component {
                 className="w-100 lh-copy flex flex-row justify-end"
               >
                 <div
-                  className={`w-10 f5 normal pv4 ${
+                  className={`w-10 f5 normal pv4 mr3 ${
                     index === 0 ? 'dn db-ns' : 'dn'
                   }`}
                 >
@@ -88,7 +92,8 @@ class Billing extends Component {
                       <div className="b mr2">
                         {this.formatPrice(
                           billingOptions.policies[0].billing.items[0].fixed,
-                          billingOptions.policies[0].billing.items[0].itemCurrency,
+                          billingOptions.policies[0].billing.items[0]
+                            .itemCurrency,
                           0
                         )}
                         <span className="ml2 normal">+</span>

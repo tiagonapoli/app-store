@@ -3,18 +3,17 @@ import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 
+import Button from '@vtex/styleguide/lib/Button'
 import Card from '@vtex/styleguide/lib/Card'
 
 import appProductQuery from './queries/appProductQuery.gql'
-import profileQuery from './queries/profileQuery.gql'
 
 import { imagePath } from './utils/utils'
 import AppIcon from './components/AppIcon'
 import Billing from './components/Billing'
-import BillingInfo from './components/BillingInfo'
 import ConfirmButton from './components/ConfirmButton'
 import Loading from './components/Loading'
-import LoginModal from './components/LoginModal'
+import StoreModal from './components/StoreModal'
 
 class ReviewOrderPage extends Component {
   static propTypes = {
@@ -26,7 +25,7 @@ class ReviewOrderPage extends Component {
 
   state = {
     store: '',
-    shouldShowLoginModal: false,
+    shouldShowStoreModal: false,
   }
 
   componentDidUpdate(prevProps) {
@@ -45,15 +44,19 @@ class ReviewOrderPage extends Component {
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
-  handleLogin = () => {
-    this.setState({ shouldShowLoginModal: !this.state.shouldShowLoginModal })
+  handleStoreModal = () => {
+    this.setState({ shouldShowStoreModal: !this.state.shouldShowStoreModal })
+  }
+
+  handleStoreName = store => {
+    this.setState({ store, shouldShowStoreModal: false })
   }
 
   render() {
-    const { store, shouldShowLoginModal } = this.state
-    const { appProductQuery, profileQuery } = this.props
+    const { store, shouldShowStoreModal } = this.state
+    const { appProductQuery } = this.props
     const { appProduct, loading } = appProductQuery
-    const { topbarData, loading: profileLoading, error } = profileQuery
+    const error = !store
     return (
       <div className="w-100 h-100 bg-light-silver tc pv6-s pt9-ns content">
         <div className="near-black f4-s f2-ns fw3 mt6 mb7">
@@ -82,20 +85,19 @@ class ReviewOrderPage extends Component {
                     <Billing billingOptions={appProduct.billing} />
                   </div>
                   {!error && (
-                    <div className="mb7-s mb8-ns">
-                      <div className="f5">Billing info</div>
+                    <div className="mb7">
+                      <div className="f5">{this.translate('accountInfo')}</div>
 
-                      <div className="mv3 mb3-s mb5-ns">
-                        {profileLoading ? (
-                          <Loading />
-                        ) : (
-                          <BillingInfo
-                            name={topbarData.profile.name}
-                            email={topbarData.profile.email}
-                            store={store}
-                            pictureUrl={topbarData.profile.picture}
+                      <div className="ma3">
+                        <div className="fw5 f4 ttc">{store}</div>
+                        <div className="lh-copy f6">
+                          <FormattedMessage
+                            id="extensions.accountInfoText"
+                            values={{
+                              store: <span className="b">{store}</span>,
+                            }}
                           />
-                        )}
+                        </div>
                       </div>
                     </div>
                   )}
@@ -120,6 +122,7 @@ class ReviewOrderPage extends Component {
                         ),
                         privacyPolice: (
                           <a
+                            target="_blank"
                             href={
                               appProduct.billing
                                 ? appProduct.billing.termsURL
@@ -133,13 +136,14 @@ class ReviewOrderPage extends Component {
                       }}
                     />
                   </div>
-                  <div className="dn-s db-ns w-100 mt5">
+                  <div className="dn-s flex-ns justify-center w-100 mt5">
                     {error ? (
-                      <div
-                        className="pointer tc rebel-pink hover-heavy-rebel-pink"
-                        onClick={this.handleLogin}
-                      >
-                        {this.translate('loginError')}
+                      <div className="tc br2 w-100 w-80-ns bg-light-silver hover-bg-light-gray">
+                        <Button block onClick={this.handleStoreModal}>
+                          <span className="rebel-pink">
+                            {this.translate('storeError')}
+                          </span>
+                        </Button>
                       </div>
                     ) : (
                       <ConfirmButton
@@ -168,9 +172,9 @@ class ReviewOrderPage extends Component {
                 {error ? (
                   <div
                     className="pointer tc rebel-pink hover-heavy-rebel-pink"
-                    onClick={this.handleLogin}
+                    onClick={this.handleStoreModal}
                   >
-                    {this.translate('loginError')}
+                    {this.translate('storeError')}
                   </div>
                 ) : (
                   <ConfirmButton
@@ -184,7 +188,11 @@ class ReviewOrderPage extends Component {
             </div>
           )}
         </div>
-        <LoginModal isOpen={shouldShowLoginModal} onClose={this.handleLogin} />
+        <StoreModal
+          isOpen={shouldShowStoreModal}
+          onClose={this.handleStoreModal}
+          onChange={this.handleStoreName}
+        />
       </div>
     )
   }
@@ -200,6 +208,5 @@ const options = {
 
 export default compose(
   graphql(appProductQuery, { ...options, name: 'appProductQuery' }),
-  graphql(profileQuery, { options: { ssr: false }, name: 'profileQuery' }),
   injectIntl
 )(ReviewOrderPage)

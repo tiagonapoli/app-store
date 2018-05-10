@@ -1,7 +1,0 @@
-mutation purchaseApp($account: String!, $appName: String!, $termsOfUseAccepted: Boolean!)
-  @context(scope: "private") {
-  purchase(account: $account, appName: $appName, termsOfUseAccepted: $termsOfUseAccepted) {
-    purchased
-    billingOptions
-  }
-}

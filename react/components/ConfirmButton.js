@@ -1,19 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
-import { compose, graphql } from 'react-apollo'
 import Button from '@vtex/styleguide/lib/Button'
 
 import Loading from './Loading'
 import NoPermissionModal from './NoPermissionModal'
-import buyAppMutation from '../mutations/buyAppMutation.gql'
 
 class ConfirmButton extends Component {
   static propTypes = {
     appName: PropTypes.string.isRequired,
     billingPolicy: PropTypes.object.isRequired,
     value: PropTypes.string.isRequired,
-    buyApp: PropTypes.func.isRequired,
     store: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
   }
@@ -23,25 +20,9 @@ class ConfirmButton extends Component {
     loading: false,
   }
 
-  goToAdmin = () => {
+  handleClick = () => {
     const { store, appName } = this.props
     window.location.href = `https://${store}.myvtex.com/admin/extensions/${appName}/install`
-  }
-
-  handleClick = () => {
-    this.setState({ loading: true })
-    const { store, buyApp, appName, billingPolicy } = this.props
-    if (billingPolicy && billingPolicy.free) {
-      return this.goToAdmin()
-    }
-    return buyApp({
-      variables: { account: store, appName, termsOfUseAccepted: true },
-    })
-      .then(this.goToAdmin)
-      .catch(() => {
-        this.setState({ loading: false })
-        this.handleModal()
-      })
   }
 
   handleModal = () => {
@@ -73,6 +54,4 @@ class ConfirmButton extends Component {
   }
 }
 
-export default compose(graphql(buyAppMutation, { name: 'buyApp' }), injectIntl)(
-  ConfirmButton
-)
+export default injectIntl(ConfirmButton)

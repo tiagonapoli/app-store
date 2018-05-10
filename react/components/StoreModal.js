@@ -11,6 +11,7 @@ class LoginModal extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
     onClose: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
     culture: PropTypes.object.isRequired,
   }
@@ -21,7 +22,8 @@ class LoginModal extends Component {
 
   handleClick = () => {
     const { store } = this.state
-    window.location.href = `https://sso.vtex.com/_v/sso?account=${store}&returnUrl=https://extensions.vtex.com/?an=${store}`
+    window.localStorage.setItem('account', store.toLowerCase())
+    this.props.onChange(store)
   }
 
   handleChange = ({ target: { value } }) => {
@@ -36,7 +38,7 @@ class LoginModal extends Component {
     return (
       <Modal centered isOpen={isOpen} onClose={onClose}>
         <div className="near-black">
-          <div className="fw3 f3 mv4">{this.translate('loginModalText')}</div>
+          <div className="fw3 f3 mv4">{this.translate('storeModalText')}</div>
           <div className="w-100 flex flex-column flex-row-ns pv6">
             <div className="w-100 w-70-ns pb4-s pb0-ns pr4-ns">
               <Input onChange={this.handleChange} value={store} />
@@ -53,6 +55,7 @@ class LoginModal extends Component {
               values={{
                 createYourAccount: (
                   <a
+                    target="_blank"
                     className="link normal rebel-pink"
                     href={`https://www.vtex.com/${culture.locale}/-1cz/contato`}
                   >
