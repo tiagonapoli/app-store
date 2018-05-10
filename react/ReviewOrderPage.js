@@ -81,21 +81,24 @@ class ReviewOrderPage extends Component {
                   <div className="mt3 mb6-s mb7-ns">
                     <Billing billingOptions={appProduct.billing} />
                   </div>
-                  <div className="mb7-s mb8-ns">
-                    <div className="f5">Billing info</div>
-                    <div className="mv3 mb3-s mb5-ns">
-                      {profileLoading || error ? (
-                        <Loading />
-                      ) : (
-                        <BillingInfo
-                          name={topbarData.profile.name}
-                          email={topbarData.profile.email}
-                          store={store}
-                          pictureUrl={topbarData.profile.picture}
-                        />
-                      )}
+                  {!error && (
+                    <div className="mb7-s mb8-ns">
+                      <div className="f5">Billing info</div>
+
+                      <div className="mv3 mb3-s mb5-ns">
+                        {profileLoading ? (
+                          <Loading />
+                        ) : (
+                          <BillingInfo
+                            name={topbarData.profile.name}
+                            email={topbarData.profile.email}
+                            store={store}
+                            pictureUrl={topbarData.profile.picture}
+                          />
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  )}
                   <div className="f6">
                     <FormattedMessage
                       id="extensions.confirmText"
