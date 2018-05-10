@@ -33,5 +33,7 @@
   "extensions.newToVTEX": "Nuevo en VTEX? {createYourAccount}",
   "extensions.createYourAccount": "Crea tu cuenta",
   "extensions.comingSoon": "Próximo",
-  "extensions.accountInfo": "Información de la cuenta"
+  "extensions.accountInfo": "Información de la cuenta",
+  "extensions.accountInfoText":
+    "Esta extensión se agregará a la cuenta {store}."
 }

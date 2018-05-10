@@ -85,11 +85,19 @@ class ReviewOrderPage extends Component {
                     <Billing billingOptions={appProduct.billing} />
                   </div>
                   {!error && (
-                    <div className="mb7-s mb8-ns">
+                    <div className="mb7">
                       <div className="f5">{this.translate('accountInfo')}</div>
 
-                      <div className="mv3 mb3-s mb5-ns">
-                        <div className="fw5 f5 ttc">{store}</div>
+                      <div className="ma3">
+                        <div className="fw5 f4 ttc">{store}</div>
+                        <div className="lh-copy f6">
+                          <FormattedMessage
+                            id="extensions.accountInfoText"
+                            values={{
+                              store: <span className="b">{store}</span>,
+                            }}
+                          />
+                        </div>
                       </div>
                     </div>
                   )}
