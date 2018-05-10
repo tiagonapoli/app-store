@@ -11,6 +11,7 @@ class LoginModal extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
     onClose: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
     culture: PropTypes.object.isRequired,
   }
@@ -22,7 +23,7 @@ class LoginModal extends Component {
   handleClick = () => {
     const { store } = this.state
     window.localStorage.setItem('account', store.toLowerCase())
-    this.props.onClose()
+    this.props.onChange(store)
   }
 
   handleChange = ({ target: { value } }) => {

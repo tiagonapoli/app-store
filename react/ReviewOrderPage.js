@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 
+import Button from '@vtex/styleguide/lib/Button'
 import Card from '@vtex/styleguide/lib/Card'
 
 import appProductQuery from './queries/appProductQuery.gql'
@@ -45,6 +46,10 @@ class ReviewOrderPage extends Component {
 
   handleStoreModal = () => {
     this.setState({ shouldShowStoreModal: !this.state.shouldShowStoreModal })
+  }
+
+  handleStoreName = store => {
+    this.setState({ store, shouldShowStoreModal: false })
   }
 
   render() {
@@ -123,13 +128,14 @@ class ReviewOrderPage extends Component {
                       }}
                     />
                   </div>
-                  <div className="dn-s db-ns w-100 mt5">
+                  <div className="dn-s flex-ns justify-center w-100 mt5">
                     {error ? (
-                      <div
-                        className="pointer tc rebel-pink hover-heavy-rebel-pink"
-                        onClick={this.handleStoreModal}
-                      >
-                        {this.translate('storeError')}
+                      <div className="tc br2 w-100 w-80-ns bg-light-silver hover-bg-light-gray">
+                        <Button block onClick={this.handleStoreModal}>
+                          <span className="rebel-pink">
+                            {this.translate('storeError')}
+                          </span>
+                        </Button>
                       </div>
                     ) : (
                       <ConfirmButton
@@ -177,6 +183,7 @@ class ReviewOrderPage extends Component {
         <StoreModal
           isOpen={shouldShowStoreModal}
           onClose={this.handleStoreModal}
+          onChange={this.handleStoreName}
         />
       </div>
     )

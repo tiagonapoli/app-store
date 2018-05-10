@@ -28,7 +28,7 @@
   "extensions.moreThan": "more than",
   "extensions.buyError":
     "There was an error buying the extension. Please reload this page and try again shortly.",
-  "extensions.storeError": "Please, inform in your store's name",
+  "extensions.storeError": "inform in your store's name",
   "extensions.storeModalText": "Please, type in your store's name.",
   "extensions.newToVTEX": "New to VTEX? {createYourAccount}",
   "extensions.createYourAccount": "Create your account",
