@@ -62,17 +62,22 @@ export default {
     )
     return {
       billing: billingOptions,
-      categories,
+      categories:
+        resolvedProduct &&
+        resolvedProduct.categories &&
+        resolvedProduct.categories.length > 0
+          ? [resolvedProduct.categories[resolvedProduct.categories.length - 1]]
+          : [],
       fields,
       icon: 'public/metadata/icon.png',
       id,
       linkText,
       name: title,
-      vendor,
+      vendor: resolvedProduct.brand,
       version,
       ...resources,
       registry: account,
       slug,
     }
-  }
+  },
 }
