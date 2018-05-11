@@ -18,6 +18,16 @@ const compile = marksy({
       </li>
     ),
     strong: ({ children }) => <span className="fw5">{children}</span>,
+    a: ({ href, title, children }) => (
+      <a
+        className="link pointer fw5 rebel-pink"
+        target="_blank"
+        href={href}
+        title={title}
+      >
+        {children}
+      </a>
+    ),
   },
 })
 /* eslint-disable react/display-name, react/prop-types */
@@ -64,7 +74,9 @@ class ProductDescription extends Component {
     return (
       <div className="mh6-s mh0-ns near-black f5">
         <Billing billingOptions={billing} />
-        <div className="pt5 pb3-s pb10-ns">{compile(description).tree}</div>
+        <div className="pt5 pb3-s pb10-ns lh-copy">
+          {compile(description).tree}
+        </div>
         <div className="h3">
           <div
             className={`bottom-0 left-0 w-100 z-2 db-s dn-ns b--white bb bw2 get-button-shadow bg-white ${
