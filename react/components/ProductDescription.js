@@ -20,7 +20,7 @@ const compile = marksy({
     strong: ({ children }) => <span className="fw5">{children}</span>,
     a: ({ href, title, children }) => (
       <a
-        className="link pointer fw5 rebel-pink"
+        className="link pointer fw5 rebel-pink hover-heavy-rebel-pink"
         target="_blank"
         href={href}
         title={title}

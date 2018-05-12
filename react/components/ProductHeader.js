@@ -26,7 +26,7 @@ class ProductHeader extends Component {
         <div className="mr5">
           <AppIcon imageUrl={imageUrl} name={name} />
         </div>
-        <div className="w-75 flex flex-column justify-center lh-copy">
+        <div className="w-75 flex flex-column justify-center lh-title">
           <div className="f3-s f2-ns b near-black">{name}</div>
           <AppCategory category={category} seller={seller} />
         </div>

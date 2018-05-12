@@ -60,8 +60,10 @@ class AppItem extends Component {
               )}
             </div>
           </div>
-          <div className="description-height mv5 overflow-hidden f5 fw4 lh-title dark-gray track-1">
-            {shortDescription}
+          <div className="description-height ">
+            <div className="mv5 overflow-hidden f5 fw4 dark-gray track-1 block-with-text">
+              {shortDescription}
+            </div>
           </div>
           <AppCategory category={category} seller={seller} homePage />
         </Card>

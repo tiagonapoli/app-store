@@ -29,11 +29,12 @@
   "extensions.buyError":
     "There was an error buying the extension. Please reload this page and try again shortly.",
   "extensions.storeError": "inform in your store's name",
-  "extensions.storeModalText": "Please, type in your store's name.",
+  "extensions.storeText": "Please, type in your store's name.",
   "extensions.newToVTEX": "New to VTEX? {createYourAccount}",
   "extensions.createYourAccount": "Create your account",
   "extensions.comingSoon": "Coming Soon",
   "extensions.accountInfo": "Account info",
   "extensions.accountInfoText":
-    "This extension will be added to the account {store}."
+    "This extension will be added to the account {store}.",
+  "extensions.accountName": "Account name"
 }
