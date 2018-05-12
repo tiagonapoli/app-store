@@ -51,6 +51,12 @@ class Header extends Component {
     this.setState({
       shouldShowSearch: currentScroll < scroll,
       scroll: currentScroll,
+      headerSize:
+        window.document.getElementById('extension-store-header') &&
+        window.document.getElementById('extension-store-header').offsetHeight,
+      jumbontronSize:
+        window.document.getElementById('jumbotron-home') &&
+        window.document.getElementById('jumbotron-home').offsetHeight,
     })
   }
 
