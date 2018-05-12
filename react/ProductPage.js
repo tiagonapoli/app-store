@@ -23,6 +23,7 @@ class ProductPage extends Component {
 
   componentDidMount() {
     this.props.prefetch('store/review')
+    window.document.body.scrollTop = window.document.documentElement.scrollTop = 0
   }
 
   componentDidUpdate(prevProps) {

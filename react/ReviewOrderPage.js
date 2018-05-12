@@ -40,6 +40,7 @@ class ReviewOrderPage extends Component {
 
   componentDidMount() {
     this.setState({ store: window.localStorage.getItem('account') || '' })
+    window.document.body.scrollTop = window.document.documentElement.scrollTop = 0
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
