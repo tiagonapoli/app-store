@@ -70,7 +70,7 @@ class ReviewOrderPage extends Component {
                       imageUrl={appProduct.icon}
                       name={appProduct.name}
                     />
-                    <div className="w-75 flex flex-column justify-center pl3-s pl5-ns lh-copy">
+                    <div className="w-75 flex flex-column justify-center pl3-s pl5-ns lh-title">
                       <div className="f3-s f2-ns b">{appProduct.name}</div>
                     </div>
                   </div>
@@ -85,6 +85,7 @@ class ReviewOrderPage extends Component {
                     <div className="mt3 f5">{this.translate('storeText')}</div>
                     <div className="pt3 w-100">
                       <Input
+                        autoFocus
                         placeholder={this.translate('accountName')}
                         onChange={this.handleChange}
                         value={store}
