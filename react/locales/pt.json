@@ -29,10 +29,12 @@
   "extensions.buyError":
     "Ocorreu um erro durante a compra da extensão. Por favor, atualize a págine e tente novamente.",
   "extensions.storeError": "informe o nome da sua loja",
-  "extensions.storeModalText": "Por favor, digite o nome da sua loja.",
+  "extensions.storeText": "Por favor, digite o nome da sua loja.",
   "extensions.newToVTEX": "Novo na VTEX? {createYourAccount}",
   "extensions.createYourAccount": "Crie já sua conta",
   "extensions.comingSoon": "Em Breve",
   "extensions.accountInfo": "Informações da conta",
-  "extensions.accountInfoText": "Essa extensão será adicionada à conta {store}."
+  "extensions.accountInfoText":
+    "Essa extensão será adicionada à conta {store}.",
+  "extensions.accountName": "Nome da loja"
 }

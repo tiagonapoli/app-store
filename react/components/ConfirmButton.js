@@ -12,6 +12,7 @@ class ConfirmButton extends Component {
     billingPolicy: PropTypes.object.isRequired,
     value: PropTypes.string.isRequired,
     store: PropTypes.string.isRequired,
+    disabled: PropTypes.bool.isRequired,
     intl: intlShape.isRequired,
   }
 
@@ -22,7 +23,7 @@ class ConfirmButton extends Component {
 
   handleClick = () => {
     const { store, appName } = this.props
-    window.location.href = `https://${store}.myvtex.com/admin/extensions/${appName}/install`
+    window.location.href = `https://${store.toLowerCase()}.myvtex.com/admin/extensions/${appName}/install`
   }
 
   handleModal = () => {
@@ -33,14 +34,14 @@ class ConfirmButton extends Component {
 
   render() {
     const { loading } = this.state
-    const { value } = this.props
+    const { value, disabled } = this.props
     return (
       <div className="w-100 flex justify-center">
         {loading ? (
           <Loading />
         ) : (
           <div className="bg-rebel-pink hover-bg-heavy-rebel-pink tc br2 w-100 mw6">
-            <Button onClick={this.handleClick} block>
+            <Button onClick={this.handleClick} block disabled={disabled}>
               <span className="white">{value}</span>
             </Button>
           </div>
