@@ -126,7 +126,7 @@
 .block-with-text:before {
   content: "...";
   position: absolute;
-  right: 0rem;
+  right: 0;
   bottom: 0;
 }
 
