@@ -115,3 +115,27 @@
 .card-hover:hover {
   box-shadow: 0 4px 8px 0 rgba(63, 63, 64, 0.15);
 }
+
+.block-with-text {
+  overflow: hidden;
+  position: relative;
+  line-height: 1.25rem;
+  max-height: 3.75rem;
+}
+
+.block-with-text:before {
+  content: "...";
+  position: absolute;
+  right: 0rem;
+  bottom: 0;
+}
+
+.block-with-text:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.2rem;
+  background: white;
+}
