@@ -4,7 +4,6 @@ import { compose, graphql } from 'react-apollo'
 
 import appProductQuery from './queries/appProductQuery.gql'
 
-import { imagePath } from './utils/utils'
 import Loading from './components/Loading'
 import ProductDescription from './components/ProductDescription'
 import ProductHeader from './components/ProductHeader'
@@ -46,7 +45,7 @@ class ProductPage extends Component {
             <ProductHeader
               id={appProduct.linkText}
               registry={appProduct.registry}
-              imageUrl={imagePath(appProduct)}
+              imageUrl={appProduct.icon}
               name={appProduct.name}
               seller={appProduct.vendor}
               category={appProduct.categories ? appProduct.categories[0] : ''}

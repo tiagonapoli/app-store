@@ -69,7 +69,10 @@ export default {
           ? [resolvedProduct.categories[resolvedProduct.categories.length - 1]]
           : [],
       fields,
-      icon: 'public/metadata/icon.png',
+      icon:
+        resolvedProduct.items && resolvedProduct.items.length > 0
+          ? resolvedProduct.items[0].images[0].imageUrl
+          : `/_v/render/v5/assets/published/${account}/${slug}@${version}/public/metadata/icon.png`,
       id,
       linkText,
       name: title,

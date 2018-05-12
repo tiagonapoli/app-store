@@ -8,7 +8,6 @@ import Card from '@vtex/styleguide/lib/Card'
 
 import appProductQuery from './queries/appProductQuery.gql'
 
-import { imagePath } from './utils/utils'
 import AppIcon from './components/AppIcon'
 import Billing from './components/Billing'
 import ConfirmButton from './components/ConfirmButton'
@@ -74,7 +73,7 @@ class ReviewOrderPage extends Component {
                 <div className="pa0-s pa4-ns near-black">
                   <div className="flex flex-row mb5-s mb7-ns">
                     <AppIcon
-                      imageUrl={imagePath(appProduct)}
+                      imageUrl={appProduct.icon}
                       name={appProduct.name}
                     />
                     <div className="w-75 flex flex-column justify-center pl3-s pl5-ns lh-copy">
