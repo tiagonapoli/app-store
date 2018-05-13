@@ -9,7 +9,7 @@ class AppIcon extends Component {
 
   render() {
     const { imageUrl, name } = this.props
-    return <img className="image-size br2 light-shadow" src={imageUrl} alt={name} />
+    return <img className="image-size br2 light-shadow" src={imageUrl.replace('http://', 'https://')} alt={name} />
   }
 }
 

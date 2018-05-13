@@ -24,7 +24,7 @@ class HomePage extends Component {
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   componentDidMount() {
-    window.document.title = 'Extension Store'
+    window.document.title = 'VTEX App Store'
     this.context.prefetchPage('store/product')
     this.context.prefetchPage('store/review')
     window.addEventListener('scroll', this.watchScrollUpDesktop)
@@ -52,7 +52,7 @@ class HomePage extends Component {
           <div className="flex-ns justify-center-ns items-center-ns h-100-s h-50-ns w-100 bg-serious-black pt10 pl5-s pl7-ns white">
             <div className="flex-ns w-100 mw9">
               <div className="w-100">
-                <div className="b f2-s f1-ns mt9-s mt0-ns">Extension Store</div>
+                <div className="b f2-s f1-ns mt9-s mt0-ns">VTEX App Store</div>
                 <div className="mt5 mb9-ns f4-s f3-ns fw3">
                   {this.translate('homeText')}
                 </div>

@@ -7,7 +7,7 @@
   "extensions.reviewOrder": "Review your order",
   "extensions.confirmText":
     "by clicking in '{confirmButton}' you are agreeing to the {termsOfService} and app {privacyPolice}",
-  "extensions.termsOfService": "extension store terms of service",
+  "extensions.termsOfService": "app store terms of service",
   "extensions.privacyPolice": "privacy policy",
   "extensions.confirmButton": "confirm order and begin installation",
   "extensions.confirmButtonMobile": "confirm order",
@@ -15,10 +15,10 @@
   "extensions.nextStep": "Next Step",
   "extensions.oops": "Oops",
   "extensions.noPermission":
-    "We can't identify your extensions {purchasePermission}. Please contact your VTEX account administrator.",
+    "We can't identify your apps {purchasePermission}. Please contact your VTEX account administrator.",
   "extensions.purchasePermission": "purchase permission",
   "extensions.homeText":
-    "The largest marketplace of VTEX extensions ecosystem.",
+    "The marketplace of VTEX Apps.",
   "extensions.search": "Search",
   "extensions.free": "Free",
   "extensions.price": "Price",
@@ -27,7 +27,7 @@
   "extensions.to": "to",
   "extensions.moreThan": "more than",
   "extensions.buyError":
-    "There was an error buying the extension. Please reload this page and try again shortly.",
+    "There was an error buying this app. Please reload this page and try again shortly.",
   "extensions.storeError": "inform in your store's name",
   "extensions.storeText": "Please, type in your store's name.",
   "extensions.newToVTEX": "New to VTEX? {createYourAccount}",
@@ -35,6 +35,6 @@
   "extensions.comingSoon": "Coming Soon",
   "extensions.accountInfo": "Account info",
   "extensions.accountInfoText":
-    "This extension will be added to the account {store}.",
+    "This app will be added to the account {store}.",
   "extensions.accountName": "Account name"
 }
