@@ -85,7 +85,6 @@ class ReviewOrderPage extends Component {
                     <div className="mt3 f5">{this.translate('storeText')}</div>
                     <div className="pt3 w-100">
                       <Input
-                        autoFocus
                         placeholder={this.translate('accountName')}
                         onChange={this.handleChange}
                         value={store}
