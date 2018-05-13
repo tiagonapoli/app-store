@@ -22,6 +22,9 @@
     "pages": "0.x",
     "react": "2.x"
   },
+  "scripts": {
+    "postreleasy": "vtex publish --verbose"
+  },
   "policies": [
     {
       "name": "outbound-access",
