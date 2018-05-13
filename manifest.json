@@ -1,7 +1,7 @@
 {
   "name": "app-store",
   "vendor": "vtex",
-  "version": "0.0.25",
+  "version": "0.1.0",
   "title": "VTEX App Store",
   "description": "Discover and install the best VTEX Apps",
   "mustUpdateAt": "2019-04-10",
