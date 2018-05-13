@@ -18,7 +18,7 @@
     "We can't identify your apps {purchasePermission}. Please contact your VTEX account administrator.",
   "extensions.purchasePermission": "purchase permission",
   "extensions.homeText":
-    "The largest marketplace of VTEX Apps.",
+    "The marketplace of VTEX Apps.",
   "extensions.search": "Search",
   "extensions.free": "Free",
   "extensions.price": "Price",

@@ -18,7 +18,7 @@
     "No hemos podido identificar su {purchasePermission} apps. Por favor contacte el administrador de su plataforma VTEX.",
   "extensions.purchasePermission": "permiso para comprar",
   "extensions.homeText":
-    "El mayor marketplace de las apps del ecosistema VTEX.",
+    "El marketplace de las apps del ecosistema VTEX.",
   "extensions.search": "Buscar",
   "extensions.free": "Gratis",
   "extensions.price": "Precio",
