@@ -23,7 +23,7 @@ class ConfirmButton extends Component {
 
   handleClick = () => {
     const { store, appName } = this.props
-    window.location.href = `https://${store.toLowerCase()}.myvtex.com/admin/extensions/${appName}/install`
+    window.location.href = `https://${store.toLowerCase()}.myvtex.com/admin/apps/${appName}/install`
   }
 
   handleModal = () => {

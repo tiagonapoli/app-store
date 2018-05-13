@@ -88,7 +88,7 @@ class Header extends Component {
                   notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
                 }`}
               >
-                <span className={titleClasses}>Extension Store</span>
+                <span className={titleClasses}>App Store</span>
               </div>
               <div
                 className={`pointer b f4 white tc tl-ns lh-solid ml3 ph3 b--white bl ${

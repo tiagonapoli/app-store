@@ -7,7 +7,7 @@
   "extensions.reviewOrder": "Ver su pedido",
   "extensions.confirmText":
     "haciendo clic en '{confirmButton}' usted está de acuerdo con los {termsOfService} y con la {privacyPolice} de la app",
-  "extensions.termsOfService": "términos de servicio de la extension store",
+  "extensions.termsOfService": "términos de servicio de la app store",
   "extensions.privacyPolice": "política de privacidad",
   "extensions.confirmButton": "confirmar pedido e iniciar instalación",
   "extensions.confirmButtonMobile": "confirmar pedido",
@@ -15,10 +15,10 @@
   "extensions.nextStep": "Proximo Paso",
   "extensions.oops": "Ops",
   "extensions.noPermission":
-    "No hemos podido identificar su {purchasePermission} extensiones. Por favor contacte el administrador de su plataforma VTEX.",
+    "No hemos podido identificar su {purchasePermission} apps. Por favor contacte el administrador de su plataforma VTEX.",
   "extensions.purchasePermission": "permiso para comprar",
   "extensions.homeText":
-    "El mayor marketplace de las extensiones del ecosistema VTEX.",
+    "El mayor marketplace de las apps del ecosistema VTEX.",
   "extensions.search": "Buscar",
   "extensions.free": "Gratis",
   "extensions.price": "Precio",
@@ -27,7 +27,7 @@
   "extensions.to": "a",
   "extensions.moreThan": "más de",
   "extensions.buyError":
-    "Se produjo un error durante la compra de la extensión. Por favor, actualice la página e inténtelo de nuevo.",
+    "Se produjo un error durante la compra de la app. Por favor, actualice la página e inténtelo de nuevo.",
   "extensions.storeError": "informe el nombre de su tienda.",
   "extensions.storeText": "Por favor, escriba el nombre de su tienda.",
   "extensions.newToVTEX": "Nuevo en VTEX? {createYourAccount}",
@@ -35,6 +35,6 @@
   "extensions.comingSoon": "Próximo",
   "extensions.accountInfo": "Información de la cuenta",
   "extensions.accountInfoText":
-    "Esta extensión se agregará a la cuenta {store}.",
+    "Esta app se agregará a la cuenta {store}.",
   "extensions.accountName": "Nombre de la tienda"
 }
