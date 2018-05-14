@@ -8,6 +8,12 @@ import { matchAppId, removeBuild } from './apps/utils/locator'
 import { resolveProductFields } from './catalog/fieldsResolver'
 import { withAuthToken } from './catalog/header'
 import { paths } from './catalog/paths'
+import * as MemoryCache from 'lru-cache'
+
+const productCache = MemoryCache<string, any>({
+  max: 150,
+  maxAge: 3600 * 1000
+})
 
 export default {
   appProduct: async (
@@ -21,10 +27,18 @@ export default {
     }: ColossusContext,
     info
   ) => {
+    const {account, workspace} = ioContext
     const url = paths.product(ioContext.account, data)
-    const { data: product } = await axios.get(url, {
-      headers: withAuthToken()(ioContext),
-    })
+
+    const cacheKey = `${account}___${workspace}`
+    let product = productCache.get(cacheKey)
+    if (!product) {
+      product = (await axios.get(url, {
+        headers: withAuthToken()(ioContext),
+      })).data
+      productCache.set(cacheKey, product)
+    }
+
     const resolvedProduct = await resolveProductFields(ioContext, head(product))
     const linkText = resolvedProduct.linkText
     const id = resolvedProduct.items[0].referenceId[0].Value
@@ -35,7 +49,6 @@ export default {
         'Invalid app id. Ids should be of the form: <registry>:<vendor>.<name>'
       )
     }
-    const { account } = ioContext
     const [, , , slug, , idVersion] = match
     const registry = appRegistry({ ...ioContext, account })
     const version = removeBuild(
