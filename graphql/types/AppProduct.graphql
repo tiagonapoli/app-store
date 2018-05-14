@@ -1,4 +1,4 @@
-type AppProduct {
+type AppProduct @cacheControl(scope: PUBLIC, maxAge: SHORT){
   id: ID
   vendor: String
   version: String
