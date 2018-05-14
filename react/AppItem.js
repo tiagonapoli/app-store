@@ -16,6 +16,7 @@ class AppItem extends Component {
     category: PropTypes.string.isRequired,
     seller: PropTypes.string.isRequired,
     specificationFilters: PropTypes.oneOf(['Published', 'Coming Soon']),
+    specifications: PropTypes.string,
     navigate: PropTypes.func.isRequired,
   }
 
@@ -30,6 +31,16 @@ class AppItem extends Component {
     navigate(options)
   }
 
+  checkIsComing = () => {
+    const { specifications } = this.props
+    const specificationsMap = specifications && JSON.parse(specifications)
+    return specificationsMap &&
+      specificationsMap.Status &&
+      Array.isArray(specificationsMap.Status) &&
+      specificationsMap.Status.length > 0 &&
+      specificationsMap.Status[0] === 'Coming Soon'
+  }
+
   render() {
     const {
       name,
@@ -40,7 +51,7 @@ class AppItem extends Component {
       appId,
       specificationFilters,
     } = this.props
-    const isComing = specificationFilters === 'Coming Soon'
+    const isComing = specificationFilters === 'Coming Soon' || this.checkIsComing()
     return (
       <div
         onClick={!isComing ? this.handleClick : () => {}}
