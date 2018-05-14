@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Card from '@vtex/styleguide/lib/Card'
 
+import { tryParseJson } from './utils/utils'
 import AppCategory from './components/AppCategory'
 import AppIcon from './components/AppIcon'
 import GetButton from './components/GetButton'
@@ -33,7 +34,7 @@ class AppItem extends Component {
 
   checkIsComing = () => {
     const { specifications } = this.props
-    const specificationsMap = specifications && JSON.parse(specifications)
+    const specificationsMap = specifications && tryParseJson(specifications)
     return specificationsMap &&
       specificationsMap.Status &&
       Array.isArray(specificationsMap.Status) &&
