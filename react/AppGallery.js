@@ -41,6 +41,7 @@ class AppGallery extends Component {
                 category={product.categories[product.categories.length - 1]}
                 seller={product.brand}
                 appId={product.linkText}
+                specifications={product.jsonSpecifications}
               />
             ))}
           </div>

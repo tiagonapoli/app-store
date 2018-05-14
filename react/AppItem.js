@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Card from '@vtex/styleguide/lib/Card'
 
+import { tryParseJson } from './utils/utils'
 import AppCategory from './components/AppCategory'
 import AppIcon from './components/AppIcon'
 import GetButton from './components/GetButton'
@@ -16,6 +17,7 @@ class AppItem extends Component {
     category: PropTypes.string.isRequired,
     seller: PropTypes.string.isRequired,
     specificationFilters: PropTypes.oneOf(['Published', 'Coming Soon']),
+    specifications: PropTypes.string,
     navigate: PropTypes.func.isRequired,
   }
 
@@ -30,6 +32,16 @@ class AppItem extends Component {
     navigate(options)
   }
 
+  checkIsComing = () => {
+    const { specifications } = this.props
+    const specificationsMap = specifications && tryParseJson(specifications)
+    return specificationsMap &&
+      specificationsMap.Status &&
+      Array.isArray(specificationsMap.Status) &&
+      specificationsMap.Status.length > 0 &&
+      specificationsMap.Status[0] === 'Coming Soon'
+  }
+
   render() {
     const {
       name,
@@ -40,7 +52,7 @@ class AppItem extends Component {
       appId,
       specificationFilters,
     } = this.props
-    const isComing = specificationFilters === 'Coming Soon'
+    const isComing = specificationFilters === 'Coming Soon' || this.checkIsComing()
     return (
       <div
         onClick={!isComing ? this.handleClick : () => {}}
