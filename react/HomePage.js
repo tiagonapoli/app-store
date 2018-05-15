@@ -45,7 +45,7 @@ class HomePage extends Component {
   }
 
   render() {
-    const SHELF_SIZE = 8
+    const SHELF_SIZE = 12
     const { scroll, jumbontronSize } = this.state
     return (
       <div className="w-100">
