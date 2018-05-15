@@ -11,7 +11,7 @@ class AppShelf extends Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
     collection: PropTypes.string,
-    specificationFilters: PropTypes.arrayOf(PropTypes.string),
+    specificationFilters: PropTypes.string.isRequired,
     from: PropTypes.number,
     to: PropTypes.number,
     title: PropTypes.string.isRequired,
@@ -40,7 +40,7 @@ class AppShelf extends Component {
                 category={product.categories[product.categories.length - 1]}
                 seller={product.brand}
                 appId={product.linkText}
-                specificationFilters={specificationFilters && specificationFilters[0]}
+                specificationFilters={specificationFilters}
               />
             ))}
           </div>
@@ -55,7 +55,7 @@ const defaultOptions = {
     variables: {
       query: props.query,
       collection: props.collection,
-      specificationFilters: props.specificationFilters,
+      specificationFilters: `specificationFilter_25:${encodeURI(props.specificationFilters)}`,
       from: props.from || 0,
       to: props.to || 2,
     },
