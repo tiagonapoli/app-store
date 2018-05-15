@@ -80,8 +80,8 @@ class HomePage extends Component {
         <div className="flex justify-center">
           <div className="mw9 w-90-ns">
             <AppShelf
-              specificationFilters={['Published']}
-              to={20}
+              specificationFilters="Published"
+              to={8}
               title="Apps"
             />
           </div>
@@ -89,8 +89,8 @@ class HomePage extends Component {
         <div className="flex justify-center">
           <div className="mw9 w-90-ns">
             <AppShelf
-              specificationFilters={['Coming Soon']}
-              to={20}
+              specificationFilters="Coming Soon"
+              to={8}
               title={this.translate('comingSoon')}
             />
           </div>
