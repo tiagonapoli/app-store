@@ -45,6 +45,7 @@ class HomePage extends Component {
   }
 
   render() {
+    const SHELF_SIZE = 8
     const { scroll, jumbontronSize } = this.state
     return (
       <div className="w-100">
@@ -81,7 +82,7 @@ class HomePage extends Component {
           <div className="mw9 w-90-ns">
             <AppShelf
               specificationFilters="Published"
-              to={8}
+              to={SHELF_SIZE}
               title="Apps"
             />
           </div>
@@ -90,7 +91,7 @@ class HomePage extends Component {
           <div className="mw9 w-90-ns">
             <AppShelf
               specificationFilters="Coming Soon"
-              to={8}
+              to={SHELF_SIZE}
               title={this.translate('comingSoon')}
             />
           </div>
