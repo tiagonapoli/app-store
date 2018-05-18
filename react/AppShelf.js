@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'react-apollo'
+import Slider from 'vtex.storecomponents/Slider'
 
 import productsQuery from './queries/productsQuery.gql'
 
@@ -22,15 +23,15 @@ class AppShelf extends Component {
     const { loading, products } = data
     return (
       <div className="w-100">
-        <div className="w-100 mt7-s mv7-ns f4 dark-gray normal ttu tc">{title}</div>
+        <div className="w-100 mt7-s mv7-ns f4 dark-gray normal ttu tc">
+          {title}
+        </div>
         {loading ? (
           <div className="flex justify-center pt9 pb10">
             <Loading />
           </div>
         ) : (
-          <div
-            className="flex flex-column-s flex-row-l flex-wrap-ns items-center mv4"
-          >
+          <div className="flex flex-column-s flex-row-l flex-wrap-ns items-center mv4">
             {products.map(product => (
               <AppItem
                 key={product.productId}
@@ -55,7 +56,9 @@ const defaultOptions = {
     variables: {
       query: props.query,
       collection: props.collection,
-      specificationFilters: `specificationFilter_25:${encodeURI(props.specificationFilters)}`,
+      specificationFilters: `specificationFilter_25:${encodeURI(
+        props.specificationFilters
+      )}`,
       from: props.from || 0,
       to: props.to || 2,
     },

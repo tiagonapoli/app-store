@@ -17,7 +17,6 @@ class ReviewOrderPage extends Component {
   static propTypes = {
     params: PropTypes.object.isRequired,
     appProductQuery: PropTypes.object,
-    profileQuery: PropTypes.object,
     intl: intlShape.isRequired,
   }
 
