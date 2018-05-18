@@ -5,6 +5,8 @@ import { NoSSR } from 'render'
 import { isMobileOnly } from 'react-device-detect'
 import Slider from 'vtex.storecomponents/Slider'
 
+import './slider.global.css'
+
 import productsQuery from './queries/productsQuery.gql'
 
 import Loading from './components/Loading'
@@ -17,12 +19,12 @@ const SLIDES_TO_SCROLL_LARGE_VIEWPORT = 1
 const BREAKPOINT_MOBILE_VIEWPORT = 480
 const SLIDER_CENTER_MODE_MOBILE = false
 const ARROWS_MOBILE_VIEWPORT = false
-const DOTS_MOBILE_VIEWPORT = false
+const DOTS_MOBILE_VIEWPORT = true
 const SLIDES_TO_SCROLL_MOBILE_VIEWPORT = 1
 const SLIDES_TO_SHOW_MOBILE_VIEWPORT = 5
 
 const BREAKPOINT_EXTRA_SMALL_MOBILE_VIEWPORT = 300
-const DOTS_EXTRA_SMALL_MOBILE_VIEWPORT = false
+const DOTS_EXTRA_SMALL_MOBILE_VIEWPORT = true
 const SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE = false
 
 class AppShelf extends Component {

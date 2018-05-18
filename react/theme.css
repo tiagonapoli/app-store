@@ -139,14 +139,3 @@
   margin-top: 0.2rem;
   background: white;
 }
-
-.vtex-slider__dots li button:before {
-  color: #c4c8cc;
-  content: "\25A1";
-  font-size: 16px;
-}
-
-.vtex-slider__dots li.slick-active button:before {
-  color: #f71963;
-  opacity: 1;
-}
