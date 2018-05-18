@@ -19,6 +19,7 @@ class AppItem extends Component {
     specificationFilters: PropTypes.oneOf(['Published', 'Coming Soon']),
     specifications: PropTypes.string,
     navigate: PropTypes.func.isRequired,
+    isShelf: PropTypes.bool.isRequired,
   }
 
   handleClick = e => {
@@ -35,11 +36,13 @@ class AppItem extends Component {
   checkIsComing = () => {
     const { specifications } = this.props
     const specificationsMap = specifications && tryParseJson(specifications)
-    return specificationsMap &&
+    return (
+      specificationsMap &&
       specificationsMap.Status &&
       Array.isArray(specificationsMap.Status) &&
       specificationsMap.Status.length > 0 &&
       specificationsMap.Status[0] === 'Coming Soon'
+    )
   }
 
   render() {
@@ -51,14 +54,16 @@ class AppItem extends Component {
       seller,
       appId,
       specificationFilters,
+      isShelf,
     } = this.props
-    const isComing = specificationFilters === 'Coming Soon' || this.checkIsComing()
+    const isComing =
+      specificationFilters === 'Coming Soon' || this.checkIsComing()
     return (
       <div
         onClick={!isComing ? this.handleClick : () => {}}
-        className={`link no-underline db w-90-s w-50-m w-30-l mt5-s mt0-ns ma5-ns ${
-          isComing ? '' : 'pointer card-hover'
-        }`}
+        className={`link no-underline db mt5-s mt0-ns ma4-s ma5-ns ${
+          isShelf ? '' : 'w-90-s w-50-m w-30-l'
+        } ${isComing ? '' : 'pointer card-hover'}`}
       >
         <Card>
           <div className="flex flex-row near-black">

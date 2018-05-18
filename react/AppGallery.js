@@ -42,6 +42,7 @@ class AppGallery extends Component {
                 seller={product.brand}
                 appId={product.linkText}
                 specifications={product.jsonSpecifications}
+                isShelf={false}
               />
             ))}
           </div>
@@ -56,7 +57,9 @@ const defaultOptions = {
     variables: {
       query: props.query,
       collection: props.collection,
-      specificationFilters: props.specificationFilters ? props.specificationFilters : null,
+      specificationFilters: props.specificationFilters
+        ? props.specificationFilters
+        : null,
       from: props.from || 0,
       to: props.to || 2,
     },
