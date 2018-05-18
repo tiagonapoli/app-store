@@ -42,7 +42,7 @@ class AppShelf extends Component {
       slidesToShow: 3,
       slidesToScroll: SLIDES_TO_SCROLL_LARGE_VIEWPORT,
       dots: DOTS_LARGE_VIEWPORT,
-      touchThreshold: 25,
+      touchThreshold: 30,
       arrows: false,
       responsive: [
         {
