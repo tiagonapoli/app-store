@@ -1,5 +1,5 @@
-query AppProduct($slug: String!) {
-  appProduct(slug: $slug) {
+query AppProduct($slug: String!, $locale: String) {
+  appProduct(slug: $slug, locale: $locale) {
     id
     name
     slug
