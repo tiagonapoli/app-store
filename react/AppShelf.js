@@ -96,7 +96,11 @@ class AppShelf extends Component {
                     <AppItem
                       key={product.productId}
                       name={product.productName}
-                      imageUrl={product.items[0].images[0].imageUrl}
+                      imageUrl={
+                        product.items &&
+                        product.items[0].images &&
+                        product.items[0].images[0].imageUrl
+                      }
                       shortDescription={product.description}
                       category={
                         product.categories[product.categories.length - 1]
@@ -115,7 +119,11 @@ class AppShelf extends Component {
                   <AppItem
                     key={product.productId}
                     name={product.productName}
-                    imageUrl={product.items[0].images[0].imageUrl}
+                    imageUrl={
+                      product.items &&
+                      product.items[0].images &&
+                      product.items[0].images[0].imageUrl
+                    }
                     shortDescription={product.description}
                     category={product.categories[product.categories.length - 1]}
                     seller={product.brand}
