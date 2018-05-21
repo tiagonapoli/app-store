@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Card from '@vtex/styleguide/lib/Card'
 
+import { COMING_SOON } from './utils/constants'
 import { tryParseJson } from './utils/utils'
 import AppCategory from './components/AppCategory'
 import AppIcon from './components/AppIcon'
@@ -16,30 +17,36 @@ class AppItem extends Component {
     shortDescription: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
     seller: PropTypes.string.isRequired,
-    specificationFilters: PropTypes.oneOf(['Published', 'Coming Soon']),
+    specificationFilters: PropTypes.oneOf(['Published', COMING_SOON]),
     specifications: PropTypes.string,
     navigate: PropTypes.func.isRequired,
+    isShelf: PropTypes.bool.isRequired,
   }
 
   handleClick = e => {
     e.stopPropagation()
-    const { navigate, appId } = this.props
-    const options = {
-      params: { slug: appId },
-      page: 'store/product',
-      fallbackToWindowLocation: false,
+    if (!this.checkIsComing()) {
+      const { navigate, appId } = this.props
+      const options = {
+        params: { slug: appId },
+        page: 'store/product',
+        fallbackToWindowLocation: false,
+      }
+      navigate(options)
     }
-    navigate(options)
   }
 
   checkIsComing = () => {
-    const { specifications } = this.props
+    const { specifications, specificationFilters } = this.props
     const specificationsMap = specifications && tryParseJson(specifications)
-    return specificationsMap &&
-      specificationsMap.Status &&
-      Array.isArray(specificationsMap.Status) &&
-      specificationsMap.Status.length > 0 &&
-      specificationsMap.Status[0] === 'Coming Soon'
+    return (
+      specificationFilters === COMING_SOON ||
+      (specificationsMap &&
+        specificationsMap.Status &&
+        Array.isArray(specificationsMap.Status) &&
+        specificationsMap.Status.length > 0 &&
+        specificationsMap.Status[0] === COMING_SOON)
+    )
   }
 
   render() {
@@ -50,15 +57,15 @@ class AppItem extends Component {
       category,
       seller,
       appId,
-      specificationFilters,
+      isShelf,
     } = this.props
-    const isComing = specificationFilters === 'Coming Soon' || this.checkIsComing()
+    const isComing = this.checkIsComing()
     return (
       <div
-        onClick={!isComing ? this.handleClick : () => {}}
-        className={`link no-underline db w-90-s w-50-m w-30-l mt5-s mt0-ns ma5-ns ${
-          isComing ? '' : 'pointer card-hover'
-        }`}
+        onClick={this.handleClick}
+        className={`link no-underline db mt5-s mt0-ns ma4-s ma5-ns ${
+          isShelf ? '' : 'w-90-s w-50-m w-30-l'
+        } ${isComing ? '' : 'pointer card-hover'}`}
       >
         <Card>
           <div className="flex flex-row near-black">

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 
+import { COMING_SOON } from './utils/constants'
 import AppShelf from './AppShelf'
 import AppGallery from './AppGallery'
 import JumbotronIcon from './components/icons/JumbotronIcon'
@@ -90,7 +91,7 @@ class HomePage extends Component {
         <div className="flex justify-center">
           <div className="mw9 w-90-ns">
             <AppShelf
-              specificationFilters="Coming Soon"
+              specificationFilters={COMING_SOON}
               to={SHELF_SIZE}
               title={this.translate('comingSoon')}
             />

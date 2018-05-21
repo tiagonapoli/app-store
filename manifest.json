@@ -1,7 +1,7 @@
 {
   "name": "app-store",
   "vendor": "vtex",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "title": "VTEX App Store",
   "description": "Discover and install the best VTEX Apps",
   "mustUpdateAt": "2019-04-10",
@@ -11,10 +11,10 @@
   ],
   "settingsSchema": {},
   "dependencies": {
-    "vtex.admin-graphql": "1.x",
     "vtex.apps-graphql": "2.x",
     "vtex.store-graphql": "2.x",
-    "vtex.billing": "0.x"
+    "vtex.billing": "0.x",
+    "vtex.storecomponents": "1.x"
   },
   "builders": {
     "graphql": "1.x",
