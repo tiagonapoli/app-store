@@ -18,7 +18,6 @@ const SLIDES_TO_SCROLL_LARGE_VIEWPORT = 1
 
 const BREAKPOINT_MOBILE_VIEWPORT = 480
 const SLIDER_CENTER_MODE_MOBILE = false
-const ARROWS_MOBILE_VIEWPORT = false
 const DOTS_MOBILE_VIEWPORT = true
 const SLIDES_TO_SCROLL_MOBILE_VIEWPORT = 1
 const SLIDES_TO_SHOW_MOBILE_VIEWPORT = 5
@@ -50,7 +49,6 @@ class AppShelf extends Component {
           settings: {
             slidesToShow: SLIDES_TO_SHOW_MOBILE_VIEWPORT,
             slidesToScroll: SLIDES_TO_SCROLL_MOBILE_VIEWPORT,
-            arrows: ARROWS_MOBILE_VIEWPORT,
             dots: DOTS_MOBILE_VIEWPORT,
             centerMode: SLIDER_CENTER_MODE_MOBILE,
           },
@@ -60,7 +58,6 @@ class AppShelf extends Component {
           settings: {
             slidesToShow: SLIDES_TO_SHOW_MOBILE_VIEWPORT,
             slidesToScroll: SLIDES_TO_SCROLL_MOBILE_VIEWPORT,
-            arrows: ARROWS_MOBILE_VIEWPORT,
             dots: DOTS_EXTRA_SMALL_MOBILE_VIEWPORT,
             centerMode: SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE,
           },
