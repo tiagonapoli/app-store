@@ -10,11 +10,18 @@
   font-size: 0.25rem;
 }
 
+.f10 {
+  font-size: 6px;
+}
+
 .content {
   min-height: 100vh;
 }
 
 @media screen and (max-width: 30rem) {
+  .h15-s {
+    height: 1.5rem;
+  }
   .card-top {
     top: -11rem;
   }
@@ -38,11 +45,6 @@
   -moz-box-shadow: 0px -10px 50px 10px #ffffff;
   -webkit-box-shadow: 0px -10px 50px 10px #ffffff;
   box-shadow: 0px -10px 50px 10px #ffffff;
-}
-
-.billing-img {
-  width: 3rem;
-  height: 3rem;
 }
 
 .description-height {
@@ -98,10 +100,6 @@
 
 .light-shadow {
   box-shadow: 1px 2px 8px 0 rgba(151, 151, 153, 0.2);
-}
-
-.f10 {
-  font-size: 6px;
 }
 
 .visibility-visible {
