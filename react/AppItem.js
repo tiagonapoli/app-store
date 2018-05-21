@@ -71,7 +71,7 @@ class AppItem extends Component {
           <div className="flex flex-row near-black">
             <AppIcon imageUrl={imageUrl} name={name} />
             <div className="w-100 ml5 flex flex-column justify-center lh-copy">
-              <div className="h15-s h2-ns overflow-y-hidden f5-s f4-ns fw5 mb4-ns">
+              <div className="title-height-s h2-ns overflow-y-hidden f5-s f4-ns fw5 mb4-ns">
                 {name}
               </div>
               {!isComing && (

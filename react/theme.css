@@ -19,7 +19,7 @@
 }
 
 @media screen and (max-width: 30rem) {
-  .h15-s {
+  .title-height-s {
     height: 1.5rem;
   }
   .card-top {
