@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { parse as parseCookie } from 'cookie'
 import {
   compose,
   filter,
@@ -37,11 +36,10 @@ export const getExtraResources = async (
   fields,
   cookie = '',
   ioContext,
-  policies
+  policies,
+  locale
 ) => {
   const extra: { screenshots?: any; permissions?: any } = {}
-  const parsedCookie = parseCookie(cookie)
-  const locale = parsedCookie.locale || 'en-US'
   const files: string[] = getFilesToFetch(fields)
   if (files.length > 0) {
     await Promise.map(files, filename =>

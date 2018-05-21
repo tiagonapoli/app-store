@@ -169,6 +169,7 @@ const options = {
   options: props => ({
     variables: {
       slug: props.params.slug,
+      locale: global.__RUNTIME__.culture.locale,
     },
   }),
 }
