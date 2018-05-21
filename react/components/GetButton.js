@@ -31,7 +31,7 @@ class GetButton extends Component {
     const { homePage } = this.props
     return (
       <div
-        className={`tc br2 w-100 w-80-ns ${
+        className={`tc br2 w-100 w-80-l ${
           homePage
             ? 'bg-light-silver hover-bg-light-gray'
             : 'bg-rebel-pink hover-bg-heavy-rebel-pink'
