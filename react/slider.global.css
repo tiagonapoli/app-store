@@ -1,9 +1,9 @@
 .vtex-slider__dots li button:before {
   color: #979899;
-  content: "\25A1";
-  font-size: 12px;
-  opacity: 1;
-  font-weight: 500;
+  content: "\25a2";
+  font-size: 10px;
+  opacity: 0.75;
+  font-weight: 900;
 }
 
 .vtex-slider__dots li.slick-active button:before {
