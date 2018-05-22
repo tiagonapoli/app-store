@@ -139,7 +139,7 @@ class ProductDescription extends Component {
             >
               {screenshots.map(screenshot => (
                 <div key={screenshot}>
-                  <div className="h7 flex justify-center mh6-ns">
+                  <div className="h7 flex justify-center mh6-ns b--light-silver ba bw1-ns br2">
                     <img
                       className="screenshot"
                       src={imagePath(appProduct, screenshot)}
