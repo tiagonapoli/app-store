@@ -1,13 +1,14 @@
 .vtex-slider__dots li button:before {
-  color: #979899;
-  content: "\25a2";
-  font-size: 10px;
-  opacity: 0.75;
-  font-weight: 900;
+  opacity: 0.5;
+  content: "";
+  height: 8px;
+  width: 8px;
+  border: #979899 1px solid;
+  border-radius: 1px;
 }
 
 .vtex-slider__dots li.slick-active button:before {
-  color: #f71963;
+  border-color: #f71963;
   opacity: 1;
 }
 
