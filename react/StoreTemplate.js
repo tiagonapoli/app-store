@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './store.global.css'
 import Header from './components/Header'
-import Footer from './Footer'
+import Footer from './components/Footer'
 
 export default class StoreTemplate extends Component {
   static propTypes = {
