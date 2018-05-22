@@ -49,9 +49,10 @@ export const getExtraResources = async (
         .catch(notFound(''))
     )
   }
-
   if (fields.screenshots) {
-    const list = await fetcher.listAppFiles(name, version)
+    const list = await fetcher.listAppFiles(name, version, {
+      prefix: '/public',
+    })
     const screenshotsFolder = `public/metadata/${locale}/screenshots/`
     extra.screenshots = compose(
       filter(path => path.startsWith(screenshotsFolder)),

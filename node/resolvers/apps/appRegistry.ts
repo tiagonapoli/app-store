@@ -40,8 +40,12 @@ export default function appRegistry(ioContext) {
       return client.getAppManifest(name, version)
     },
 
-    listAppFiles(name: string, version: string): Promise<any> {
-      return client.listAppFiles(name, version)
+    listAppFiles(
+      name: string,
+      version: string,
+      opts?: { prefix: string }
+    ): Promise<any> {
+      return client.listAppFiles(name, version, opts)
     },
   }
 }
