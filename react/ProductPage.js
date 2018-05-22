@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
 
 import appProductQuery from './queries/appProductQuery.gql'
-
 import Loading from './components/Loading'
 import ProductDescription from './components/ProductDescription'
 import ProductHeader from './components/ProductHeader'
@@ -57,6 +56,8 @@ class ProductPage extends Component {
                   description={appProduct.fullDescription || ''}
                   registry={appProduct.registry}
                   billing={appProduct.billing}
+                  screenshots={appProduct.screenshots}
+                  appProduct={appProduct}
                 />
               </div>
             </div>

@@ -1,4 +1,4 @@
-type AppProduct @cacheControl(scope: PUBLIC, maxAge: MEDIUM){
+type AppProduct @cacheControl(scope: PUBLIC, maxAge: MEDIUM) {
   id: ID
   vendor: String
   version: String
@@ -11,6 +11,7 @@ type AppProduct @cacheControl(scope: PUBLIC, maxAge: MEDIUM){
   fullDescription: String
   shortDescription: String
   installationSteps: String
+  screenshots: [String]
   registry: String
   terms: String
   permissions: [Policy]

@@ -66,6 +66,10 @@ class AppShelf extends Component {
     }
   }
 
+  getRef = e => {
+    this._slick = e
+  }
+
   render() {
     const { data, specificationFilters, title } = this.props
     const { loading, products } = data
@@ -85,9 +89,7 @@ class AppShelf extends Component {
             {isMobileOnly ? (
               <NoSSR onSSR={<Loading />}>
                 <Slider
-                  ref={function(c) {
-                    this._slick = c
-                  }.bind(this)}
+                  ref={this.getRef}
                   sliderSettings={sliderSettings}
                   scrollByPage={isScrollByPage}
                   defaultItemWidth={DEFAULT_SHELF_ITEM_WIDTH}

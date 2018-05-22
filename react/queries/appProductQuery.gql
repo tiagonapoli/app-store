@@ -11,6 +11,7 @@ query AppProduct($slug: String!, $locale: String) {
     categories
     fullDescription
     installationSteps
+    screenshots
     registry
     terms
     permissions {
