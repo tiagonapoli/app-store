@@ -118,6 +118,10 @@ class ProductDescription extends Component {
     }
   }
 
+  getRef = e => {
+    this._slick = e
+  }
+
   render() {
     const { billing, description, id, screenshots, appProduct } = this.props
     const isScrollByPage = false
@@ -131,9 +135,7 @@ class ProductDescription extends Component {
         {screenshots && (
           <div className="w-100 pb8">
             <Slider
-              ref={function(c) {
-                this._slick = c
-              }.bind(this)}
+              ref={this.getRef}
               sliderSettings={sliderSettings}
               scrollByPage={isScrollByPage}
             >
