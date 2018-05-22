@@ -14,3 +14,61 @@
 .vtex-slider__dots li {
   margin: 0 3px;
 }
+
+.screenshot {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.h7 {
+  height: 24rem;
+}
+
+.slick-slide img {
+  display: inline;
+}
+
+.vtex-slider__arrow-right,
+.vtex-slider__arrow-left {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  z-index: 1;
+}
+
+.vtex-slider__arrow-right:before {
+  color: #f71963;
+  content: "\2303";
+  font-weight: 500;
+  background: url("");
+  background-color: white;
+  border: #f71963 1px solid;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+  border-radius: 3px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vtex-slider__arrow-left:before {
+  color: #f71963;
+  content: "\2303";
+  font-weight: 500;
+  background: url("");
+  background-color: white;
+  border: #f71963 1px solid;
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  border-radius: 3px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

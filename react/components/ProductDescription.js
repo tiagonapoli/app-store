@@ -1,9 +1,26 @@
 import React, { Component, createElement } from 'react'
 import PropTypes from 'prop-types'
 import marksy from 'marksy'
+import Slider from 'vtex.storecomponents/Slider'
 
+import { imagePath } from '../utils/utils'
 import Billing from './Billing'
 import GetButton from './GetButton'
+
+import '../slider.global.css'
+
+const DOTS_LARGE_VIEWPORT = true
+const SLIDES_TO_SCROLL_LARGE_VIEWPORT = 1
+
+const BREAKPOINT_MOBILE_VIEWPORT = 480
+const SLIDER_CENTER_MODE_MOBILE = false
+const DOTS_MOBILE_VIEWPORT = true
+const SLIDES_TO_SCROLL_MOBILE_VIEWPORT = 1
+const SLIDES_TO_SHOW_MOBILE_VIEWPORT = 1
+
+const BREAKPOINT_EXTRA_SMALL_MOBILE_VIEWPORT = 300
+const DOTS_EXTRA_SMALL_MOBILE_VIEWPORT = true
+const SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE = false
 
 /* eslint-disable react/display-name, react/prop-types */
 const compile = marksy({
@@ -53,6 +70,38 @@ class ProductDescription extends Component {
     window.removeEventListener('scroll', this.watchScroll)
   }
 
+  getSliderSettings = () => {
+    return {
+      slidesToShow: 1,
+      slidesToScroll: SLIDES_TO_SCROLL_LARGE_VIEWPORT,
+      dots: DOTS_LARGE_VIEWPORT,
+      touchThreshold: 50,
+      arrows: true,
+      responsive: [
+        {
+          breakpoint: BREAKPOINT_MOBILE_VIEWPORT,
+          settings: {
+            slidesToShow: SLIDES_TO_SHOW_MOBILE_VIEWPORT,
+            slidesToScroll: SLIDES_TO_SCROLL_MOBILE_VIEWPORT,
+            dots: DOTS_MOBILE_VIEWPORT,
+            arrows: false,
+            centerMode: SLIDER_CENTER_MODE_MOBILE,
+          },
+        },
+        {
+          breakpoint: BREAKPOINT_EXTRA_SMALL_MOBILE_VIEWPORT,
+          settings: {
+            slidesToShow: SLIDES_TO_SHOW_MOBILE_VIEWPORT,
+            slidesToScroll: SLIDES_TO_SCROLL_MOBILE_VIEWPORT,
+            dots: DOTS_EXTRA_SMALL_MOBILE_VIEWPORT,
+            arrows: false,
+            centerMode: SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE,
+          },
+        },
+      ],
+    }
+  }
+
   watchScroll = () => {
     const scroll = window.pageYOffset
     const scrollHeight = document.body.scrollHeight
@@ -70,13 +119,37 @@ class ProductDescription extends Component {
   }
 
   render() {
-    const { billing, description, id } = this.props
+    const { billing, description, id, screenshots, appProduct } = this.props
+    const isScrollByPage = false
+    const sliderSettings = this.getSliderSettings()
     return (
       <div className="mh6-s mh0-ns near-black f5">
         <Billing billingOptions={billing} />
         <div className="pt5 pb3-s pb10-ns lh-copy">
           {compile(description).tree}
         </div>
+        {screenshots && (
+          <div className="w-100 pb8">
+            <Slider
+              ref={function(c) {
+                this._slick = c
+              }.bind(this)}
+              sliderSettings={sliderSettings}
+              scrollByPage={isScrollByPage}
+            >
+              {screenshots.map(screenshot => (
+                <div key={screenshot}>
+                  <div className="h7 flex justify-center mh6-ns">
+                    <img
+                      className="screenshot"
+                      src={imagePath(appProduct, screenshot)}
+                    />
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
+        )}
         <div className="h3">
           <div
             className={`bottom-0 left-0 w-100 z-2 db-s dn-ns b--white bb bw2 get-button-shadow bg-white ${

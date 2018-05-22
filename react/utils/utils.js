@@ -2,9 +2,10 @@ export function removeSlashes(text) {
   return !!text && text.replace(/\//g, '')
 }
 
-export function imagePath(availableApp) {
+export function imagePath(availableApp, image) {
   const { registry, slug, version, icon } = availableApp
-  return `/_v/render/v5/assets/published/${registry}/${slug}@${version}/${icon}`
+  return `/_v/render/v5/assets/published/${registry}/${slug}@${version}/${image ||
+    icon}`
 }
 
 export function tryParseJson(str) {
