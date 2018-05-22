@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'react-apollo'
 
-import productsQuery from './queries/productsQuery.gql'
+import productsQuery from '../queries/productsQuery.gql'
 
-import Loading from './components/Loading'
+import Loading from './Loading'
 import AppItem from './AppItem'
 
 class AppGallery extends Component {
