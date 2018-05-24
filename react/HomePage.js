@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
+import { Helmet } from 'render'
 
 import { COMING_SOON } from './utils/constants'
 import AppShelf from './AppShelf'
@@ -25,7 +26,6 @@ class HomePage extends Component {
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   componentDidMount() {
-    window.document.title = 'VTEX App Store'
     this.context.prefetchPage('store/product')
     this.context.prefetchPage('store/review')
     window.addEventListener('scroll', this.watchScrollUpDesktop)
@@ -97,6 +97,7 @@ class HomePage extends Component {
             />
           </div>
         </div>
+        <Helmet><title>VTEX App Store</title></Helmet>
       </div>
     )
   }
