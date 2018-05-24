@@ -69,6 +69,11 @@ export default {
         resolvedProduct.categories.length > 0
           ? [resolvedProduct.categories[resolvedProduct.categories.length - 1]]
           : [],
+      categoriesIds: resolvedProduct &&
+        resolvedProduct.categoriesIds &&
+        resolvedProduct.categoriesIds.length > 0
+        ? [resolvedProduct.categoriesIds[resolvedProduct.categoriesIds.length - 1]]
+        : [],
       fields,
       icon:
         resolvedProduct.items && resolvedProduct.items.length > 0

@@ -8,6 +8,7 @@ type AppProduct @cacheControl(scope: PUBLIC, maxAge: MEDIUM) {
   icon: String
   title: String
   categories: [String]
+  categoriesIds: [String]  
   fullDescription: String
   shortDescription: String
   installationSteps: String
