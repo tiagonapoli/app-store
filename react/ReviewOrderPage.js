@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
+import { Helmet } from 'render'
 
 import Card from '@vtex/styleguide/lib/Card'
 import Input from '@vtex/styleguide/lib/Input'
@@ -22,16 +23,6 @@ class ReviewOrderPage extends Component {
 
   state = {
     store: '',
-  }
-
-  componentDidUpdate(prevProps) {
-    const { appProductQuery } = this.props
-    if (
-      appProductQuery !== prevProps.appProductQuery &&
-      appProductQuery.appProduct
-    ) {
-      window.document.title = appProductQuery.appProduct.name
-    }
   }
 
   componentDidMount() {
@@ -157,6 +148,7 @@ class ReviewOrderPage extends Component {
                   disabled={error}
                 />
               </div>
+              <Helmet><title>{appProduct.name}</title></Helmet>
             </div>
           )}
         </div>

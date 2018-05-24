@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
+import { Helmet } from 'render'
 
 import appProductQuery from './queries/appProductQuery.gql'
 import Loading from './components/Loading'
@@ -22,16 +23,6 @@ class ProductPage extends Component {
   componentDidMount() {
     this.props.prefetch('store/review')
     window.document.body.scrollTop = window.document.documentElement.scrollTop = 0
-  }
-
-  componentDidUpdate(prevProps) {
-    const { appProductQuery } = this.props
-    if (
-      appProductQuery !== prevProps.appProductQuery &&
-      appProductQuery.appProduct
-    ) {
-      window.document.title = appProductQuery.appProduct.name
-    }
   }
 
   render() {
@@ -61,6 +52,7 @@ class ProductPage extends Component {
                 />
               </div>
             </div>
+            <Helmet><title>{appProduct.name}</title></Helmet>
           </div>
         ) : (
           <div className="h-100 flex items-center content">
