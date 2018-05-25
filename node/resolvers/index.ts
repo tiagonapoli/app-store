@@ -64,7 +64,7 @@ export default {
     return {
       billing: billingOptions,
       categories: resolvedProduct.categories,
-      categoriesIds: resolvedProduct.categoriesIds,
+      categoryId: resolvedProduct.categoryId,
       fields,
       icon:
         resolvedProduct.items && resolvedProduct.items.length > 0

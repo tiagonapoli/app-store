@@ -11,7 +11,7 @@ class AppGallery extends Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
     homePage: PropTypes.bool,
-    categoryId: PropTypes.string,
+    category: PropTypes.string,
     collection: PropTypes.string,
     specificationFilters: PropTypes.arrayOf(PropTypes.string),
     from: PropTypes.number,
@@ -57,7 +57,7 @@ const defaultOptions = {
   options: props => ({
     variables: {
       query: props.query,
-      category: props.categoryId,
+      category: props.category,
       collection: props.collection,
       specificationFilters: props.specificationFilters || null,
       from: props.from || 0,

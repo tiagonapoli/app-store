@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
 import { Helmet } from 'render'
 
-import { removeSlashes } from './utils/utils'
 import appProductQuery from './queries/appProductQuery.gql'
 import Loading from './components/Loading'
 import AppGallery from './AppGallery'
@@ -64,7 +63,7 @@ class ProductPage extends Component {
         {appProduct &&
           <div className="w-100 relative dn flex-ns justify-center bottom-0 bg-light-silver">
             <div className="w-100 mw9">
-              <AppGallery categoryId={appProduct.categoriesIds ? removeSlashes(appProduct.categoriesIds[0]) : '1'} />
+              <AppGallery category={appProduct.categoryId || '1'} />
             </div>
           </div>
         }
