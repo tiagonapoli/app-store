@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { IOContext } from 'colossus'
-import { juxt, map, toPairs } from 'ramda'
+import { juxt, map, takeLast, toPairs } from 'ramda'
 
 const objToNameValue = (
   keyName: string,
@@ -23,6 +23,16 @@ const resolvers = {
     const { SpecificationFilters = {} } = facets
     return objToNameValue('name', 'value', SpecificationFilters)
   },
+
+  categories: facets => {
+    const { categories = [] } = facets
+    return takeLast(1, categories.length)
+  },
+
+  categoriesIds: facets => {
+    const { categoriesIds = [] } = facets
+    return takeLast(1, categoriesIds.length)
+  }
 }
 
 export const resolveLocalProductFields = product => {
