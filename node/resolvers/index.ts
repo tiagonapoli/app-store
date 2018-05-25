@@ -49,7 +49,6 @@ export default {
       policies,
       billingOptions,
     } = await registry.getAppManifest(slug, version)
-
     const fields = graphqlFields(info)
     const resources = await getExtraResources(
       registry,
