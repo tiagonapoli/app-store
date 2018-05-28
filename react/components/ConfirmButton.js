@@ -41,7 +41,12 @@ class ConfirmButton extends Component {
           <Loading />
         ) : (
           <div className="bg-rebel-pink hover-bg-heavy-rebel-pink tc br2 w-100 mw6">
-            <Button onClick={this.handleClick} block disabled={disabled}>
+            <Button
+              size="small"
+              variation="tertiary"
+              onClick={this.handleClick}
+              block
+              disabled={disabled}>
               <span className="white">{value}</span>
             </Button>
           </div>

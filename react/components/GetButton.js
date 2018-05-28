@@ -37,7 +37,7 @@ class GetButton extends Component {
             : 'bg-rebel-pink hover-bg-heavy-rebel-pink'
         }`}
       >
-        <Button onClick={this.handleClick} block>
+        <Button size="small" variation="tertiary" onClick={this.handleClick} block>
           <span className={`${homePage ? 'rebel-pink' : 'white'}`}>
             {this.translate('get')}
           </span>
