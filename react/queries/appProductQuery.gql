@@ -9,6 +9,7 @@ query AppProduct($slug: String!, $locale: String) {
     linkText
     title
     categories
+    categoryId 
     fullDescription
     installationSteps
     screenshots

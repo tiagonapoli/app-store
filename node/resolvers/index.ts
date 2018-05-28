@@ -49,7 +49,6 @@ export default {
       policies,
       billingOptions,
     } = await registry.getAppManifest(slug, version)
-
     const fields = graphqlFields(info)
     const resources = await getExtraResources(
       registry,
@@ -63,12 +62,8 @@ export default {
     )
     return {
       billing: billingOptions,
-      categories:
-        resolvedProduct &&
-        resolvedProduct.categories &&
-        resolvedProduct.categories.length > 0
-          ? [resolvedProduct.categories[resolvedProduct.categories.length - 1]]
-          : [],
+      categories: resolvedProduct.categories,
+      categoryId: resolvedProduct.categoryId,
       fields,
       icon:
         resolvedProduct.items && resolvedProduct.items.length > 0
