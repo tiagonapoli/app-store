@@ -71,7 +71,7 @@ export default {
           : `/_v/render/v5/assets/published/${account}/${slug}@${version}/public/metadata/icon.png`,
       id,
       linkText,
-      name: title,
+      name: resolvedProduct.productName,
       vendor: resolvedProduct.brand,
       version,
       ...resources,
