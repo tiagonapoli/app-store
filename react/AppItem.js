@@ -7,6 +7,7 @@ import { tryParseJson } from './utils/utils'
 import AppCategory from './components/AppCategory'
 import AppIcon from './components/AppIcon'
 import GetButton from './components/GetButton'
+import withCulture from './withCulture'
 import withNavigate from './withNavigate'
 
 class AppItem extends Component {
@@ -20,6 +21,7 @@ class AppItem extends Component {
     specificationFilters: PropTypes.oneOf(['Published', COMING_SOON]),
     specifications: PropTypes.string,
     navigate: PropTypes.func.isRequired,
+    culture: PropTypes.object.isRequired,
     isShelf: PropTypes.bool.isRequired,
   }
 
@@ -47,6 +49,16 @@ class AppItem extends Component {
         specificationsMap.Status.length > 0 &&
         specificationsMap.Status[0] === COMING_SOON)
     )
+  }
+
+  getLocaleDescription = description => {
+    try {
+      const descriptionJSON = JSON.parse(description)
+      const lang = this.props.culture.language
+      return lang in descriptionJSON ? descriptionJSON[lang] : ''
+    } catch (e) {
+      return description
+    }
   }
 
   render() {
@@ -83,7 +95,7 @@ class AppItem extends Component {
           </div>
           <div className="description-height ">
             <div className="mv5 overflow-hidden f5 fw4 dark-gray track-1 block-with-text">
-              {shortDescription}
+              {this.getLocaleDescription(shortDescription)}
             </div>
           </div>
           <AppCategory category={category} seller={seller} homePage />
@@ -93,4 +105,4 @@ class AppItem extends Component {
   }
 }
 
-export default withNavigate()(AppItem)
+export default withCulture()(withNavigate()(AppItem))
