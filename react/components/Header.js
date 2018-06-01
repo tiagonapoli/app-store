@@ -83,19 +83,12 @@ class Header extends Component {
           className="flex justify-between items-center w-100 top-0 ph4 ph7-ns pv4 pv5-ns bg-serious-black tc tl-ns white"
         >
           <div className="flex items-center">
-            <VTEXIcon colorFill="white" className={titleClasses} />
             <BackIcon
               colorFill="white"
               className={`${notHome ? 'db dn-ns rotate-180' : 'dn'}`}
             />
             <Link page="store" className="link">
-              <div
-                className={`pointer b f5-s f4-ns white tc tl-ns lh-solid ml3 ph3 b--white bl ${
-                  notHome ? 'ml0-s ph0-s bl-0-s ml3-ns ph3-ns bl-ns' : ''
-                }`}
-              >
-                <span className={titleClasses}>App Store</span>
-              </div>
+              <VTEXIcon colorFill="white" className={titleClasses} text={"App Store"} />
             </Link>
             <div
               className={`pointer b f4 white tc tl-ns lh-solid ml3 ph3 b--white bl ${
