@@ -5,7 +5,7 @@ import { Helmet } from 'render'
 
 import appProductQuery from './queries/appProductQuery.gql'
 import Loading from './components/Loading'
-import AppGallery from './AppGallery'
+import AppGallery from './components/AppGallery'
 import ProductDescription from './components/ProductDescription'
 import ProductHeader from './components/ProductHeader'
 import withCulture from './withCulture'

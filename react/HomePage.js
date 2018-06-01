@@ -5,7 +5,7 @@ import { Helmet } from 'render'
 
 import { COMING_SOON } from './utils/constants'
 import AppShelf from './AppShelf'
-import AppGallery from './AppGallery'
+import AppGallery from './components/AppGallery'
 import JumbotronIcon from './components/icons/JumbotronIcon'
 import SearchBox from './components/SearchBox'
 import withPrefetch from './withPrefetch'
