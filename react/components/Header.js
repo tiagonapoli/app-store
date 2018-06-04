@@ -6,6 +6,7 @@ import { Link, Helmet } from 'render'
 import googleAnalytics from '../scripts/googleAnalytics'
 import VTEXIcon from './icons/VTEXIcon'
 import BackIcon from './icons/BackIcon'
+import LocaleSwitcher from './LocaleSwitcher'
 import SearchBox from './SearchBox'
 
 class Header extends Component {
@@ -101,6 +102,7 @@ class Header extends Component {
               </span>
             </div>
           </div>
+          <LocaleSwitcher />
         </div>
         {!notHome && (
           <div
