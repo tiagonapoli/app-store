@@ -80,7 +80,7 @@ class Header extends Component {
         </Helmet>
         <div
           id="extension-store-header"
-          className="flex justify-between items-center w-100 top-0 ph4 ph7-ns pv4 pv5-ns bg-serious-black tc tl-ns white"
+          className="flex justify-between items-center w-100 top-0 pa4 ph7-ns bg-serious-black tc tl-ns white"
         >
           <div className="flex items-center">
             <BackIcon
