@@ -60,6 +60,7 @@ class ProductDescription extends Component {
     billing: PropTypes.object.isRequired,
     description: PropTypes.string.isRequired,
     registry: PropTypes.string.isRequired,
+    culture: PropTypes.object.isRequired,
   }
 
   componentDidMount() {
@@ -124,7 +125,7 @@ class ProductDescription extends Component {
   }
 
   render() {
-    const { billing, description, id, screenshots, appProduct } = this.props
+    const { billing, description, id, screenshots, appProduct, culture: { locale } } = this.props
     const isScrollByPage = false
     const sliderSettings = this.getSliderSettings()
     return (
@@ -167,4 +168,4 @@ class ProductDescription extends Component {
   }
 }
 
-export default ProductDescription
+export default withCulture()(ProductDescription)

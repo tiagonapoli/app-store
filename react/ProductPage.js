@@ -8,17 +8,18 @@ import Loading from './components/Loading'
 import AppGallery from './AppGallery'
 import ProductDescription from './components/ProductDescription'
 import ProductHeader from './components/ProductHeader'
+import withCulture from './withCulture'
+import withEmitter from './withEmitter'
 import withPrefetch from './withPrefetch'
+import { splitLocale } from './utils/utils'
 
 class ProductPage extends Component {
   static propTypes = {
     params: PropTypes.object.isRequired,
     appProductQuery: PropTypes.object,
+    culture: PropTypes.object.isRequired,
+    emitter: PropTypes.object.isRequired,
     prefetch: PropTypes.func.isRequired,
-  }
-
-  state = {
-    isModalOpen: false,
   }
 
   componentDidMount() {
@@ -27,7 +28,7 @@ class ProductPage extends Component {
   }
 
   render() {
-    const { appProductQuery } = this.props
+    const { appProductQuery, culture: { locale } } = this.props
     const { appProduct } = appProductQuery
     return (
       <div className="w-100 h-100 flex flex-column items-center content">
