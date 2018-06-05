@@ -89,7 +89,7 @@ class AppItem extends Component {
                 {name}
               </div>
               {!isComing && (
-                <div className="w-50-s w-60-ns">
+                <div className="w-60">
                   <GetButton appId={appId} homePage />
                 </div>
               )}
