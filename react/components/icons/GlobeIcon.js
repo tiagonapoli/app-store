@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 class GlobeIcon extends PureComponent {
   static propTypes = {
     colorFill: PropTypes.string.isRequired,
-    className: PropTypes.string.isRequired,
+    className: PropTypes.string,
   }
 
   render() {
