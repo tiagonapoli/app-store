@@ -3,47 +3,38 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
 import GlobeIcon from './icons/GlobeIcon'
-import BackIcon from './icons/BackIcon'
 import withCulture from '../withCulture'
+import withEmitter from '../withEmitter'
+import { splitLocale } from '../utils/utils'
 
 const locales = [
   {
-    text: 'EN',
     id: 'en-US',
   },
   {
-    text: 'PT',
     id: 'pt-BR',
   },
   {
-    text: 'ES',
     id: 'es-AR',
   },
 ]
 
 const findLocale = locale => {
   const localeObj = locales.find(
-    ({ id }) => id.split('-')[0] === locale.split('-')[0]
+    ({ id }) => splitLocale(id) === splitLocale(locale)
   )
   return localeObj || locales[0]
 }
 
 class LocaleSwitcher extends Component {
-  static contextTypes = {
-    emitter: PropTypes.object,
-  }
-
   static propTypes = {
     culture: PropTypes.object.isRequired,
-    className: PropTypes.string.isRequired,
+    emitter: PropTypes.object.isRequired,
   }
 
-  constructor(props, context) {
-    super(props)
-    this.state = {
-      opened: false,
-      selectedLocale: findLocale(props.culture.locale),
-    }
+  state = {
+    opened: false,
+    selectedLocale: findLocale(this.props.culture.locale),
   }
 
   handleButtonClick = () => {
@@ -51,13 +42,12 @@ class LocaleSwitcher extends Component {
   }
 
   handleLocaleClick = ({ target: { id } }) => {
-    const [, locale] = id.split('@')
-    const { emitter } = this.context
+    const { emitter } = this.props
 
-    emitter.emit('localesChanged', locale)
+    emitter.emit('localesChanged', id)
     this.setState({
       opened: false,
-      selectedLocale: findLocale(locale),
+      selectedLocale: findLocale(id),
     })
   }
 
@@ -107,4 +97,4 @@ class LocaleSwitcher extends Component {
   }
 }
 
-export default withCulture()(LocaleSwitcher)
+export default withCulture()(withEmitter()(LocaleSwitcher))

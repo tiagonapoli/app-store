@@ -74,15 +74,18 @@ class ProductPage extends Component {
 
 const optionsProduct = {
   name: 'appProductQuery',
-  options: props => ({
-    variables: {
-      slug: props.params.slug,
-      locale: global.__RUNTIME__.culture.locale,
-    },
-  }),
+  options: props => {
+    return {
+      variables: {
+        slug: props.params.slug,
+      },
+    }
+  },
 }
 
 export default compose(
   graphql(appProductQuery, optionsProduct),
+  withCulture(),
+  withEmitter(),
   withPrefetch()
 )(ProductPage)

@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import Card from '@vtex/styleguide/lib/Card'
 
 import { COMING_SOON } from './utils/constants'
-import { tryParseJson } from './utils/utils'
+import { tryParseJson, splitLocale } from './utils/utils'
 import AppCategory from './components/AppCategory'
 import AppIcon from './components/AppIcon'
 import GetButton from './components/GetButton'
 import withCulture from './withCulture'
+import withEmitter from './withEmitter'
 import withNavigate from './withNavigate'
 
 class AppItem extends Component {
@@ -20,9 +21,10 @@ class AppItem extends Component {
     seller: PropTypes.string.isRequired,
     specificationFilters: PropTypes.oneOf(['Published', COMING_SOON]),
     specifications: PropTypes.string,
+    isShelf: PropTypes.bool.isRequired,
     navigate: PropTypes.func.isRequired,
     culture: PropTypes.object.isRequired,
-    isShelf: PropTypes.bool.isRequired,
+    emitter: PropTypes.object.isRequired,
   }
 
   handleClick = e => {
@@ -105,4 +107,4 @@ class AppItem extends Component {
   }
 }
 
-export default withCulture()(withNavigate()(AppItem))
+export default withCulture()(withEmitter()((withNavigate()(AppItem))))
