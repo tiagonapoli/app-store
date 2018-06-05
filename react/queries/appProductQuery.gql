@@ -1,5 +1,5 @@
-query AppProduct($slug: String!, $locale: String) {
-  appProduct(slug: $slug, locale: $locale) {
+query AppProduct($slug: String!) {
+  appProduct(slug: $slug) {
     id
     name
     slug
@@ -10,11 +10,27 @@ query AppProduct($slug: String!, $locale: String) {
     title
     categories
     categoryId 
-    fullDescription
-    installationSteps
-    screenshots
+    fullDescription {
+      en
+      pt
+      es
+    }
+    installationSteps {
+      en
+      pt
+      es
+    }
+    screenshots {
+      en
+      pt
+      es
+    }
     registry
-    terms
+    terms {
+      en
+      pt
+      es
+    }
     permissions {
       name
       description
