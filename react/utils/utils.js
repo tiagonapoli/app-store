@@ -19,3 +19,5 @@ export function tryParseJson(str) {
   }
   return parsed
 }
+
+export const splitLocale = locale => locale.split('-')[0]

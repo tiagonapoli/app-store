@@ -8,17 +8,18 @@ import Loading from './components/Loading'
 import AppGallery from './AppGallery'
 import ProductDescription from './components/ProductDescription'
 import ProductHeader from './components/ProductHeader'
+import withCulture from './withCulture'
+import withEmitter from './withEmitter'
 import withPrefetch from './withPrefetch'
+import { splitLocale } from './utils/utils'
 
 class ProductPage extends Component {
   static propTypes = {
     params: PropTypes.object.isRequired,
     appProductQuery: PropTypes.object,
+    culture: PropTypes.object.isRequired,
+    emitter: PropTypes.object.isRequired,
     prefetch: PropTypes.func.isRequired,
-  }
-
-  state = {
-    isModalOpen: false,
   }
 
   componentDidMount() {
@@ -27,7 +28,7 @@ class ProductPage extends Component {
   }
 
   render() {
-    const { appProductQuery } = this.props
+    const { appProductQuery, culture: { locale } } = this.props
     const { appProduct } = appProductQuery
     return (
       <div className="w-100 h-100 flex flex-column items-center content">
@@ -45,7 +46,7 @@ class ProductPage extends Component {
               <div className="w-100 w-80-ns">
                 <ProductDescription
                   id={appProduct.linkText}
-                  description={appProduct.fullDescription || ''}
+                  description={appProduct.fullDescription[splitLocale(locale)] || ''}
                   registry={appProduct.registry}
                   billing={appProduct.billing}
                   screenshots={appProduct.screenshots}
@@ -74,15 +75,18 @@ class ProductPage extends Component {
 
 const optionsProduct = {
   name: 'appProductQuery',
-  options: props => ({
-    variables: {
-      slug: props.params.slug,
-      locale: global.__RUNTIME__.culture.locale,
-    },
-  }),
+  options: props => {
+    return {
+      variables: {
+        slug: props.params.slug,
+      },
+    }
+  },
 }
 
 export default compose(
   graphql(appProductQuery, optionsProduct),
+  withCulture(),
+  withEmitter(),
   withPrefetch()
 )(ProductPage)

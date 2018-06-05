@@ -9,12 +9,12 @@ type AppProduct @cacheControl(scope: PUBLIC, maxAge: MEDIUM) {
   title: String
   categories: [String]
   categoryId: String  
-  fullDescription: String
-  shortDescription: String
-  installationSteps: String
-  screenshots: [String]
+  fullDescription: LocaleText
+  shortDescription: LocaleText
+  installationSteps: LocaleText
+  screenshots: LocaleArray
   registry: String
-  terms: String
+  terms: LocaleText
   permissions: [Policy]
   billing: BillingOptions
 }
@@ -61,4 +61,16 @@ type Range {
   exclusiveFrom: Float
   inclusiveTo: Float
   multiplier: Float
+}
+
+type LocaleText {
+  en: String,
+  pt: String,
+  es: String,
+}
+
+type LocaleArray {
+  en: [String],
+  pt: [String],
+  es: [String],
 }

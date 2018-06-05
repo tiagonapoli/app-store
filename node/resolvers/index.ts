@@ -58,7 +58,6 @@ export default {
       cookie,
       ioContext,
       policies,
-      data.locale || 'en-US'
     )
     return {
       billing: billingOptions,

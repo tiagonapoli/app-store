@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import marksy from 'marksy'
 import Slider from 'vtex.storecomponents/Slider'
 
-import { imagePath } from '../utils/utils'
+import { imagePath, splitLocale } from '../utils/utils'
 import Billing from './Billing'
 import GetButton from './GetButton'
+import withCulture from '../withCulture'
 
 import '../slider.global.css'
 
@@ -59,6 +60,7 @@ class ProductDescription extends Component {
     billing: PropTypes.object.isRequired,
     description: PropTypes.string.isRequired,
     registry: PropTypes.string.isRequired,
+    culture: PropTypes.object.isRequired,
   }
 
   componentDidMount() {
@@ -123,7 +125,7 @@ class ProductDescription extends Component {
   }
 
   render() {
-    const { billing, description, id, screenshots, appProduct } = this.props
+    const { billing, description, id, screenshots, appProduct, culture: { locale } } = this.props
     const isScrollByPage = false
     const sliderSettings = this.getSliderSettings()
     return (
@@ -139,7 +141,7 @@ class ProductDescription extends Component {
               sliderSettings={sliderSettings}
               scrollByPage={isScrollByPage}
             >
-              {screenshots.map(screenshot => (
+              {screenshots[splitLocale(locale)].map(screenshot => (
                 <div key={screenshot}>
                   <div className="h7 flex justify-center mh6-ns b--light-silver ba bw1-ns br2">
                     <img
@@ -166,4 +168,4 @@ class ProductDescription extends Component {
   }
 }
 
-export default ProductDescription
+export default withCulture()(ProductDescription)
