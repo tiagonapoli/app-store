@@ -8,14 +8,12 @@ import AppShelf from './AppShelf'
 import AppGallery from './AppGallery'
 import JumbotronIcon from './components/icons/JumbotronIcon'
 import SearchBox from './components/SearchBox'
+import withPrefetch from './withPrefetch'
 
 class HomePage extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
-  }
-
-  static contextTypes = {
-    prefetchPage: PropTypes.func,
+    prefetch: PropTypes.func.isRequired,
   }
 
   state = {
@@ -26,8 +24,9 @@ class HomePage extends Component {
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   componentDidMount() {
-    this.context.prefetchPage('store/product')
-    this.context.prefetchPage('store/review')
+    const { prefetch } = this.props
+    prefetch('store/product')
+    prefetch('store/review')
     window.addEventListener('scroll', this.watchScrollUpDesktop)
     this.watchScrollUpDesktop()
     this.setState({
@@ -103,4 +102,4 @@ class HomePage extends Component {
   }
 }
 
-export default injectIntl(HomePage)
+export default withPrefetch()(injectIntl(HomePage))
