@@ -29,6 +29,8 @@ const getFilesToFetch = compose(
   keys
 )
 
+const splitLocale = locale => locale.split('-')[0]
+
 export const getExtraResources = async (
   fetcher,
   name,

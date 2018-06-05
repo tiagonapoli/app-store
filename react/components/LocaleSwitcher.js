@@ -66,28 +66,25 @@ class LocaleSwitcher extends Component {
       { dn: !opened }
     )
     return (
-      <div className="w3 flex items-center ml2 mr3">
+      <div className="w2 flex items-center ml2 mr3">
         <button
-          className="link pa0 mv2 bg-transparent bn flex items-center pointer mr3 near-black"
+          className="link pa0 bg-transparent bn flex items-center pointer mr3 near-black"
           onBlur={this.handleBlur}
           onClick={this.handleButtonClick}>
           <GlobeIcon size={11} colorFill="white" />
-          <span className="f5 fw5 pl2 white">{selectedLocale.text}</span>
-          <div className={`pt2 ${opened ? 'rotate-270' : 'rotate-90'}`}>
-            <BackIcon size={12} colorFill="white" />
-          </div>
+          <span className="f5 fw5 ttu pl2 white">{splitLocale(selectedLocale.id)}</span>
         </button>
         <ul className={listClasses}>
           {locales.map(
-            ({ id, text }) =>
+            ({ id }) =>
               id !== selectedLocale.id ? (
                 <li
                   key={id}
-                  id={`appframe-locale@${id}`}
-                  className="pointer serious-black f5 pv3 ph6 hover-bg-light-silver tc"
+                  id={id}
+                  className="pointer serious-black f5 pv3 ph5 hover-bg-light-silver tc ttu"
                   onClick={this.handleLocaleClick}
                   onMouseDown={this.handleMouseDown}>
-                  {text}
+                  {splitLocale(id)}
                 </li>
               ) : null
           )}

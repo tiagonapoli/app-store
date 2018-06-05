@@ -56,7 +56,7 @@ class AppItem extends Component {
   getLocaleDescription = description => {
     try {
       const descriptionJSON = JSON.parse(description)
-      const lang = this.props.culture.language
+      const lang = splitLocale(this.props.culture.locale)
       return lang in descriptionJSON ? descriptionJSON[lang] : ''
     } catch (e) {
       return description

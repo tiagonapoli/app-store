@@ -45,7 +45,7 @@ class ProductPage extends Component {
               <div className="w-100 w-80-ns">
                 <ProductDescription
                   id={appProduct.linkText}
-                  description={appProduct.fullDescription || ''}
+                  description={appProduct.fullDescription[splitLocale(locale)] || ''}
                   registry={appProduct.registry}
                   billing={appProduct.billing}
                   screenshots={appProduct.screenshots}

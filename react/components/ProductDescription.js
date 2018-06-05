@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import marksy from 'marksy'
 import Slider from 'vtex.storecomponents/Slider'
 
-import { imagePath } from '../utils/utils'
+import { imagePath, splitLocale } from '../utils/utils'
 import Billing from './Billing'
 import GetButton from './GetButton'
+import withCulture from '../withCulture'
 
 import '../slider.global.css'
 
@@ -139,7 +140,7 @@ class ProductDescription extends Component {
               sliderSettings={sliderSettings}
               scrollByPage={isScrollByPage}
             >
-              {screenshots.map(screenshot => (
+              {screenshots[splitLocale(locale)].map(screenshot => (
                 <div key={screenshot}>
                   <div className="h7 flex justify-center mh6-ns b--light-silver ba bw1-ns br2">
                     <img
