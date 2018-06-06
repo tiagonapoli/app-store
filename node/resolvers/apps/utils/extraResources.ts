@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {
   compose,
+  concat,
   filter,
   find,
   flip,
@@ -10,6 +11,7 @@ import {
   map,
   pluck,
   prop,
+  reduce,
   reject,
 } from 'ramda'
 import { notFound } from './notFound'
@@ -44,17 +46,18 @@ export const getExtraResources = async (
   const locales = ['en-US', 'pt-BR', 'es-AR']
   const files: string[] = getFilesToFetch(fields)
   if (files.length > 0) {
-    await Promise.map(files, filename => {
+    await Promise.all(reduce(concat, [], 
+      files.map(filename => {
         extra[FILE_TO_FIELD[filename]] = {}
-        return locales.map(locale => {
+        return map(locale => {
           const lang = splitLocale(locale)
           return fetcher
             .getAppFile(name, version, `public/metadata/${locale}/${filename}`)
             .then(({ data }) => extra[FILE_TO_FIELD[filename]][lang] = data.toString())
             .catch(notFound(() => extra[FILE_TO_FIELD[filename]][lang] = ''))
-        })
-      }
-    )
+        }, locales)
+     })
+    ))      
   }
   if (fields.screenshots) {
     const list = await fetcher.listAppFiles(name, version, {
