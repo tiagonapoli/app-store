@@ -20,34 +20,38 @@ class AppGallery extends Component {
 
   render() {
     const { data, homePage } = this.props
-    const { loading, products } = data
+    const { error, loading, products } = data
     return (
       <div className="w-100">
-        {loading ? (
-          <div className="flex justify-center pt9 pb10">
-            <Loading />
+        {!error &&
+          <div className="w-100">
+            {loading ? (
+              <div className="flex justify-center pt9 pb10">
+                <Loading />
+              </div>
+            ) : (
+              <div
+                className={`flex flex-column-s flex-row-l flex-wrap-ns justify-center items-center ${
+                  homePage ? 'relative card-top' : 'mv4'
+                }`}
+              >
+                {products.map(product => (
+                  <AppItem
+                    key={product.productId}
+                    name={product.productName}
+                    imageUrl={product.items && product.items[0].images[0].imageUrl}
+                    shortDescription={product.description}
+                    category={product.categories[product.categories.length - 1]}
+                    seller={product.brand}
+                    appId={product.linkText}
+                    specifications={product.jsonSpecifications}
+                    isShelf={false}
+                  />
+                ))}
+              </div>
+            )}
           </div>
-        ) : (
-          <div
-            className={`flex flex-column-s flex-row-l flex-wrap-ns justify-center items-center ${
-              homePage ? 'relative card-top' : 'mv4'
-            }`}
-          >
-            {products.map(product => (
-              <AppItem
-                key={product.productId}
-                name={product.productName}
-                imageUrl={product.items && product.items[0].images[0].imageUrl}
-                shortDescription={product.description}
-                category={product.categories[product.categories.length - 1]}
-                seller={product.brand}
-                appId={product.linkText}
-                specifications={product.jsonSpecifications}
-                isShelf={false}
-              />
-            ))}
-          </div>
-        )}
+        }
       </div>
     )
   }
