@@ -45,12 +45,15 @@ export const getExtraResources = async (
   const extra: { screenshots?: any; permissions?: any } = {}
   const locales = ['en-US', 'pt-BR', 'es-AR']
   const files: string[] = getFilesToFetch(fields)
+  
   if (files.length > 0) {
     await Promise.all(reduce(concat, [], 
       files.map(filename => {
         extra[FILE_TO_FIELD[filename]] = {}
+  
         return map(locale => {
           const lang = splitLocale(locale)
+  
           return fetcher
             .getAppFile(name, version, `public/metadata/${locale}/${filename}`)
             .then(({ data }) => extra[FILE_TO_FIELD[filename]][lang] = data.toString())
@@ -59,11 +62,14 @@ export const getExtraResources = async (
      })
     ))      
   }
+  
   if (fields.screenshots) {
     const list = await fetcher.listAppFiles(name, version, {
       prefix: '/public',
     })
+  
     extra.screenshots = {}
+
     locales.map(locale =>
       extra.screenshots[splitLocale(locale)] = compose(
         filter(path => path.startsWith(`public/metadata/${locale}/screenshots/`)),
@@ -72,8 +78,10 @@ export const getExtraResources = async (
       )(list)
     )
   }
+  
   if (fields.permissions) {
     extra.permissions = []
   }
+  
   return extra
 }

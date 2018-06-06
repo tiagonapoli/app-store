@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import { ColossusContext } from 'colossus'
 import graphqlFields from 'graphql-fields'
+import * as MemoryCache from 'lru-cache'
 import { compose, equals, find, head, map, prop } from 'ramda'
 import appRegistry from './apps/appRegistry'
 import { getExtraResources } from './apps/utils/extraResources'
@@ -8,6 +9,14 @@ import { matchAppId, removeBuild } from './apps/utils/locator'
 import { resolveProductFields } from './catalog/fieldsResolver'
 import { withAuthToken } from './catalog/header'
 import { paths } from './catalog/paths'
+
+const MAX_CACHE_SIZE = 150
+const MAX_AGE_MS = 60 * 60 * 1000
+
+const productCache = MemoryCache<string, any>({
+  max: MAX_CACHE_SIZE,
+  maxAge: MAX_AGE_MS
+})
 
 export default {
   appProduct: async (
@@ -21,10 +30,18 @@ export default {
     }: ColossusContext,
     info
   ) => {
+    const {account, workspace} = ioContext
     const url = paths.product(ioContext.account, data)
-    const { data: product } = await axios.get(url, {
-      headers: withAuthToken()(ioContext),
-    })
+
+    const cacheKey = `${account}___${data.slug}`
+    let product = productCache.get(cacheKey)
+    if (!product) {
+      product = (await axios.get(url, {
+        headers: withAuthToken()(ioContext),
+      })).data
+      productCache.set(cacheKey, product)
+    }
+
     const resolvedProduct = await resolveProductFields(ioContext, head(product))
     const linkText = resolvedProduct.linkText
     const id = resolvedProduct.items[0].referenceId[0].Value
@@ -35,7 +52,6 @@ export default {
         'Invalid app id. Ids should be of the form: <registry>:<vendor>.<name>'
       )
     }
-    const { account } = ioContext
     const [, , , slug, , idVersion] = match
     const registry = appRegistry({ ...ioContext, account })
     const version = removeBuild(
