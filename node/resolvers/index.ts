@@ -10,9 +10,12 @@ import { resolveProductFields } from './catalog/fieldsResolver'
 import { withAuthToken } from './catalog/header'
 import { paths } from './catalog/paths'
 
+const MAX_CACHE_SIZE = 150
+const MAX_AGE_MS = 60 * 60 * 1000
+
 const productCache = MemoryCache<string, any>({
-  max: 150,
-  maxAge: 3600 * 1000
+  max: MAX_CACHE_SIZE,
+  maxAge: MAX_AGE_MS
 })
 
 export default {
