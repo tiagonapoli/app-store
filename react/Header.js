@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import { Link, Helmet } from 'render'
 
-import googleAnalytics from '../scripts/googleAnalytics'
-import VTEXIcon from './icons/VTEXIcon'
-import BackIcon from './icons/BackIcon'
-import LocaleSwitcher from './LocaleSwitcher'
-import SearchBox from './SearchBox'
+import googleAnalytics from './scripts/googleAnalytics'
+import VTEXIcon from './components/icons/VTEXIcon'
+import BackIcon from './components/icons/BackIcon'
+import LocaleSwitcher from './components/LocaleSwitcher'
+import SearchBox from './components/SearchBox'
+import './store.global.css'
 
 class Header extends Component {
   static propTypes = {

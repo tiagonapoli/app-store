@@ -1,17 +1,23 @@
 {
   "pages": {
+    "store/product": {
+      "path": "/:slug/p"
+    },
     "store/review": {
       "path": "/:slug/r"
     }
   },
   "extensions": {
-    "store": {
-      "component": "StoreTemplate"
+    "store/header": {
+      "component": "Header"
     },
-    "store/home/sections/1": {
+    "store/footer": {
+      "component": "Footer"
+    },
+    "store/home/container/1": {
       "component": "Jumbotron"
     },
-    "store/home/sections/2": {
+    "store/home/container/2": {
       "component": "AppShelf",
       "props": {
         "specificationFilters": "Published",
@@ -19,7 +25,7 @@
         "title": "apps"
       }
     },
-    "store/home/sections/3": {
+    "store/home/container/3": {
       "component": "AppShelf",
       "props": {
         "specificationFilters": "Coming Soon",
