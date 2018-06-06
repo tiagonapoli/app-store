@@ -44,17 +44,16 @@ export const getExtraResources = async (
   const locales = ['en-US', 'pt-BR', 'es-AR']
   const files: string[] = getFilesToFetch(fields)
   if (files.length > 0) {
-    await Promise.map(files, filename => {
+    await locales.map(locale => {
+      const lang = splitLocale(locale)
+      Promise.map(files, filename => {
         extra[FILE_TO_FIELD[filename]] = {}
-        return locales.map(locale => {
-          const lang = splitLocale(locale)
-          return fetcher
+        return fetcher
             .getAppFile(name, version, `public/metadata/${locale}/${filename}`)
             .then(({ data }) => extra[FILE_TO_FIELD[filename]][lang] = data.toString())
             .catch(notFound(() => extra[FILE_TO_FIELD[filename]][lang] = ''))
-        })
-      }
-    )
+      })
+    })
   }
   if (fields.screenshots) {
     const list = await fetcher.listAppFiles(name, version, {
