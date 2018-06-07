@@ -1,8 +1,5 @@
 {
   "pages": {
-    "store/product": {
-      "path": "/:slug/p"
-    },
     "store/review": {
       "path": "/:slug/r"
     }
@@ -33,11 +30,8 @@
         "title": "comingSoon"
       }
     },
-    "store/product": {
-      "component": "ProductPage"
-    },
-    "store/review": {
-      "component": "ReviewOrderPage"
+    "store/product/container/1": {
+      "component": "ProductContainer"
     }
   }
 }

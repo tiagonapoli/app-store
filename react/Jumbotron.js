@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
+import { Helmet } from 'render'
 
 import AppGallery from './components/AppGallery'
 import JumbotronIcon from './components/icons/JumbotronIcon'
@@ -23,9 +24,6 @@ class Jumbotron extends Component {
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   componentDidMount() {
-    window.document.title = 'VTEX App Store'
-    this.context.prefetchPage('store/product')
-    this.context.prefetchPage('store/review')
     window.addEventListener('scroll', this.watchScrollUpDesktop)
     this.watchScrollUpDesktop()
     this.setState({
@@ -74,6 +72,9 @@ class Jumbotron extends Component {
             <SearchBox />
           </div>
         </div>
+        <Helmet>
+          <title>VTEX App Store</title>
+        </Helmet>
       </div>
     )
   }

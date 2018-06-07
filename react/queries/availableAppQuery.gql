@@ -1,0 +1,56 @@
+query AvailableApp($id: String!) {
+  availableApp(id: $id) {
+    id
+    name
+    slug
+    vendor
+    version
+    icon
+    title
+    categories
+    fullDescription {
+      en
+      pt
+      es
+    }
+    screenshots {
+      en
+      pt
+      es
+    }
+    registry
+    policies {
+      name
+      attrs {
+        host
+        path
+      }
+    }
+    billingOptions {
+      deactivationRoute
+      termsURL
+      free
+      policies {
+        currency
+        billing {
+          taxClassification
+          items {
+            itemCurrency
+            fixed
+            calculatedByMetricUnit {
+              metricId
+              metricName
+              minChargeValue
+              route
+              ranges {
+                exclusiveFrom
+                inclusiveTo
+                multiplier
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

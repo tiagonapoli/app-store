@@ -24,7 +24,7 @@ class Header extends Component {
     store: '',
     shouldShowLoginModal: false,
   }
-
+                                  
   componentDidMount() {
     const query = window.location.search
     let account

@@ -59,7 +59,6 @@ class ProductDescription extends Component {
     id: PropTypes.string.isRequired,
     billing: PropTypes.object.isRequired,
     description: PropTypes.string.isRequired,
-    registry: PropTypes.string.isRequired,
     culture: PropTypes.object.isRequired,
   }
 

@@ -14,7 +14,6 @@ class ProductHeader extends Component {
     name: PropTypes.string.isRequired,
     seller: PropTypes.string.isRequired,
     category: PropTypes.string,
-    registry: PropTypes.string.isRequired,
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
