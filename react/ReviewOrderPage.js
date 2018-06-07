@@ -43,7 +43,7 @@ class ReviewOrderPage extends Component {
     const error = !store
     return (
       <div className="w-100 h-100 bg-light-silver tc pv6-s pt9-ns content">
-        <div className="near-black f4-s f2-ns fw3 mt6 mb7">
+        <div className="near-black f4-s f2-ns fw3 mt6 mt8-ns mb7">
           {this.translate('reviewOrder')}
         </div>
         <div className="flex justify-center tl">

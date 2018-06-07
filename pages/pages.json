@@ -32,6 +32,9 @@
     },
     "store/product/container/1": {
       "component": "ProductContainer"
+    },
+    "store/review": {
+      "component": "ReviewOrderPage"
     }
   }
 }
