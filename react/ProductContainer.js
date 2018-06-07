@@ -54,7 +54,6 @@ class ProductContainer extends Component {
     const {
       culture: { locale },
     } = this.props
-    console.log(this.props)
     const appProduct = this.mergeAppProduct()
     return (
       <div className="w-100 h-100 flex flex-column items-center content">
