@@ -1,3 +1,7 @@
+.vtex-store__template {
+  min-height: 100vh;
+}
+
 .fill-white {
   fill: #fff;
 }
