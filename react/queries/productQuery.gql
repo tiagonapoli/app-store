@@ -1,0 +1,19 @@
+query Product($slug: String) {
+  product(slug: $slug) {
+    productName
+    linkText
+    items {
+      referenceId {
+        Key
+        Value
+      }
+      images {
+        imageId
+        imageLabel
+        imageTag
+        imageUrl
+        imageText
+      }
+    }
+  }
+}
