@@ -14,34 +14,10 @@
     "vtex.storecomponents": "1.x"
   },
   "builders": {
-    "graphql": "1.x",
-    "node": "3.x",
     "pages": "0.x",
     "react": "2.x"
   },
   "scripts": {
     "postreleasy": "vtex publish --verbose"
-  },
-  "policies": [
-    {
-      "name": "outbound-access",
-      "attrs": {
-        "host": "{{account}}.vtexcommercestable.com.br",
-        "path": "/*"
-      }
-    },
-    {
-      "name": "outbound-access",
-      "attrs": {
-        "host": "{{account}}.vtexcommercebeta.com.br",
-        "path": "/*"
-      }
-    },
-    {
-      "name": "read-private-registry-assets"
-    },
-    {
-      "name": "read-public-registry-assets"
-    }
-  ]
+  }
 }
