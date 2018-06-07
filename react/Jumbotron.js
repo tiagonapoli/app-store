@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import { Helmet } from 'render'
 
@@ -10,10 +9,6 @@ import SearchBox from './components/SearchBox'
 class Jumbotron extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
-  }
-
-  static contextTypes = {
-    prefetchPage: PropTypes.func,
   }
 
   state = {
