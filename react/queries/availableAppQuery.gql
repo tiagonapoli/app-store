@@ -1,5 +1,5 @@
-query AvailableApp($id: String!) {
-  availableApp(id: $id) {
+query AvailableApp($id: String!, $skip: Boolean!) {
+  availableApp(id: $id) @skip(if: $skip) {
     id
     name
     slug

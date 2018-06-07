@@ -101,6 +101,7 @@ const options = {
     return {
       variables: {
         id: props.product.items[0].referenceId[0].Value,
+        skip: false,
       },
     }
   },
