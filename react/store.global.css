@@ -1,5 +1,6 @@
 .vtex-store__template {
   min-height: 100vh;
+  overflow-y: hidden;
 }
 
 .fill-white {

@@ -22,9 +22,8 @@ class Header extends Component {
     headerSize: 64,
     jumbontronSize: 890,
     store: '',
-    shouldShowLoginModal: false,
   }
-                                  
+
   componentDidMount() {
     const query = window.location.search
     let account

@@ -59,7 +59,7 @@ class ProductContainer extends Component {
     return (
       <div className="w-100 h-100 flex flex-column items-center content">
         {appProduct ? (
-          <div className="w-100 w-70-ns mw8 content mt8">
+          <div className="w-100 w-70-ns mw8 content mt8-ns">
             <ProductHeader
               id={appProduct.linkText}
               imageUrl={appProduct.icon}

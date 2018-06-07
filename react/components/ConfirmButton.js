@@ -40,7 +40,7 @@ class ConfirmButton extends Component {
         {loading ? (
           <Loading />
         ) : (
-          <div className="bg-rebel-pink hover-bg-heavy-rebel-pink tc br2 w-100 mw6">
+          <div className={`tc br2 w-100 mw6 ${disabled ? 'bg-light-gray' : 'bg-rebel-pink hover-bg-heavy-rebel-pink'}`}>
             <Button
               size="small"
               variation="tertiary"
