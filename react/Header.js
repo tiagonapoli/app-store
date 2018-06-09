@@ -8,12 +8,16 @@ import VTEXIcon from './components/icons/VTEXIcon'
 import BackIcon from './components/icons/BackIcon'
 import LocaleSwitcher from './components/LocaleSwitcher'
 import SearchBox from './components/SearchBox'
+import withPage from './withPage'
 import './store.global.css'
+
+const HOME_PAGE = 'store/home'
 
 class Header extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
     data: PropTypes.object,
+    page: PropTypes.string,
   }
 
   state = {
@@ -70,7 +74,7 @@ class Header extends Component {
 
   render() {
     const { shouldShowSearch, scroll, headerSize, jumbontronSize } = this.state
-    const notHome = window.location && window.location.pathname.length > 1
+    const notHome = this.props.page !== HOME_PAGE
     const titleClasses = notHome ? 'dn db-ns' : 'db'
     return (
       <div className="fixed-ns w-100 z-2">
@@ -133,4 +137,4 @@ class Header extends Component {
   }
 }
 
-export default injectIntl(Header)
+export default withPage()(injectIntl(Header))
