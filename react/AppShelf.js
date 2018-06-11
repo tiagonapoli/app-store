@@ -4,7 +4,7 @@ import { injectIntl, intlShape } from 'react-intl'
 import { compose, graphql } from 'react-apollo'
 import { NoSSR } from 'render'
 import { isMobileOnly } from 'react-device-detect'
-import Slider from 'vtex.storecomponents/Slider'
+import { Slider } from 'vtex.store-components'
 
 import './slider.global.css'
 
@@ -38,6 +38,8 @@ class AppShelf extends Component {
     intl: intlShape.isRequired,
   }
 
+  slick = React.createRef()
+
   getSliderSettings = () => {
     return {
       slidesToShow: 3,
@@ -68,10 +70,6 @@ class AppShelf extends Component {
     }
   }
 
-  getRef = e => {
-    this._slick = e
-  }
-
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
@@ -95,7 +93,7 @@ class AppShelf extends Component {
                 {isMobileOnly ? (
                   <NoSSR onSSR={<Loading />}>
                     <Slider
-                      ref={this.getRef}
+                      ref={this.slick}
                       sliderSettings={sliderSettings}
                       scrollByPage={isScrollByPage}
                       defaultItemWidth={DEFAULT_SHELF_ITEM_WIDTH}

@@ -11,7 +11,7 @@
   "dependencies": {
     "vtex.apps-graphql": "2.x",
     "vtex.store-graphql": "2.x",
-    "vtex.storecomponents": "1.x"
+    "vtex.store-components": "1.x"
   },
   "builders": {
     "pages": "0.x",

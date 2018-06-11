@@ -50,9 +50,8 @@ class ReviewOrderPage extends Component {
 
   render() {
     const { store } = this.state
-    const { productQuery, availableAppQuery } = this.props
-    const { product, loading: productLoading } = productQuery
-    const { availableApp, loading: appLoading } = availableAppQuery
+    const { productQuery: { product, loading: productLoading },
+      availableAppQuery: { availableApp, loading: appLoading } } = this.props
     const error = !store
     return (
       <div className="w-100 h-100 bg-light-silver tc pv6-s pt9-ns content">
