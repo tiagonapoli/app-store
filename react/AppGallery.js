@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'react-apollo'
 
-import productsQuery from '../queries/productsQuery.gql'
+import productsQuery from './queries/productsQuery.gql'
 
-import Loading from './Loading'
-import AppItem from './AppItem'
+import Loading from './components/Loading'
+import AppItem from './components/AppItem'
 
 class AppGallery extends Component {
   static propTypes = {
@@ -16,15 +16,16 @@ class AppGallery extends Component {
     specificationFilters: PropTypes.arrayOf(PropTypes.string),
     from: PropTypes.number,
     to: PropTypes.number,
+    product: PropTypes.object,
   }
 
   render() {
     const { data, homePage } = this.props
     const { error, loading, products } = data
     return (
-      <div className="w-100">
+      <div className="w-100 flex justify-center">
         {!error &&
-          <div className="w-100">
+          <div className="w-100 mw9">
             {loading ? (
               <div className="flex justify-center pt9 pb10">
                 <Loading />
@@ -61,7 +62,7 @@ const defaultOptions = {
   options: props => ({
     variables: {
       query: props.query,
-      category: props.category,
+      category: props.category || props.product && props.product.categoryId,
       collection: props.collection,
       specificationFilters: props.specificationFilters || null,
       from: props.from || 0,

@@ -33,6 +33,9 @@
     "store/product/container/1": {
       "component": "ProductContainer"
     },
+    "store/product/container/2": {
+      "component": "AppGallery"
+    },
     "store/review": {
       "component": "ReviewOrderPage"
     }

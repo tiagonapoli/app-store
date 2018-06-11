@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { injectIntl, intlShape } from 'react-intl'
 
 import SearchIcon from './icons/SearchIcon'
-import AppGallery from './AppGallery'
+import AppGallery from '../AppGallery'
 
 class SearchBox extends Component {
   static propTypes = {

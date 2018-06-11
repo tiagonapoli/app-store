@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { injectIntl, intlShape } from 'react-intl'
 import { Helmet } from 'render'
 
-import AppGallery from './components/AppGallery'
+import AppGallery from './AppGallery'
 import JumbotronIcon from './components/icons/JumbotronIcon'
 import SearchBox from './components/SearchBox'
 
