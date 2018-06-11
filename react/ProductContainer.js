@@ -4,7 +4,7 @@ import { compose, graphql } from 'react-apollo'
 import { Helmet } from 'render'
 
 import availableAppQuery from './queries/availableAppQuery.gql'
-import AppGallery from './components/AppGallery'
+import AppGallery from './AppGallery'
 import ProductDescription from './components/ProductDescription'
 import ProductHeader from './components/ProductHeader'
 import Loading from './components/Loading'
@@ -85,13 +85,7 @@ class ProductContainer extends Component {
             <Loading />
           </div>
         )}
-        {appProduct &&
-          <div className="w-100 relative dn flex-ns justify-center bottom-0 bg-light-silver">
-            <div className="w-100 mw9">
-              <AppGallery category={appProduct.categoryId || '1'} />
-            </div>
-          </div>
-        }
+
       </div>)
   }
 }
