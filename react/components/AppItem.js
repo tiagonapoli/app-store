@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Card from '@vtex/styleguide/lib/Card'
 
-import { COMING_SOON } from './utils/constants'
-import { tryParseJson, splitLocale } from './utils/utils'
-import AppCategory from './components/AppCategory'
-import AppIcon from './components/AppIcon'
-import GetButton from './components/GetButton'
-import withCulture from './withCulture'
-import withEmitter from './withEmitter'
-import withNavigate from './withNavigate'
+import { COMING_SOON } from '../utils/constants'
+import { tryParseJson, splitLocale } from '../utils/utils'
+import AppCategory from './AppCategory'
+import AppIcon from './AppIcon'
+import GetButton from './GetButton'
+import withCulture from '../withCulture'
+import withEmitter from '../withEmitter'
+import withNavigate from '../withNavigate'
 
 class AppItem extends Component {
   static propTypes = {

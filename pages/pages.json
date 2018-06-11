@@ -1,28 +1,40 @@
 {
   "pages": {
-    "store": {
-      "path": "/",
-      "theme": "theme"
-    },
-    "store/product": {
-      "path": "/:slug/p"
-    },
     "store/review": {
       "path": "/:slug/r"
     }
   },
   "extensions": {
-    "store": {
-      "component": "StoreTemplate"
+    "store/header": {
+      "component": "Header"
     },
-    "store/product": {
-      "component": "ProductPage"
+    "store/footer": {
+      "component": "Footer"
+    },
+    "store/home/container/1": {
+      "component": "Jumbotron"
+    },
+    "store/home/container/2": {
+      "component": "AppShelf",
+      "props": {
+        "specificationFilters": "Published",
+        "to": 12,
+        "title": "apps"
+      }
+    },
+    "store/home/container/3": {
+      "component": "AppShelf",
+      "props": {
+        "specificationFilters": "Coming Soon",
+        "to": 12,
+        "title": "comingSoon"
+      }
+    },
+    "store/product/container/1": {
+      "component": "ProductContainer"
     },
     "store/review": {
       "component": "ReviewOrderPage"
-    },
-    "store/home/appItem": {
-      "component": "AppItem"
     }
   }
 }

@@ -1,21 +1,14 @@
-query AppProduct($slug: String!) {
-  appProduct(slug: $slug) {
+query AvailableApp($id: String!, $skip: Boolean!) {
+  availableApp(id: $id) @skip(if: $skip) {
     id
     name
     slug
     vendor
     version
     icon
-    linkText
     title
     categories
-    categoryId 
     fullDescription {
-      en
-      pt
-      es
-    }
-    installationSteps {
       en
       pt
       es
@@ -26,16 +19,14 @@ query AppProduct($slug: String!) {
       es
     }
     registry
-    terms {
-      en
-      pt
-      es
-    }
-    permissions {
+    policies {
       name
-      description
+      attrs {
+        host
+        path
+      }
     }
-    billing {
+    billingOptions {
       deactivationRoute
       termsURL
       free

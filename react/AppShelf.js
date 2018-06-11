@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'react-apollo'
+import { injectIntl, intlShape } from 'react-intl'
+import { compose, graphql } from 'react-apollo'
 import { NoSSR } from 'render'
 import { isMobileOnly } from 'react-device-detect'
-import Slider from 'vtex.storecomponents/Slider'
+import { Slider } from 'vtex.store-components'
 
 import './slider.global.css'
 
 import productsQuery from './queries/productsQuery.gql'
 
 import Loading from './components/Loading'
-import AppItem from './AppItem'
+import AppItem from './components/AppItem'
 
 const DEFAULT_SHELF_ITEM_WIDTH = 281
 const DOTS_LARGE_VIEWPORT = true
@@ -34,7 +35,10 @@ class AppShelf extends Component {
     from: PropTypes.number,
     to: PropTypes.number,
     title: PropTypes.string.isRequired,
+    intl: intlShape.isRequired,
   }
+
+  slick = React.createRef()
 
   getSliderSettings = () => {
     return {
@@ -66,9 +70,7 @@ class AppShelf extends Component {
     }
   }
 
-  getRef = e => {
-    this._slick = e
-  }
+  translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   render() {
     const { data, specificationFilters, title } = this.props
@@ -76,68 +78,74 @@ class AppShelf extends Component {
     const isScrollByPage = false
     const sliderSettings = this.getSliderSettings()
     return (
-      <div className="w-100 pt5 pb8">
-        <div className="w-100 mt7-s mv7-ns f4 dark-gray normal ttu tc">
-          {title}
-        </div>
-        {loading ? (
-          <div className="flex justify-center pt9 pb10">
-            <Loading />
-          </div>
-        ) : (
-          <div className="w-100">
-            {isMobileOnly ? (
-              <NoSSR onSSR={<Loading />}>
-                <Slider
-                  ref={this.getRef}
-                  sliderSettings={sliderSettings}
-                  scrollByPage={isScrollByPage}
-                  defaultItemWidth={DEFAULT_SHELF_ITEM_WIDTH}
-                >
-                  {products.map(product => (
-                    <AppItem
-                      key={product.productId}
-                      name={product.productName}
-                      imageUrl={
-                        product.items &&
-                        product.items[0].images &&
-                        product.items[0].images[0].imageUrl
-                      }
-                      shortDescription={product.description}
-                      category={
-                        product.categories[product.categories.length - 1]
-                      }
-                      seller={product.brand}
-                      appId={product.linkText}
-                      specificationFilters={specificationFilters}
-                      isShelf={isMobileOnly}
-                    />
-                  ))}
-                </Slider>
-              </NoSSR>
+      <div className="flex justify-center">
+        <div className="mw9 w-90-ns">
+          <div className="w-100 pt5 pb8">
+            <div className="w-100 mt7-s mv7-ns f4 dark-gray normal ttu tc">
+              {this.translate(title)}
+            </div>
+            {loading ? (
+              <div className="flex justify-center pt9 pb10">
+                <Loading />
+              </div>
             ) : (
-              <div className="flex flex-column-s flex-row-l flex-wrap-ns items-center mv4">
-                {products.map(product => (
-                  <AppItem
-                    key={product.productId}
-                    name={product.productName}
-                    imageUrl={
-                      product.items &&
-                      product.items[0].images &&
-                      product.items[0].images[0].imageUrl
-                    }
-                    shortDescription={product.description}
-                    category={product.categories[product.categories.length - 1]}
-                    seller={product.brand}
-                    appId={product.linkText}
-                    specificationFilters={specificationFilters}
-                    isShelf={isMobileOnly}
-                  />
-                ))}
+              <div className="w-100">
+                {isMobileOnly ? (
+                  <NoSSR onSSR={<Loading />}>
+                    <Slider
+                      ref={this.slick}
+                      sliderSettings={sliderSettings}
+                      scrollByPage={isScrollByPage}
+                      defaultItemWidth={DEFAULT_SHELF_ITEM_WIDTH}
+                    >
+                      {products.map(product => (
+                        <AppItem
+                          key={product.productId}
+                          name={product.productName}
+                          imageUrl={
+                            product.items &&
+                            product.items[0].images &&
+                            product.items[0].images[0].imageUrl
+                          }
+                          shortDescription={product.description}
+                          category={
+                            product.categories[product.categories.length - 1]
+                          }
+                          seller={product.brand}
+                          appId={product.linkText}
+                          specificationFilters={specificationFilters}
+                          isShelf={isMobileOnly}
+                        />
+                      ))}
+                    </Slider>
+                  </NoSSR>
+                ) : (
+                  <div className="flex flex-column-s flex-row-l flex-wrap-ns items-center mv4">
+                    {products.map(product => (
+                      <AppItem
+                        key={product.productId}
+                        name={product.productName}
+                        imageUrl={
+                          product.items &&
+                          product.items[0].images &&
+                          product.items[0].images[0].imageUrl
+                        }
+                        shortDescription={product.description}
+                        category={
+                          product.categories[product.categories.length - 1]
+                        }
+                        seller={product.brand}
+                        appId={product.linkText}
+                        specificationFilters={specificationFilters}
+                        isShelf={isMobileOnly}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </div>
-        )}
+        </div>
       </div>
     )
   }
@@ -157,4 +165,6 @@ const defaultOptions = {
   }),
 }
 
-export default graphql(productsQuery, defaultOptions)(AppShelf)
+export default compose(graphql(productsQuery, defaultOptions), injectIntl)(
+  AppShelf
+)

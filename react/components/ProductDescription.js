@@ -1,7 +1,7 @@
 import React, { Component, createElement } from 'react'
 import PropTypes from 'prop-types'
 import marksy from 'marksy'
-import Slider from 'vtex.storecomponents/Slider'
+import { Slider } from 'vtex.store-components'
 
 import { imagePath, splitLocale } from '../utils/utils'
 import Billing from './Billing'
@@ -51,17 +51,18 @@ const compile = marksy({
 /* eslint-disable react/display-name, react/prop-types */
 
 class ProductDescription extends Component {
-  state = {
-    fixed: true,
-  }
-
   static propTypes = {
     id: PropTypes.string.isRequired,
     billing: PropTypes.object.isRequired,
     description: PropTypes.string.isRequired,
-    registry: PropTypes.string.isRequired,
     culture: PropTypes.object.isRequired,
   }
+
+  state = {
+    fixed: true,
+  }
+
+  slick = React.createRef()
 
   componentDidMount() {
     window.addEventListener('scroll', this.watchScroll)
@@ -120,10 +121,6 @@ class ProductDescription extends Component {
     }
   }
 
-  getRef = e => {
-    this._slick = e
-  }
-
   render() {
     const { billing, description, id, screenshots, appProduct, culture: { locale } } = this.props
     const isScrollByPage = false
@@ -137,7 +134,7 @@ class ProductDescription extends Component {
         {screenshots && (
           <div className="w-100 pb8">
             <Slider
-              ref={this.getRef}
+              ref={this.slick}
               sliderSettings={sliderSettings}
               scrollByPage={isScrollByPage}
             >

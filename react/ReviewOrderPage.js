@@ -7,7 +7,8 @@ import { Helmet } from 'render'
 import Card from '@vtex/styleguide/lib/Card'
 import Input from '@vtex/styleguide/lib/Input'
 
-import appProductQuery from './queries/appProductQuery.gql'
+import availableAppQuery from './queries/availableAppQuery.gql'
+import productQuery from './queries/productQuery.gql'
 
 import AppIcon from './components/AppIcon'
 import Billing from './components/Billing'
@@ -17,7 +18,8 @@ import Loading from './components/Loading'
 class ReviewOrderPage extends Component {
   static propTypes = {
     params: PropTypes.object.isRequired,
-    appProductQuery: PropTypes.object,
+    productQuery: PropTypes.object,
+    availableAppQuery: PropTypes.object,
     intl: intlShape.isRequired,
   }
 
@@ -30,6 +32,16 @@ class ReviewOrderPage extends Component {
     window.document.body.scrollTop = window.document.documentElement.scrollTop = 0
   }
 
+  componentDidUpdate(prevProps) {
+    if (!prevProps.availableAppQuery.availableApp &&
+      this.props.productQuery.product) {
+      this.props.availableAppQuery.refetch({
+        id: this.props.productQuery.product.items[0].referenceId[0].Value,
+        skip: false,
+      })
+    }
+  }
+
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
   handleChange = ({ target: { value } }) => {
@@ -38,16 +50,16 @@ class ReviewOrderPage extends Component {
 
   render() {
     const { store } = this.state
-    const { appProductQuery } = this.props
-    const { appProduct, loading } = appProductQuery
+    const { productQuery: { product, loading: productLoading },
+      availableAppQuery: { availableApp, loading: appLoading } } = this.props
     const error = !store
     return (
       <div className="w-100 h-100 bg-light-silver tc pv6-s pt9-ns content">
-        <div className="near-black f4-s f2-ns fw3 mt6 mb7">
+        <div className="near-black f4-s f2-ns fw3 mt6 mt8-ns mb7">
           {this.translate('reviewOrder')}
         </div>
         <div className="flex justify-center tl">
-          {loading ? (
+          {productLoading || (appLoading || !availableApp) ? (
             <div className="h-100 flex items-center content">
               <Loading />
             </div>
@@ -57,16 +69,16 @@ class ReviewOrderPage extends Component {
                 <div className="pa0-s pa4-ns near-black">
                   <div className="flex flex-row mb5-s mb7-ns">
                     <AppIcon
-                      imageUrl={appProduct.icon}
-                      name={appProduct.name}
+                      imageUrl={product.items[0].images[0].imageUrl}
+                      name={product.productName}
                     />
                     <div className="w-75 flex flex-column justify-center pl3-s pl5-ns lh-title">
-                      <div className="f3-s f2-ns b">{appProduct.name}</div>
+                      <div className="f3-s f2-ns b">{product.productName}</div>
                     </div>
                   </div>
                   <div className="fw6 f5">Total</div>
                   <div className="mt3 mb6-s mb7-ns">
-                    <Billing billingOptions={appProduct.billing} />
+                    <Billing billingOptions={availableApp.billingOptions} />
                   </div>
                   <div className="mb7">
                     <div className="fw6 f5">
@@ -104,8 +116,8 @@ class ReviewOrderPage extends Component {
                           <a
                             target="_blank"
                             href={
-                              appProduct.billing
-                                ? appProduct.billing.termsURL
+                              availableApp.billingOptions
+                                ? availableApp.billingOptions.termsURL
                                 : ''
                             }
                             className="pointer link rebel-pink"
@@ -119,8 +131,8 @@ class ReviewOrderPage extends Component {
                   <div className="dn-s flex-ns justify-center w-100 mt5">
                     <ConfirmButton
                       store={store}
-                      appName={appProduct.slug}
-                      billingPolicy={appProduct.billing}
+                      appName={availableApp.slug}
+                      billingPolicy={availableApp.billingOptions}
                       value={this.translate('confirmButton')}
                       disabled={error}
                     />
@@ -142,13 +154,13 @@ class ReviewOrderPage extends Component {
               <div className="db-s dn-ns w-100 mt7">
                 <ConfirmButton
                   store={store}
-                  appName={appProduct.slug}
-                  billingPolicy={appProduct.billing}
+                  appName={availableApp.slug}
+                  billingPolicy={availableApp.billingOptions}
                   value={this.translate('confirmButtonMobile')}
                   disabled={error}
                 />
               </div>
-              <Helmet><title>{appProduct.name}</title></Helmet>
+              <Helmet><title>{product.productName}</title></Helmet>
             </div>
           )}
         </div>
@@ -165,7 +177,16 @@ const options = {
   }),
 }
 
+const optionsAvailableApp = {
+  options: {
+    variables: {
+      skip: true,
+    },
+  },
+}
+
 export default compose(
-  graphql(appProductQuery, { ...options, name: 'appProductQuery' }),
+  graphql(productQuery, { ...options, name: 'productQuery' }),
+  graphql(availableAppQuery, { ...optionsAvailableApp, name: 'availableAppQuery' }),
   injectIntl
 )(ReviewOrderPage)

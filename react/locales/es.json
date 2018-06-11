@@ -17,8 +17,7 @@
   "extensions.noPermission":
     "No hemos podido identificar su {purchasePermission} apps. Por favor contacte el administrador de su plataforma VTEX.",
   "extensions.purchasePermission": "permiso para comprar",
-  "extensions.homeText":
-    "El marketplace de las apps del ecosistema VTEX.",
+  "extensions.homeText": "El marketplace de las apps del ecosistema VTEX.",
   "extensions.search": "Buscar",
   "extensions.free": "Gratis",
   "extensions.price": "Precio",
@@ -33,8 +32,8 @@
   "extensions.newToVTEX": "Nuevo en VTEX? {createYourAccount}",
   "extensions.createYourAccount": "Crea tu cuenta",
   "extensions.comingSoon": "Próximo",
+  "extensions.apps": "Apps",
   "extensions.accountInfo": "Información de la cuenta",
-  "extensions.accountInfoText":
-    "Esta app se agregará a la cuenta {store}.",
+  "extensions.accountInfoText": "Esta app se agregará a la cuenta {store}.",
   "extensions.accountName": "Nombre de la tienda"
 }

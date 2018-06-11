@@ -1,7 +1,7 @@
 {
   "name": "app-store",
   "vendor": "extensions",
-  "version": "0.1.26",
+  "version": "0.2.0",
   "title": "VTEX App Store",
   "description": "Discover and install the best VTEX Apps",
   "mustUpdateAt": "2019-04-10",
@@ -13,37 +13,13 @@
   "dependencies": {
     "vtex.apps-graphql": "2.x",
     "vtex.store-graphql": "2.x",
-    "vtex.storecomponents": "1.x"
+    "vtex.store-components": "1.x"
   },
   "builders": {
-    "graphql": "1.x",
-    "node": "3.x",
     "pages": "0.x",
     "react": "2.x"
   },
   "scripts": {
     "postreleasy": "vtex publish --verbose"
-  },
-  "policies": [
-    {
-      "name": "outbound-access",
-      "attrs": {
-        "host": "{{account}}.vtexcommercestable.com.br",
-        "path": "/*"
-      }
-    },
-    {
-      "name": "outbound-access",
-      "attrs": {
-        "host": "{{account}}.vtexcommercebeta.com.br",
-        "path": "/*"
-      }
-    },
-    {
-      "name": "read-private-registry-assets"
-    },
-    {
-      "name": "read-public-registry-assets"
-    }
-  ]
+  }
 }
