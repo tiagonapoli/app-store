@@ -17,7 +17,7 @@
   "extensions.noPermission":
     "We can't identify your apps {purchasePermission}. Please contact your VTEX account administrator.",
   "extensions.purchasePermission": "purchase permission",
-  "extensions.homeText": "The marketplace of VTEX Apps.",
+  "extensions.homeText": "Cut down costs, automate processes and improve your business performance with apps created by developers around the world.",
   "extensions.search": "Search",
   "extensions.free": "Free",
   "extensions.price": "Price",

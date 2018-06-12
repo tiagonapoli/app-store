@@ -42,9 +42,9 @@ class Jumbotron extends Component {
       <div id="jumbotron-home" className="w-100">
         <div className="flex-ns justify-center-ns items-center-ns h-100-s h-50-ns w-100 bg-serious-black pt10 pl5-s pl7-ns white">
           <div className="flex-ns w-100 mw9">
-            <div className="w-100">
-              <div className="b f2-s f1-ns mt9-s mt0-ns">VTEX App Store</div>
-              <div className="mt5 mb9-ns f4-s f3-ns fw3">
+            <div className="w-100 pl5 pr6">
+              <div className="f1 fw3 mt5 mt7-ns pb5 lh-solid">VTEX App Store</div>
+              <div className="mt5 mb9-ns f4 fw4 lh-title">
                 {this.translate('homeText')}
               </div>
             </div>
