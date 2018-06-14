@@ -72,6 +72,8 @@ class AppShelf extends Component {
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
+  verifyCategories = categories => categories.length && categories.length > 0
+
   render() {
     const { data, specificationFilters, title } = this.props
     const { loading, products } = data
@@ -109,7 +111,7 @@ class AppShelf extends Component {
                           }
                           shortDescription={product.description}
                           category={
-                            product.categories ? product.categories[0] : ''
+                            this.verifyCategories(product.categories) ? product.categories[0] : ''
                           }
                           seller={product.brand}
                           appId={product.linkText}
@@ -132,7 +134,7 @@ class AppShelf extends Component {
                         }
                         shortDescription={product.description}
                         category={
-                          product.categories ? product.categories[0]: ''
+                          this.verifyCategories(product.categories) ? product.categories[0] : ''
                         }
                         seller={product.brand}
                         appId={product.linkText}
