@@ -1,6 +1,6 @@
 query Products(
   $query: String
-  $category: String
+  $category: String = "50"
   $specificationFilters: [String]
   $priceRange: String
   $collection: String
