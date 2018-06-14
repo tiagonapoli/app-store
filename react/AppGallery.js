@@ -42,7 +42,7 @@ class AppGallery extends Component {
                     name={product.productName}
                     imageUrl={product.items && product.items[0].images[0].imageUrl}
                     shortDescription={product.description}
-                    category={product.categories[product.categories.length - 1]}
+                    category={product.categories[0]}
                     seller={product.brand}
                     appId={product.linkText}
                     specifications={product.jsonSpecifications}
