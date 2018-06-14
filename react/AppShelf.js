@@ -109,7 +109,7 @@ class AppShelf extends Component {
                           }
                           shortDescription={product.description}
                           category={
-                            product.categories[0]
+                            product.categories ? product.categories[0] : ''
                           }
                           seller={product.brand}
                           appId={product.linkText}
@@ -132,7 +132,7 @@ class AppShelf extends Component {
                         }
                         shortDescription={product.description}
                         category={
-                          product.categories[0]
+                          product.categories ? product.categories[0]: ''
                         }
                         seller={product.brand}
                         appId={product.linkText}
