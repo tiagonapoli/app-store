@@ -81,7 +81,7 @@ class AppShelf extends Component {
     const sliderSettings = this.getSliderSettings()
     return (
       <div className="flex justify-center">
-        <div className="mw9 w-90-ns">
+        <div className="mw9">
           <div className="w-100 pt5 pb8">
             <div className="w-100 mt7-s mv7-ns f4 dark-gray normal ttu tc">
               {this.translate(title)}
