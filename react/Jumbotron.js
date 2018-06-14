@@ -54,9 +54,7 @@ class Jumbotron extends Component {
           </div>
         </div>
         <div id="home-shelf" className="bg-light-silver flex justify-center">
-          <div className="w-90-ns mw9">
-            <AppGallery homePage collection="137" />
-          </div>
+          <AppGallery homePage collection="137" />
         </div>
         <div
           className={`w-100 dn-s flex-ns justify-center ${

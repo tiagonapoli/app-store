@@ -72,6 +72,8 @@ class AppShelf extends Component {
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
 
+  verifyCategories = categories => categories.length && categories.length > 0
+
   render() {
     const { data, specificationFilters, title } = this.props
     const { loading, products } = data
@@ -109,7 +111,7 @@ class AppShelf extends Component {
                           }
                           shortDescription={product.description}
                           category={
-                            product.categories[product.categories.length - 1]
+                            this.verifyCategories(product.categories) ? product.categories[0] : ''
                           }
                           seller={product.brand}
                           appId={product.linkText}
@@ -120,7 +122,7 @@ class AppShelf extends Component {
                     </Slider>
                   </NoSSR>
                 ) : (
-                  <div className="flex flex-column-s flex-row-l flex-wrap-ns items-center mv4">
+                  <div className="flex flex-column-s flex-row-l flex-wrap-ns items-center justify-center mv4">
                     {products.map(product => (
                       <AppItem
                         key={product.productId}
@@ -132,7 +134,7 @@ class AppShelf extends Component {
                         }
                         shortDescription={product.description}
                         category={
-                          product.categories[product.categories.length - 1]
+                          this.verifyCategories(product.categories) ? product.categories[0] : ''
                         }
                         seller={product.brand}
                         appId={product.linkText}

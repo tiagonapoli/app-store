@@ -1,5 +1,5 @@
 export function removeSlashes(text) {
-  return !!text && text.replace(/\//g, '')
+  return text.split('/').filter(t => !!t).pop()
 }
 
 export function imagePath(availableApp, image) {
