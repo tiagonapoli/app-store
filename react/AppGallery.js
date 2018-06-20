@@ -66,7 +66,9 @@ const defaultOptions = {
   options: props => ({
     variables: {
       query: props.query,
-      category: props.category || props.product && props.product.categoryId,
+      category: props.category ||
+        props.product && props.product.categoriesIds && props.product.categoriesIds.length > 0 &&
+        props.product.categoriesIds[0].substring(1, props.product.categoriesIds[0].length - 1),
       collection: props.collection,
       specificationFilters: props.specificationFilters || null,
       from: props.from || 0,

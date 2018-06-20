@@ -4,7 +4,6 @@ import { compose, graphql } from 'react-apollo'
 import { Helmet } from 'render'
 
 import availableAppQuery from './queries/availableAppQuery.gql'
-import AppGallery from './AppGallery'
 import ProductDescription from './components/ProductDescription'
 import ProductHeader from './components/ProductHeader'
 import Loading from './components/Loading'
