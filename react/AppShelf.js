@@ -91,7 +91,7 @@ class AppShelf extends Component {
                 <Loading />
               </div>
             ) : (
-              <div className="w-100">
+              <div className="w-100 flex justify-center">
                 {isMobileOnly ? (
                   <NoSSR onSSR={<Loading />}>
                     <Slider
@@ -122,7 +122,7 @@ class AppShelf extends Component {
                     </Slider>
                   </NoSSR>
                 ) : (
-                  <div className="flex flex-column-s flex-row-l flex-wrap-ns items-center justify-center mv4">
+                  <div className="w-90 flex flex-column-s flex-row-l flex-wrap-ns items-center justify-center mv4">
                     {products.map(product => (
                       <AppItem
                         key={product.productId}
