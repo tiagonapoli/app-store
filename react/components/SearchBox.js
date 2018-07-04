@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import { IconFailure } from 'vtex.styleguide'
 import SearchIcon from './icons/SearchIcon'
@@ -7,6 +8,7 @@ import AppGallery from '../AppGallery'
 class SearchBox extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
+    onSearch: PropTypes.func,
   }
 
   state = {
@@ -16,6 +18,7 @@ class SearchBox extends Component {
 
   handleChange = ({ target: { value } }) => {
     this.setState({ searchValue: value })
+    this.props.onSearch && this.props.onSearch(value)
   }
 
   handleFocus = () => {
@@ -24,6 +27,7 @@ class SearchBox extends Component {
 
   handleClear = () => {
     this.setState({ searchValue: '' })
+    this.props.onSearch && this.props.onSearch('')
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
