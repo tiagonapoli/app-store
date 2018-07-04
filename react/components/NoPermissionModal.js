@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
-import Button from '@vtex/styleguide/lib/Button'
-import Modal from '@vtex/styleguide/lib/Modal'
+import { Button, Modal } from 'vtex.styleguide'
 
 class NoPermissionModal extends Component {
   static propTypes = {

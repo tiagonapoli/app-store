@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Card from '@vtex/styleguide/lib/Card'
+import { Card } from 'vtex.styleguide'
 
 import { COMING_SOON } from '../utils/constants'
 import { tryParseJson, splitLocale } from '../utils/utils'
