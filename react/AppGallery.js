@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'react-apollo'
+import { isMobileOnly } from 'react-device-detect'
 
 import productsQuery from './queries/productsQuery.gql'
 
@@ -11,6 +12,7 @@ class AppGallery extends Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
     homePage: PropTypes.bool,
+    productPage: PropTypes.bool,
     category: PropTypes.string,
     collection: PropTypes.string,
     specificationFilters: PropTypes.arrayOf(PropTypes.string),
@@ -20,10 +22,10 @@ class AppGallery extends Component {
   }
 
   render() {
-    const { data, homePage } = this.props
+    const { data, homePage, productPage } = this.props
     const { error, loading, products } = data
     return (
-      <div className="w-100 flex justify-center">
+      <div className={`w-100 ${productPage && isMobileOnly ? 'dn' : 'flex justify-center'}`}>
         {!error &&
           <div className="w-90 flex justify-center">
             {loading ? (
