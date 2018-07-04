@@ -115,11 +115,11 @@ class Header extends Component {
         </div>
         {!notHome && (
           <div
-            className={`db dn-ns ${
-              scroll > headerSize
+            className={`db dn-ns ${fullHeightSearch ? 'h-100' : ''}
+              ${scroll > headerSize
                 ? `z-3 fixed w-100 ma0 bg-white light-shadow ${
                   shouldShowSearch ? 'slideDownMobile' : 'slideUpMobile'
-                } ${fullHeightSearch ? 'h-100' : ''}`
+                }`
                 : ''
             }`}
           >

@@ -26,8 +26,7 @@ class SearchBox extends Component {
   }
 
   handleClear = () => {
-    this.setState({ searchValue: '' })
-    this.props.onSearch && this.props.onSearch('')
+    this.handleChange({ target: { value: '' } })
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })

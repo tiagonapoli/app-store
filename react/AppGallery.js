@@ -24,8 +24,9 @@ class AppGallery extends Component {
   render() {
     const { data, homePage, productPage } = this.props
     const { error, loading, products } = data
+    if (productPage && isMobileOnly) return null
     return (
-      <div className={`w-100 ${productPage && isMobileOnly ? 'dn' : 'flex justify-center'}`}>
+      <div className="w-100 flex justify-center">
         {!error &&
           <div className="w-90 flex justify-center">
             {loading ? (
