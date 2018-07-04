@@ -53,7 +53,9 @@ class SearchBox extends Component {
           />
           {searchValue &&
             <div
-              className="relative right-1-s right-2-ns pointer mv5"
+              className={`relative right-0-s right-2-ns pr5-s pr0-ns pointer pv5 ${
+                shouldHaveBorder ? 'borderTransitionIn' : 'borderTransitionOut'
+              }`}
               onClick={this.handleClear}>
               <IconFailure solid size={18} color="#979899" />
             </div>
