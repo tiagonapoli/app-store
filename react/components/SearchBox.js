@@ -29,11 +29,11 @@ class SearchBox extends Component {
     return (
       <div className="w-100 h-100">
         <div className="flex flex-row w-100 bg-white gray">
-          <div className="flex items-center bb bw1 b--rebel-pink pa4">
+          <div className="flex items-center bb bw1 b--rebel-pink ph3-ns ph6-s pv3">
             <SearchIcon colorFill="gray" />
           </div>
           <input
-            className={`pv4 pl2 w-100 f5 gray br0 br-0 bl-0 bt-0 extensions-search b--transparent outline-0 ${
+            className={`pv5 pl3 w-100 f5 gray br0 br-0 bl-0 bt-0 extensions-search b--transparent outline-0 ${
               shouldHaveBorder ? 'borderTransitionIn' : 'borderTransitionOut'
             }`}
             type="text"

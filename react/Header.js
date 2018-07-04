@@ -85,7 +85,7 @@ class Header extends Component {
         </Helmet>
         <div
           id="extension-store-header"
-          className="flex justify-between items-center w-100 top-0 pa4 ph7-ns bg-serious-black tc tl-ns white"
+          className="flex justify-between items-center w-100 top-0 pa5 ph7-ns bg-serious-black tc tl-ns white"
         >
           <div className="flex items-center">
             <BackIcon
@@ -125,7 +125,7 @@ class Header extends Component {
           <div
             className={`dn ${
               scroll > jumbontronSize
-                ? 'db-ns z-3 ma0 w-100 ph9 fixed bg-white slideDown light-shadow'
+                ? 'db-ns z-3 ma0 w-100 ph7 fixed bg-white slideDown light-shadow'
                 : 'slideUp'
             }`}
           >

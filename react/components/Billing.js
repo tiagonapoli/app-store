@@ -45,7 +45,7 @@ class Billing extends Component {
       billingOptions.policies[0].billing.items[metricsIndex]
         .calculatedByMetricUnit.metricName
     return (
-      <div className="ph5 br3 bg-light-silver normal near-black">
+      <div className="ph5 br2 bg-light-silver normal near-black">
         {billingOptions.free || isFixedOnly ? (
           <div className="w-100 flex flex-row pv5">
             <div className="w-10 f5 normal">{this.translate('price')}</div>

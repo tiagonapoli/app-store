@@ -66,9 +66,9 @@ class LocaleSwitcher extends Component {
       { dn: !opened }
     )
     return (
-      <div className="w2 flex items-center ml2 mr3">
+      <div className="w2 flex items-center ml2 mr5">
         <button
-          className="link pa0 bg-transparent bn flex items-center pointer mr3 near-black"
+          className="link pa0 bg-transparent bn flex items-center pointer near-black"
           onBlur={this.handleBlur}
           onClick={this.handleButtonClick}>
           <GlobeIcon size={11} colorFill="white" />

@@ -23,7 +23,7 @@ class AppGallery extends Component {
     const { data, homePage } = this.props
     const { error, loading, products } = data
     return (
-      <div className="w-100 flex justify-center">
+      <div className="w-90 flex justify-center">
         {!error &&
           <div className="w-100 mw9">
             {loading ? (
