@@ -23,16 +23,16 @@ class AppGallery extends Component {
     const { data, homePage } = this.props
     const { error, loading, products } = data
     return (
-      <div className="w-90 flex justify-center">
+      <div className="w-100 flex justify-center">
         {!error &&
-          <div className="w-100 mw9">
+          <div className="w-90 flex justify-center">
             {loading ? (
               <div className="flex justify-center pt9 pb10">
                 <Loading />
               </div>
             ) : (
               <div
-                className={`flex flex-column-s flex-row-l flex-wrap-ns justify-center items-center ${
+                className={`mw9 w-100 flex flex-column-s flex-row-l flex-wrap-ns justify-center items-center ${
                   homePage ? 'relative card-top' : 'mv4'
                 }`}
               >
