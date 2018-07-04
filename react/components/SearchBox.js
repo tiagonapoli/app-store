@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { injectIntl, intlShape } from 'react-intl'
-
+import { IconFailure } from 'vtex.styleguide'
 import SearchIcon from './icons/SearchIcon'
 import AppGallery from '../AppGallery'
 
@@ -20,6 +20,10 @@ class SearchBox extends Component {
 
   handleFocus = () => {
     this.setState({ shouldHaveBorder: !this.state.shouldHaveBorder })
+  }
+
+  handleClear = () => {
+    this.setState({ searchValue: '' })
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
@@ -43,6 +47,13 @@ class SearchBox extends Component {
             onFocus={this.handleFocus}
             onBlur={this.handleFocus}
           />
+          {searchValue &&
+            <div
+              className="relative right-1-s right-2-ns pointer mv5"
+              onClick={this.handleClear}>
+              <IconFailure solid size={18} color="#979899" />
+            </div>
+          }
         </div>
         <div
           className={`w-100 h-100 bg-white mt7-ns ${
