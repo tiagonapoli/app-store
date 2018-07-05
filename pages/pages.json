@@ -34,7 +34,10 @@
       "component": "ProductContainer"
     },
     "store/product/container/2": {
-      "component": "AppGallery"
+      "component": "AppGallery",
+      "props": {
+        "productPage": true
+      }
     },
     "store/review": {
       "component": "ReviewOrderPage"

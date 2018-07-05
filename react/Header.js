@@ -26,6 +26,7 @@ class Header extends Component {
     headerSize: 64,
     jumbontronSize: 890,
     store: '',
+    fullHeightSearch: false,
   }
 
   componentDidMount() {
@@ -72,8 +73,12 @@ class Header extends Component {
     window.history.back()
   }
 
+  handleSearchValue = value => {
+    this.setState({ fullHeightSearch: !!value })
+  }
+
   render() {
-    const { shouldShowSearch, scroll, headerSize, jumbontronSize } = this.state
+    const { shouldShowSearch, scroll, headerSize, jumbontronSize, fullHeightSearch } = this.state
     const notHome = this.props.page !== HOME_PAGE
     const titleClasses = notHome ? 'dn db-ns' : 'db'
     return (
@@ -110,15 +115,15 @@ class Header extends Component {
         </div>
         {!notHome && (
           <div
-            className={`db dn-ns ${
-              scroll > headerSize
+            className={`db dn-ns ${fullHeightSearch ? 'h-100' : ''}
+              ${scroll > headerSize
                 ? `z-3 fixed w-100 ma0 bg-white light-shadow ${
                   shouldShowSearch ? 'slideDownMobile' : 'slideUpMobile'
                 }`
                 : ''
             }`}
           >
-            <SearchBox />
+            <SearchBox onSearch={this.handleSearchValue} />
           </div>
         )}
         {!notHome && (
@@ -127,9 +132,9 @@ class Header extends Component {
               scroll > jumbontronSize
                 ? 'db-ns z-3 ma0 w-100 ph7 fixed bg-white slideDown light-shadow'
                 : 'slideUp'
-            }`}
+            } ${fullHeightSearch ? 'h-100' : ''}`}
           >
-            <SearchBox />
+            <SearchBox onSearch={this.handleSearchValue} />
           </div>
         )}
       </div>

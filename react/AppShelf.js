@@ -91,7 +91,7 @@ class AppShelf extends Component {
                 <Loading />
               </div>
             ) : (
-              <div className="w-100 flex justify-center">
+              <div className="w-100">
                 {isMobileOnly ? (
                   <NoSSR onSSR={<Loading />}>
                     <Slider
@@ -122,26 +122,28 @@ class AppShelf extends Component {
                     </Slider>
                   </NoSSR>
                 ) : (
-                  <div className="w-90 flex flex-column-s flex-row-l flex-wrap-ns items-center justify-center mv4">
-                    {products.map(product => (
-                      <AppItem
-                        key={product.productId}
-                        name={product.productName}
-                        imageUrl={
-                          product.items &&
-                          product.items[0].images &&
-                          product.items[0].images[0].imageUrl
-                        }
-                        shortDescription={product.description}
-                        category={
-                          this.verifyCategories(product.categories) ? product.categories[0] : ''
-                        }
-                        seller={product.brand}
-                        appId={product.linkText}
-                        specificationFilters={specificationFilters}
-                        isShelf={isMobileOnly}
-                      />
-                    ))}
+                  <div className="w-100 flex justify-center">
+                    <div className="w-90 flex flex-column-s flex-row-l flex-wrap-ns items-center justify-center mv4">
+                      {products.map(product => (
+                        <AppItem
+                          key={product.productId}
+                          name={product.productName}
+                          imageUrl={
+                            product.items &&
+                            product.items[0].images &&
+                            product.items[0].images[0].imageUrl
+                          }
+                          shortDescription={product.description}
+                          category={
+                            this.verifyCategories(product.categories) ? product.categories[0] : ''
+                          }
+                          seller={product.brand}
+                          appId={product.linkText}
+                          specificationFilters={specificationFilters}
+                          isShelf={isMobileOnly}
+                        />
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

@@ -4,8 +4,7 @@ import { compose, graphql } from 'react-apollo'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 import { Helmet } from 'render'
 
-import Card from '@vtex/styleguide/lib/Card'
-import Input from '@vtex/styleguide/lib/Input'
+import { Card, Input } from 'vtex.styleguide'
 
 import availableAppQuery from './queries/availableAppQuery.gql'
 import productQuery from './queries/productQuery.gql'

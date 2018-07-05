@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
-
+import { IconFailure } from 'vtex.styleguide'
 import SearchIcon from './icons/SearchIcon'
 import AppGallery from '../AppGallery'
 
 class SearchBox extends Component {
   static propTypes = {
     intl: intlShape.isRequired,
+    onSearch: PropTypes.func,
   }
 
   state = {
@@ -16,10 +18,15 @@ class SearchBox extends Component {
 
   handleChange = ({ target: { value } }) => {
     this.setState({ searchValue: value })
+    this.props.onSearch && this.props.onSearch(value)
   }
 
   handleFocus = () => {
     this.setState({ shouldHaveBorder: !this.state.shouldHaveBorder })
+  }
+
+  handleClear = () => {
+    this.handleChange({ target: { value: '' } })
   }
 
   translate = id => this.props.intl.formatMessage({ id: `extensions.${id}` })
@@ -43,6 +50,15 @@ class SearchBox extends Component {
             onFocus={this.handleFocus}
             onBlur={this.handleFocus}
           />
+          {searchValue &&
+            <div
+              className={`relative right-0-s right-2-ns pr5-s pr0-ns pointer pv5 ${
+                shouldHaveBorder ? 'borderTransitionIn' : 'borderTransitionOut'
+              }`}
+              onClick={this.handleClear}>
+              <IconFailure solid size={18} color="#979899" />
+            </div>
+          }
         </div>
         <div
           className={`w-100 h-100 bg-white mt7-ns ${
