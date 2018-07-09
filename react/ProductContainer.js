@@ -17,7 +17,6 @@ class ProductContainer extends Component {
     availableAppQuery: PropTypes.object,
     product: PropTypes.object,
     culture: PropTypes.object.isRequired,
-    emitter: PropTypes.object.isRequired,
     prefetch: PropTypes.func.isRequired,
   }
 
