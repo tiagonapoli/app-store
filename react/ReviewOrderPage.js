@@ -183,18 +183,15 @@ const options = {
 }
 
 const optionsAvailableApp = {
-  options: props => ({
-    variables: {
-      skip:
-        !props.productQuery ||
-        !props.productQuery.product ||
-        !getReferenceId(props.productQuery.product),
-      id:
-        props.productQuery &&
-        props.productQuery.product &&
-        getReferenceId(props.productQuery.product),
-    },
-  }),
+  options: props => {
+    const referenceId = getReferenceId(props.productQuery.product)
+    return {
+      variables: {
+        skip: !referenceId,
+        id: referenceId,
+      },
+    }
+  },
 }
 
 export default compose(
