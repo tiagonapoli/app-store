@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 import { Helmet } from 'render'
-
 import { Card, Input } from 'vtex.styleguide'
 
+import { getReferenceId } from './utils/utils'
 import availableAppQuery from './queries/availableAppQuery.gql'
 import productQuery from './queries/productQuery.gql'
 
@@ -185,14 +185,11 @@ const options = {
 const optionsAvailableApp = {
   options: props => ({
     variables: {
+      skip: !props.productQuery || !props.productQuery.product,
       id:
+        props.productQuery &&
         props.productQuery.product &&
-        props.productQuery.product.items &&
-        props.productQuery.product.items.length > 0 &&
-        props.productQuery.product.items[0].referenceId &&
-        props.productQuery.product.items[0].referenceId.length > 0 &&
-        props.productQuery.product.items[0].referenceId[0].Value,
-      skip: !props.productQuery.product,
+        getReferenceId(props.productQuery.product),
     },
   }),
 }

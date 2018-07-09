@@ -1,5 +1,8 @@
 export function removeSlashes(text) {
-  return text.split('/').filter(t => !!t).pop()
+  return text
+    .split('/')
+    .filter(t => !!t)
+    .pop()
 }
 
 export function imagePath(availableApp, image) {
@@ -21,3 +24,11 @@ export function tryParseJson(str) {
 }
 
 export const splitLocale = locale => locale.split('-')[0]
+
+export const getReferenceId = product =>
+  product &&
+  product.items &&
+  product.items.length > 0 &&
+  product.items[0].referenceId &&
+  product.items[0].referenceId.length > 0 &&
+  product.items[0].referenceId[0].Value
