@@ -185,7 +185,10 @@ const options = {
 const optionsAvailableApp = {
   options: props => ({
     variables: {
-      skip: !props.productQuery || !props.productQuery.product,
+      skip:
+        !props.productQuery ||
+        !props.productQuery.product ||
+        !getReferenceId(props.productQuery.product),
       id:
         props.productQuery &&
         props.productQuery.product &&
