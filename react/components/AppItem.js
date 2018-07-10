@@ -24,7 +24,6 @@ class AppItem extends Component {
     isShelf: PropTypes.bool.isRequired,
     navigate: PropTypes.func.isRequired,
     culture: PropTypes.object.isRequired,
-    emitter: PropTypes.object.isRequired,
   }
 
   handleClick = e => {

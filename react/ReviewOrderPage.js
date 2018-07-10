@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 import { Helmet } from 'render'
-
 import { Card, Input } from 'vtex.styleguide'
 
+import { getReferenceId } from './utils/utils'
 import availableAppQuery from './queries/availableAppQuery.gql'
 import productQuery from './queries/productQuery.gql'
 
@@ -32,8 +32,10 @@ class ReviewOrderPage extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!prevProps.availableAppQuery.availableApp &&
-      this.props.productQuery.product) {
+    if (
+      !prevProps.availableAppQuery.availableApp &&
+      this.props.productQuery.product
+    ) {
       this.props.availableAppQuery.refetch({
         id: this.props.productQuery.product.items[0].referenceId[0].Value,
         skip: false,
@@ -49,8 +51,10 @@ class ReviewOrderPage extends Component {
 
   render() {
     const { store } = this.state
-    const { productQuery: { product, loading: productLoading },
-      availableAppQuery: { availableApp, loading: appLoading } } = this.props
+    const {
+      productQuery: { product, loading: productLoading },
+      availableAppQuery: { availableApp, loading: appLoading },
+    } = this.props
     const error = !store
     return (
       <div className="w-100 h-100 bg-light-silver tc pv6-s pt9-ns content">
@@ -159,7 +163,9 @@ class ReviewOrderPage extends Component {
                   disabled={error}
                 />
               </div>
-              <Helmet><title>{product.productName}</title></Helmet>
+              <Helmet>
+                <title>{product.productName}</title>
+              </Helmet>
             </div>
           )}
         </div>
@@ -177,15 +183,22 @@ const options = {
 }
 
 const optionsAvailableApp = {
-  options: {
-    variables: {
-      skip: true,
-    },
+  options: props => {
+    const referenceId = getReferenceId(props.productQuery.product)
+    return {
+      variables: {
+        skip: !referenceId,
+        id: referenceId,
+      },
+    }
   },
 }
 
 export default compose(
   graphql(productQuery, { ...options, name: 'productQuery' }),
-  graphql(availableAppQuery, { ...optionsAvailableApp, name: 'availableAppQuery' }),
+  graphql(availableAppQuery, {
+    ...optionsAvailableApp,
+    name: 'availableAppQuery',
+  }),
   injectIntl
 )(ReviewOrderPage)
