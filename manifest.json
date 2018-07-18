@@ -14,7 +14,7 @@
     "vtex.apps-graphql": "2.x",
     "vtex.store-graphql": "2.x",
     "vtex.store-components": "1.x",
-    "vtex.store": "0.x",
+    "vtex.store": "1.x",
     "vtex.styleguide": "5.x"
   },
   "builders": {
