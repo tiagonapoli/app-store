@@ -15,7 +15,7 @@ import { splitLocale } from './utils/utils'
 class ProductContainer extends Component {
   static propTypes = {
     availableAppQuery: PropTypes.object,
-    product: PropTypes.object,
+    productQuery: PropTypes.object,
     culture: PropTypes.object.isRequired,
     prefetch: PropTypes.func.isRequired,
   }
@@ -27,10 +27,10 @@ class ProductContainer extends Component {
 
   mergeAppProduct = () => {
     const {
-      product,
-      availableAppQuery: { availableApp, loading },
+      productQuery: {product, loading: productLoading},
+      availableAppQuery: { availableApp, loading: availableAppLoading },
     } = this.props
-    return !loading ? {
+    return !availableAppLoading && !productLoading && {
       billing: availableApp.billingOptions,
       categories: product.categories,
       categoryId: product.categoryId,
@@ -46,7 +46,7 @@ class ProductContainer extends Component {
       vendor: product.brand,
       version: availableApp.version,
       slug: availableApp.slug,
-    } : null
+    }
   }
 
   render() {
@@ -90,11 +90,11 @@ class ProductContainer extends Component {
 
 const options = {
   name: 'availableAppQuery',
-  options: props => {
+  options: ({productQuery: {product, loading}}) => {
     return {
       variables: {
-        id: props.product.items[0].referenceId[0].Value,
-        skip: false,
+        id: product && product.items[0].referenceId[0].Value,
+        skip: loading,
       },
     }
   },

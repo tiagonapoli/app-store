@@ -65,7 +65,7 @@ class SearchBox extends Component {
             searchValue ? 'overflow-auto db' : 'dn'
           }`}
         >
-          <AppGallery query={searchValue} />
+          <AppGallery searchTerm={searchValue} />
         </div>
       </div>
     )

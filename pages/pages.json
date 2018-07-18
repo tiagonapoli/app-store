@@ -1,46 +1,118 @@
 {
-  "pages": {
+  "extensions": {
+    "store/theme": {
+      "component": "Theme"
+    },
+    "store/__loading": {
+      "component": "vtex.styleguide/Spinner"
+    }
+  },
+  "routes": {
     "store/review": {
       "path": "/:slug/r"
     }
   },
-  "extensions": {
-    "store/header": {
-      "component": "Header"
-    },
-    "store/footer": {
-      "component": "Footer"
-    },
-    "store/home/container/1": {
-      "component": "Jumbotron"
-    },
-    "store/home/container/2": {
-      "component": "AppShelf",
+  "templates": {
+    "store": {
+      "component": "vtex.render-runtime/LayoutContainer",
+      "context": "vtex.store@1.x/StoreContextProvider",
       "props": {
-        "specificationFilters": "Published",
-        "to": 12,
-        "title": "apps"
+        "elements": [
+          "header",
+          "__children__",
+          "footer"
+        ]
+      },
+      "extensions": {
+        "header": {
+          "component": "Header"
+        },
+        "footer": {
+          "component": "Footer"
+        }
       }
     },
-    "store/home/container/3": {
-      "component": "AppShelf",
+    "home": {
+      "component": "vtex.render-runtime/LayoutContainer",
+      "context": "vtex.store@1.x/StoreContextProvider",
       "props": {
-        "specificationFilters": "Coming Soon",
-        "to": 12,
-        "title": "comingSoon"
+        "elements": [
+          "jumbotron",
+          "published",
+          "soon"
+        ]
+      },
+      "extensions": {
+        "jumbotron": {
+          "component": "Jumbotron"
+        },
+        "published": {
+          "component": "AppShelf",
+          "props": {
+            "specificationFilters": "Published",
+            "to": 12,
+            "title": "apps"
+          }
+        },
+        "soon": {
+          "component": "AppShelf",
+          "props": {
+            "specificationFilters": "Coming Soon",
+            "to": 12,
+            "title": "comingSoon"
+          }
+        }
       }
     },
-    "store/product/container/1": {
-      "component": "ProductContainer"
-    },
-    "store/product/container/2": {
-      "component": "AppGallery",
+    "product": {
+      "component": "vtex.render-runtime/LayoutContainer",
+      "context": "vtex.store@1.x/ProductContextProvider",
       "props": {
-        "productPage": true
+        "elements": [
+          "details",
+          "gallery"
+        ]
+      },
+      "extensions": {
+        "details": {
+          "component": "ProductContainer"
+        },
+        "gallery": {
+          "component": "AppGallery",
+          "props": {
+            "productPage": true
+          }
+        }
       }
     },
-    "store/review": {
+    "review": {
       "component": "ReviewOrderPage"
     }
+  },
+  "pages": {
+    "store": [
+      {
+        "name": "Default",
+        "template": "store"
+      }
+    ],
+    "store/home": [
+      {
+        "name": "Default",
+        "template": "home"
+      }
+    ],
+    "store/product": [
+      {
+        "name": "Default",
+        "template": "product"
+      }
+    ],
+    "store/review": [
+      {
+        "name": "Default",
+        "template": "review"
+      }
+    ]
   }
 }
