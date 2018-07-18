@@ -68,7 +68,7 @@ class AppGallery extends Component {
 const defaultOptions = {
   options: props => ({
     variables: {
-      query: props.query,
+      query: props.searchTerm,
       category: props.category ||
         props.product && props.product.categoriesIds && props.product.categoriesIds.length > 0 &&
         props.product.categoriesIds[0].substring(1, props.product.categoriesIds[0].length - 1),

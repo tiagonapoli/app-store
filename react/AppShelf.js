@@ -158,11 +158,11 @@ class AppShelf extends Component {
 const defaultOptions = {
   options: props => ({
     variables: {
-      query: props.query,
+      query: props.searchTerm,
       collection: props.collection,
-      specificationFilters: `specificationFilter_25:${encodeURI(
+      specificationFilters: [`specificationFilter_25:${encodeURI(
         props.specificationFilters
-      )}`,
+      )}`],
       from: props.from || 0,
       to: props.to || 2,
     },
