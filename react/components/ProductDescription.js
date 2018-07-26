@@ -1,6 +1,7 @@
 import React, { Component, createElement } from 'react'
 import PropTypes from 'prop-types'
 import marksy from 'marksy'
+import memoize from 'memoize-one'
 import { Slider } from 'vtex.store-components'
 
 import { imagePath, splitLocale } from '../utils/utils'
@@ -24,7 +25,7 @@ const DOTS_EXTRA_SMALL_MOBILE_VIEWPORT = true
 const SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE = false
 
 /* eslint-disable react/display-name, react/prop-types */
-const compile = marksy({
+const compile = memoize(description => marksy({
   createElement,
   elements: {
     h4: ({ children }) => <div className="f5">{children}</div>,
@@ -47,7 +48,7 @@ const compile = marksy({
       </a>
     ),
   },
-})
+})(description))
 /* eslint-disable react/display-name, react/prop-types */
 
 class ProductDescription extends Component {
@@ -125,11 +126,12 @@ class ProductDescription extends Component {
     const { billing, description, id, screenshots, appProduct, culture: { locale } } = this.props
     const isScrollByPage = false
     const sliderSettings = this.getSliderSettings()
+    const compiledDescription = compile(description).tree
     return (
       <div className="mh6-s mh0-ns near-black f5">
         <Billing billingOptions={billing} />
         <div className="pt5 pb3-s pb10-ns lh-copy">
-          {compile(description).tree}
+          { compiledDescription }
         </div>
         {screenshots && (
           <div className="w-100 pb8">
