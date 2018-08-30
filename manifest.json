@@ -11,6 +11,7 @@
   ],
   "settingsSchema": {},
   "dependencies": {
+    "vtex.app-store-checkout": "0.x",
     "vtex.apps-graphql": "2.x",
     "vtex.store-graphql": "2.x",
     "vtex.store-components": "1.x",

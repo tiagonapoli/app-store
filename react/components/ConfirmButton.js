@@ -2,18 +2,20 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import { Button } from 'vtex.styleguide'
+import { compose, graphql } from 'react-apollo'
 
 import Loading from './Loading'
-import NoPermissionModal from './NoPermissionModal'
+import createOrderForm from '../mutations/createOrderForm.gql'
 
 class ConfirmButton extends Component {
   static propTypes = {
     appName: PropTypes.string.isRequired,
-    billingPolicy: PropTypes.object.isRequired,
     value: PropTypes.string.isRequired,
     store: PropTypes.string.isRequired,
     disabled: PropTypes.bool.isRequired,
     intl: intlShape.isRequired,
+    sellerId: PropTypes.string.isRequired,
+    skuId: PropTypes.string.isRequired,
   }
 
   state = {
@@ -22,8 +24,13 @@ class ConfirmButton extends Component {
   }
 
   handleClick = () => {
-    const { store, appName } = this.props
-    window.location.href = `https://${store.toLowerCase()}.myvtex.com/admin/apps/${appName}/setup`
+    const { createOrderForm, appName, store, sellerId, skuId } = this.props
+    console.log('Configuring checkout...', skuId)
+    createOrderForm().then(({ data: { createOrderForm: orderFormId} }) => {
+      console.log('Redirecting user to account')
+      window.document.cookie = `checkout.vtex.com=__ofid=${orderFormId};path=/`
+      window.location.href = `https://artur--${store}.myvtex.com/billing-info?orderFormId=${orderFormId}&skuId=${skuId}&sellerId=${sellerId}&appId=${appName}`
+    })
   }
 
   handleModal = () => {
@@ -51,13 +58,12 @@ class ConfirmButton extends Component {
             </Button>
           </div>
         )}
-        <NoPermissionModal
-          onChange={this.handleModal}
-          isOpen={this.state.isModalOpen}
-        />
       </div>
     )
   }
 }
 
-export default injectIntl(ConfirmButton)
+export default compose(
+  graphql(createOrderForm, { 'name': 'createOrderForm' }),
+  injectIntl
+)(ConfirmButton)

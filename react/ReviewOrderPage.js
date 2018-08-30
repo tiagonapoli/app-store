@@ -138,6 +138,8 @@ class ReviewOrderPage extends Component {
                       billingPolicy={availableApp.billingOptions}
                       value={this.translate('confirmButton')}
                       disabled={error}
+                      skuId='5'
+                      sellerId='1'
                     />
                   </div>
                   <div className="dn-s db-ns w-100 mt6 mb2 tc">
@@ -161,11 +163,14 @@ class ReviewOrderPage extends Component {
                   billingPolicy={availableApp.billingOptions}
                   value={this.translate('confirmButtonMobile')}
                   disabled={error}
+                  skuId='5'
+                  sellerId='1'
+                  
                 />
               </div>
               <Helmet>
                 <title>{product.productName}</title>
-              </Helmet>
+              </Helmet>xs
             </div>
           )}
         </div>
