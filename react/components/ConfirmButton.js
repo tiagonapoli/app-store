@@ -26,9 +26,15 @@ class ConfirmButton extends Component {
   handleClick = () => {
     const { createOrderForm, appName, store, sellerId, skuId } = this.props
     console.log('Configuring checkout...', skuId)
-    createOrderForm().then(({ data: { createOrderForm: orderFormId} }) => {
+    createOrderForm({
+      variables: {
+        store
+      }
+    }).then(({ data: { createOrderForm: orderFormId} }) => {
       console.log('Redirecting user to account')
-      window.document.cookie = `checkout.vtex.com=__ofid=${orderFormId};path=/`
+      const expiryDate = new Date()
+      expiryDate.setYear(expiryDate.getFullYear() + 1)
+      window.document.cookie = `checkout.vtex.com=__ofid=${orderFormId};path=/;expires=${expiryDate.toGMTString()}`
       window.location.href = `https://artur--${store}.myvtex.com/billing-info?orderFormId=${orderFormId}&skuId=${skuId}&sellerId=${sellerId}&appId=${appName}`
     })
   }
