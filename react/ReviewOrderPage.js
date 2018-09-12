@@ -171,7 +171,7 @@ class ReviewOrderPage extends Component {
               </div>
               <Helmet>
                 <title>{product.productName}</title>
-              </Helmet>xs
+              </Helmet>
             </div>
           )}
         </div>

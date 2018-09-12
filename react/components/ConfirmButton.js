@@ -35,7 +35,7 @@ class ConfirmButton extends Component {
       const expiryDate = new Date()
       expiryDate.setYear(expiryDate.getFullYear() + 1)
       window.document.cookie = `checkout.vtex.com=__ofid=${orderFormId};path=/;expires=${expiryDate.toGMTString()}`
-      window.location.href = `https://artur--${store}.myvtex.com/billing-info?orderFormId=${orderFormId}&skuId=${skuId}&sellerId=${sellerId}&appId=${appName}`
+      window.location.href = `https://${store}.myvtex.com/billing-info?orderFormId=${orderFormId}&skuId=${skuId}&sellerId=${sellerId}&appId=${appName}`
     })
   }
 
