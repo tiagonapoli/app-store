@@ -3,9 +3,20 @@ import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import { Button } from 'vtex.styleguide'
 import { compose, graphql } from 'react-apollo'
+import { compose as composeR, dropLast, toPairs, reduce } from 'ramda'
 
 import Loading from './Loading'
 import createOrderForm from '../mutations/createOrderForm.gql'
+
+const setCookies = cookieValuePairs => {
+  window.document.cookie = reduce((cookiesString, [cookieName, value]) => `${cookiesString}${cookieName}=${value};`, '', toPairs(cookieValuePairs))
+}
+
+const createQueryString = composeR(
+  dropLast(1),
+  reduce((queryString, [attr, value]) => `${queryString}${attr}=${value}&`, '?'),
+  toPairs
+)
 
 class ConfirmButton extends Component {
   static propTypes = {
@@ -25,17 +36,24 @@ class ConfirmButton extends Component {
 
   handleClick = () => {
     const { createOrderForm, appName, store, sellerId, skuId } = this.props
-    console.log('Configuring checkout...', skuId)
     createOrderForm({
       variables: {
         store
       }
     }).then(({ data: { createOrderForm: orderFormId} }) => {
-      console.log('Redirecting user to account')
       const expiryDate = new Date()
       expiryDate.setYear(expiryDate.getFullYear() + 1)
-      window.document.cookie = `checkout.vtex.com=__ofid=${orderFormId};path=/;expires=${expiryDate.toGMTString()}`
-      window.location.href = `https://${store}.myvtex.com/billing-info?orderFormId=${orderFormId}&skuId=${skuId}&sellerId=${sellerId}&appId=${appName}`
+      setCookies({
+        'checkout.vtex.com': `_ofid=${orderFormId}`,
+        expires: expiryDate.toGMTString(),
+      })
+      const billingInfoQueryString = createQueryString({
+        orderFormId,
+        skuId,
+        sellerId,
+        appId: appName,
+      })
+      window.location.href = `https://${store}.myvtex.com/billing-info${billingInfoQueryString}`
     })
   }
 
