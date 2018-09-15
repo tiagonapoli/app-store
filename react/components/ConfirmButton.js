@@ -44,7 +44,7 @@ class ConfirmButton extends Component {
       const expiryDate = new Date()
       expiryDate.setYear(expiryDate.getFullYear() + 1)
       setCookies({
-        'checkout.vtex.com': `_ofid=${orderFormId}`,
+        'checkout.vtex.com': `__ofid=${orderFormId}`,
         expires: expiryDate.toGMTString(),
       })
       const billingInfoQueryString = createQueryString({
@@ -52,7 +52,9 @@ class ConfirmButton extends Component {
         skuId,
         sellerId,
         appId: appName,
+        referrer: 'APP_STORE'
       })
+      console.log(billingInfoQueryString)
       window.location.href = `https://${store}.myvtex.com/billing-info${billingInfoQueryString}`
     })
   }
