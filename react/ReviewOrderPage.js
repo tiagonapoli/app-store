@@ -56,8 +56,7 @@ class ReviewOrderPage extends Component {
       availableAppQuery: { availableApp, loading: appLoading },
     } = this.props
     const error = !store
-    const itemId = this.props.productQuery.product.items[0].itemId
-    const sellerId = this.props.productQuery.product.items[0].sellers[0].sellerId
+
     return (
       <div className="w-100 h-100 bg-light-silver tc pv6-s pt9-ns content">
         <div className="near-black f4-s f2-ns fw3 mt6 mt8-ns mb7">
@@ -140,8 +139,8 @@ class ReviewOrderPage extends Component {
                       billingPolicy={availableApp.billingOptions}
                       value={this.translate('confirmButton')}
                       disabled={error}
-                      skuId={itemId}
-                      sellerId={sellerId}
+                      skuId={product.items[0].itemId}
+                      sellerId={product.items[0].sellers[0].sellerId}
                     />
                   </div>
                   <div className="dn-s db-ns w-100 mt6 mb2 tc">
@@ -165,8 +164,8 @@ class ReviewOrderPage extends Component {
                   billingPolicy={availableApp.billingOptions}
                   value={this.translate('confirmButtonMobile')}
                   disabled={error}
-                  skuId={itemId}
-                  sellerId={sellerId}
+                  skuId={product.items[0].itemId}
+                  sellerId={product.items[0].sellers[0].sellerId}
                 />
               </div>
               <Helmet>
