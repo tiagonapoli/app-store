@@ -2,6 +2,7 @@
   "name": "vtex.extensions",
   "version": "0.0.0",
   "dependencies": {
+    "js-cookie": "^2.2.0",
     "marksy": "^6.0.3",
     "memoize-one": "^4.0.0",
     "prop-types": "^15.5.10",

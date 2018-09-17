@@ -3,20 +3,19 @@ import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import { Button } from 'vtex.styleguide'
 import { compose, graphql } from 'react-apollo'
-import { compose as composeR, dropLast, toPairs, reduce } from 'ramda'
+import { compose as composeR, dropLast, last, reduce, split, toPairs } from 'ramda'
+import Cookies from 'js-cookie'
 
 import Loading from './Loading'
-import createOrderForm from '../mutations/createOrderForm.gql'
-
-const setCookies = cookieValuePairs => {
-  window.document.cookie = reduce((cookiesString, [cookieName, value]) => `${cookiesString}${cookieName}=${value};`, '', toPairs(cookieValuePairs))
-}
+import checkAccount from '../mutations/checkAccount.gql'
 
 const createQueryString = composeR(
   dropLast(1),
   reduce((queryString, [attr, value]) => `${queryString}${attr}=${value}&`, '?'),
   toPairs
 )
+
+const getOrderFormIdFromCookie = compose(last, split('='))
 
 class ConfirmButton extends Component {
   static propTypes = {
@@ -35,18 +34,15 @@ class ConfirmButton extends Component {
   }
 
   handleClick = () => {
-    const { createOrderForm, appName, store, sellerId, skuId } = this.props
-    createOrderForm({
+    const { checkAccount, appName, store, sellerId, skuId } = this.props
+    const orderFormId = getOrderFormIdFromCookie(Cookies.get('checkout.vtex.com'))
+    checkAccount({
       variables: {
         store
       }
-    }).then(({ data: { createOrderForm: orderFormId} }) => {
+    }).then(() => {
       const expiryDate = new Date()
       expiryDate.setYear(expiryDate.getFullYear() + 1)
-      setCookies({
-        'checkout.vtex.com': `__ofid=${orderFormId}`,
-        expires: expiryDate.toGMTString(),
-      })
       const billingInfoQueryString = createQueryString({
         orderFormId,
         skuId,
@@ -54,8 +50,10 @@ class ConfirmButton extends Component {
         appId: appName,
         referrer: 'APP_STORE'
       })
-      console.log(billingInfoQueryString)
       window.location.href = `https://${store}.myvtex.com/billing-info${billingInfoQueryString}`
+    }).catch((e) => {
+      // TODO: paint the account input border red
+      throw e
     })
   }
 
@@ -90,6 +88,6 @@ class ConfirmButton extends Component {
 }
 
 export default compose(
-  graphql(createOrderForm, { 'name': 'createOrderForm' }),
+  graphql(checkAccount, { 'name': 'checkAccount' }),
   injectIntl
 )(ConfirmButton)

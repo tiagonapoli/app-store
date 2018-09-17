@@ -1,0 +1,3 @@
+mutation CheckAccount($store: String!) {
+  checkAccount(account: $store)
+}

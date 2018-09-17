@@ -1,3 +1,0 @@
-mutation CreateOrderForm($store: String!) {
-  createOrderForm(account: $store)
-}
