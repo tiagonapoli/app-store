@@ -193,7 +193,7 @@ const optionsAvailableApp = {
     return {
       variables: {
         skip: !referenceId,
-        id: referenceId,
+        id: referenceId || '',
       },
     }
   },
