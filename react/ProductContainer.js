@@ -93,8 +93,8 @@ const options = {
   options: ({productQuery: {product, loading}}) => {
     return {
       variables: {
-        id: product.items[0].referenceId[0].Value,
-        skip: loading || product != null,
+        id: product && product.items[0].referenceId[0].Value,
+        skip: loading || product == null,
       },
     }
   },
