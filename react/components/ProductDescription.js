@@ -132,13 +132,13 @@ class ProductDescription extends Component {
     const sliderSettings = this.getSliderSettings()
     const compiledDescription = compile(description).tree
     return (
-      <div className="mh4-s mh0-ns near-black f5">
+      <div className="mh5-s mh0-ns near-black f5">
         <Billing billingOptions={billing} />
         <div className="pt5 pb3-s pb7-ns lh-copy">
           { compiledDescription }
         </div>
         {screenshots && (
-          <div className="w-100 pb7 ">
+          <div className="w-100 pb7 pb9-ns">
             <Slider
               ref={this.slick}
               sliderSettings={sliderSettings}
@@ -159,7 +159,7 @@ class ProductDescription extends Component {
         )}
         <div>
           <div
-            className={`bottom-0 left-0 w-100 z-2 db-s dn-ns b--white bb bw2 get-button-shadow bg-white ${
+            className={`bottom-0 left-0 w-100 z-2 db-s dn-ns b--white bb pb3-s bw2 get-button-shadow bg-white ${
               this.state.fixed ? 'fixed pb4 ph6' : ''
             }`}
           >
