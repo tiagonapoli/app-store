@@ -28,11 +28,15 @@ const SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE = false
 const compile = memoize(description => marksy({
   createElement,
   elements: {
-    h4: ({ children }) => <div className="f5">{children}</div>,
+    h2: ({ children }) => <h2 className="f4-ns f5 fw7">{children}</h2>,
     ul: ({ children }) => <ul className="f5 list pl0 pr3">{children}</ul>,
     li: ({ children }) => (
-      <li className="lh-copy flex flex-row">
-        <div className="f7 ma1">&#9643;</div>
+      <li className="mb3 lh-copy flex flex-row">
+        <div className="mr3"><svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <react width="12" height="12" fill="white"/>
+              <path d="M8 3H4C3.44772 3 3 3.44772 3 4V8C3 8.55228 3.44772 9 4 9H8C8.55228 9 9 8.55228 9 8V4C9 3.44772 8.55228 3 8 3Z" stroke="#3F3F40" stroke-width="1.4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+        </div>
         {children}
       </li>
     ),
@@ -128,13 +132,13 @@ class ProductDescription extends Component {
     const sliderSettings = this.getSliderSettings()
     const compiledDescription = compile(description).tree
     return (
-      <div className="mh6-s mh0-ns near-black f5">
+      <div className="mh4-s mh0-ns near-black f5">
         <Billing billingOptions={billing} />
-        <div className="pt5 pb3-s pb10-ns lh-copy">
+        <div className="pt5 pb3-s pb7-ns lh-copy">
           { compiledDescription }
         </div>
         {screenshots && (
-          <div className="w-100 pb8">
+          <div className="w-100 pb7">
             <Slider
               ref={this.slick}
               sliderSettings={sliderSettings}
@@ -142,7 +146,7 @@ class ProductDescription extends Component {
             >
               {screenshots[splitLocale(locale)].map(screenshot => (
                 <div key={screenshot}>
-                  <div className="h7 flex justify-center mh6-ns b--light-silver ba bw1-ns br2">
+                  <div className="h7 flex justify-center bg-light-silver">
                     <img
                       className="screenshot"
                       src={imagePath(appProduct, screenshot)}
