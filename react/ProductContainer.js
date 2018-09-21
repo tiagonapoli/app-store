@@ -65,8 +65,8 @@ class ProductContainer extends Component {
               seller={appProduct.vendor}
               category={appProduct.categories ? appProduct.categories[0] : ''}
             />
-            <div className="flex justify-center">
-              <div className="w-100 w-80-ns">
+            <div className="flex">
+              <div className="mw7 pr9-ns w-100">
                 <ProductDescription
                   id={appProduct.linkText}
                   description={appProduct.fullDescription[splitLocale(locale)] || ''}
