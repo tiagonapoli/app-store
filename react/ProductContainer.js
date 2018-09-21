@@ -94,7 +94,7 @@ const options = {
     return {
       variables: {
         id: product && product.items[0].referenceId[0].Value,
-        skip: loading,
+        skip: loading || product == null,
       },
     }
   },
