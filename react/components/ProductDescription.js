@@ -28,13 +28,13 @@ const SLIDER_CENTER_MODE_EXTRA_SMALL_MOBILE = false
 const compile = memoize(description => marksy({
   createElement,
   elements: {
-    h2: ({ children }) => <h2 className="f4-ns f5 fw7">{children}</h2>,
+    h2: ({ children }) => <h2 className="f5 fw7">{children}</h2>,
     ul: ({ children }) => <ul className="f5 list pl0 pr3">{children}</ul>,
     li: ({ children }) => (
       <li className="mb3 lh-copy flex flex-row">
         <div className="mr3"><svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <react width="12" height="12" fill="white"/>
-              <path d="M8 3H4C3.44772 3 3 3.44772 3 4V8C3 8.55228 3.44772 9 4 9H8C8.55228 9 9 8.55228 9 8V4C9 3.44772 8.55228 3 8 3Z" stroke="#3F3F40" stroke-width="1.4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect width="12" height="12" fill="white"/>
+              <path d="M8 3H4C3.44772 3 3 3.44772 3 4V8C3 8.55228 3.44772 9 4 9H8C8.55228 9 9 8.55228 9 8V4C9 3.44772 8.55228 3 8 3Z" stroke="#3F3F40" strokeWidth="1.4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
         </div>
         {children}
