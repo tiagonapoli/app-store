@@ -15,8 +15,6 @@ const createQueryString = composeR(
   toPairs
 )
 
-const getOrderFormIdFromCookie = compose(last, split('='))
-
 class ConfirmButton extends Component {
   static propTypes = {
     appName: PropTypes.string.isRequired,
@@ -35,14 +33,16 @@ class ConfirmButton extends Component {
 
   handleClick = () => {
     const { checkAccount, appName, store, sellerId, skuId } = this.props
-    const orderFormId = getOrderFormIdFromCookie(Cookies.get('checkout.vtex.com'))
+    Cookies.remove('checkout.vtex.com')
     checkAccount({
       variables: {
         store
       }
-    }).then(() => {
+    }).then(({ data: { checkAccount: orderFormId } }) => {
       const expiryDate = new Date()
-      expiryDate.setYear(expiryDate.getFullYear() + 1)
+      expiryDate.setYear(expiryDate.getFullYear() + 2)
+      const domain = `.${window.location.hostname}`
+      Cookies.set('checkout.vtex.com', `__ofid=${orderFormId}`, {domain, path: '/', expires: expiryDate})
       const billingInfoQueryString = createQueryString({
         orderFormId,
         skuId,
@@ -50,9 +50,8 @@ class ConfirmButton extends Component {
         appId: appName,
         referrer: 'APP_STORE'
       })
-      window.location.href = `https://${store}.myvtex.com/billing-info${billingInfoQueryString}`
+      window.location.href = `https://${store.toLowerCase()}.myvtex.com/billing-info${billingInfoQueryString}`
     }).catch((e) => {
-      // TODO: paint the account input border red
       throw e
     })
   }
