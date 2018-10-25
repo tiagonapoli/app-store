@@ -31,6 +31,7 @@ class ProductContainer extends Component {
       availableAppQuery: { availableApp, loading: availableAppLoading },
     } = this.props
     return !availableAppLoading && !productLoading && {
+      description: availableApp.description,
       billing: availableApp.billingOptions,
       categories: product.categories,
       categoryId: product.categoryId,
@@ -69,7 +70,7 @@ class ProductContainer extends Component {
               <div className="mw7 pr9-ns w-100">
                 <ProductDescription
                   id={appProduct.linkText}
-                  description={appProduct.fullDescription[splitLocale(locale)] || ''}
+                  description={appProduct.description[splitLocale(locale)] || appProduct.fullDescription[splitLocale(locale)] || ''}
                   billing={appProduct.billing}
                   screenshots={appProduct.screenshots}
                   appProduct={appProduct}
