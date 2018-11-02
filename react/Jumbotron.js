@@ -5,6 +5,7 @@ import { Helmet } from 'render'
 import AppGallery from './AppGallery'
 import JumbotronIcon from './components/icons/JumbotronIcon'
 import SearchBox from './components/SearchBox'
+import { Badge } from 'vtex.styleguide'
 
 class Jumbotron extends Component {
   static propTypes = {
@@ -43,7 +44,10 @@ class Jumbotron extends Component {
         <div className="flex-ns justify-center-ns items-center-ns h-100-s h-50-ns w-100 bg-serious-black pt10 pl5-s pl7-ns white">
           <div className="flex-ns w-100 mw9">
             <div className="w-100 pl5 pr6">
-              <div className="f2 fw5 mt5 mt7-ns pb5 lh-title">VTEX App Store</div>
+            <span className="mr4">
+              <Badge bgColor="#F71963" color="#FFFFFF">Beta</Badge>
+            </span>
+              <div className="f2 fw5 mt5 pb5 lh-title">VTEX App Store</div>
               <div className="w-80-l mt5 mb9-ns f4 fw3 lh-copy">
                 {this.translate('homeText')}
               </div>

@@ -97,7 +97,7 @@ class Header extends Component {
               colorFill="white"
               className={`${notHome ? 'db dn-ns rotate-180' : 'dn'}`}
             />
-            <Link page="store" className="link">
+            <Link page="store/home" className="link">
               <VTEXIcon colorFill="white" className={titleClasses} text={"App Store"} />
             </Link>
             <div

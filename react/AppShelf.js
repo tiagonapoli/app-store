@@ -123,7 +123,7 @@ class AppShelf extends Component {
                   </NoSSR>
                 ) : (
                   <div className="w-100 flex justify-center">
-                    <div className="w-90 flex flex-column-s flex-row-l flex-wrap-ns items-center justify-center mv4">
+                    <div className="w-80 flex flex-column-s flex-row-l flex-wrap-ns mv4">
                       {products.map(product => (
                         <AppItem
                           key={product.productId}
