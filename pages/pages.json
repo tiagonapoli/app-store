@@ -10,6 +10,12 @@
   "routes": {
     "store/review": {
       "path": "/:slug/r"
+    },
+    "store/checkout": {
+      "path": "/checkout"
+    },
+    "store/order-placed": {
+      "path": "/order-placed"
     }
   },
   "templates": {
@@ -85,6 +91,12 @@
         }
       }
     },
+    "checkout": {
+      "component": "Checkout"
+    },
+    "order-placed": {
+      "component": "OrderPlaced"
+    },
     "review": {
       "component": "ReviewOrderPage"
     }
@@ -106,6 +118,18 @@
       {
         "name": "Default",
         "template": "product"
+      }
+    ],
+    "store/checkout": [
+      {
+        "name": "Default",
+        "template": "checkout"
+      }
+    ],
+    "store/order-placed": [
+      {
+        "name": "Default",
+        "template": "order-placed"
       }
     ],
     "store/review": [

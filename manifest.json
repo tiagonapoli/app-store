@@ -16,7 +16,7 @@
     "vtex.store-graphql": "2.x",
     "vtex.store-components": "1.x",
     "vtex.store": "1.x",
-    "vtex.styleguide": "5.x"
+    "vtex.styleguide": "7.x"
   },
   "builders": {
     "pages": "0.x",
