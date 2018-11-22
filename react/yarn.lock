@@ -2,6 +2,17 @@
 # yarn lockfile v1
 
 
+"@types/prop-types@*":
+  version "15.5.6"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.6.tgz#9c03d3fed70a8d517c191b7734da2879b50ca26c"
+
+"@types/react@^16.7.4":
+  version "16.7.4"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.7.4.tgz#0d21b6137fc68b433309ecffda28649797330fbd"
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
 asap@~2.0.3:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
@@ -13,6 +24,10 @@ babel-standalone@^6.26.0:
 core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
+
+csstype@^2.2.0:
+  version "2.5.7"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.5.7.tgz#bf9235d5872141eccfb2d16d82993c6b149179ff"
 
 encoding@^0.1.11:
   version "0.1.12"
