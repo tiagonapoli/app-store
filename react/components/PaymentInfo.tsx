@@ -9,7 +9,7 @@ export default class PaymentInfo extends Component<{free: boolean}> {
 
   public render () {
     return (
-      <div className="w-33-ns w-100 mr5 mb5 br2 bg-base pa5">
+      <div className="w-33-ns w-100 h-100 mr5 mb5 br2 bg-base pa5">
 		    <h4 className="fw4 ma0 mb7">Payment method</h4>
         {
           this.props.free ? (

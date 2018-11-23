@@ -41,7 +41,7 @@ export default class BillingInfo extends Component<{}> {
     const mutedText = binaryMutedStyle(editable)
     const dynamicMargin = binaryMarginStyle(editable)
     return (
-      <div className="w-33-ns w-100 mr5 mb5 br2 bg-base pa5 h-auto">
+      <div className="w-33-ns w-100 mr5 mb5 br2 bg-base pa5 h-100">
         <div className="flex justify-between items-center mb7">
           <h4 className="fw4 ma0">Billing Info</h4>
           {
@@ -112,10 +112,20 @@ export default class BillingInfo extends Component<{}> {
         <p className={`fw6 mt0 mb2 ${mutedText}`}>Email</p>
         <p className={`fw4 ${editable ? 'mt0 mb5' : 'ma0'} ${mutedText}`}>joe@redley.com</p>
         {
-          editable ?
-            <Button onClick={this.saveChanges} variation="primary" size="small" block>
-              CONTINUE
-            </Button> : null
+          editable ? (
+            <div className="flex justify-between">
+              <div className="mr3 w-50">
+                <Button onClick={this.saveChanges} variation="tertiary" size="small" block>
+                  CANCEL
+                </Button>
+              </div>
+              <div className="w-50">
+                <Button onClick={this.saveChanges} variation="primary" size="small" block>
+                  SAVE
+                </Button>
+              </div>
+            </div>
+          ): null
         }
       </div>
     )  
