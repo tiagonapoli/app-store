@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "lib": [
+      "esnext",
+      "dom",
+      "esnext.asynciterable"
+    ],
+    "module": "commonjs",
+    "sourceMap": true,
+    "target": "esnext",
+    "strict": true
+  },
+  "typeAcquisition": {
+    "enable": false
+  },
+  "include": [
+    "./**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": true
+}
