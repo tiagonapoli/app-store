@@ -26,6 +26,7 @@
     "@vtex/api": "^1.5.4",
     "tslint": "^5.12.1",
     "tslint-config-vtex": "^2.1.0",
+    "tslint-react": "^3.6.0",
     "typescript": "^3.2.4"
   }
 }

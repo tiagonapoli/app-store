@@ -7,7 +7,7 @@ import OrderSummary from './components/OrderSummary'
 import PaymentInfo from './components/PaymentInfo'
 
 class Checkout extends Component<InjectedIntlProps> {
-  public render () {
+  render () {
 		const free = true
 		const billingOptions = { free, termsURL: '' }
 		const { formatMessage } = this.props.intl

@@ -10,7 +10,7 @@ export interface OrderSummaryProps {
 
 class OrderSummary extends Component<OrderSummaryProps & InjectedIntlProps> {
   
-  public render () {
+  render () {
     const { billingOptions: { free }, intl: { formatMessage } } = this.props
     const freePricing = formatMessage({ id: 'extensions.checkout.order-summary.pricing.free' })
     return (

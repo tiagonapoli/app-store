@@ -1,3 +1,10 @@
 {
-  "extends": "tslint-config-vtex"
+  "extends": [
+    "tslint-react",
+    "tslint-config-vtex"
+  ],
+  "rules": {
+    "member-access": false,
+    "jsx-boolean-value": false
+  }
 }
