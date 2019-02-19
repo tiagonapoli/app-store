@@ -43,7 +43,7 @@
   "extensions.checkout.order-summary.pricing.title": "Price",
   "extensions.checkout.order-summary.pricing.product": "App",
   "extensions.checkout.order-summary.pricing.free": "Free",
-  "extensions.checkout.order-summary.developed-by": "Developed by ",
+  "extensions.checkout.order-summary.developed-by": "Developed by {seller}",
   "extensions.checkout.order-summary.pricing.total.title": "Total",
   "extensions.checkout.order-summary.disclaimer": "This amount will be charged monthly and can vary according to the usage of the service. {link}",
   "extensions.checkout.order-summary.disclaimer.link": "See app details",
@@ -72,5 +72,7 @@
   "extensions.checkout.billing-info.name": "Name",
   "extensions.checkout.billing-info.email": "Email",
   "extensions.checkout.billing-info.button.cancel": "Cancel",
-  "extensions.checkout.billing-info.button.save": "Save"
+  "extensions.checkout.billing-info.button.save": "Save",
+  "extensions.checkout.billing-info.link.show-details": "Show details",
+  "extensions.checkout.billing-info.link.hide-details": "Hide details"
 }
