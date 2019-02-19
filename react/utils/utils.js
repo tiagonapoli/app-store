@@ -32,3 +32,5 @@ export const getReferenceId = product =>
   product.items[0].referenceId &&
   product.items[0].referenceId.length > 0 &&
   product.items[0].referenceId[0].Value
+
+export const linkClasses = "fw4 mt0 mb6 c-link hover-c-link pointer"

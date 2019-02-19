@@ -2,14 +2,79 @@ import React, { Component } from 'react'
 import { InjectedIntlProps, injectIntl } from 'react-intl'
 import { Button } from 'vtex.styleguide'
 
-import BillingInfo from './components/BillingInfo'
-import OrderSummary from './components/OrderSummary'
-import PaymentInfo from './components/PaymentInfo'
+import OrderSummary from './components/checkout/OrderSummary'
+import Payment, { PaymentData } from './components/checkout/Payment'
+import Profile from './components/checkout/Profile'
 
-class Checkout extends Component<InjectedIntlProps> {
+const profileData = {
+  accountName: 'Redley',
+  cnpj: '00.000.000/0000-00',
+  companyName: 'BROCKTON INDUSTRIA E COMERCIO DE VESTUARIO E FACCOES LTDA',
+  userMail: 'joe@redley.com',
+  userName: 'Joe Zoo',
+}
+const free = false
+const appManifest = {
+  billingOptions: {
+    free,
+    termsURL: '',
+  },
+  categories: [],
+  credentialType: '',
+  dependencies: {},
+  description: '',
+  name: 'masterpass',
+  peerDependencies: {},
+  policies: [],
+  registries: [],
+  settingsSchema: {},
+  title: 'Masterpass',
+  vendor: 'vtex',
+  version: '1.0.0',
+}
+const seller = 'VTEX'
+const productName = 'Masterpass'
+const appIcon = {
+  name: 'masterpass',
+  url: 'https://extensions.vteximg.com.br/arquivos/ids/155413/masterpass-ic.png?v=636610492911230000'
+}
+
+const initialState = {
+  paymentData: {
+    cardHolder: '',
+    cardNumber: '',
+    city: '',
+    complement: '',
+    expirationMonth: '',
+    expirationYear: '',
+    number: '',
+    securityCode: '',
+    state: '',
+    street: '',
+    zip: '',
+  },
+}
+
+type CheckoutState = typeof initialState
+
+class Checkout extends Component<InjectedIntlProps, CheckoutState> {
+  
+  state = initialState
+
+  setPaymentData = (paymentProp: keyof PaymentData) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+      this.setState({
+        paymentData: {
+          ...this.state.paymentData,
+          [paymentProp]: e.target.value,
+        },
+      })
+
+  placeOrder = () => {
+    return
+  }
+
   render () {
-		const free = true
-		const billingOptions = { free, termsURL: '' }
 		const { formatMessage } = this.props.intl
     return (
 			<div className="mt9 bg-muted-5 flex-grow-1">
@@ -17,12 +82,25 @@ class Checkout extends Component<InjectedIntlProps> {
 					{formatMessage({ id: 'extensions.checkout.title' })}
 				</p>
 				<div className="flex-ns justify-center ph5 ph9-ns w-100 mw9-ns center">
-					<BillingInfo/>
-					<PaymentInfo free={free}/>
-					<div className="w-33-ns w-100">
-						<OrderSummary billingOptions={billingOptions}/>
+					<Profile profileData={profileData} />
+					<Payment
+            free={free}
+            paymentData={this.state.paymentData}
+            onInputChange={this.setPaymentData}
+          />
+					<div className="w-third-ns w-100">
+						<OrderSummary
+              appManifest={appManifest}
+              seller={seller}
+              appIcon={appIcon}
+              productName={productName}
+            />
 						<div className="w-100 mt5 mb5">
-							<Button variation="primary" block>
+              <Button
+                variation="primary"
+                onClick={this.placeOrder}
+                block
+              >
 								{formatMessage({ id: 'extensions.checkout.button.confirm' })}
 							</Button>
 						</div>
