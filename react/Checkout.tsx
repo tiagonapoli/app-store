@@ -5,18 +5,20 @@ import { Button } from 'vtex.styleguide'
 import OrderSummary from './components/checkout/OrderSummary'
 import Payment, { PaymentData } from './components/checkout/Payment'
 import Profile from './components/checkout/Profile'
+import { AvailableAppQuery } from './components/queries/AvailableAppQuery'
+
+import AvailableApp from './queries/GetCart.gql'
 
 const profileData = {
-  accountName: 'Redley',
   cnpj: '00.000.000/0000-00',
   companyName: 'BROCKTON INDUSTRIA E COMERCIO DE VESTUARIO E FACCOES LTDA',
+  fantasyName: 'Redley',
   userMail: 'joe@redley.com',
   userName: 'Joe Zoo',
 }
-const free = false
 const appManifest = {
   billingOptions: {
-    free,
+    free: false,
     termsURL: '',
   },
   categories: [],
@@ -84,17 +86,21 @@ class Checkout extends Component<InjectedIntlProps, CheckoutState> {
 				<div className="flex-ns justify-center ph5 ph9-ns w-100 mw9-ns center">
 					<Profile profileData={profileData} />
 					<Payment
-            free={free}
+            free={appManifest.billingOptions.free}
             paymentData={this.state.paymentData}
             onInputChange={this.setPaymentData}
           />
 					<div className="w-third-ns w-100">
-						<OrderSummary
-              appManifest={appManifest}
-              seller={seller}
-              appIcon={appIcon}
-              productName={productName}
-            />
+            <AvailableAppQuery
+              query={AvailableApp}
+            >
+              {({}) => <OrderSummary
+                appManifest={appManifest}
+                seller={seller}
+                appIcon={appIcon}
+                productName={productName}
+              />}
+            </AvailableAppQuery>
 						<div className="w-100 mt5 mb5">
               <Button
                 variation="primary"

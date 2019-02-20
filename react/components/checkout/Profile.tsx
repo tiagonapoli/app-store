@@ -4,7 +4,7 @@ import { linkClasses } from '../../utils/utils'
 
 export interface ProfileProps {
   profileData: {
-    accountName: string
+    fantasyName: string
     userName: string
     userMail: string
     companyName: string
@@ -40,7 +40,7 @@ class Profile extends Component<ProfileProps & InjectedIntlProps, ProfileState> 
     const { expandedForm } = this.state
     const { formatMessage } = this.props.intl
     const {
-      accountName,
+      fantasyName,
       cnpj,
       companyName,
       userMail,
@@ -52,7 +52,7 @@ class Profile extends Component<ProfileProps & InjectedIntlProps, ProfileState> 
         <div className="pb6 bb b--muted-4 mb6 db w-100">
           <Details
             data={[
-              { label: formatMessage({ id: 'extensions.checkout.billing-info.account' }), value: accountName },
+              { label: formatMessage({ id: 'extensions.checkout.billing-info.account' }), value: fantasyName },
             ]}
           />
           {
@@ -60,7 +60,7 @@ class Profile extends Component<ProfileProps & InjectedIntlProps, ProfileState> 
             <Details
               data={[
                 { label: formatMessage({ id: 'extensions.checkout.billing-info.business-name' }), value: companyName },
-                { label: formatMessage({ id: 'extensions.checkout.billing-info.fantasy-name' }), value: accountName },
+                { label: formatMessage({ id: 'extensions.checkout.billing-info.fantasy-name' }), value: fantasyName },
                 { label: formatMessage({ id: 'extensions.checkout.billing-info.cnpj' }), value: cnpj },
               ]}
             />

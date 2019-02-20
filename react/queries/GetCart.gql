@@ -1,0 +1,23 @@
+query GetCart ($slug: String!){
+  cart {
+    profile {
+      account {
+        name
+        companyName
+        fantasyName
+        cnpj
+      }
+      user {
+        name
+        email
+      }
+      items {
+        productName
+        sellers {
+          sellerId
+          sellerName
+        }
+      }
+    }
+  }
+}
