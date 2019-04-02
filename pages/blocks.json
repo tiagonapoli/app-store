@@ -1,0 +1,28 @@
+{
+  "store.home.app-store": {
+    "blocks": [
+      "jumbotron",
+      "app-shelf#published",
+      "app-shelf#soon"
+    ]
+  },
+  "app-shelf#published": {
+    "props": {
+      "specificationFilters": "Published",
+      "to": 12,
+      "title": "apps"
+    }
+  },
+  "app-shelf#soon": {
+    "props": {
+      "specificationFilters": "Coming Soon",
+      "to": 12,
+      "title": "comingSoon"
+    }
+  },
+  "gallery": {
+    "props": {
+      "productPage": true
+    }
+  }
+}

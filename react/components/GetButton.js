@@ -21,7 +21,7 @@ class GetButton extends Component {
     const { navigate, appId } = this.props
     const options = {
       params: { slug: appId },
-      page: 'store/review',
+      page: 'store.review',
       fallbackToWindowLocation: false,
     }
     navigate(options)

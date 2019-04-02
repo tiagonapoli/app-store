@@ -7,14 +7,17 @@
   "dependencies": {
     "vtex.apps-graphql": "2.x",
     "vtex.store-graphql": "2.x",
-    "vtex.store-components": "1.x",
+    "vtex.store-components": "3.x",
     "vtex.store": "2.x",
-    "vtex.styleguide": "5.x"
+    "vtex.styleguide": "9.x",
+    "vtex.store-header": "2.x",
+    "vtex.store-footer": "2.x",
+    "vtex.product-details": "1.x"
   },
   "builders": {
     "messages": "1.x",
-    "pages": "0.x",
-    "react": "2.x"
+    "pages": "1.x",
+    "react": "3.x"
   },
   "scripts": {
     "postreleasy": "vtex publish --verbose"

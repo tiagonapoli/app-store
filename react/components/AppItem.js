@@ -32,7 +32,7 @@ class AppItem extends Component {
       const { navigate, appId } = this.props
       const options = {
         params: { slug: appId },
-        page: 'store/product',
+        page: 'store.product',
         fallbackToWindowLocation: false,
       }
       navigate(options)

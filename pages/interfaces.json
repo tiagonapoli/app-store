@@ -1,0 +1,65 @@
+{
+  "store.theme": {
+    "component": "Theme"
+  },
+  "header.full.app-store": {
+    "component": "Header"
+  },
+  "footer.app-store": {
+    "component": "Footer"
+  },
+  "store.home.app-store": {
+    "required": [
+      "jumbotron",
+      "app-shelf"
+    ],
+    "before": [
+      "header.full.app-store"
+    ],
+    "after": [
+      "footer.app-store"
+    ]
+  },
+  "jumbotron": {
+    "component": "Jumbotron"
+  },
+  "app-shelf": {
+    "component": "AppShelf"
+  },
+  "store.product.app-store": {
+    "required": [
+      "product-details.app-store",
+      "gallery"
+    ],
+    "before": [
+      "header.full.app-store"
+    ],
+    "after": [
+      "footer.app-store"
+    ]
+  },
+  "product-details.app-store": {
+    "required": [
+      "product-images",
+      "product-name",
+      "product-price",
+      "sku-selector",
+      "buy-button",
+      "product-description",
+      "product-specifications"
+    ],
+    "component": "ProductContainer"
+  },
+  "gallery": {
+    "component": "AppGallery"
+  },
+  "store.review": {
+    "component": "ReviewOrderPage",
+    "before": [
+      "header.full.app-store"
+    ],
+    "after": [
+      "footer.app-store"
+    ]
+  }
+}

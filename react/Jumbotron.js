@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { injectIntl, intlShape } from 'react-intl'
-import { Helmet } from 'render'
+import { Helmet } from 'vtex.render-runtime'
 
 import AppGallery from './AppGallery'
 import JumbotronIcon from './components/icons/JumbotronIcon'
