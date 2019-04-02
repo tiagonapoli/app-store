@@ -4,12 +4,6 @@
   "version": "0.2.17",
   "title": "VTEX App Store",
   "description": "Discover and install the best VTEX Apps",
-  "mustUpdateAt": "2019-04-10",
-  "categories": [],
-  "registries": [
-    "smartcheckout"
-  ],
-  "settingsSchema": {},
   "dependencies": {
     "vtex.apps-graphql": "2.x",
     "vtex.store-graphql": "2.x",
