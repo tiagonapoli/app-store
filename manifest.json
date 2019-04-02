@@ -18,6 +18,7 @@
     "vtex.styleguide": "5.x"
   },
   "builders": {
+    "messages": "1.x",
     "pages": "0.x",
     "react": "2.x"
   },
