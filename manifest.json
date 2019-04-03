@@ -16,7 +16,7 @@
   },
   "builders": {
     "messages": "1.x",
-    "pages": "1.x",
+    "store": "0.x",
     "react": "3.x"
   },
   "scripts": {
