@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
-import { Link, Helmet } from 'render'
+import { Link, Helmet } from 'vtex.render-runtime'
 
 import googleAnalytics from './scripts/googleAnalytics'
 import VTEXIcon from './components/icons/VTEXIcon'
@@ -10,8 +10,9 @@ import LocaleSwitcher from './components/LocaleSwitcher'
 import SearchBox from './components/SearchBox'
 import withPage from './withPage'
 import './store.global.css'
+import './slider.global.css'
 
-const HOME_PAGE = 'store/home'
+const HOME_PAGE = 'store.home'
 
 class Header extends Component {
   static propTypes = {
@@ -97,7 +98,7 @@ class Header extends Component {
               colorFill="white"
               className={`${notHome ? 'db dn-ns rotate-180' : 'dn'}`}
             />
-            <Link page="store/home" className="link">
+            <Link page="store.home" className="link">
               <VTEXIcon colorFill="white" className={titleClasses} text={"App Store"} />
             </Link>
             <div

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { injectIntl, intlShape } from 'react-intl'
 import { compose, graphql } from 'react-apollo'
-import { NoSSR } from 'render'
+import { NoSSR } from 'vtex.render-runtime'
 import { isMobileOnly } from 'react-device-detect'
 import { Slider } from 'vtex.store-components'
 

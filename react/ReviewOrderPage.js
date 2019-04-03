@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
 import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
-import { Helmet } from 'render'
+import { Helmet } from 'vtex.render-runtime'
 import { Card, Input } from 'vtex.styleguide'
 
 import { getReferenceId } from './utils/utils'

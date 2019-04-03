@@ -1,25 +1,23 @@
 {
   "name": "app-store",
   "vendor": "extensions",
-  "version": "0.2.17",
+  "version": "1.0.0",
   "title": "VTEX App Store",
   "description": "Discover and install the best VTEX Apps",
-  "mustUpdateAt": "2019-04-10",
-  "categories": [],
-  "registries": [
-    "smartcheckout"
-  ],
-  "settingsSchema": {},
   "dependencies": {
     "vtex.apps-graphql": "2.x",
     "vtex.store-graphql": "2.x",
-    "vtex.store-components": "1.x",
-    "vtex.store": "1.x",
-    "vtex.styleguide": "5.x"
+    "vtex.store-components": "3.x",
+    "vtex.store": "2.x",
+    "vtex.styleguide": "9.x",
+    "vtex.store-header": "2.x",
+    "vtex.store-footer": "2.x",
+    "vtex.product-details": "1.x"
   },
   "builders": {
-    "pages": "0.x",
-    "react": "2.x"
+    "messages": "1.x",
+    "store": "0.x",
+    "react": "3.x"
   },
   "scripts": {
     "postreleasy": "vtex publish --verbose"

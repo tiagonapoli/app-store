@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose, graphql } from 'react-apollo'
-import { Helmet } from 'render'
+import { Helmet } from 'vtex.render-runtime'
 
 import availableAppQuery from './queries/availableAppQuery.gql'
 import ProductDescription from './components/ProductDescription'
@@ -21,7 +21,7 @@ class ProductContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.prefetch('store/review')
+    this.props.prefetch('store.review')
     window.document.body.scrollTop = window.document.documentElement.scrollTop = 0
   }
 
