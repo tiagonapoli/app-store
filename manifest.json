@@ -1,6 +1,6 @@
 {
   "name": "app-store",
-  "vendor": "extensions",
+  "vendor": "vtex",
   "version": "1.0.0",
   "title": "VTEX App Store",
   "description": "Discover and install the best VTEX Apps",
