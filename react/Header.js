@@ -34,7 +34,7 @@ class Header extends Component {
     const query = window.location.search
     let account
     if (query) {
-      account = query.replace('?an=', '')
+      account = query.replace('?account=', '')
       window.localStorage.setItem('account', account)
     }
     window.addEventListener('scroll', this.watchScrollUpMobile)
