@@ -1,6 +1,6 @@
 {
   "name": "app-store",
-  "vendor": "extensions",
+  "vendor": "vtex",
   "version": "1.0.0",
   "title": "VTEX App Store",
   "description": "Discover and install the best VTEX Apps",
@@ -21,5 +21,6 @@
   },
   "scripts": {
     "postreleasy": "vtex publish --verbose"
-  }
+  },
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
