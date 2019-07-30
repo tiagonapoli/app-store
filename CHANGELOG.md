@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.2] - 2019-07-30
+
 ### Fixed
 
 - Bad use of store builder that caused the store not to show up
